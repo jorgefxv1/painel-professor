@@ -748,6 +748,16 @@ button { font-family: inherit; }
   transition: background 0.2s;
 }
 .video-thumb:hover .video-play-btn { background: #ff0000; }
+.video-thumb--fallback {
+  display: flex; align-items: center; justify-content: center;
+  background: #1a1a2e; border-radius: 10px;
+  min-height: 180px;
+}
+.video-thumb--fallback .video-play-btn {
+  position: static; transform: none;
+  width: 72px; height: 72px; font-size: 26px;
+  background: #ff0000;
+}
 
 /* ===== PRINT ===== */
 @media print {

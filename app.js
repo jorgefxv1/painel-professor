@@ -686,7 +686,8 @@ function videoBlock(videoId) {
       </div>
       <div class="card-body card-body--video">
         <a class="video-thumb" href="${url}" target="_blank" rel="noopener">
-          <img src="${thumb}" alt="Thumbnail do vídeo" loading="lazy">
+          <img src="${thumb}" alt="Thumbnail do vídeo" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.classList.add('video-thumb--fallback')">
           <div class="video-play-btn">▶</div>
         </a>
       </div>
