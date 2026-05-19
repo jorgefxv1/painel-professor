@@ -72,6 +72,9 @@ function navigate(type, discId = null, aulaNum = null) {
   updateActiveNav();
   renderMain();
   document.querySelector('.main').scrollTop = 0;
+  // close sidebar on mobile after navigation
+  const sidebar = document.querySelector('.sidebar');
+  if (sidebar && sidebar.classList.contains('open')) toggleSidebar();
 }
 
 function updateActiveNav() {
@@ -86,6 +89,14 @@ function updateActiveNav() {
 }
 
 /* ===== FOCUS MODE ===== */
+/* ===== MOBILE SIDEBAR ===== */
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.querySelector('.sidebar-overlay');
+  const open = sidebar.classList.toggle('open');
+  overlay.classList.toggle('open', open);
+}
+
 function toggleFocus() {
   focusMode = !focusMode;
   document.querySelector('.app').classList.toggle('focus-mode', focusMode);
@@ -620,6 +631,7 @@ function renderAula(disc, aula) {
       ${checklistBlock(disc.id, aula.num)}
       ${reflexaoBlock(disc.id, aula.num)}
 
+      ${aula.videoId ? videoBlock(aula.videoId) : ''}
       ${aula.sections.map(s => renderSection(s)).join('')}
 
       ${notesBlock(disc.id, `aula${aula.num}`)}
@@ -662,6 +674,23 @@ function renderSection(s) {
     default:
       return card(s.label || s.type, s.content || '');
   }
+}
+
+function videoBlock(videoId) {
+  const thumb = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  const url   = `https://www.youtube.com/watch?v=${videoId}`;
+  return `
+    <div class="card collapsible sec-open">
+      <div class="card-lbl card-toggle" onclick="this.parentElement.classList.toggle('sec-open')">
+        <span class="sec-chevron"></span>Vídeo de Referência
+      </div>
+      <div class="card-body card-body--video">
+        <a class="video-thumb" href="${url}" target="_blank" rel="noopener">
+          <img src="${thumb}" alt="Thumbnail do vídeo" loading="lazy">
+          <div class="video-play-btn">▶</div>
+        </a>
+      </div>
+    </div>`;
 }
 
 function card(label, body, extra = '', defaultOpen = false) {

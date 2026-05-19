@@ -35,7 +35,7 @@ const DISCIPLINAS = [
     },
     aulas: [
       {
-        num: 1, emoji: '🎯', semana: 1,
+        num: 1, emoji: '🎯', semana: 1, videoId: 'ooo6x5uNkhs',
         titulo: 'Arrancando',
         subtitulo: 'Do que vocês querem descobrir?',
         sections: [
@@ -46,7 +46,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 2, emoji: '📝', semana: 1,
+        num: 2, emoji: '📝', semana: 1, videoId: 'XATFXYDoP88',
         titulo: 'Montando o Plano',
         subtitulo: 'O que eu quero saber exatamente?',
         sections: [
@@ -57,7 +57,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 3, emoji: '📋', semana: 2,
+        num: 3, emoji: '📋', semana: 2, videoId: 'ANPp5d9wuUU',
         titulo: 'Coletando Dados',
         subtitulo: 'O questionário vai ao ar hoje',
         sections: [
@@ -82,7 +82,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 5, emoji: '📊', semana: 3,
+        num: 5, emoji: '📊', semana: 3, videoId: 'QT_bRFKNiag',
         titulo: 'Dados em Gráficos',
         subtitulo: 'O que fica mais fácil de ver?',
         sections: [
@@ -93,7 +93,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 6, emoji: '🔍', semana: 3,
+        num: 6, emoji: '🔍', semana: 3, videoId: '3i-A0-MriAw',
         titulo: 'Analisando os Dados',
         subtitulo: 'O que os dados realmente dizem?',
         sections: [
@@ -104,7 +104,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 7, emoji: '📄', semana: 4,
+        num: 7, emoji: '📄', semana: 4, videoId: 'BHi207nyceQ',
         titulo: 'Montando o Relatório',
         subtitulo: 'Estrutura ABNT sem complicar',
         sections: [
@@ -180,7 +180,7 @@ const DISCIPLINAS = [
     },
     aulas: [
       {
-        num: 1, emoji: '🏗️', semana: 1,
+        num: 1, emoji: '🏗️', semana: 1, videoId: 'x_5tun6pwmo',
         titulo: 'Sistemas e Requisitos',
         subtitulo: 'Sistemas estão em todo lugar — e todos têm requisitos',
         sections: [
@@ -192,7 +192,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 2, emoji: '📋', semana: 1,
+        num: 2, emoji: '📋', semana: 1, videoId: 'YLd6AWKVyas',
         titulo: 'Requisitos RF e RNF',
         subtitulo: 'O que o sistema faz vs. como ele se comporta',
         sections: [
@@ -204,7 +204,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 3, emoji: '🔧', semana: 1,
+        num: 3, emoji: '🔧', semana: 1, videoId: 'WRS1E5Rt-bo',
         titulo: 'Arquitetura e APIs',
         subtitulo: 'Monolito, microsserviços e como os sistemas se comunicam',
         sections: [
@@ -230,7 +230,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 5, emoji: '📐', semana: 2,
+        num: 5, emoji: '📐', semana: 2, videoId: 'LIhKbUHqrbU',
         titulo: 'Metodologias',
         subtitulo: 'Como organizar um projeto de software sem perder o controle',
         sections: [
@@ -253,7 +253,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 7, emoji: '🎨', semana: 3,
+        num: 7, emoji: '🎨', semana: 3, videoId: 'MpNVGkI2RD4',
         titulo: 'Protótipo e User Stories',
         subtitulo: 'Do requisito para o protótipo',
         sections: [
@@ -329,7 +329,7 @@ const DISCIPLINAS = [
     },
     aulas: [
       {
-        num: 1, emoji: '🧠', semana: 1,
+        num: 1, emoji: '🧠', semana: 1, videoId: 'TzTZ-g7glWg',
         titulo: 'Lógica e Algoritmos',
         subtitulo: 'O que é lógica? O que é um algoritmo?',
         sections: [
@@ -341,7 +341,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 2, emoji: '🗂️', semana: 1,
+        num: 2, emoji: '🗂️', semana: 1, videoId: 'mFuryFB4Z9Q',
         titulo: 'Tipos de Dados',
         subtitulo: 'O computador é mais exigente que você',
         sections: [
@@ -353,7 +353,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 3, emoji: '📦', semana: 2,
+        num: 3, emoji: '📦', semana: 2, videoId: 'LeBmrdn6fuU',
         titulo: 'Variáveis',
         subtitulo: 'A memória do programa',
         sections: [
@@ -379,7 +379,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 5, emoji: '🔄', semana: 3,
+        num: 5, emoji: '🔄', semana: 3, videoId: 'k3YKSQBS_oc',
         titulo: 'Repetição',
         subtitulo: 'Para não precisar escrever a mesma coisa mil vezes',
         sections: [
@@ -391,7 +391,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 6, emoji: '↔️', semana: 3,
+        num: 6, emoji: '↔️', semana: 3, videoId: 'bIJK6f4ygGo',
         titulo: 'Condicionais',
         subtitulo: 'O programa aprende a tomar decisões',
         sections: [
@@ -403,7 +403,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 7, emoji: '📋', semana: 4,
+        num: 7, emoji: '📋', semana: 4, videoId: 'pTN5s-DirNE',
         titulo: 'Listas e Dicionários',
         subtitulo: 'Quando os dados andam em grupo',
         sections: [
@@ -463,7 +463,7 @@ const DISCIPLINAS = [
     },
     aulas: [
       {
-        num: 1, emoji: '🌐', semana: 1,
+        num: 1, emoji: '🌐', semana: 1, videoId: '5Mi96X-9r8Q',
         titulo: 'Tipos de Dados em Inglês',
         subtitulo: 'Structured, unstructured e semi-structured',
         sections: [
@@ -476,7 +476,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 2, emoji: '🔗', semana: 1,
+        num: 2, emoji: '🔗', semana: 1, videoId: 'DyLQTzNlRUA',
         titulo: 'Data Pipeline e ETL',
         subtitulo: 'Extract → Transform → Load',
         sections: [
@@ -489,7 +489,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 3, emoji: '📊', semana: 2,
+        num: 3, emoji: '📊', semana: 2, videoId: 'UjXFRk_HICU',
         titulo: 'Data Visualization',
         subtitulo: 'Gráficos em inglês',
         sections: [
@@ -502,7 +502,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 4, emoji: '🗃️', semana: 2,
+        num: 4, emoji: '🗃️', semana: 2, videoId: 'n5_xbBGMlOQ',
         titulo: 'Banco de Dados em Inglês',
         subtitulo: 'SQL vs NoSQL vocabulary',
         sections: [
@@ -515,7 +515,7 @@ const DISCIPLINAS = [
         ]
       },
       {
-        num: 5, emoji: '💬', semana: 3,
+        num: 5, emoji: '💬', semana: 3, videoId: 'PX1_espK8Nk',
         titulo: 'Inglês em Entrevistas',
         subtitulo: 'Frases prontas para reuniões e seleções',
         sections: [
