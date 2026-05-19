@@ -1,0 +1,13 @@
+{
+  "name": "Painel do Professor — JGP",
+  "short_name": "Painel JGP",
+  "description": "Planejamento de aulas — 1º Bimestre 2026",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0E0F11",
+  "theme_color": "#6366f1",
+  "orientation": "any",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

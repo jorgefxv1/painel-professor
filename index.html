@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JGP · Painel do Professor</title>
+  <meta name="theme-color" content="#6366f1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Painel JGP">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-mark">📊</div>
+        <div class="brand-text">
+          <div class="brand-name">Painel do Professor</div>
+          <div class="brand-sub">1º Bimestre · 2026</div>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+          <span id="themeIco">☀️</span>
+        </button>
+      </div>
+
+      <div class="school-tag">🏫 JGP · 2º Ano Integral</div>
+
+      <div class="sidebar-search">
+        <input type="text" class="sidebar-search-input"
+               placeholder="Buscar aulas…"
+               oninput="filterNav(this.value)"
+               id="nav-search" autocomplete="off">
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-inicio" onclick="navigate('home')">🏠 &nbsp;Início</div>
+        <div id="nav-discs"></div>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="content" id="page-content"></div>
+    </main>
+
+    <!-- FABs -->
+    <div class="fab-group">
+      <button class="fab focus-fab" onclick="toggleFocus()">⊠ Sair do Foco</button>
+      <button class="fab projection-fab" onclick="toggleProjection()">⊠ Sair da Projeção</button>
+    </div>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
