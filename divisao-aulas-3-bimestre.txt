@@ -1,0 +1,466 @@
+PLANEJAMENTO 3º BIMESTRE - 2026
+Fase: 03/08/2026 até 01/10/2026
+Escola: EE. Júlia Gonçalves Passarinho - Corumbá-MS
+Turmas: 2A e 2B - INTEGRAL
+
+TOTAL DE AULAS POR DISCIPLINA
+------------------------------
+Desenvolvimento Local: 8 aulas (ordem de planejamento: por último)
+UC I: 9 aulas
+UC II: 9 aulas
+UC III: 8 aulas
+
+STATUS
+------------------------------
+[x] UC I  - conteúdo pronto para colar no SysGEP (9 aulas)
+[x] UC II - conteúdo pronto para colar no SysGEP (9 aulas)
+[x] UC III - conteúdo pronto para colar no SysGEP (8 aulas)
+[x] Desenvolvimento Local - conteúdo pronto para colar no SysGEP (8 aulas)
+
+FORMATO DE TEXTO PADRÃO (colar direto no campo "Conteúdo" do SysGEP), válido para todas as disciplinas:
+Assunto / Abordagem / Explicação (teórica) ou Prática/Oficina (prática) / Exercício / Dinâmica (quando houver) / Ferramentas (inclui indicação de material pronto)
+Escrito em primeira pessoa, tom natural do Jorge, sem responder tópico por tópico as perguntas do slide do chefe (onde/como) de forma literal.
+Aulas teóricas: exercício = questões do livro. Aulas práticas/oficinas: a própria atividade descrita já é o exercício (não citar plataforma como AVA).
+
+
+UC III - QUALIDADE E TESTES DE SISTEMAS (8 aulas)
+------------------------------
+3 capítulos, cada um com 1 aula teórica + 1 aula prática. 2 aulas de prova (mensal e bimestral).
+
+Material recebido: PDF "Qualidade e testes de sistemas.pdf" (págs. 175-206)
+
+====================================================
+AULA 1 - TEÓRICA - CAPÍTULO 1: ENGENHARIA DE REQUISITOS
+====================================================
+Assunto: O que é Engenharia de Requisitos e por que nenhum sistema deveria ser construído sem ela. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.
+
+Abordagem: Pergunto à turma se já usaram algum app que travava ou fazia algo que ninguém esperava, e puxo a conversa pra mostrar que isso geralmente nasce lá no começo do projeto, antes de qualquer linha de código.
+
+Explicação: Apresento os conceitos de Engenharia e Requisitos, unindo os dois, e mostro as 5 etapas (Elicitação, Análise, Especificação, Validação, Gerenciamento).
+
+Exercício: Em duplas, os alunos recebem um cenário fictício (sistema de chamada online da escola) e classificam frases dadas em requisito funcional, não funcional ou restrição.
+
+Ferramentas: livro, lousa branca, Google Docs com o cenário do exercício. Slides já estão prontos e os pontos do livro já organizados pra passar na lousa, que os alunos copiam no caderno como fixação do conteúdo.
+
+====================================================
+AULA 2 - PRÁTICA - CAPÍTULO 1: ENGENHARIA DE REQUISITOS
+====================================================
+Assunto: Colocar em prática a etapa de Elicitação, descobrindo requisitos de um sistema real da escola. Aula prática no laboratório de informática.
+
+Abordagem: Retomo rapidamente as 5 etapas vistas na aula anterior e anuncio que hoje eles vão atuar como engenheiros de requisitos de verdade.
+
+Prática: Em duplas, os alunos escolhem um sistema simples e útil pra escola (agendamento do laboratório, empréstimo de livros, registro de ocorrências) e simulam uma entrevista com um colega de outra dupla no papel de cliente. Registram no Google Docs pelo menos 3 requisitos funcionais e 2 não funcionais.
+
+Dinâmica: Trocam a lista de requisitos com outra dupla pra tentar achar um requisito mal escrito ou ambíguo.
+
+Ferramentas: Google Docs, roteiro de entrevista impresso. Material já pronto para a aula.
+
+====================================================
+AULA 3 - TEÓRICA - CAPÍTULO 2: QUALIDADE DE SOFTWARE
+====================================================
+Assunto: O que torna um software "bom" — as 8 características de qualidade da ISO/IEC 25010. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.
+
+Abordagem: Pergunto se um site pode ser bonito e mesmo assim ser ruim, e puxo exemplos da turma sobre apps lentos, inseguros ou difíceis de usar.
+
+Explicação: Apresento as 8 características da ISO/IEC 25010 (funcionalidade, confiabilidade, eficiência, usabilidade, segurança, compatibilidade, manutenibilidade, portabilidade), usando a analogia da casa de qualidade.
+
+Exercício: Em grupos, cada grupo sorteia uma característica e cria um exemplo próprio de um app do celular que atende bem ou mal aquela característica.
+
+Ferramentas: livro, lousa branca, cartões com as 8 características para o sorteio. Slides já estão prontos e os pontos do livro já organizados pra passar na lousa, que os alunos copiam no caderno como fixação do conteúdo.
+
+====================================================
+AULA 4 - PRÁTICA - CAPÍTULO 2: QUALIDADE DE SOFTWARE
+====================================================
+Assunto: Avaliar a qualidade de um site ou app real usando os 8 critérios da ISO/IEC 25010. Aula prática no laboratório de informática.
+
+Abordagem: Anuncio que hoje eles vão virar auditores de qualidade de um sistema de verdade.
+
+Prática: Em duplas, escolhem um site ou app conhecido e preenchem uma ficha dando nota de 1 a 5 pra cada uma das 8 características, justificando com um exemplo observado no uso.
+
+Dinâmica: Cada dupla apresenta em 1 minuto a nota final e o pior ponto encontrado, fechando com uma votação do "sistema mais bem avaliado".
+
+Ferramentas: Google Forms ou Sheets com a ficha de avaliação, celular ou computador para acessar o sistema avaliado. Material já pronto para a aula.
+
+====================================================
+AULA 5 - PROVA MENSAL (Capítulos 1 e 2)
+====================================================
+Assunto: Prova Mensal — avaliação do conteúdo dos Capítulos 1 e 2 (Engenharia de Requisitos e Qualidade de Software). Aplicada em sala, individual e sem consulta.
+
+Abordagem: Aplico a prova escrita cobrindo os dois capítulos estudados até aqui.
+
+Correção: Corrijo a prova junto com a turma, valendo pontuação, revisando as questões que geraram mais dúvida.
+
+Lançamento: Lanço as notas no sistema após a correção.
+
+Ferramentas: prova impressa, caneta. Material já pronto para a aula.
+
+====================================================
+AULA 6 - TEÓRICA - CAPÍTULO 3: TESTES DE SOFTWARE
+====================================================
+Assunto: Por que testar antes de lançar — tipos de teste e o caso do foguete Ariane 5. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.
+
+Abordagem: Conto o caso do foguete Ariane 5, que explodiu em 1996 segundos após a decolagem por causa de um erro de software não testado, com prejuízo de US$ 370 milhões, e pergunto à turma como esse erro poderia ter sido evitado.
+
+Explicação: Apresento os tipos de teste (funcional, desempenho, segurança, usabilidade, estresse) e a diferença entre caixa-branca, caixa-preta e caixa-cinza, fechando com um comentário rápido sobre TDD e BDD.
+
+Exercício: Em duplas, os alunos recebem situações de bugs reais e classificam qual tipo de teste identificaria cada uma.
+
+Ferramentas: livro, lousa branca, projetor, Google Docs. Slides já estão prontos e os pontos do livro já organizados pra passar na lousa, que os alunos copiam no caderno como fixação do conteúdo.
+
+====================================================
+AULA 7 - PRÁTICA - CAPÍTULO 3: TESTES DE SOFTWARE
+====================================================
+Assunto: Caçada aos bugs — escrever e executar casos de teste em um sistema de treino real. Aula prática no laboratório de informática.
+
+Abordagem: Anuncio que hoje eles são a equipe de QA de uma empresa e o sistema não pode ir pro ar com bugs.
+
+Prática: Em duplas, acessam um site gratuito de treino para testes (the-internet.herokuapp.com), escolhem 2 funcionalidades e escrevem 3 casos de teste caixa-preta pra cada uma, executando e registrando se passou ou falhou.
+
+Dinâmica: Trocam os casos de teste com outra dupla, que tenta executá-los, pra ver se ficaram claros o suficiente.
+
+Ferramentas: navegador, site the-internet.herokuapp.com, Google Docs ou Sheets pra registrar os casos de teste. Material já pronto para a aula.
+
+====================================================
+AULA 8 - PROVA BIMESTRAL (Capítulos 1, 2 e 3)
+====================================================
+Assunto: Prova Bimestral — avaliação de todo o conteúdo de Qualidade e Testes de Sistemas (Capítulos 1, 2 e 3). Aplicada em sala, individual e sem consulta.
+
+Abordagem: Aplico a prova escrita cobrindo os três capítulos do bimestre.
+
+Correção: Corrijo com a turma, valendo pontuação, revisando os pontos de maior dificuldade.
+
+Lançamento: Lanço as notas no sistema após a correção.
+
+Ferramentas: prova impressa, caneta. Material já pronto para a aula.
+
+
+UC I - INGESTÃO DE DADOS (9 aulas)
+------------------------------
+3 blocos de conteúdo. Bloco 1: teórica + prática + oficina de IA. Bloco 2: teórica + prática. Prova mensal. Bloco 3: teórica + oficina de IA/projeto aplicado. Prova bimestral.
+
+Material recebido: PDF "Ingestão de Dados.pdf"
+Bloco 1: Fundamentos de Ingestão de Dados (o que é, utilidade, prós/contras, pipeline)
+Bloco 2: ETL x ELT
+Bloco 3: Ingestão em Lote x Streaming, agendamento de tarefas e ferramentas do mercado (Kafka, Talend, Airflow, Google Dataflow, AWS Glue, Pentaho)
+
+====================================================
+AULA 1 - TEÓRICA - BLOCO 1: FUNDAMENTOS DE INGESTÃO DE DADOS
+====================================================
+Assunto: O que é ingestão de dados e por que ela está por trás de quase toda tecnologia que usamos. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.
+
+Abordagem: Pergunto pra turma se sabem por que a Netflix recomenda o filme certo ou por que o Instagram parece "adivinhar" o que eles gostam, e puxo a conversa pra mostrar que por trás disso tem um processo de ingestão de dados.
+
+Explicação: Defino ingestão de dados, mostro a utilidade em diferentes áreas (empresas, saúde, redes sociais, jogos), os prós e contras do processo, e uso a analogia da fábrica de chocolate pra explicar como funciona (matéria-prima, processamento, entrega) e o conceito de pipeline.
+
+Exercício: questões do livro (seção "Vamos Praticar" da apostila de Ingestão de Dados).
+
+Ferramentas: livro, lousa branca. Slides já estão prontos e os pontos do livro já organizados pra passar na lousa, que os alunos copiam no caderno como fixação do conteúdo.
+
+====================================================
+AULA 2 - PRÁTICA - BLOCO 1: FUNDAMENTOS DE INGESTÃO DE DADOS
+====================================================
+Assunto: Simular na prática as etapas de um pipeline de ingestão de dados. Aula prática no laboratório de informática.
+
+Abordagem: Retomo a analogia da fábrica de chocolate da aula anterior e anuncio que agora eles vão montar o próprio "pipeline" com dados reais da turma.
+
+Prática: Em duplas, os alunos coletam informações soltas dos colegas (comida favorita, matéria favorita, tempo de trajeto até a escola) de forma bagunçada, tipo papeizinhos soltos, e depois organizam tudo numa planilha no Google Sheets, separando as etapas — coleta, tratamento e armazenamento final — igual ao pipeline da fábrica de chocolate.
+
+Ferramentas: Google Sheets, papel para a coleta inicial bagunçada.
+
+====================================================
+AULA 3 - OFICINA DE IA - BLOCO 1: FUNDAMENTOS DE INGESTÃO DE DADOS
+====================================================
+Assunto: Usar IA pra enxergar ingestão de dados em situações do dia a dia. Aula prática no laboratório de informática.
+
+Abordagem: Pergunto quem lembra de algum app ou serviço que "parece saber" o que eles gostam, e digo que hoje a IA vai ajudar a desvendar o que acontece por trás disso.
+
+Oficina: Em duplas, os alunos escolhem um setor (saúde, redes sociais, jogos, e-commerce) e perguntam ao ChatGPT que tipos de dados esse setor coletaria dos usuários e pra que usaria isso. Depois comparam a resposta da IA com os exemplos do livro e discutem se ela trouxe algo novo ou errou alguma coisa.
+
+Ferramentas: ChatGPT, Google Docs pra registrar a comparação.
+
+====================================================
+AULA 4 - TEÓRICA - BLOCO 2: ETL x ELT
+====================================================
+Assunto: Extrair, Transformar e Carregar — entendendo o ETL e o ELT. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.
+
+Abordagem: Pergunto pra turma o que eles fazem antes de cozinhar algo (pegar ingredientes, temperar, servir) e uso isso pra introduzir os três passos do ETL.
+
+Explicação: Apresento Extract, Transform e Load com os exemplos do livro, e explico a diferença entre ETL e ELT usando a comparação "cozinhar antes de servir" x "self-service".
+
+Exercício: questões do livro (seção "Vamos Praticar").
+
+Ferramentas: livro, lousa branca. Slides já estão prontos e os pontos do livro já organizados pra passar na lousa, que os alunos copiam no caderno como fixação do conteúdo.
+
+====================================================
+AULA 5 - PRÁTICA - BLOCO 2: ETL x ELT
+====================================================
+Assunto: Colocar a mão na massa num mini processo de ETL com dados bagunçados. Aula prática no laboratório de informática.
+
+Abordagem: Anuncio que hoje eles vão virar "engenheiros de dados" por um dia, arrumando uma planilha cheia de erros.
+
+Prática: Entrego uma planilha com dados bagunçados (datas em formatos diferentes, nomes duplicados, espaços em branco) no Google Sheets. Em duplas, os alunos extraem os dados da aba original, transformam (padronizam datas, removem duplicados, corrigem erros) e carregam o resultado limpo numa aba final.
+
+Ferramentas: Google Sheets com a planilha de dados bagunçados já preparada.
+
+====================================================
+AULA 6 - PROVA MENSAL (Blocos 1 e 2)
+====================================================
+Assunto: Prova Mensal — avaliação do conteúdo dos Blocos 1 e 2 (Fundamentos de Ingestão de Dados e ETL x ELT). Aplicada em sala, individual e sem consulta.
+
+Abordagem: Aplico a prova escrita cobrindo os dois blocos estudados até aqui.
+
+Correção: Corrijo a prova junto com a turma, valendo pontuação, revisando as questões que geraram mais dúvida.
+
+Lançamento: Lanço as notas no sistema após a correção.
+
+Ferramentas: prova impressa, caneta. Material já pronto para a aula.
+
+====================================================
+AULA 7 - TEÓRICA - BLOCO 3: LOTE, STREAMING E FERRAMENTAS DO MERCADO
+====================================================
+Assunto: Ingestão em lote x streaming, agendamento de tarefas e as principais ferramentas usadas no mercado. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.
+
+Abordagem: Pergunto se alguém programa o despertador ou tem backup automático no celular, e uso isso pra introduzir o agendamento de tarefas antes de entrar em lote x streaming.
+
+Explicação: Explico a diferença entre ingestão em lote e streaming com os exemplos do livro (lavar roupa x beber água), os métodos de ingestão (manual, automatizada em lote, automatizada em streaming) e apresento rapidamente as ferramentas do mercado (Kafka, Talend, Airflow, Google Dataflow, AWS Glue, Pentaho) e quando usar cada uma.
+
+Exercício: questões do livro (seção "Vamos Praticar").
+
+Ferramentas: livro, lousa branca. Slides já estão prontos e os pontos do livro já organizados pra passar na lousa, que os alunos copiam no caderno como fixação do conteúdo.
+
+====================================================
+AULA 8 - OFICINA DE IA + PROJETO APLICADO - BLOCO 3
+====================================================
+Assunto: Projetar com ajuda da IA um pipeline de ingestão de dados pra um negócio fictício. Aula prática no laboratório de informática.
+
+Abordagem: Anuncio que hoje cada dupla vai virar uma pequena "consultoria de dados" e vai propor uma solução de ingestão pra um negócio.
+
+Oficina/Projeto: Cada dupla sorteia um cenário fictício (um mercado, uma escola, um hospital, um app de entregas) e usa o ChatGPT como apoio pra decidir se os dados devem ser ingeridos em lote ou streaming, se faz mais sentido ETL ou ELT, e qual ferramenta do mercado combina com o cenário. O resultado vira um mini projeto registrado no Google Docs ou Canva, com a proposta de pipeline justificada.
+
+Ferramentas: ChatGPT, Google Docs ou Canva para montar o projeto.
+
+====================================================
+AULA 9 - PROVA BIMESTRAL (Blocos 1, 2 e 3)
+====================================================
+Assunto: Prova Bimestral — avaliação de todo o conteúdo de Ingestão de Dados (Blocos 1, 2 e 3). Aplicada em sala, individual e sem consulta.
+
+Abordagem: Aplico a prova escrita cobrindo os três blocos do bimestre.
+
+Correção: Corrijo com a turma, valendo pontuação, revisando os pontos de maior dificuldade.
+
+Lançamento: Lanço as notas no sistema após a correção.
+
+Ferramentas: prova impressa, caneta. Material já pronto para a aula.
+
+
+UC II - ECOSSISTEMA DE BIG DATA II (9 aulas)
+------------------------------
+Mesma estrutura de UC I: 3 blocos. Bloco 1: teórica + prática + oficina de IA. Bloco 2: teórica + prática. Prova mensal. Bloco 3: teórica + oficina de IA/projeto aplicado. Prova bimestral.
+
+Material recebido: PDF "Ecossistema de Big Data II.pdf"
+Bloco 1: Fundamentos e Arquitetura do Ecossistema de Big Data (ecossistema, Big Data, arquitetura, infraestrutura, volume/velocidade/variedade, tipos de dados)
+Bloco 2: Apache Spark, Processamento em Lote x Streaming
+Bloco 3: Organização e Processamento Paralelo de Dados (particionamento SQL, índices, clusters, Hadoop/Spark/BigQuery)
+
+====================================================
+AULA 1 - TEÓRICA - BLOCO 1: FUNDAMENTOS E ARQUITETURA DO ECOSSISTEMA DE BIG DATA
+====================================================
+Assunto: O que é um ecossistema, Big Data e o Ecossistema de Big Data — arquitetura e infraestrutura por trás desse universo. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.
+
+Abordagem: Pergunto pra turma como o YouTube sabe quais vídeos sugerir entre milhares publicados por minuto, e uso isso pra introduzir o conceito de ecossistema de Big Data.
+
+Explicação: Retomo os conceitos de ecossistema, Big Data e Ecossistema de Big Data com as analogias do livro (floresta, biblioteca), e apresento a arquitetura de Big Data (coleta, armazenamento, processamento) junto com a infraestrutura envolvida (bancos de dados, cloud computing, sistemas de processamento) e os conceitos de volume, velocidade e variedade.
+
+Exercício: questões do livro (seção "Vamos Praticar" da revisão).
+
+Ferramentas: livro, lousa branca. Slides já estão prontos e os pontos do livro já organizados pra passar na lousa, que os alunos copiam no caderno como fixação do conteúdo.
+
+====================================================
+AULA 2 - PRÁTICA - BLOCO 1: FUNDAMENTOS E ARQUITETURA DO ECOSSISTEMA DE BIG DATA
+====================================================
+Assunto: Classificar dados do dia a dia da turma em estruturados, semiestruturados e não estruturados. Aula prática no laboratório de informática.
+
+Abordagem: Retomo a analogia do caderno (colunas certinhas x texto livre x bagunça total) e anuncio que agora eles vão caçar exemplos reais.
+
+Prática: Em duplas, os alunos separam numa planilha do Google Sheets uma lista de "dados" que eles mesmos usam no dia a dia (nota da escola, áudio de WhatsApp, e-mail, foto, planilha de gastos) e classificam cada um como estruturado, semiestruturado ou não estruturado, justificando a escolha.
+
+Ferramentas: Google Sheets.
+
+====================================================
+AULA 3 - OFICINA DE IA - BLOCO 1: FUNDAMENTOS E ARQUITETURA DO ECOSSISTEMA DE BIG DATA
+====================================================
+Assunto: Usar a IA pra investigar como empresas reais aplicam a arquitetura de Big Data (coleta, armazenamento e processamento). Aula prática no laboratório de informática.
+
+Abordagem: Pergunto qual app do celular eles acham que teria mais dificuldade em lidar com Big Data, e digo que a IA vai ajudar a investigar isso.
+
+Oficina: Em duplas, escolhem uma empresa ou app conhecido (Netflix, iFood, Instagram) e perguntam ao ChatGPT como essa empresa provavelmente coleta, armazena e processa dados dos usuários. Registram no Google Docs as 3 etapas identificadas pela IA e comparam com o que aprenderam na aula teórica.
+
+Ferramentas: ChatGPT, Google Docs.
+
+====================================================
+AULA 4 - TEÓRICA - BLOCO 2: APACHE SPARK, PROCESSAMENTO EM LOTE E STREAMING
+====================================================
+Assunto: Apache Spark e as duas formas de processar dados no Big Data — em lote e em tempo real. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.
+
+Abordagem: Pergunto se alguém já usou uma fritadeira elétrica ou já lavou roupa juntando um monte pra lavar de uma vez, e uso isso pra introduzir lote x streaming antes de falar de Spark.
+
+Explicação: Apresento a Apache Software Foundation e o Apache Spark (objetivo, prós e contras, concorrentes como Hadoop MapReduce, Flink, Storm e Dask), e explico processamento em lote (cozinhar aos poucos) e processamento contínuo/streaming (fritadeira elétrica), com as ferramentas de cada um.
+
+Exercício: questões do livro (seção "Vamos Praticar").
+
+Ferramentas: livro, lousa branca. Slides já estão prontos e os pontos do livro já organizados pra passar na lousa, que os alunos copiam no caderno como fixação do conteúdo.
+
+====================================================
+AULA 5 - PRÁTICA - BLOCO 2: APACHE SPARK, PROCESSAMENTO EM LOTE E STREAMING
+====================================================
+Assunto: Decidir entre lote ou streaming pra diferentes situações do dia a dia. Aula prática no laboratório de informática.
+
+Abordagem: Anuncio que hoje a turma vai virar consultora de tecnologia, decidindo qual tipo de processamento cada empresa deveria usar.
+
+Prática: Em duplas, recebem uma lista de 6 situações (relatório de vendas do mês, detecção de fraude em cartão, atualização de trânsito no GPS, cálculo de juros bancário mensal, recomendação de vídeo em tempo real, fechamento de folha de pagamento) e classificam cada uma como lote ou streaming, justificando a escolha por escrito no Google Docs.
+
+Ferramentas: Google Docs com a lista de situações.
+
+====================================================
+AULA 6 - PROVA MENSAL (Blocos 1 e 2)
+====================================================
+Assunto: Prova Mensal — avaliação do conteúdo dos Blocos 1 e 2 (Fundamentos/Arquitetura de Big Data e Apache Spark/Lote x Streaming). Aplicada em sala, individual e sem consulta.
+
+Abordagem: Aplico a prova escrita cobrindo os dois blocos estudados até aqui.
+
+Correção: Corrijo a prova junto com a turma, valendo pontuação, revisando as questões que geraram mais dúvida.
+
+Lançamento: Lanço as notas no sistema após a correção.
+
+Ferramentas: prova impressa, caneta. Material já pronto para a aula.
+
+====================================================
+AULA 7 - TEÓRICA - BLOCO 3: ORGANIZAÇÃO E PROCESSAMENTO PARALELO DE DADOS
+====================================================
+Assunto: Como organizar tabelas gigantes de dados — particionamento, índices e processamento paralelo. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.
+
+Abordagem: Pergunto se alguém já tentou achar um produto num supermercado desorganizado ou um nome numa lista telefônica fora de ordem, e uso isso pra introduzir particionamento e índices.
+
+Explicação: Explico o particionamento de tabelas SQL (por intervalo, lista, hash e faixa) usando a analogia do supermercado, o conceito de índices e plano de execução (o GPS dos dados) e de clusters, e fecho com as ferramentas de processamento paralelo (Hadoop, Spark, BigQuery).
+
+Exercício: questões do livro (seção "Vamos Praticar").
+
+Ferramentas: livro, lousa branca. Slides já estão prontos e os pontos do livro já organizados pra passar na lousa, que os alunos copiam no caderno como fixação do conteúdo.
+
+====================================================
+AULA 8 - OFICINA DE IA + PROJETO APLICADO - BLOCO 3
+====================================================
+Assunto: Projetar com ajuda da IA uma estratégia de organização de dados pra um sistema com milhões de linhas. Aula prática no laboratório de informática.
+
+Abordagem: Anuncio que cada dupla vai virar uma "consultoria de banco de dados" contratada pra resolver o problema de uma tabela gigante e lenta.
+
+Oficina/Projeto: Cada dupla sorteia um cenário fictício (uma rede de lojas com histórico de vendas de 10 anos, um app de transporte com milhões de corridas, uma escola com o histórico de todos os alunos desde 2000) e usa o ChatGPT como apoio pra decidir qual tipo de particionamento usaria (intervalo, lista, hash ou faixa), se usaria índice e por quê, e qual ferramenta de processamento paralelo faria mais sentido pro cenário. O resultado vira um mini projeto registrado no Google Docs ou Canva, com a proposta justificada.
+
+Ferramentas: ChatGPT, Google Docs ou Canva para montar o projeto.
+
+====================================================
+AULA 9 - PROVA BIMESTRAL (Blocos 1, 2 e 3)
+====================================================
+Assunto: Prova Bimestral — avaliação de todo o conteúdo de Ecossistema de Big Data II (Blocos 1, 2 e 3). Aplicada em sala, individual e sem consulta.
+
+Abordagem: Aplico a prova escrita cobrindo os três blocos do bimestre.
+
+Correção: Corrijo com a turma, valendo pontuação, revisando os pontos de maior dificuldade.
+
+Lançamento: Lanço as notas no sistema após a correção.
+
+Ferramentas: prova impressa, caneta. Material já pronto para a aula.
+
+
+DESENVOLVIMENTO LOCAL (8 aulas)
+------------------------------
+Projeto único de bimestre, em 8 etapas (inspirado no modelo de "Projetos Empreendedores Multidisciplinares" de um colega, mas com nomes e metodologia próprios). Sem divisão teórica/prática — cada etapa é uma aula prática de laboratório.
+Tema: dá continuidade ao cenário sorteado na Oficina de IA + Projeto Aplicado de UC II (Aula 8), aplicando coleta de dados reais e construção de uma proposta. Alunos com projeto pessoal próprio podem usar essas aulas pra lapidar o próprio projeto em vez do cenário da oficina.
+
+====================================================
+AULA 1 - PROVOCAÇÃO INICIAL
+====================================================
+Assunto: O problema por trás de dados desorganizados e lentos — ponto de partida do projeto do bimestre. Aula prática no laboratório de informática.
+
+Abordagem: Retomo o cenário sorteado por cada dupla na oficina de IA de UC II (rede de lojas, app de transporte, escola) e pergunto quem quer continuar com esse cenário ou já tem um projeto próprio pra desenvolver nessas aulas.
+
+Prática: Cada dupla decide entre continuar o cenário da oficina de UC II ou apresentar brevemente um projeto pessoal que já tinha em mente. Registram no Google Docs a ideia escolhida e o motivo.
+
+Ferramentas: Google Docs.
+
+====================================================
+AULA 2 - INVESTIGAÇÃO
+====================================================
+Assunto: Pesquisar informações reais sobre o cenário ou projeto escolhido antes de sair coletando dados. Aula prática no laboratório de informática.
+
+Abordagem: Pergunto pra turma o que eles já sabem sobre o tema escolhido e o que ainda precisam descobrir.
+
+Prática: Em duplas, pesquisam informações reais relacionadas ao cenário (dados de mercado, exemplos de sistemas parecidos, reportagens) ou ao projeto pessoal, e listam no Google Docs pelo menos 3 informações relevantes encontradas.
+
+Ferramentas: Google Docs, navegador.
+
+====================================================
+AULA 3 - COLETA DE DADOS
+====================================================
+Assunto: Criar um questionário pra coletar dados reais relacionados ao cenário ou projeto. Aula prática no laboratório de informática.
+
+Abordagem: Anuncio que hoje eles vão sair da teoria e criar sua própria fonte de dados.
+
+Prática: Em duplas, elaboram um questionário no Google Forms com pelo menos 6 perguntas relacionadas ao cenário/projeto (hábitos de compra, uso de transporte, rotina de estudo) e aplicam entre os colegas da escola.
+
+Ferramentas: Google Forms.
+
+====================================================
+AULA 4 - LEITURA DOS NÚMEROS
+====================================================
+Assunto: Organizar e interpretar os dados coletados no questionário. Aula prática no laboratório de informática.
+
+Abordagem: Pergunto o que eles esperam encontrar nas respostas antes de abrir a planilha.
+
+Prática: Exportam as respostas do Forms pro Google Sheets, organizam colunas, calculam frequências/percentuais simples e criam pelo menos 1 gráfico que ajude a responder a pergunta do projeto.
+
+Ferramentas: Google Sheets.
+
+====================================================
+AULA 5 - CONSTRUÇÃO DA PROPOSTA
+====================================================
+Assunto: Montar a proposta de solução aplicando o que decidiram na oficina de UC II (ou a proposta do projeto pessoal). Aula prática no laboratório de informática.
+
+Abordagem: Anuncio que essa é a aula de colocar a mão na massa na proposta final.
+
+Prática: Com base nos dados coletados, cada dupla monta um protótipo/proposta (rascunho de organização dos dados, mockup de tela, ou documento explicando a solução) usando Canva, Google Slides ou Google Docs.
+
+Ferramentas: Canva, Google Slides ou Google Docs (à escolha da dupla).
+
+====================================================
+AULA 6 - AJUSTES FINAIS
+====================================================
+Assunto: Revisar o projeto com a ajuda dos colegas antes da entrega. Aula prática no laboratório de informática.
+
+Abordagem: Explico que hoje cada dupla vai receber e dar feedback pra outra dupla.
+
+Prática: Peer review — cada dupla avalia o projeto de outra usando uma rubrica simples (clareza, uso dos dados, qualidade da proposta) e devolve sugestões. As duplas ajustam o projeto com base no feedback recebido e ensaiam a apresentação.
+
+Ferramentas: rubrica de avaliação (Google Docs ou Forms).
+
+====================================================
+AULA 7 - ENTREGA
+====================================================
+Assunto: Apresentação final dos projetos da turma. Aula prática no laboratório de informática ou sala.
+
+Abordagem: Anuncio a ordem de apresentação e o tempo de cada dupla.
+
+Prática: Cada dupla apresenta o projeto (cenário/tema escolhido, dados coletados, solução proposta) em cerca de 5 minutos, seguido de perguntas rápidas da turma ou minhas.
+
+Ferramentas: projetor, material produzido pela dupla (slides/protótipo).
+
+====================================================
+AULA 8 - FECHAMENTO
+====================================================
+Assunto: Encerramento do projeto e do bimestre. Aula prática em sala.
+
+Abordagem: Pergunto pra turma o que mais gostaram e o que acharam mais difícil no projeto.
+
+Prática: Autoavaliação individual (o que aprendi, como me senti) registrada no Google Forms, seguida de uma devolutiva coletiva sobre o desempenho da turma no bimestre.
+
+Ferramentas: Google Forms.

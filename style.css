@@ -813,3 +813,179 @@ button { font-family: inherit; }
   .app.focus-mode .sidebar,
   .app.projection-mode .sidebar { transform: translateX(-100%); }
 }
+
+/* ===== SEMESTRE / BIMESTRE NAV ===== */
+.nav-semestre { margin-top: 4px; }
+.nav-semestre-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 14px; margin: 2px 8px;
+  border-radius: 8px; cursor: pointer; user-select: none;
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: background .13s;
+}
+.nav-semestre-header:hover { background: var(--nav-hover); }
+.nav-semestre-body { padding-bottom: 2px; }
+
+.nav-bimestre-label {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 14px 5px 22px; margin: 2px 8px 0;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--text-muted); cursor: pointer; border-radius: 6px;
+  transition: background .13s, color .13s;
+}
+.nav-bimestre-label:hover { background: var(--nav-hover); color: var(--text-secondary); }
+.nav-bimestre-label.is-active { color: #818cf8; }
+.nav-bimestre-label.locked { cursor: default; opacity: .55; }
+.nav-bimestre-label.locked:hover { background: none; }
+.nav-bimestre-label .active-tag, .nav-bimestre-label .soon-tag {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em;
+  padding: 1px 6px; border-radius: 20px; text-transform: none;
+}
+.nav-bimestre-label .active-tag { background: rgba(99,102,241,0.15); color: #818cf8; }
+.nav-bimestre-label .soon-tag { background: var(--bg-card-2); color: var(--text-muted); }
+
+.disc-header-nome {
+  display: block; font-size: 0.62rem; font-weight: 500; letter-spacing: 0;
+  text-transform: none; color: var(--text-muted); margin-top: 1px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.disc-active-tag { color: #34d399; font-size: 8px; margin: 0 4px; flex-shrink: 0; }
+
+.nav-planejamento, .nav-notas {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 14px; margin: 2px 8px;
+  border-radius: 8px; font-size: 0.84rem;
+  color: var(--text-secondary); cursor: pointer;
+  transition: background .13s, color .13s;
+}
+.nav-planejamento:hover, .nav-planejamento.active,
+.nav-notas:hover, .nav-notas.active { background: rgba(99,102,241,0.12); color: #818cf8; }
+
+/* ===== BIMESTRE SWITCH (home) ===== */
+.bimestre-switch { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 22px; }
+.bimestre-pill {
+  padding: 6px 14px; border-radius: 20px;
+  background: var(--bg-card-2); border: 1px solid var(--border-card);
+  font-size: 0.76rem; font-weight: 600; color: var(--text-secondary);
+  cursor: pointer; transition: background .13s, color .13s, border-color .13s;
+}
+.bimestre-pill:hover { border-color: rgba(99,102,241,0.35); color: var(--text-primary); }
+.bimestre-pill.is-active { background: rgba(99,102,241,0.14); border-color: rgba(99,102,241,0.4); color: #818cf8; }
+.bimestre-pill.is-locked { opacity: .5; cursor: not-allowed; }
+.bimestre-pill.quick-link { color: var(--text-secondary); }
+
+/* ===== MEU PLANEJAMENTO SEMANAL ===== */
+.week-plan-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px; margin-top: 10px;
+}
+.week-plan-day {
+  background: var(--bg-card); border: 1px solid var(--border-card);
+  border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px;
+}
+.week-plan-day.is-today { border-color: rgba(99,102,241,0.4); box-shadow: 0 0 0 1px rgba(99,102,241,0.15); }
+.week-plan-day-header {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.82rem; font-weight: 800; color: var(--text-primary);
+}
+.week-plan-empty { font-size: 0.78rem; color: var(--text-muted); }
+.week-plan-items { display: flex; flex-direction: column; gap: 8px; }
+.week-plan-item {
+  padding: 9px 11px; border-radius: 9px; cursor: pointer;
+  background: var(--bg-card-2); border-left: 3px solid var(--tc, #818cf8);
+  transition: background .13s, transform .13s;
+}
+.week-plan-item:hover { background: var(--nav-hover); transform: translateX(2px); }
+.week-plan-item-top { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.week-plan-time { font-size: 0.68rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.week-plan-turma { font-size: 0.72rem; color: var(--text-secondary); }
+.week-plan-disc { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.04em; margin-left: auto; }
+.week-plan-next { margin-top: 5px; font-size: 0.78rem; color: var(--text-primary); font-weight: 600; }
+.week-plan-done { margin-top: 5px; font-size: 0.76rem; color: var(--text-muted); }
+
+/* ===== NOTAS ===== */
+.notas-layout {
+  display: grid; grid-template-columns: 260px 1fr; gap: 16px; margin-top: 14px;
+  align-items: start;
+}
+.notas-list-pane {
+  background: var(--bg-card); border: 1px solid var(--border-card);
+  border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px;
+}
+.btn-nova-nota {
+  width: 100%; padding: 9px; border-radius: 9px; border: 1px dashed var(--border-card);
+  background: var(--bg-card-2); color: var(--text-secondary); font-weight: 700; font-size: 0.8rem;
+  cursor: pointer; transition: background .13s, color .13s;
+}
+.btn-nova-nota:hover { background: rgba(99,102,241,0.1); color: #818cf8; border-color: rgba(99,102,241,0.35); }
+.notas-tag-filter { display: flex; flex-wrap: wrap; gap: 6px; }
+.nota-tag-chip {
+  padding: 3px 10px; border-radius: 20px; font-size: 0.68rem; font-weight: 600;
+  background: var(--bg-card-2); color: var(--text-muted); cursor: pointer;
+  border: 1px solid var(--border-card); transition: background .13s, color .13s;
+}
+.nota-tag-chip:hover { color: var(--text-secondary); }
+.nota-tag-chip.is-active { background: rgba(99,102,241,0.14); border-color: rgba(99,102,241,0.4); color: #818cf8; }
+.nota-tag-chip-mini {
+  font-size: 0.6rem; padding: 1px 7px; border-radius: 20px;
+  background: var(--bg-card-2); color: var(--text-muted); margin-right: 4px;
+}
+.notas-list { display: flex; flex-direction: column; gap: 4px; max-height: 60vh; overflow-y: auto; }
+.nota-list-item {
+  padding: 9px 10px; border-radius: 8px; cursor: pointer;
+  transition: background .13s;
+}
+.nota-list-item:hover { background: var(--nav-hover); }
+.nota-list-item.is-active { background: rgba(99,102,241,0.1); }
+.nota-list-title {
+  font-size: 0.82rem; font-weight: 600; color: var(--text-primary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.nota-list-meta { margin-top: 4px; }
+
+.notas-editor-pane {
+  background: var(--bg-card); border: 1px solid var(--border-card);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px;
+  min-height: 60vh;
+}
+.nota-title-input {
+  border: none; background: none; outline: none; color: var(--text-primary);
+  font-size: 1.2rem; font-weight: 800; font-family: inherit; padding: 4px 0;
+}
+.nota-title-input::placeholder { color: var(--text-muted); }
+.nota-tags-input {
+  border: none; border-bottom: 1px solid var(--border-card); background: none; outline: none;
+  color: var(--text-secondary); font-size: 0.78rem; font-family: inherit; padding: 4px 0 8px;
+}
+.nota-tags-input::placeholder { color: var(--text-muted); }
+.nota-editor-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1;
+}
+.nota-editor-textarea {
+  width: 100%; min-height: 40vh; resize: vertical;
+  background: var(--bg-input); border: 1px solid var(--border-card); border-radius: 10px;
+  padding: 12px; color: var(--text-primary); font-family: inherit; font-size: 0.86rem;
+  line-height: 1.7; outline: none;
+}
+.nota-editor-textarea:focus { border-color: rgba(99,102,241,0.4); }
+.nota-editor-preview {
+  background: var(--bg-card-2); border: 1px solid var(--border-card); border-radius: 10px;
+  padding: 12px 16px; font-size: 0.86rem; color: var(--text-secondary); overflow-y: auto;
+}
+.nota-editor-preview h3 { color: var(--text-primary); font-size: 0.98rem; margin: 8px 0 4px; }
+.nota-editor-preview p { margin: 4px 0; }
+.nota-editor-preview ul { margin: 4px 0 4px 18px; }
+.nota-editor-preview strong { color: var(--text-primary); }
+.btn-excluir-nota {
+  align-self: flex-start; background: none; border: 1px solid var(--border-card);
+  color: #f87171; padding: 7px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 600;
+  cursor: pointer; transition: background .13s;
+}
+.btn-excluir-nota:hover { background: rgba(248,113,113,0.1); }
+
+@media (max-width: 760px) {
+  .notas-layout { grid-template-columns: 1fr; }
+  .nota-editor-grid { grid-template-columns: 1fr; }
+  .week-plan-grid { grid-template-columns: 1fr; }
+}

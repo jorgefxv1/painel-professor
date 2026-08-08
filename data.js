@@ -554,4 +554,555 @@ const DISCIPLINAS = [
       },
     ]
   },
+
+  {
+    id: 'uc1-b3',
+    label: 'UC I',
+    nome: 'Ingestão de Dados',
+    carga: '4 aulas/semana · 9 aulas',
+    emoji: '📥',
+    cor: '#a78bfa',
+    descricao: 'Como a informação entra num sistema: fundamentos de ingestão, ETL x ELT, lote x streaming e as ferramentas do mercado.',
+    referencia: 'Apostila "Ingestão de Dados" — Assistente de Big Data',
+    bimestre: '3º Bimestre · 2026',
+    avaliacao: {
+      subtitulo: 'Prova mensal (Blocos 1 e 2) + Prova bimestral (Blocos 1, 2 e 3)',
+      provas: [
+        {
+          id: 'pm', label: 'PM', titulo: 'Prova Mensal',
+          descricao: 'Conteúdo dos Blocos 1 e 2: fundamentos de ingestão de dados e ETL x ELT. Individual, sem consulta.'
+        },
+        {
+          id: 'pb', label: 'PB', titulo: 'Prova Bimestral',
+          descricao: 'Conteúdo completo do bimestre: fundamentos, ETL x ELT, lote x streaming, agendamento e ferramentas do mercado. Individual, sem consulta.'
+        },
+        {
+          id: 'rec', label: 'REC', titulo: 'Recuperação Paralela',
+          descricao: 'Após cada prova — cobre exatamente o mesmo conteúdo avaliado.'
+        },
+      ],
+      criterios: [
+        'Distinção clara entre ETL e ELT',
+        'Reconhecimento de ingestão em lote x streaming em situações do dia a dia',
+        'Domínio do conceito de pipeline de dados',
+        'Conhecimento das ferramentas de mercado e quando usar cada uma',
+        'Participação nas práticas e oficinas de IA',
+      ],
+    },
+    aulas: [
+      {
+        num: 1, emoji: '📦', semana: 1,
+        titulo: 'Fundamentos de Ingestão de Dados',
+        subtitulo: 'O que é, pra que serve e como a fábrica de chocolate explica tudo',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'O que é ingestão de dados e por que ela está por trás de quase toda tecnologia que usamos. Aula expositiva dialogada, com apoio do livro e da lousa branca.' },
+          { type: 'explicacao', label: 'Explicação', content: 'TEMA DA AULA\nFundamentos de Ingestão de Dados\n\nPROBLEMÁTICA\nComo a Netflix sabe recomendar o filme certo? Como o Instagram parece "adivinhar" o que a gente gosta? Por trás dessas experiências existe um processo silencioso e constante: a ingestão de dados — coletar, transportar e armazenar informações vindas de diferentes fontes em um local centralizado, pronto para ser analisado.\n\nJUSTIFICATIVA\nSem ingestão, os dados ficam soltos e sem valor prático — como pedidos de um restaurante anotados em papéis avulsos, sem forma de saber qual prato vende mais. Ingestão é o primeiro passo de qualquer projeto de dados: sem ela, não existe análise, relatório ou recomendação possível depois.\n\nCONCEITOS FUNDAMENTAIS\n• Ingestão de dados: processo de coletar, transportar e armazenar dados de diversas fontes em um local centralizado\n• Pipeline: sequência organizada de etapas que leva o dado da fonte até o destino, sem interrupções\n• Volume, velocidade e formato: as três variáveis que definem como um dado deve ser ingerido\n\nTÓPICOS E SUBTÓPICOS\n\n1. A analogia da fábrica de chocolate\n   — Matéria-prima (leite, cacau, açúcar) = dados brutos vindos de fontes diferentes\n   — Processamento (mistura e transformação) = tratamento e organização dos dados\n   — Entrega (chocolate embalado) = dados armazenados e disponíveis para análise\n\n2. Onde a ingestão de dados aparece no dia a dia\n   — Empresas: entender comportamento de clientes e prever tendências (lojas online)\n   — Saúde: sensores que monitoram batimentos cardíacos e alertam médicos\n   — Redes sociais: curtidas e tempo de visualização definem o que aparece no feed\n   — Jogos online: dados de jogabilidade ajustam dificuldade e corrigem falhas\n\n3. Prós e contras\n   — Prós: centraliza informação, melhora decisões, automatiza trabalho manual\n   — Contras: exige armazenamento, decisões erradas se o dado de entrada for errado, pode ser complexo de configurar\n\nEXEMPLO DE APLICAÇÃO\nUm restaurante que anota pedidos em papel não sabe quais pratos saem mais nem quais ingredientes estão acabando. Ao registrar os pedidos em um sistema (ingerir os dados), o dono passa a tomar decisões com base em números reais — isso é ingestão de dados aplicada fora da programação.\n\nPOR QUE É IMPORTANTE\nA ingestão de dados é o alicerce de toda a área de Big Data. Antes de falar em ETL, streaming ou ferramentas de mercado, é preciso entender que tudo começa aqui: trazer o dado bruto para dentro do sistema.\n\nVANTAGENS DA INGESTÃO DE DADOS\n• Centraliza informações espalhadas em um único lugar confiável\n• Base para qualquer análise, relatório ou recomendação automática\n• Reduz trabalho manual e erros de organização\n• Presente em praticamente toda tecnologia usada no dia a dia' },
+          { type: 'exercicio', label: 'Exercício', content: '📝 QUESTÕES ABERTAS\n\n1. O que é ingestão de dados? Explique com um exemplo fora da programação.\n\n2. Use a analogia da fábrica de chocolate para explicar as três etapas do processo de ingestão de dados.\n\n3. Cite dois setores do dia a dia (fora da tecnologia) que usam ingestão de dados e explique como.\n\n4. Quais são os prós e os contras da ingestão de dados? Cite pelo menos um de cada.\n\n5. Por que a Netflix consegue recomendar filmes que "combinam" com o usuário? Relacione com o conceito de ingestão de dados.\n\n🔢 MÚLTIPLA ESCOLHA\n\n6. O que é ingestão de dados?\na) Um tipo de gráfico usado em relatórios\nb) O processo de coletar, transportar e armazenar dados de diversas fontes (✓)\nc) Um software de edição de planilhas\nd) A etapa final de um projeto de dados\n\n7. Na analogia da fábrica de chocolate, o que representa a "matéria-prima"?\na) Os dados já organizados no banco de dados\nb) Os dados brutos vindos de diferentes fontes (✓)\nc) O relatório final entregue ao cliente\nd) O sistema que armazena os dados\n\n8. Qual das opções NÃO é um contra da ingestão de dados?\na) Pode exigir muito armazenamento\nb) Pode ser complicado configurar corretamente\nc) Se os dados forem errados, as decisões também serão\nd) Centraliza e organiza as informações (✓)\n\n9. Como hospitais usam ingestão de dados, segundo o exemplo visto em aula?\na) Para vender planos de saúde\nb) Para monitorar pacientes com sensores e prever emergências (✓)\nc) Para substituir médicos por sistemas automáticos\nd) Para editar prontuários manualmente\n\n10. O que acontece quando uma empresa NÃO ingere seus dados de forma organizada?\na) Os dados ficam soltos e sem valor prático para decisões (✓)\nb) Os dados automaticamente se tornam mais seguros\nc) A empresa economiza espaço de armazenamento\nd) Nada muda — dados sempre têm valor, organizados ou não' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Livro', 'Lousa branca', 'Slides'] },
+        ]
+      },
+      {
+        num: 2, emoji: '🧪', semana: 1,
+        titulo: 'Simulando um Pipeline',
+        subtitulo: 'Coletar, tratar e armazenar dados reais da turma',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Simular na prática as etapas de um pipeline de ingestão de dados. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Retomando a analogia da fábrica de chocolate da aula anterior: hoje a turma monta o próprio "pipeline" com dados reais, coletados entre os colegas. A ideia é sentir na pele as três etapas — coleta bagunçada, tratamento e armazenamento final — em vez de só ouvir sobre elas.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, os alunos coletam informações soltas dos colegas (comida favorita, matéria favorita, tempo de trajeto até a escola) de forma bagunçada, tipo papeizinhos soltos.\n\nDepois organizam tudo numa planilha no Google Sheets, separando claramente as etapas do pipeline: uma aba para a coleta bruta (bagunçada), outra para os dados tratados (padronizados, sem duplicidade) e outra para o armazenamento final — igual ao pipeline da fábrica de chocolate.\n\nAo final, cada dupla aponta: qual foi a parte mais trabalhosa do processo — coletar, tratar ou organizar?' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Sheets', 'Papel para coleta inicial'] },
+        ]
+      },
+      {
+        num: 3, emoji: '🤖', semana: 2,
+        titulo: 'Oficina de IA 1',
+        subtitulo: 'A IA enxerga ingestão de dados em qualquer setor',
+        isOficina: true,
+        sections: [
+          { type: 'contexto', label: 'Contexto', content: 'Usar IA pra enxergar ingestão de dados em situações do dia a dia — quem lembra de algum app que "parece saber" o que gosta? Hoje a IA ajuda a desvendar o que acontece por trás disso.' },
+          { type: 'atividade', num: 1, titulo: '"Escolhe um setor"', content: 'Em duplas, os alunos escolhem um setor (saúde, redes sociais, jogos, e-commerce) e perguntam ao ChatGPT que tipos de dados esse setor coletaria dos usuários e para que usaria isso.' },
+          { type: 'atividade', num: 2, titulo: '"Compara com o livro"', content: 'Depois comparam a resposta da IA com os exemplos vistos na Aula 1 (empresas, saúde, redes sociais, jogos) e discutem: a IA trouxe algo novo? Errou alguma coisa?' },
+          { type: 'atividade', num: 3, titulo: '"Registra a comparação"', content: 'No Google Docs, cada dupla registra em duas colunas: o que a IA disse × o que já sabíamos do livro. Fecham com uma frase: "a IA acertou/errou em..."' },
+          { type: 'reflexao', label: 'Reflexão', content: 'A IA é rápida pra listar exemplos, mas não substitui entender o processo — ela também pode chutar ou generalizar demais.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['ChatGPT', 'Google Docs'] },
+        ]
+      },
+      {
+        num: 4, emoji: '🔄', semana: 2,
+        titulo: 'ETL x ELT',
+        subtitulo: 'Extrair, transformar e carregar — em qual ordem?',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Extrair, Transformar e Carregar — entendendo o ETL e o ELT. Aula expositiva dialogada, com apoio do livro e da lousa branca.' },
+          { type: 'explicacao', label: 'Explicação', content: 'TEMA DA AULA\nETL x ELT — Extract, Transform, Load\n\nPROBLEMÁTICA\nOs dados quase nunca chegam prontos. Como uma empresa pega informações bagunçadas de várias fontes e transforma isso em algo utilizável? E por que às vezes ela guarda tudo bagunçado primeiro, e organiza depois?\n\nJUSTIFICATIVA\nETL e ELT são os dois processos mais usados para levar dados de um lugar a outro. Entender a ordem das etapas — e quando usar cada abordagem — é o que separa um pipeline de dados eficiente de um cheio de retrabalho.\n\nCONCEITOS FUNDAMENTAIS\n• Extract (Extrair): pegar os dados de uma ou mais fontes (bancos, arquivos, APIs, sensores, redes sociais)\n• Transform (Transformar): organizar e modificar os dados — remover o que não serve, converter formatos, corrigir erros\n• Load (Carregar): armazenar os dados tratados no sistema final, pronto para análise\n\nTÓPICOS E SUBTÓPICOS\n\n1. ETL (Extract, Transform, Load)\n   — Extrai → limpa e organiza → só depois joga no destino final\n   — Analogia: cozinhar antes de servir — prepara o prato e só depois coloca na mesa\n\n2. ELT (Extract, Load, Transform)\n   — Extrai → joga direto no sistema final → limpa e organiza depois\n   — Analogia: self-service — os ingredientes vão direto pra mesa, cada um monta o próprio prato depois\n\n3. Extract em detalhe — de onde vêm os dados: bancos de dados, arquivos, APIs, sensores, redes sociais\n   Exemplo fora da programação: pegar ingredientes na geladeira antes de cozinhar\n\n4. Transform em detalhe — remover informações desnecessárias, converter formatos (ex: "dd/mm/aaaa" → "aaaa-mm-dd"), corrigir erros\n   Exemplo fora da programação: cortar e temperar os ingredientes\n\n5. Load em detalhe — salvar os dados limpos em um banco de dados ou data warehouse, prontos para análise\n   Exemplo fora da programação: servir a comida pronta no prato\n\nEXEMPLO DE APLICAÇÃO\nUm sistema de e-commerce registra todas as compras dos clientes. Com ETL, ele limpa e organiza esses dados antes de guardar. Com ELT, ele guarda tudo primeiro (mais rápido) e só organiza quando alguém for de fato analisar as vendas — útil quando o volume é gigante e nem todo dado será usado.\n\nPOR QUE É IMPORTANTE\nEscolher entre ETL e ELT afeta velocidade, custo e organização do sistema. Empresas que lidam com grandes volumes tendem a preferir ELT (guarda tudo, organiza depois); empresas que precisam de dados já prontos e confiáveis preferem ETL.\n\nVANTAGENS DE ENTENDER ETL x ELT\n• Permite escolher o processo certo conforme o volume e a urgência dos dados\n• Evita retrabalho ao definir a ordem das etapas desde o início\n• Base para entender qualquer ferramenta de mercado (Airflow, Talend, Kafka etc.)\n• Vocabulário essencial em qualquer vaga de engenharia de dados' },
+          { type: 'exercicio', label: 'Exercício', content: '📝 QUESTÕES ABERTAS\n\n1. O que significam as siglas ETL e ELT? Explique a diferença entre elas.\n\n2. Use a analogia "cozinhar antes de servir x self-service" para explicar ETL e ELT.\n\n3. Descreva as três etapas do ETL — Extract, Transform e Load — com um exemplo de cada.\n\n4. Dê um exemplo de quando faz mais sentido usar ELT em vez de ETL.\n\n5. Por que a etapa "Transform" costuma ser a mais trabalhosa do processo?\n\n🔢 MÚLTIPLA ESCOLHA\n\n6. O que significa a sigla ETL?\na) Extração, Transferência e Limpeza\nb) Extração, Transformação e Carga (✓)\nc) Envio, Tratamento e Logística\nd) Extração, Transformação e Leitura\n\n7. Qual é a principal diferença entre ETL e ELT?\na) No ELT, os dados são carregados antes de serem transformados (✓)\nb) No ETL, os dados são transformados depois de serem carregados\nc) O ELT é usado apenas para pequenos volumes de dados\nd) O ETL não possui etapa de extração\n\n8. O que acontece na etapa "Transform" do ETL?\na) Os dados são coletados de uma fonte externa\nb) Os dados são limpos, padronizados e corrigidos (✓)\nc) Os dados são entregues prontos ao cliente final\nd) Os dados são apagados do sistema de origem\n\n9. Qual analogia representa corretamente o ELT?\na) Cozinhar tudo antes de servir\nb) Self-service — os ingredientes vão direto pra mesa e cada um organiza depois (✓)\nc) Comprar ingredientes prontos na loja\nd) Servir a comida fria\n\n10. Converter uma data de "dd/mm/aaaa" para "aaaa-mm-dd" é um exemplo de qual etapa?\na) Extract\nb) Load\nc) Transform (✓)\nd) Pipeline' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Livro', 'Lousa branca', 'Slides'] },
+        ]
+      },
+      {
+        num: 5, emoji: '🧹', semana: 3,
+        titulo: 'Mini ETL com Dados Bagunçados',
+        subtitulo: 'Extrair, limpar e carregar uma planilha real',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Colocar a mão na massa num mini processo de ETL com dados bagunçados. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Hoje a turma vira "engenheira de dados" por um dia: recebe uma planilha cheia de erros — datas em formatos diferentes, nomes duplicados, espaços em branco — e precisa aplicar as três etapas do ETL vistas na aula anterior para deixá-la limpa e utilizável.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, os alunos recebem uma planilha bagunçada no Google Sheets (dados fictícios de clientes ou vendas).\n\nExtraem os dados da aba original, transformam (padronizam datas, removem duplicados, corrigem erros de digitação) e carregam o resultado limpo numa aba final chamada "dados tratados".\n\nAo final, comparam a aba original com a final e listam pelo menos 3 problemas que foram corrigidos.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Sheets'] },
+        ]
+      },
+      {
+        num: 6, emoji: '📝', semana: 3,
+        titulo: 'Prova Mensal',
+        subtitulo: 'Blocos 1 e 2 — fundamentos de ingestão e ETL x ELT',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova Mensal — avaliação do conteúdo dos Blocos 1 e 2 (Fundamentos de Ingestão de Dados e ETL x ELT). Aplicada em sala, individual e sem consulta.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Aplico a prova escrita cobrindo os dois blocos estudados até aqui. Depois, corrijo junto com a turma, valendo pontuação, revisando as questões que geraram mais dúvida. As notas são lançadas no sistema após a correção.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa', 'Caneta'] },
+        ]
+      },
+      {
+        num: 7, emoji: '⏱️', semana: 4,
+        titulo: 'Lote x Streaming e Ferramentas do Mercado',
+        subtitulo: 'Lavar roupa x beber água — e quem faz isso no mundo real',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Ingestão em lote x streaming, agendamento de tarefas e as principais ferramentas usadas no mercado. Aula expositiva dialogada, com apoio do livro e da lousa branca.' },
+          { type: 'explicacao', label: 'Explicação', content: 'TEMA DA AULA\nIngestão em Lote x Streaming, Agendamento e Ferramentas de Mercado\n\nPROBLEMÁTICA\nNem todo dado precisa ser processado na hora — e nem todo dado pode esperar. Como decidir a forma certa de ingerir uma informação, e quais ferramentas o mercado usa pra automatizar isso sem depender de alguém apertando um botão toda hora?\n\nJUSTIFICATIVA\nEscolher entre lote e streaming (e saber agendar tarefas) é uma decisão de engenharia que afeta custo, velocidade e complexidade de um sistema. É também aqui que aparecem as ferramentas mais cobradas em vagas de dados: Kafka, Airflow, Talend, entre outras.\n\nCONCEITOS FUNDAMENTAIS\n• Ingestão em lote (batch): dados coletados ao longo do tempo e processados de uma vez, em momentos específicos\n• Ingestão em streaming: dados processados assim que chegam, em tempo real ou quase real\n• Agendamento de tarefas: técnica para automatizar a execução de processos de ingestão em horários programados\n\nTÓPICOS E SUBTÓPICOS\n\n1. Ingestão em Lote\n   — Analogia: lavar roupa — junta várias peças sujas e lava tudo de uma vez\n   — Ideal para: grandes volumes, relatórios diários ou semanais\n   — Exemplo: sistema bancário processando todas as transações do dia à meia-noite\n\n2. Ingestão em Streaming\n   — Analogia: beber água — você bebe conforme sente sede, sem esperar juntar várias garrafas\n   — Ideal para: monitoramento contínuo, resposta imediata a eventos\n   — Exemplo: aplicativo de trânsito atualizando congestionamento em tempo real\n\n3. Agendamento de tarefas\n   — Automatiza a coleta e o processamento em horários específicos, sem intervenção manual\n   — Analogia: despertador programado ou backup automático do celular à noite\n   — Benefícios: automação, confiabilidade, eficiência\n\n4. Métodos de ingestão\n   — Manual: um funcionário digitando dados numa planilha (simples, mas sujeito a erro)\n   — Automatizada em lote: coleta e processa em horários específicos\n   — Automatizada em streaming: processamento contínuo, conforme os dados chegam\n\n5. Ferramentas do mercado\n   — Apache Kafka: ingestão em streaming, alta escalabilidade — usar quando precisa de dados em tempo real\n   — Apache Airflow: orquestração de pipelines — usar para automatizar fluxos complexos\n   — Talend e Pentaho: ferramentas de ETL com interface amigável — usar para integrar múltiplas fontes\n   — Google Dataflow e AWS Glue: soluções gerenciadas na nuvem — usar em projetos que já vivem em Google Cloud ou AWS\n\nEXEMPLO DE APLICAÇÃO\nUm banco processa todas as transações do dia à meia-noite (lote) para gerar o relatório de fechamento, mas usa streaming para bloquear na hora uma transação suspeita de fraude. As duas abordagens convivem no mesmo sistema, cada uma resolvendo um problema diferente.\n\nPOR QUE É IMPORTANTE\nUsar streaming onde bastaria lote é caro e desnecessário; usar lote onde streaming era preciso pode causar prejuízo (uma fraude não detectada a tempo, por exemplo). Saber escolher — e saber qual ferramenta serve pra cada caso — é uma habilidade central de quem trabalha com dados.\n\nVANTAGENS DE DOMINAR ESSE CONTEÚDO\n• Escolher a abordagem certa evita desperdício de recursos\n• Vocabulário e ferramentas cobrados em praticamente toda vaga de engenharia de dados\n• Base para entender arquiteturas de dados modernas em qualquer empresa' },
+          { type: 'exercicio', label: 'Exercício', content: '📝 QUESTÕES ABERTAS\n\n1. Qual é a diferença entre ingestão em lote e ingestão em streaming? Use as analogias vistas em aula.\n\n2. Dê um exemplo real (fora da tecnologia) de algo que funciona como "lote" e outro que funciona como "streaming".\n\n3. O que é agendamento de tarefas e por que ele é útil na ingestão de dados?\n\n4. Cite três ferramentas de ingestão de dados do mercado e para que cada uma serve.\n\n5. Um banco usa lote para relatórios e streaming para detectar fraude. Por que ele não usa só uma das duas abordagens?\n\n🔢 MÚLTIPLA ESCOLHA\n\n6. Ingestão em lote é mais indicada para qual situação?\na) Detecção de fraude em tempo real\nb) Relatórios diários com grandes volumes de dados acumulados (✓)\nc) Atualização instantânea de mapa de trânsito\nd) Monitoramento contínuo de sensores\n\n7. Qual ferramenta é mais indicada para ingestão de dados em streaming?\na) Apache Kafka (✓)\nb) Excel\nc) Google Forms\nd) PowerPoint\n\n8. O que é agendamento de tarefas no contexto de ingestão de dados?\na) Um tipo de gráfico usado em relatórios\nb) Técnica para automatizar a execução de processos em horários específicos (✓)\nc) Um método de criptografia de dados\nd) Um tipo de banco de dados NoSQL\n\n9. Qual das opções abaixo é um exemplo de ingestão em streaming?\na) Backup do celular feito toda noite\nb) Relatório de vendas gerado uma vez por semana\nc) Aplicativo de trânsito atualizando congestionamento em tempo real (✓)\nd) Fechamento de folha de pagamento no fim do mês\n\n10. Qual ferramenta é usada para orquestrar e automatizar pipelines complexos de dados?\na) Apache Airflow (✓)\nb) PowerPoint\nc) Google Forms\nd) Photoshop' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Livro', 'Lousa branca', 'Slides'] },
+        ]
+      },
+      {
+        num: 8, emoji: '🤖', semana: 4,
+        titulo: 'Oficina de IA + Projeto Aplicado',
+        subtitulo: 'Consultoria de dados por um dia',
+        isOficina: true,
+        sections: [
+          { type: 'contexto', label: 'Contexto', content: 'Projetar com ajuda da IA um pipeline de ingestão de dados pra um negócio fictício. Hoje cada dupla vira uma pequena "consultoria de dados" e propõe uma solução real de ingestão.' },
+          { type: 'atividade', num: 1, titulo: '"Sorteia o cenário"', content: 'Cada dupla sorteia um cenário fictício: um mercado, uma escola, um hospital ou um app de entregas.' },
+          { type: 'atividade', num: 2, titulo: '"Decide com a IA"', content: 'Usando o ChatGPT como apoio, a dupla decide: os dados devem ser ingeridos em lote ou streaming? Faz mais sentido ETL ou ELT? Qual ferramenta de mercado combina com o cenário?' },
+          { type: 'atividade', num: 3, titulo: '"Monta o mini projeto"', content: 'O resultado vira um mini projeto registrado no Google Docs ou Canva, com a proposta de pipeline justificada — cada escolha precisa de um porquê, não só um palpite.' },
+          { type: 'reflexao', label: 'Reflexão', content: 'A IA ajuda a organizar as opções, mas quem decide e justifica é a dupla — isso é o que separa uma proposta técnica de um chute.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['ChatGPT', 'Google Docs', 'Canva'] },
+        ]
+      },
+      {
+        num: 9, emoji: '📝', semana: 5,
+        titulo: 'Prova Bimestral',
+        subtitulo: 'Blocos 1, 2 e 3 — todo o conteúdo do bimestre',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova Bimestral — avaliação de todo o conteúdo de Ingestão de Dados (Blocos 1, 2 e 3). Aplicada em sala, individual e sem consulta.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Aplico a prova escrita cobrindo os três blocos do bimestre. Depois, corrijo com a turma, valendo pontuação, revisando os pontos de maior dificuldade. As notas são lançadas no sistema após a correção.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa', 'Caneta'] },
+        ]
+      },
+    ]
+  },
+
+  {
+    id: 'uc2-b3',
+    label: 'UC II',
+    nome: 'Ecossistema de Big Data II',
+    carga: '2 aulas/semana · 9 aulas',
+    emoji: '🌐',
+    cor: '#34d399',
+    descricao: 'Arquitetura de Big Data, Apache Spark, processamento paralelo, particionamento e as ferramentas que sustentam o ecossistema.',
+    referencia: 'Apostila "Ecossistema de Big Data II" — Assistente de Big Data',
+    bimestre: '3º Bimestre · 2026',
+    avaliacao: {
+      subtitulo: 'Prova mensal (Blocos 1 e 2) + Prova bimestral (Blocos 1, 2 e 3)',
+      provas: [
+        {
+          id: 'pm', label: 'PM', titulo: 'Prova Mensal',
+          descricao: 'Conteúdo dos Blocos 1 e 2: fundamentos/arquitetura de Big Data e Apache Spark/Lote x Streaming. Individual, sem consulta.'
+        },
+        {
+          id: 'pb', label: 'PB', titulo: 'Prova Bimestral',
+          descricao: 'Conteúdo completo do bimestre: arquitetura, Spark, lote x streaming, particionamento e processamento paralelo. Individual, sem consulta.'
+        },
+        {
+          id: 'rec', label: 'REC', titulo: 'Recuperação Paralela',
+          descricao: 'Após cada prova — cobre exatamente o mesmo conteúdo avaliado.'
+        },
+      ],
+      criterios: [
+        'Classificação de dados em estruturados, semiestruturados e não estruturados',
+        'Entendimento da arquitetura de Big Data (coleta, armazenamento, processamento)',
+        'Distinção entre processamento em lote e em tempo real',
+        'Noção de particionamento, índices e processamento paralelo',
+        'Participação nas práticas e oficinas de IA',
+      ],
+    },
+    aulas: [
+      {
+        num: 1, emoji: '🌳', semana: 1,
+        titulo: 'Fundamentos e Arquitetura do Ecossistema de Big Data',
+        subtitulo: 'A floresta, a biblioteca e a cozinha de um restaurante gigante',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'O que é um ecossistema, Big Data e o Ecossistema de Big Data — arquitetura e infraestrutura por trás desse universo. Aula expositiva dialogada, com apoio do livro e da lousa branca.' },
+          { type: 'explicacao', label: 'Explicação', content: 'TEMA DA AULA\nFundamentos e Arquitetura do Ecossistema de Big Data\n\nPROBLEMÁTICA\nComo o YouTube sabe quais vídeos sugerir entre milhares publicados por minuto? A resposta passa por entender três ideias em cadeia: o que é um ecossistema, o que é Big Data, e como as duas coisas se juntam no Ecossistema de Big Data.\n\nJUSTIFICATIVA\nSem entender a arquitetura por trás do Big Data — como os dados são coletados, guardados e processados — fica impossível entender qualquer ferramenta específica (Spark, Hadoop, BigQuery) que vier depois. Esta aula é a base de todo o bimestre.\n\nCONCEITOS FUNDAMENTAIS\n• Ecossistema: ambiente onde diferentes elementos convivem e interagem, como uma floresta\n• Big Data: volume gigantesco de informações geradas a todo momento, que só faz sentido quando analisado em conjunto\n• Ecossistema de Big Data: conjunto de ferramentas e tecnologias que coletam, armazenam, processam e analisam esse volume de dados\n• Volume, velocidade e variedade: as três características centrais do Big Data\n\nTÓPICOS E SUBTÓPICOS\n\n1. O que é um Ecossistema\n   — Analogia da floresta: árvores, rios, animais e insetos trabalham juntos para manter o equilíbrio\n   — Se falta um elemento (água, abelhas), todo o sistema é afetado\n\n2. O que é Big Data\n   — Volume gigantesco de dados gerados a todo momento (compras, trajetos, fotos)\n   — Sozinhos, os dados parecem números soltos; analisados em conjunto, revelam padrões\n\n3. O que é o Ecossistema de Big Data\n   — Analogia da biblioteca gigante: sem organização (fichas, seções), a informação se perde\n   — O ecossistema organiza e processa os dados para encontrarmos informação útil rapidamente\n   — Exemplo: o YouTube coleta histórico de vídeos, analisa gostos parecidos e sugere conteúdo\n\n4. Arquitetura de Big Data — a cozinha de um restaurante gigante\n   — Coleta: buscar os dados de diferentes fontes (o "chef" recebendo os pedidos)\n   — Armazenamento: guardar de forma segura (a "despensa organizada")\n   — Processamento: transformar os dados crus em informações valiosas (os "ajudantes" preparando o prato)\n\n5. Infraestrutura de Processamento de Dados — a rodovia em horário de pico\n   — Bancos de Dados: MySQL, MongoDB, Hadoop\n   — Servidores e Cloud Computing: Amazon AWS, Google Cloud\n   — Sistemas de Processamento: Hadoop, Spark\n\nEXEMPLO DE APLICAÇÃO\nNo YouTube, milhares de vídeos são enviados por minuto. A plataforma usa o Ecossistema de Big Data para coletar o histórico de cada usuário, analisar os gostos de pessoas parecidas e sugerir conteúdos que provavelmente vão interessar — tudo isso rodando arquitetura de coleta, armazenamento e processamento por trás da tela.\n\nPOR QUE É IMPORTANTE\nCiência de Dados é uma área poderosa justamente porque organiza o que parecia caótico. Empresas, governos e aplicativos do dia a dia tomam decisões melhores porque existe um ecossistema de ferramentas trabalhando junto — não uma ferramenta isolada.\n\nVANTAGENS DE ENTENDER A ARQUITETURA DE BIG DATA\n• Permite entender qualquer ferramenta específica que vier depois (Spark, Hadoop, BigQuery)\n• Explica por que empresas investem tanto em infraestrutura de dados\n• Base para pensar em coleta, armazenamento e processamento de qualquer projeto' },
+          { type: 'exercicio', label: 'Exercício', content: '📝 QUESTÕES ABERTAS\n\n1. O que é um ecossistema? Use a analogia da floresta para explicar.\n\n2. O que é Big Data? Por que dados soltos "parecem números sem sentido" até serem analisados em conjunto?\n\n3. Explique o Ecossistema de Big Data usando a analogia da biblioteca gigante.\n\n4. Quais são as três etapas da arquitetura de Big Data (usando a analogia da cozinha do restaurante)?\n\n5. Como o YouTube usa o Ecossistema de Big Data para decidir quais vídeos recomendar?\n\n🔢 MÚLTIPLA ESCOLHA\n\n6. O que é um ecossistema, segundo a analogia vista em aula?\na) Um tipo de banco de dados\nb) Um ambiente onde diferentes elementos convivem e interagem (✓)\nc) Um software de análise de dados\nd) Um servidor de armazenamento em nuvem\n\n7. Qual das opções abaixo melhor define Big Data?\na) Um pequeno conjunto de dados organizados em tabela\nb) Um volume gigantesco de informações geradas a todo momento (✓)\nc) Um tipo específico de banco de dados relacional\nd) Um software de edição de planilhas\n\n8. Na arquitetura de Big Data, o que representa a etapa de "Armazenamento"?\na) Buscar os dados de diferentes fontes\nb) Guardar os dados de forma segura (✓)\nc) Transformar os dados crus em informações valiosas\nd) Apresentar os dados em um relatório final\n\n9. Qual analogia foi usada para explicar o Ecossistema de Big Data organizando informações?\na) Uma fábrica de chocolate\nb) Uma biblioteca gigante com fichas catalográficas (✓)\nc) Um supermercado desorganizado\nd) Uma linha de produção de carros\n\n10. Quais tecnologias fazem parte da infraestrutura de processamento de dados?\na) Apenas planilhas do Excel\nb) Bancos de dados, cloud computing e sistemas de processamento como Hadoop e Spark (✓)\nc) Apenas redes sociais\nd) Apenas ferramentas de design gráfico' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Livro', 'Lousa branca', 'Slides'] },
+        ]
+      },
+      {
+        num: 2, emoji: '🗂️', semana: 1,
+        titulo: 'Classificando Tipos de Dados',
+        subtitulo: 'Estruturado, semiestruturado ou bagunça total?',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Classificar dados do dia a dia da turma em estruturados, semiestruturados e não estruturados. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Retomando a analogia do caderno — colunas certinhas x texto livre x bagunça total — hoje a turma vai caçar exemplos reais do próprio cotidiano e classificar cada um.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, os alunos separam numa planilha do Google Sheets uma lista de "dados" que eles mesmos usam no dia a dia: nota da escola, áudio de WhatsApp, e-mail, foto, planilha de gastos.\n\nClassificam cada um como estruturado, semiestruturado ou não estruturado, justificando a escolha em uma coluna ao lado.\n\nAo final, cada dupla soma quantos exemplos caíram em cada categoria e compartilha com a turma.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Sheets'] },
+        ]
+      },
+      {
+        num: 3, emoji: '🤖', semana: 2,
+        titulo: 'Oficina de IA 1',
+        subtitulo: 'Como empresas reais aplicam a arquitetura de Big Data',
+        isOficina: true,
+        sections: [
+          { type: 'contexto', label: 'Contexto', content: 'Usar a IA pra investigar como empresas reais aplicam a arquitetura de Big Data — coleta, armazenamento e processamento. Qual app teria mais dificuldade em lidar com Big Data?' },
+          { type: 'atividade', num: 1, titulo: '"Escolhe a empresa"', content: 'Em duplas, escolhem uma empresa ou app conhecido (Netflix, iFood, Instagram) e perguntam ao ChatGPT como essa empresa provavelmente coleta, armazena e processa dados dos usuários.' },
+          { type: 'atividade', num: 2, titulo: '"Registra as 3 etapas"', content: 'No Google Docs, registram as 3 etapas identificadas pela IA (coleta, armazenamento, processamento) com o que ela respondeu para cada uma.' },
+          { type: 'atividade', num: 3, titulo: '"Compara com a aula"', content: 'Comparam a resposta da IA com o que foi visto na Aula 1 sobre arquitetura de Big Data — a IA usou os mesmos termos? Fez sentido?' },
+          { type: 'reflexao', label: 'Reflexão', content: 'A IA generaliza bem o processo, mas não conhece os bastidores reais da empresa — é uma estimativa educada, não um fato confirmado.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['ChatGPT', 'Google Docs'] },
+        ]
+      },
+      {
+        num: 4, emoji: '⚡', semana: 2,
+        titulo: 'Apache Spark, Lote x Streaming',
+        subtitulo: 'A cozinha industrial que processa dados em velocidade recorde',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Apache Spark e as duas formas de processar dados no Big Data — em lote e em tempo real. Aula expositiva dialogada, com apoio do livro e da lousa branca.' },
+          { type: 'explicacao', label: 'Explicação', content: 'TEMA DA AULA\nApache Spark, Processamento em Lote e em Tempo Real\n\nPROBLEMÁTICA\nProcessar dados sem uma ferramenta como o Spark seria como uma pizzaria com um único forno pra assar milhares de pizzas: os clientes desistiriam de esperar. Como o mundo do Big Data resolveu esse gargalo de velocidade?\n\nJUSTIFICATIVA\nO Apache Spark é uma das ferramentas mais usadas no mercado de dados — está por trás de recomendações da Netflix e Spotify, do trânsito no Google Maps e da detecção de fraudes bancárias. Entender o que ele faz é essencial pra qualquer profissional de Big Data.\n\nCONCEITOS FUNDAMENTAIS\n• Apache Software Foundation (ASF): organização sem fins lucrativos, fundada em 1999, responsável por ferramentas como Spark, Hadoop e Kafka — código aberto e gratuito\n• Apache Spark: ferramenta que processa grandes volumes de dados de forma rápida, trabalhando com vários computadores ao mesmo tempo\n• Processamento em lote: cozinhar aos poucos — junta os dados e processa tudo de uma vez\n• Processamento contínuo/streaming: a fritadeira elétrica — processa assim que os dados chegam\n\nTÓPICOS E SUBTÓPICOS\n\n1. O Apache Spark — a cozinha industrial\n   — Vários "chefs" (computadores) trabalham juntos para entregar pedidos rapidamente\n   — Processa dados milhares de vezes mais rápido que sistemas tradicionais\n   — Permite análises complexas e aprendizado de máquina (recomendação Netflix/Spotify)\n\n2. Onde o Spark aparece no dia a dia\n   — Redes sociais (Instagram, TikTok): analisam o que está bombando\n   — E-commerce (Amazon): sugerem produtos com base em milhões de compras\n   — Streaming (Netflix, Spotify): entendem preferências e sugerem conteúdo\n   — Trânsito (Google Maps): sugerem rotas mais rápidas analisando tráfego\n\n3. Prós e contras do Spark\n   — Prós: processamento rápido, fácil de usar (Python, SQL), compatível com Hadoop, escalável\n   — Contras: uso intenso de memória RAM, configuração complexa, custo de servidores potentes\n\n4. Processamento em Lote — cozinhar aos poucos\n   — Junta os dados ao longo do tempo e processa tudo de uma vez\n   — Exemplo: banco processando todas as transações do dia à meia-noite\n   — Prós: eficiente para grandes volumes | Contras: não serve para informação urgente\n\n5. Processamento Contínuo/Streaming — a fritadeira elétrica\n   — Analisa os dados assim que chegam, sem esperar acumular\n   — Exemplo: detector de fraude bloqueando uma compra suspeita na hora\n   — Prós: decisões rápidas | Contras: mais caro, exige sistema rodando o tempo todo\n\n6. Concorrentes do Spark\n   — Hadoop MapReduce (mais antigo e lento), Flink (tempo real), Storm (dados constantes), Dask (leve, para Python)\n\nEXEMPLO DE APLICAÇÃO\nUm banco usa processamento em lote para fechar o relatório de todas as transações do dia à meia-noite, mas usa processamento em streaming para bloquear uma transação suspeita no exato momento em que ela acontece. O Spark é capaz de rodar os dois tipos de processamento.\n\nPOR QUE É IMPORTANTE\nSem uma ferramenta como o Spark, empresas perderiam oportunidades de negócio esperando horas ou dias para processar informações — como uma pizzaria com um único forno.\n\nVANTAGENS DE CONHECER O SPARK\n• Ferramenta central em praticamente toda vaga de Big Data\n• Explica como recomendações, rotas e detecção de fraude funcionam na prática\n• Base para entender a diferença entre decisões urgentes e decisões que podem esperar' },
+          { type: 'exercicio', label: 'Exercício', content: '📝 QUESTÕES ABERTAS\n\n1. O que é o Apache Spark? Use a analogia da cozinha industrial para explicar.\n\n2. Qual é a diferença entre processamento em lote e processamento contínuo (streaming)? Use as analogias vistas em aula.\n\n3. Cite três empresas ou apps que usam o Spark e explique para que cada um o usa.\n\n4. Quais são os prós e os contras do Apache Spark?\n\n5. O que aconteceria com uma empresa se ela não usasse uma ferramenta como o Spark para processar seus dados?\n\n🔢 MÚLTIPLA ESCOLHA\n\n6. O que é o Apache Spark?\na) Um banco de dados relacional simples\nb) Uma ferramenta que processa grandes volumes de dados de forma rápida e eficiente (✓)\nc) Um aplicativo de edição de imagens\nd) Uma linguagem de programação exclusiva do Google\n\n7. Qual é a característica principal do processamento em lote?\na) Processa os dados assim que eles chegam, sem espera\nb) Junta os dados ao longo do tempo e processa tudo de uma vez (✓)\nc) É sempre mais rápido que o processamento em streaming\nd) Não pode ser usado para grandes volumes de dados\n\n8. Qual das opções é um concorrente do Apache Spark?\na) Microsoft Word\nb) Apache Flink (✓)\nc) Google Forms\nd) Canva\n\n9. Qual é um exemplo de uso do processamento em streaming?\na) Fechamento de folha de pagamento no fim do mês\nb) Relatório de vendas gerado uma vez por semana\nc) Detector de fraude bloqueando uma transação suspeita na hora (✓)\nd) Backup do celular feito à noite\n\n10. Quem fundou e mantém o Apache Spark?\na) Uma empresa privada com fins lucrativos\nb) A Apache Software Foundation, organização sem fins lucrativos (✓)\nc) O governo dos Estados Unidos\nd) A Netflix exclusivamente' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Livro', 'Lousa branca', 'Slides'] },
+        ]
+      },
+      {
+        num: 5, emoji: '🚦', semana: 3,
+        titulo: 'Lote ou Streaming? Decida Você',
+        subtitulo: 'Consultoria de tecnologia por um dia',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Decidir entre lote ou streaming pra diferentes situações do dia a dia. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Hoje a turma vira consultora de tecnologia, decidindo qual tipo de processamento cada empresa deveria usar — aplicando na prática a distinção vista na aula teórica anterior.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, recebem uma lista de 6 situações: relatório de vendas do mês, detecção de fraude em cartão, atualização de trânsito no GPS, cálculo de juros bancário mensal, recomendação de vídeo em tempo real, fechamento de folha de pagamento.\n\nClassificam cada uma como lote ou streaming, justificando a escolha por escrito no Google Docs.\n\nAo final, comparam as respostas com outra dupla e discutem os casos em que houve divergência.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Docs'] },
+        ]
+      },
+      {
+        num: 6, emoji: '📝', semana: 3,
+        titulo: 'Prova Mensal',
+        subtitulo: 'Blocos 1 e 2 — arquitetura de Big Data e Apache Spark',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova Mensal — avaliação do conteúdo dos Blocos 1 e 2 (Fundamentos/Arquitetura de Big Data e Apache Spark/Lote x Streaming). Aplicada em sala, individual e sem consulta.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Aplico a prova escrita cobrindo os dois blocos estudados até aqui. Depois, corrijo junto com a turma, valendo pontuação, revisando as questões que geraram mais dúvida. As notas são lançadas no sistema após a correção.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa', 'Caneta'] },
+        ]
+      },
+      {
+        num: 7, emoji: '🗺️', semana: 4,
+        titulo: 'Particionamento, Índices e Processamento Paralelo',
+        subtitulo: 'O supermercado organizado e o GPS dos dados',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Como organizar tabelas gigantes de dados — particionamento, índices e processamento paralelo. Aula expositiva dialogada, com apoio do livro e da lousa branca.' },
+          { type: 'explicacao', label: 'Explicação', content: 'TEMA DA AULA\nParticionamento, Índices e Processamento Paralelo\n\nPROBLEMÁTICA\nAchar um produto num supermercado desorganizado ou um nome numa lista telefônica fora de ordem é cansativo. Nos bancos de dados com milhões de linhas, o problema é o mesmo: sem organização, tudo fica lento.\n\nJUSTIFICATIVA\nParticionamento e índices são as técnicas que evitam que um banco de dados gigante vire uma bagunça de horas de espera. Processamento paralelo é o que permite dividir esse trabalho entre várias máquinas, como um mutirão. Juntas, essas três ideias sustentam qualquer sistema de Big Data de verdade.\n\nCONCEITOS FUNDAMENTAIS\n• Particionamento: dividir uma tabela gigante em pedaços menores com base em um critério (data, região, categoria)\n• Índice: estrutura que organiza os dados de forma otimizada — o "GPS" que evita vasculhar a tabela inteira\n• Cluster: grupo de computadores trabalhando juntos como se fossem um único sistema\n• Processamento massivo paralelo: dividir o trabalho entre várias máquinas para ganhar velocidade\n\nTÓPICOS E SUBTÓPICOS\n\n1. Particionamento — as prateleiras do supermercado\n   — Dividir os dados: separar a tabela em pedaços menores por critério\n   — Acelerar consultas: buscar só na parte certa, não na tabela inteira\n   — Facilitar manutenção: excluir/atualizar dados fica mais rápido por pedaço\n\n2. Tipos de particionamento\n   — Por Intervalo: divide por valor numérico ou data (vendas separadas por ano)\n   — Por Lista: agrupa em categorias definidas (dados organizados por estado)\n   — Por Hash: divide aleatoriamente pra equilibrar a carga (distribuir usuários entre servidores)\n   — Por Faixa: separa em ranges de valores (clientes organizados por faixa etária)\n\n3. Índices — o GPS dos dados\n   — Sem índice: procurar um nome numa lista telefônica sem ordem alfabética\n   — Com índice: procurar um nome numa lista ordenada, indo direto na letra certa\n   — Índice Clusterizado: organiza os dados fisicamente na tabela (como páginas numeradas)\n   — Índice Não Clusterizado: cria uma lista separada com ponteiros (como um índice remissivo)\n\n4. Clusters e processamento massivo paralelo\n   — Analogia do mutirão: uma pessoa limpando uma escola inteira leva dias; 100 pessoas, poucas horas\n   — Analogia do RPG de tabuleiro: se um só amigo faz tudo, o jogo é lento; cada um com uma função, tudo flui\n   — Ferramentas: Hadoop (divide grandes volumes entre computadores), Spark (processa em memória, mais rápido), BigQuery (consultas SQL rápidas em bases gigantes do Google)\n\n5. Plano de execução\n   — Mostra como o banco de dados pretende buscar as informações\n   — Ajuda a identificar problemas de performance e otimizar consultas\n\nEXEMPLO DE APLICAÇÃO\nUm e-commerce particiona as vendas por mês (particionamento por intervalo) para consultas mais rápidas, usa índices para achar rapidamente o histórico de um cliente específico, e usa Hadoop/Spark para processar em paralelo o relatório de vendas de milhões de pedidos.\n\nPOR QUE É IMPORTANTE\nSe uma tabela cresce sem organização, o banco fica lento, as consultas demoram, a manutenção fica complexa e o custo com servidores potentes aumenta. Particionar e indexar é o que evita esse colapso.\n\nVANTAGENS DE DOMINAR ESSE CONTEÚDO\n• Explica por que sistemas grandes conseguem responder consultas em segundos\n• Base para entender qualquer ferramenta de processamento paralelo do mercado\n• Vocabulário técnico central em bancos de dados e engenharia de dados' },
+          { type: 'exercicio', label: 'Exercício', content: '📝 QUESTÕES ABERTAS\n\n1. O que é particionamento de dados? Use a analogia do supermercado para explicar.\n\n2. Cite os quatro tipos de particionamento vistos em aula e dê um exemplo de cada.\n\n3. O que é um índice em um banco de dados? Use a analogia da lista telefônica para explicar.\n\n4. O que é um cluster? Use a analogia do RPG de tabuleiro para explicar processamento paralelo.\n\n5. Cite duas ferramentas usadas para processamento paralelo e explique como cada uma funciona.\n\n🔢 MÚLTIPLA ESCOLHA\n\n6. O que é particionamento em um banco de dados?\na) Apagar dados antigos automaticamente\nb) Dividir uma tabela gigante em pedaços menores com base em um critério (✓)\nc) Criptografar os dados armazenados\nd) Fazer backup automático da tabela inteira\n\n7. Qual tipo de particionamento agrupa dados por categorias definidas, como estado?\na) Particionamento por Intervalo\nb) Particionamento por Lista (✓)\nc) Particionamento por Hash\nd) Particionamento por Faixa\n\n8. O que é um índice clusterizado?\na) Uma lista separada com ponteiros para os dados\nb) Organiza os dados fisicamente na tabela, como páginas numeradas (✓)\nc) Um tipo de gráfico usado em dashboards\nd) Um servidor exclusivo para backups\n\n9. O que significa processamento massivo paralelo?\na) Processar um único dado por vez com máxima precisão\nb) Usar um único computador para todas as tarefas\nc) Dividir o processamento de dados entre várias máquinas para ganhar eficiência (✓)\nd) Processar dados apenas uma vez por dia\n\n10. Qual ferramenta é um serviço do Google que executa consultas SQL rápidas em bases de dados gigantes?\na) BigQuery (✓)\nb) Excel\nc) Photoshop\nd) WhatsApp' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Livro', 'Lousa branca', 'Slides'] },
+        ]
+      },
+      {
+        num: 8, emoji: '🤖', semana: 5,
+        titulo: 'Oficina de IA + Projeto Aplicado',
+        subtitulo: 'Consultoria de banco de dados por um dia',
+        isOficina: true,
+        sections: [
+          { type: 'contexto', label: 'Contexto', content: 'Projetar com ajuda da IA uma estratégia de organização de dados pra um sistema com milhões de linhas. Cada dupla vira uma "consultoria de banco de dados" contratada pra resolver o problema de uma tabela gigante e lenta.' },
+          { type: 'atividade', num: 1, titulo: '"Sorteia o cenário"', content: 'Cada dupla sorteia um cenário fictício: uma rede de lojas com histórico de vendas de 10 anos, um app de transporte com milhões de corridas, ou uma escola com histórico de todos os alunos desde 2000.' },
+          { type: 'atividade', num: 2, titulo: '"Decide com a IA"', content: 'Usando o ChatGPT como apoio, a dupla decide: qual tipo de particionamento usaria (intervalo, lista, hash ou faixa)? Usaria índice? Por quê? Qual ferramenta de processamento paralelo (Hadoop, Spark, BigQuery) faz mais sentido pro cenário?' },
+          { type: 'atividade', num: 3, titulo: '"Monta o mini projeto"', content: 'O resultado vira um mini projeto registrado no Google Docs ou Canva, com a proposta justificada — cada escolha técnica precisa de um argumento, não só uma preferência.' },
+          { type: 'reflexao', label: 'Reflexão', content: 'Justificar uma escolha técnica é diferente de só escolher — é isso que separa um profissional de dados de alguém apenas usando ferramentas por acaso.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['ChatGPT', 'Google Docs', 'Canva'] },
+        ]
+      },
+      {
+        num: 9, emoji: '📝', semana: 5,
+        titulo: 'Prova Bimestral',
+        subtitulo: 'Blocos 1, 2 e 3 — todo o conteúdo do bimestre',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova Bimestral — avaliação de todo o conteúdo de Ecossistema de Big Data II (Blocos 1, 2 e 3). Aplicada em sala, individual e sem consulta.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Aplico a prova escrita cobrindo os três blocos do bimestre. Depois, corrijo com a turma, valendo pontuação, revisando os pontos de maior dificuldade. As notas são lançadas no sistema após a correção.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa', 'Caneta'] },
+        ]
+      },
+    ]
+  },
+
+  {
+    id: 'uc3-b3',
+    label: 'UC III',
+    nome: 'Qualidade e Testes de Sistemas',
+    carga: '2 aulas/semana · 8 aulas',
+    emoji: '🧪',
+    cor: '#fbbf24',
+    descricao: 'Engenharia de Requisitos, Qualidade de Software (ISO/IEC 25010) e Testes de Software — do requisito bem escrito ao bug caçado.',
+    referencia: 'Apostila "Qualidade e Testes de Sistemas" — págs. 175–206',
+    bimestre: '3º Bimestre · 2026',
+    avaliacao: {
+      subtitulo: 'Prova mensal (Cap. 1 e 2) + Prova bimestral (Cap. 1, 2 e 3)',
+      provas: [
+        {
+          id: 'pm', label: 'PM', titulo: 'Prova Mensal',
+          descricao: 'Conteúdo dos Capítulos 1 e 2: Engenharia de Requisitos e Qualidade de Software. Individual, sem consulta.'
+        },
+        {
+          id: 'pb', label: 'PB', titulo: 'Prova Bimestral',
+          descricao: 'Conteúdo completo do bimestre: requisitos, qualidade de software e testes de software. Individual, sem consulta.'
+        },
+        {
+          id: 'rec', label: 'REC', titulo: 'Recuperação Paralela',
+          descricao: 'Após cada prova — cobre exatamente o mesmo conteúdo avaliado.'
+        },
+      ],
+      criterios: [
+        'Classificação de requisitos funcionais, não funcionais e restrições',
+        'Reconhecimento das 8 características de qualidade da ISO/IEC 25010',
+        'Distinção entre os tipos de teste e as abordagens caixa-branca/preta/cinza',
+        'Capacidade de escrever e executar um caso de teste simples',
+        'Participação nas práticas em laboratório',
+      ],
+    },
+    aulas: [
+      {
+        num: 1, emoji: '📐', semana: 1,
+        titulo: 'Engenharia de Requisitos',
+        subtitulo: 'Nenhum sistema deveria ser construído sem ela',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'O que é Engenharia de Requisitos e por que nenhum sistema deveria ser construído sem ela. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.' },
+          { type: 'explicacao', label: 'Explicação', content: 'TEMA DA AULA\nEngenharia de Requisitos\n\nPROBLEMÁTICA\nPor que um app trava ou faz algo que ninguém esperava? Na maioria das vezes, o problema nasceu lá no começo do projeto, antes de qualquer linha de código — num requisito mal definido ou nunca levantado.\n\nJUSTIFICATIVA\nSaber O QUE construir é tão importante quanto saber COMO construir. Um sistema tecnicamente perfeito, mas que resolve o problema errado, é um sistema que fracassou. A Engenharia de Requisitos existe pra evitar isso antes que se gaste tempo e dinheiro construindo a coisa errada.\n\nCONCEITOS FUNDAMENTAIS\n• Requisito: descrição formal de algo que o sistema deve fazer ou de uma restrição que deve respeitar\n• Requisito Funcional (RF): o que o sistema faz — suas funções e comportamentos\n• Requisito Não Funcional (RNF): como o sistema se comporta — desempenho, segurança, usabilidade\n• Restrição: limite que o sistema deve obedecer, muitas vezes externo (orçamento, prazo, tecnologia obrigatória)\n\nTÓPICOS E SUBTÓPICOS\n\n1. As 5 etapas da Engenharia de Requisitos\n   — Elicitação: descobrir o que o cliente precisa (entrevistas, observação)\n   — Análise: entender e resolver conflitos entre requisitos levantados\n   — Especificação: documentar formalmente os requisitos\n   — Validação: confirmar com o cliente que os requisitos capturados são os corretos\n   — Gerenciamento: acompanhar e atualizar os requisitos ao longo do projeto\n\n2. Requisito Funcional x Não Funcional x Restrição\n   — RF: "O sistema deve permitir agendamento de horário no laboratório"\n   — RNF: "O agendamento deve ser confirmado em menos de 3 segundos"\n   — Restrição: "O sistema deve rodar em computadores já existentes na escola, sem custo extra"\n\n3. Por que requisito mal escrito é caro\n   — Corrigir um requisito errado na fase de análise é muito mais barato do que corrigir depois do sistema pronto\n   — Requisito ambíguo gera interpretações diferentes entre quem constrói o sistema\n\nEXEMPLO DE APLICAÇÃO\nUm sistema de chamada online para a escola: se ninguém perguntar aos professores COMO eles fazem chamada hoje (elicitação), o sistema pode nascer sem uma função básica — como registrar falta justificada — porque ninguém levantou esse requisito antes de programar.\n\nPOR QUE É IMPORTANTE\nA maioria dos sistemas que "dão errado" não falha por causa de código ruim, mas por requisito mal levantado ou mal entendido. Antes de programar, é preciso saber exatamente o que construir.\n\nVANTAGENS DA ENGENHARIA DE REQUISITOS\n• Evita retrabalho e desperdício de tempo construindo a coisa errada\n• Alinha expectativas entre quem pede o sistema e quem constrói\n• Base para todo o resto do bimestre: qualidade e testes partem de requisitos bem definidos' },
+          { type: 'exercicio', label: 'Exercício', content: '📝 QUESTÕES ABERTAS\n\n1. O que é um requisito de software? Explique com um exemplo.\n\n2. Quais são as 5 etapas da Engenharia de Requisitos? Descreva o que acontece em cada uma.\n\n3. Qual a diferença entre Requisito Funcional (RF) e Requisito Não Funcional (RNF)? Dê um exemplo de cada.\n\n4. O que é uma restrição de sistema? Dê um exemplo diferente do visto em aula.\n\n5. Por que é mais barato corrigir um requisito errado no início do projeto do que depois do sistema pronto?\n\n🔢 MÚLTIPLA ESCOLHA\n\n6. O que é Engenharia de Requisitos?\na) A etapa final de testes de um sistema\nb) O processo de identificar, documentar e validar o que um sistema deve fazer (✓)\nc) Uma linguagem de programação específica\nd) Um tipo de banco de dados relacional\n\n7. Qual das opções abaixo é um Requisito Funcional?\na) O sistema deve responder em menos de 2 segundos\nb) O sistema deve permitir cadastro de usuários (✓)\nc) O sistema deve ser seguro contra invasões\nd) O sistema deve funcionar em qualquer navegador\n\n8. Qual etapa da Engenharia de Requisitos consiste em descobrir o que o cliente precisa por meio de entrevistas?\na) Validação\nb) Gerenciamento\nc) Elicitação (✓)\nd) Especificação\n\n9. O que é uma restrição, no contexto de requisitos?\na) Um erro encontrado durante os testes\nb) Um limite que o sistema deve obedecer, como orçamento ou prazo (✓)\nc) Uma função específica que o sistema deve executar\nd) O tempo de resposta ideal do sistema\n\n10. Por que um sistema pode "dar errado" mesmo com código tecnicamente correto?\na) Porque o código sempre precisa ser reescrito\nb) Porque o requisito foi mal levantado ou mal entendido no início (✓)\nc) Porque testes de software são desnecessários\nd) Porque o sistema não usou inteligência artificial' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, os alunos recebem um cenário fictício (sistema de chamada online da escola) e classificam frases dadas em requisito funcional, não funcional ou restrição.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Livro', 'Lousa branca', 'Google Docs com o cenário do exercício', 'Slides'] },
+        ]
+      },
+      {
+        num: 2, emoji: '🎙️', semana: 1,
+        titulo: 'Elicitação de Requisitos na Prática',
+        subtitulo: 'Simulando uma entrevista de levantamento de requisitos',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Colocar em prática a etapa de Elicitação, descobrindo requisitos de um sistema real da escola. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Retomando rapidamente as 5 etapas vistas na aula anterior, hoje os alunos atuam como engenheiros de requisitos de verdade, simulando uma entrevista de elicitação com um colega no papel de cliente.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, os alunos escolhem um sistema simples e útil pra escola (agendamento do laboratório, empréstimo de livros, registro de ocorrências) e simulam uma entrevista com um colega de outra dupla no papel de cliente.\n\nRegistram no Google Docs pelo menos 3 requisitos funcionais e 2 não funcionais.\n\nDepois, trocam a lista de requisitos com outra dupla pra tentar achar um requisito mal escrito ou ambíguo.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Docs', 'Roteiro de entrevista impresso'] },
+        ]
+      },
+      {
+        num: 3, emoji: '⭐', semana: 2,
+        titulo: 'Qualidade de Software',
+        subtitulo: 'As 8 características que fazem um sistema ser "bom"',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'O que torna um software "bom" — as 8 características de qualidade da ISO/IEC 25010. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.' },
+          { type: 'explicacao', label: 'Explicação', content: 'TEMA DA AULA\nQualidade de Software — ISO/IEC 25010\n\nPROBLEMÁTICA\nUm site pode ser bonito e mesmo assim ser ruim. Um app pode ter todas as funções pedidas e mesmo assim decepcionar o usuário — porque é lento, inseguro ou difícil de usar. Como medir a qualidade de um sistema além de "ele funciona ou não"?\n\nJUSTIFICATIVA\nA norma ISO/IEC 25010 é o padrão internacional usado pra avaliar qualidade de software. Conhecer suas 8 características dá vocabulário técnico pra criticar e melhorar qualquer sistema — do jeito que uma casa de qualidade precisa de mais do que só "ter paredes".\n\nCONCEITOS FUNDAMENTAIS\n• Qualidade de Software: conjunto de características que determinam se um sistema atende bem às necessidades de quem usa\n• ISO/IEC 25010: norma internacional que define 8 características de qualidade de software\n\nTÓPICOS E SUBTÓPICOS\n\n1. As 8 características da ISO/IEC 25010 — a "casa de qualidade"\n   — Funcionalidade: o sistema faz o que promete fazer?\n   — Confiabilidade: o sistema se mantém funcionando sem falhar com frequência?\n   — Eficiência: o sistema usa bem os recursos (tempo, memória, processamento)?\n   — Usabilidade: é fácil de aprender e usar?\n   — Segurança: protege dados e resiste a ataques?\n   — Compatibilidade: funciona bem junto com outros sistemas e dispositivos?\n   — Manutenibilidade: é fácil de corrigir e atualizar?\n   — Portabilidade: funciona em diferentes ambientes (celular, computador, sistemas operacionais)?\n\n2. Por que qualidade não é só "funcionar"\n   — Um app pode ter todas as funcionalidades certas (RF atendidos) e ainda ser ruim por ser lento (eficiência), inseguro (segurança) ou confuso (usabilidade)\n\nEXEMPLO DE APLICAÇÃO\nUm app de banco que faz todas as transferências corretamente (funcionalidade ✓) mas trava toda vez que muitos usuários acessam ao mesmo tempo (confiabilidade ✗) é um sistema de baixa qualidade, mesmo funcionando "certo" na maior parte do tempo.\n\nPOR QUE É IMPORTANTE\nAs 8 características dão um vocabulário objetivo pra avaliar qualquer sistema — em vez de dizer "esse app é ruim", um profissional consegue apontar exatamente qual característica está falhando.\n\nVANTAGENS DE CONHECER A ISO/IEC 25010\n• Vocabulário técnico reconhecido internacionalmente\n• Permite avaliar e criticar sistemas de forma estruturada, não só por "gosto"\n• Base para a próxima etapa do bimestre: testar se essas características realmente foram atendidas' },
+          { type: 'exercicio', label: 'Exercício', content: '📝 QUESTÕES ABERTAS\n\n1. O que é a norma ISO/IEC 25010 e para que ela serve?\n\n2. Cite quatro das oito características de qualidade de software e explique cada uma com suas palavras.\n\n3. Por que um sistema pode ter todas as funcionalidades certas e mesmo assim ser considerado de baixa qualidade?\n\n4. Dê um exemplo de app ou site que você conhece e aponte um ponto forte e um ponto fraco usando as características da ISO/IEC 25010.\n\n5. Qual a diferença entre "usabilidade" e "funcionalidade" na avaliação de um sistema?\n\n🔢 MÚLTIPLA ESCOLHA\n\n6. O que avalia a característica "Confiabilidade" da ISO/IEC 25010?\na) Se o sistema é fácil de usar\nb) Se o sistema se mantém funcionando sem falhar com frequência (✓)\nc) Se o sistema funciona em diferentes dispositivos\nd) Se o sistema protege dados contra invasões\n\n7. Um app lento, que trava com muitos usuários, tem problema em qual característica?\na) Usabilidade\nb) Portabilidade\nc) Eficiência (✓)\nd) Compatibilidade\n\n8. O que avalia a característica "Manutenibilidade"?\na) Se é fácil corrigir e atualizar o sistema (✓)\nb) Se o sistema é bonito visualmente\nc) Se o sistema é seguro contra ataques\nd) Se o sistema funciona sem internet\n\n9. Um sistema que funciona bem no computador mas não abre no celular tem problema em qual característica?\na) Segurança\nb) Funcionalidade\nc) Portabilidade (✓)\nd) Confiabilidade\n\n10. Quantas características de qualidade de software a ISO/IEC 25010 define?\na) 5\nb) 6\nc) 8 (✓)\nd) 10' },
+          { type: 'pratica', label: 'Prática', content: 'Em grupos, cada grupo sorteia uma característica e cria um exemplo próprio de um app do celular que atende bem ou mal aquela característica.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Livro', 'Lousa branca', 'Cartões com as 8 características', 'Slides'] },
+        ]
+      },
+      {
+        num: 4, emoji: '🔎', semana: 2,
+        titulo: 'Auditoria de Qualidade',
+        subtitulo: 'Avaliando um site ou app real com os 8 critérios',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Avaliar a qualidade de um site ou app real usando os 8 critérios da ISO/IEC 25010. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Hoje os alunos viram auditores de qualidade de um sistema de verdade, aplicando na prática as 8 características vistas na aula teórica anterior.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, escolhem um site ou app conhecido e preenchem uma ficha dando nota de 1 a 5 pra cada uma das 8 características, justificando com um exemplo observado no uso.\n\nAo final, cada dupla apresenta em 1 minuto a nota final e o pior ponto encontrado, fechando com uma votação do "sistema mais bem avaliado" da turma.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Forms ou Sheets com a ficha de avaliação', 'Celular ou computador'] },
+        ]
+      },
+      {
+        num: 5, emoji: '📝', semana: 3,
+        titulo: 'Prova Mensal',
+        subtitulo: 'Capítulos 1 e 2 — Requisitos e Qualidade de Software',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova Mensal — avaliação do conteúdo dos Capítulos 1 e 2 (Engenharia de Requisitos e Qualidade de Software). Aplicada em sala, individual e sem consulta.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Aplico a prova escrita cobrindo os dois capítulos estudados até aqui. Depois, corrijo junto com a turma, valendo pontuação, revisando as questões que geraram mais dúvida. As notas são lançadas no sistema após a correção.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa', 'Caneta'] },
+        ]
+      },
+      {
+        num: 6, emoji: '🚀', semana: 3,
+        titulo: 'Testes de Software',
+        subtitulo: 'O foguete Ariane 5 e por que testar antes de lançar',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Por que testar antes de lançar — tipos de teste e o caso do foguete Ariane 5. Aula expositiva dialogada em sala, com apoio do livro e da lousa branca.' },
+          { type: 'explicacao', label: 'Explicação', content: 'TEMA DA AULA\nTestes de Software\n\nPROBLEMÁTICA\nEm 1996, o foguete Ariane 5 explodiu segundos após a decolagem — prejuízo de US$ 370 milhões — por causa de um erro de software que não foi testado. Como um sistema tão caro e importante teve um erro tão básico ignorado?\n\nJUSTIFICATIVA\nTestar não é uma etapa opcional depois de programar — é o que garante que o sistema realmente faz o que os requisitos pediam e tem a qualidade esperada. Sem testes, requisitos e qualidade viram só teoria no papel.\n\nCONCEITOS FUNDAMENTAIS\n• Teste de software: processo de verificar se um sistema funciona como esperado e identificar erros antes que o usuário final os encontre\n• Caixa-branca: teste que analisa a lógica interna do código\n• Caixa-preta: teste que analisa apenas as entradas e saídas, sem olhar o código\n• Caixa-cinza: combinação das duas abordagens anteriores\n\nTÓPICOS E SUBTÓPICOS\n\n1. Tipos de teste\n   — Funcional: verifica se o sistema faz o que deveria fazer\n   — Desempenho: verifica velocidade e uso de recursos sob carga\n   — Segurança: verifica resistência a ataques e vazamento de dados\n   — Usabilidade: verifica se é fácil de usar\n   — Estresse: verifica o comportamento do sistema em condições extremas (muitos usuários, dados corrompidos)\n\n2. Caixa-branca, caixa-preta e caixa-cinza\n   — Caixa-branca: o testador enxerga e analisa o código-fonte\n   — Caixa-preta: o testador só usa o sistema como um usuário comum, sem ver o código\n   — Caixa-cinza: mistura das duas — conhece um pouco da estrutura interna, mas testa como usuário\n\n3. TDD e BDD (comentário rápido)\n   — TDD (Test-Driven Development): escrever o teste antes de escrever o código que ele vai validar\n   — BDD (Behavior-Driven Development): escrever testes descrevendo o comportamento esperado em linguagem próxima da natural\n\n4. O caso Ariane 5\n   — O foguete reutilizou um código do Ariane 4 sem testar adequadamente pra nova situação\n   — Um valor numérico maior do que o esperado causou um erro não tratado, que travou o sistema de navegação\n   — 40 segundos após o lançamento, o foguete se autodestruiu — prejuízo de US$ 370 milhões\n\nEXEMPLO DE APLICAÇÃO\nUma equipe de QA testando um app de banco usaria: teste funcional (a transferência realmente ocorre?), teste de segurança (dados protegidos?), teste de estresse (o app aguenta 10 mil usuários ao mesmo tempo no dia do pagamento?). Cada tipo de teste identificaria um problema diferente que passaria despercebido nos outros.\n\nPOR QUE É IMPORTANTE\nO caso Ariane 5 mostra que mesmo projetos com times técnicos de altíssimo nível podem falhar catastroficamente por pular ou fazer mal a etapa de testes. Testar é o que garante, na prática, que requisito e qualidade não ficaram só no papel.\n\nVANTAGENS DOS TESTES DE SOFTWARE\n• Identifica erros antes que o usuário final os encontre\n• Reduz custo de correção — um bug achado em teste é muito mais barato que um bug em produção\n• Aumenta a confiança de que o sistema atende requisitos e qualidade esperada' },
+          { type: 'exercicio', label: 'Exercício', content: '📝 QUESTÕES ABERTAS\n\n1. O que aconteceu com o foguete Ariane 5 em 1996? Relacione o caso com a importância de testar software.\n\n2. Quais são os cinco tipos de teste vistos em aula? Descreva brevemente cada um.\n\n3. Qual a diferença entre teste caixa-branca e teste caixa-preta?\n\n4. O que é teste caixa-cinza? Por que ele combina as duas abordagens anteriores?\n\n5. O que é TDD (Test-Driven Development)? O que muda na ordem de trabalho de quem programa usando essa técnica?\n\n🔢 MÚLTIPLA ESCOLHA\n\n6. Por que o foguete Ariane 5 explodiu, segundo o caso visto em aula?\na) Falta de combustível\nb) Um erro de software não testado adequadamente (✓)\nc) Problema climático no dia do lançamento\nd) Falha humana no controle manual\n\n7. O que caracteriza um teste caixa-preta?\na) O testador analisa detalhadamente o código-fonte\nb) O testador avalia apenas entradas e saídas, sem ver o código (✓)\nc) O teste só pode ser feito por quem programou o sistema\nd) O teste verifica exclusivamente a segurança do sistema\n\n8. Qual tipo de teste verifica o comportamento do sistema com muitos usuários simultâneos?\na) Teste de usabilidade\nb) Teste funcional\nc) Teste de estresse (✓)\nd) Teste de segurança\n\n9. O que é TDD?\na) Uma ferramenta de design de interface\nb) Escrever o teste antes de escrever o código que ele vai validar (✓)\nc) Um tipo de banco de dados para testes\nd) Uma metodologia exclusiva de gerenciamento de projetos\n\n10. Qual foi o prejuízo financeiro estimado do caso Ariane 5?\na) US$ 3,7 milhões\nb) US$ 37 milhões\nc) US$ 370 milhões (✓)\nd) US$ 3,7 bilhões' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, os alunos recebem situações de bugs reais e classificam qual tipo de teste identificaria cada uma.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Livro', 'Lousa branca', 'Projetor', 'Google Docs'] },
+        ]
+      },
+      {
+        num: 7, emoji: '🐛', semana: 4,
+        titulo: 'Caçada aos Bugs',
+        subtitulo: 'Escrevendo e executando casos de teste de verdade',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Caçada aos bugs — escrever e executar casos de teste em um sistema de treino real. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Hoje os alunos são a equipe de QA de uma empresa e o sistema não pode ir pro ar com bugs — aplicando na prática os tipos de teste vistos na aula anterior, com foco em teste caixa-preta.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, acessam um site gratuito de treino para testes (the-internet.herokuapp.com), escolhem 2 funcionalidades e escrevem 3 casos de teste caixa-preta pra cada uma, executando e registrando se passou ou falhou.\n\nDepois, trocam os casos de teste com outra dupla, que tenta executá-los, pra ver se ficaram claros o suficiente.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Navegador', 'the-internet.herokuapp.com', 'Google Docs ou Sheets'] },
+        ]
+      },
+      {
+        num: 8, emoji: '📝', semana: 4,
+        titulo: 'Prova Bimestral',
+        subtitulo: 'Capítulos 1, 2 e 3 — todo o conteúdo do bimestre',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova Bimestral — avaliação de todo o conteúdo de Qualidade e Testes de Sistemas (Capítulos 1, 2 e 3). Aplicada em sala, individual e sem consulta.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Aplico a prova escrita cobrindo os três capítulos do bimestre. Depois, corrijo com a turma, valendo pontuação, revisando os pontos de maior dificuldade. As notas são lançadas no sistema após a correção.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa', 'Caneta'] },
+        ]
+      },
+    ]
+  },
+
+  {
+    id: 'dev-local-b3',
+    label: 'DEV LOCAL',
+    nome: 'Desenvolvimento Local',
+    carga: '2 aulas/semana · 8 aulas',
+    emoji: '🚧',
+    cor: '#38bdf8',
+    descricao: 'Projeto único do bimestre, em 8 etapas: dá continuidade ao cenário da Oficina de UC II, do dado real à proposta apresentada.',
+    referencia: 'Continuação do cenário sorteado na Oficina de IA + Projeto Aplicado de UC II',
+    bimestre: '3º Bimestre · 2026',
+    avaliacao: {
+      subtitulo: 'Projeto em 8 etapas — continuação do cenário de UC II ou projeto pessoal da dupla',
+      provas: [
+        {
+          id: 'av1', label: 'AV1', titulo: 'Entrega da Proposta',
+          descricao: 'Cada dupla apresenta o projeto (cenário/tema escolhido, dados coletados, solução proposta) em cerca de 5 minutos, seguido de perguntas rápidas da turma ou do professor.'
+        },
+        {
+          id: 'av2', label: 'AV2', titulo: 'Autoavaliação e Fechamento',
+          descricao: 'Autoavaliação individual registrada no Google Forms (o que aprendi, como me senti), somada à devolutiva coletiva sobre o desempenho da turma no bimestre.'
+        },
+        {
+          id: 'rec', label: 'REC', titulo: 'Recuperação Paralela',
+          descricao: 'Ajuste e reentrega do projeto para duplas que não atingiram os critérios mínimos.'
+        },
+      ],
+      criterios: [
+        'Clareza da ideia e do problema escolhido',
+        'Qualidade do questionário e da coleta de dados',
+        'Organização e interpretação correta dos dados no Sheets',
+        'Qualidade da proposta final (protótipo, mockup ou documento)',
+        'Domínio do projeto na apresentação oral',
+      ],
+    },
+    aulas: [
+      {
+        num: 1, emoji: '🎬', semana: 1,
+        titulo: 'Provocação Inicial',
+        subtitulo: 'O problema por trás de dados desorganizados e lentos',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'O problema por trás de dados desorganizados e lentos — ponto de partida do projeto do bimestre. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Retomo o cenário sorteado por cada dupla na oficina de IA de UC II (rede de lojas, app de transporte, escola) e pergunto quem quer continuar com esse cenário ou já tem um projeto próprio pra desenvolver nessas aulas.' },
+          { type: 'pratica', label: 'Prática', content: 'Cada dupla decide entre continuar o cenário da oficina de UC II ou apresentar brevemente um projeto pessoal que já tinha em mente. Registram no Google Docs a ideia escolhida e o motivo.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Docs'] },
+        ]
+      },
+      {
+        num: 2, emoji: '🔍', semana: 1,
+        titulo: 'Investigação',
+        subtitulo: 'Pesquisando antes de sair coletando dados',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Pesquisar informações reais sobre o cenário ou projeto escolhido antes de sair coletando dados. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Pergunto pra turma o que eles já sabem sobre o tema escolhido e o que ainda precisam descobrir, antes de partir pra qualquer coleta.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, pesquisam informações reais relacionadas ao cenário (dados de mercado, exemplos de sistemas parecidos, reportagens) ou ao projeto pessoal, e listam no Google Docs pelo menos 3 informações relevantes encontradas.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Docs', 'Navegador'] },
+        ]
+      },
+      {
+        num: 3, emoji: '📋', semana: 2,
+        titulo: 'Coleta de Dados',
+        subtitulo: 'Criando a própria fonte de dados',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Criar um questionário pra coletar dados reais relacionados ao cenário ou projeto. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Anuncio que hoje eles vão sair da teoria e criar sua própria fonte de dados — o questionário vai ao ar hoje.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, elaboram um questionário no Google Forms com pelo menos 6 perguntas relacionadas ao cenário/projeto (hábitos de compra, uso de transporte, rotina de estudo) e aplicam entre os colegas da escola.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Forms'] },
+        ]
+      },
+      {
+        num: 4, emoji: '📊', semana: 2,
+        titulo: 'Leitura dos Números',
+        subtitulo: 'Organizando e interpretando o que foi coletado',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Organizar e interpretar os dados coletados no questionário. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Pergunto o que eles esperam encontrar nas respostas antes de abrir a planilha — expectativa antes de olhar o dado de verdade.' },
+          { type: 'pratica', label: 'Prática', content: 'Exportam as respostas do Forms pro Google Sheets, organizam colunas, calculam frequências/percentuais simples e criam pelo menos 1 gráfico que ajude a responder a pergunta do projeto.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Sheets'] },
+        ]
+      },
+      {
+        num: 5, emoji: '🛠️', semana: 3,
+        titulo: 'Construção da Proposta',
+        subtitulo: 'Colocando a mão na massa na solução final',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Montar a proposta de solução aplicando o que decidiram na oficina de UC II (ou a proposta do projeto pessoal). Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Anuncio que essa é a aula de colocar a mão na massa na proposta final — juntando tudo que foi coletado e investigado até aqui.' },
+          { type: 'pratica', label: 'Prática', content: 'Com base nos dados coletados, cada dupla monta um protótipo/proposta (rascunho de organização dos dados, mockup de tela, ou documento explicando a solução) usando Canva, Google Slides ou Google Docs.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Canva', 'Google Slides', 'Google Docs'] },
+        ]
+      },
+      {
+        num: 6, emoji: '🔧', semana: 3,
+        titulo: 'Ajustes Finais',
+        subtitulo: 'Revisão em dupla antes da entrega',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Revisar o projeto com a ajuda dos colegas antes da entrega. Aula prática no laboratório de informática.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Explico que hoje cada dupla vai receber e dar feedback pra outra dupla — última chance de ajuste antes da apresentação.' },
+          { type: 'pratica', label: 'Prática', content: 'Peer review — cada dupla avalia o projeto de outra usando uma rubrica simples (clareza, uso dos dados, qualidade da proposta) e devolve sugestões. As duplas ajustam o projeto com base no feedback recebido e ensaiam a apresentação.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Rubrica de avaliação (Google Docs ou Forms)'] },
+        ]
+      },
+      {
+        num: 7, emoji: '🎤', semana: 4,
+        titulo: 'Entrega',
+        subtitulo: 'Apresentação final dos projetos da turma',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Apresentação final dos projetos da turma. Aula prática no laboratório de informática ou sala.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Anuncio a ordem de apresentação e o tempo de cada dupla — hoje é dia de mostrar o trabalho do bimestre inteiro.' },
+          { type: 'pratica', label: 'Prática', content: 'Cada dupla apresenta o projeto (cenário/tema escolhido, dados coletados, solução proposta) em cerca de 5 minutos, seguido de perguntas rápidas da turma ou do professor.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Projetor', 'Material produzido pela dupla'] },
+        ]
+      },
+      {
+        num: 8, emoji: '🏁', semana: 4,
+        titulo: 'Fechamento',
+        subtitulo: 'Encerramento do projeto e do bimestre',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Encerramento do projeto e do bimestre. Aula prática em sala.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Pergunto pra turma o que mais gostaram e o que acharam mais difícil no projeto — fechamento coletivo antes da autoavaliação individual.' },
+          { type: 'pratica', label: 'Prática', content: 'Autoavaliação individual (o que aprendi, como me senti) registrada no Google Forms, seguida de uma devolutiva coletiva sobre o desempenho da turma no bimestre.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Forms'] },
+        ]
+      },
+    ]
+  },
+];
+
+const SEMESTRES = [
+  {
+    id: 'sem1', label: '1º Semestre',
+    bimestres: [
+      { id: 'b1', label: '1º Bimestre', periodo: '1º Bimestre · 2026', discIds: ['dev-local', 'uc1', 'uc2', 'uc3'] },
+    ]
+  },
+  {
+    id: 'sem2', label: '2º Semestre',
+    bimestres: [
+      { id: 'b3', label: '3º Bimestre', periodo: '3º Bimestre · 2026', discIds: ['dev-local-b3', 'uc1-b3', 'uc2-b3', 'uc3-b3'] },
+      { id: 'b4', label: '4º Bimestre', periodo: '4º Bimestre · 2026', discIds: [], comingSoon: true },
+    ]
+  },
 ];

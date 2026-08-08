@@ -4,13 +4,16 @@ let currentPage = { type: 'home', discId: null, aulaNum: null };
 let focusMode = false;
 let projectionMode = false;
 let searchQuery = '';
+let currentBimestreId = localStorage.getItem('jgp_bimestre') || 'b3';
+let currentNotaId = null;
+let notaTagFilter = null;
 
 const sectionOpen = {};
 DISCIPLINAS.forEach(d => sectionOpen[d.id] = false);
+const semOpen = { sem1: false, sem2: true };
 
 /* ===== CONSTANTS ===== */
 const TODAY_COL = { 1:'seg', 2:'ter', 3:'qua', 4:'qui', 5:'sex' }[new Date().getDay()] || null;
-const SCHED_TO_DISC = { 'DL': 'dev-local', 'UC I': 'uc1', 'UC II': 'uc2', 'UC III': 'uc3' };
 const DISC_COLORS   = { 'DL': '#fbbf24', 'UC I': '#818cf8', 'UC II': '#34d399', 'UC III': '#f472b6' };
 const DAY_KEYS      = ['seg','ter','qua','qui','sex'];
 const DAY_NAMES     = ['Segunda','Terça','Quarta','Quinta','Sexta'];
@@ -34,10 +37,46 @@ const CHECKLIST_ITEMS = [
   'Projetor/quadro testado'
 ];
 
+/* ===== BIMESTRE / SEMESTRE ===== */
+function getBimestreConfig(id) {
+  for (const sem of SEMESTRES) {
+    const b = sem.bimestres.find(x => x.id === id);
+    if (b) return b;
+  }
+  return null;
+}
+function getActiveDiscIds() {
+  const cfg = getBimestreConfig(currentBimestreId);
+  return cfg ? cfg.discIds : [];
+}
+function getActiveDisciplinas() {
+  return getActiveDiscIds().map(id => getDisc(id)).filter(Boolean);
+}
+function schedKeyToDiscId(key) {
+  const base = { 'DL': 'dev-local', 'UC I': 'uc1', 'UC II': 'uc2', 'UC III': 'uc3' }[key];
+  if (!base) return null;
+  const suffix = currentBimestreId === 'b1' ? '' : `-${currentBimestreId}`;
+  const id = base + suffix;
+  return getDisc(id) ? id : (getDisc(base) ? base : null);
+}
+function setBimestre(id) {
+  if (!getBimestreConfig(id) || getBimestreConfig(id).comingSoon) return;
+  currentBimestreId = id;
+  localStorage.setItem('jgp_bimestre', id);
+  const cfg = getBimestreConfig(id);
+  const el = document.getElementById('brand-bimestre');
+  if (el) el.textContent = cfg.periodo;
+  renderSidebar();
+  renderMain();
+}
+
 /* ===== INIT ===== */
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.setAttribute('data-theme', currentTheme);
   document.getElementById('themeIco').textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+  const cfg = getBimestreConfig(currentBimestreId);
+  const brandEl = document.getElementById('brand-bimestre');
+  if (brandEl && cfg) brandEl.textContent = cfg.periodo;
   renderSidebar();
   loadFromHash();
   window.addEventListener('hashchange', loadFromHash);
@@ -47,6 +86,8 @@ function loadFromHash() {
   const hash = window.location.hash.replace('#', '') || 'home';
   const parts = hash.split('/');
   if (parts[0] === 'home') navigate('home');
+  else if (parts[0] === 'planejamento') navigate('planejamento');
+  else if (parts[0] === 'notas') navigate('notas');
   else if (parts[1] === 'avaliacao') navigate('avaliacao', parts[0]);
   else if (parts[1] === 'aula' && parts[2]) navigate('aula', parts[0], parseInt(parts[2]));
   else navigate('home');
@@ -56,6 +97,8 @@ function loadFromHash() {
 function navigate(type, discId = null, aulaNum = null) {
   currentPage = { type, discId, aulaNum };
   const hash = type === 'home' ? 'home'
+    : type === 'planejamento' ? 'planejamento'
+    : type === 'notas' ? 'notas'
     : type === 'avaliacao' ? `${discId}/avaliacao`
     : `${discId}/aula/${aulaNum}`;
 
@@ -78,9 +121,13 @@ function navigate(type, discId = null, aulaNum = null) {
 }
 
 function updateActiveNav() {
-  document.querySelectorAll('.nav-inicio, .nav-avaliacao, .nav-aula-item').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-inicio, .nav-planejamento, .nav-notas, .nav-avaliacao, .nav-aula-item').forEach(el => el.classList.remove('active'));
   if (currentPage.type === 'home') {
     document.querySelector('.nav-inicio')?.classList.add('active');
+  } else if (currentPage.type === 'planejamento') {
+    document.querySelector('.nav-planejamento')?.classList.add('active');
+  } else if (currentPage.type === 'notas') {
+    document.querySelector('.nav-notas')?.classList.add('active');
   } else if (currentPage.type === 'avaliacao') {
     document.querySelector(`[data-nav-av="${currentPage.discId}"]`)?.classList.add('active');
   } else {
@@ -195,14 +242,15 @@ function getDiscProgress(disc) {
   return { total, done, pct: total ? Math.round(done / total * 100) : 0 };
 }
 function getTotalProgress() {
-  const total = DISCIPLINAS.reduce((s, d) => s + d.aulas.length, 0);
-  const done  = DISCIPLINAS.reduce((s, d) => s + d.aulas.filter(a => getAulaStatus(d.id, a.num) === 'concluida').length, 0);
+  const discs = getActiveDisciplinas();
+  const total = discs.reduce((s, d) => s + d.aulas.length, 0);
+  const done  = discs.reduce((s, d) => s + d.aulas.filter(a => getAulaStatus(d.id, a.num) === 'concluida').length, 0);
   return { total, done, pct: total ? Math.round(done / total * 100) : 0 };
 }
 
 /* ===== BIMESTRE STATS (semana + pace) ===== */
 function getBimestreStats() {
-  const allAulas = DISCIPLINAS.flatMap(d => d.aulas.map(a => ({ ...a, discId: d.id })));
+  const allAulas = getActiveDisciplinas().flatMap(d => d.aulas.map(a => ({ ...a, discId: d.id })));
   const totalWeeks = Math.max(...allAulas.map(a => a.semana));
   const done = allAulas.filter(a => getAulaStatus(a.discId, a.num) === 'concluida');
   const currentWeek = done.length > 0 ? Math.max(...done.map(a => a.semana)) : 0;
@@ -221,7 +269,7 @@ function getTodayClasses() {
     .map(r => {
       const text = r[TODAY_COL];
       const [turma, discKey] = text.split(' - ').map(s => s.trim());
-      const disc = getDisc(SCHED_TO_DISC[discKey]);
+      const disc = getDisc(schedKeyToDiscId(discKey));
       const nextAula = disc ? disc.aulas.find(a => getAulaStatus(disc.id, a.num) !== 'concluida') : null;
       const color = DISC_COLORS[discKey] || '#818cf8';
       return { time: r.time, turma, discKey, disc, nextAula, color };
@@ -280,36 +328,68 @@ function toggleSection(discId) {
   chevron.className  = 'disc-chevron' + (sectionOpen[discId] ? ' open' : '');
 }
 
+function toggleSemestre(semId) {
+  semOpen[semId] = !semOpen[semId];
+  renderSidebar();
+}
+
+function discNavBlock(disc, q) {
+  const aulas = q
+    ? disc.aulas.filter(a => a.titulo.toLowerCase().includes(q) || `aula ${pad(a.num)}`.includes(q))
+    : disc.aulas;
+  if (q && aulas.length === 0) return '';
+  const isOpen = q ? true : sectionOpen[disc.id];
+  const isActiveBimestre = getActiveDiscIds().includes(disc.id);
+  return `
+    <div class="nav-disc">
+      <div class="nav-disc-header" onclick="toggleSection('${disc.id}')">
+        <span class="disc-dot" style="background:${disc.cor}"></span>
+        <span class="disc-header-label">${disc.label} <span class="disc-header-nome">${disc.nome}</span></span>
+        ${isActiveBimestre ? '<span class="disc-active-tag" title="Bimestre ativo">●</span>' : ''}
+        <span class="disc-chevron${isOpen ? ' open' : ''}" id="chev-${disc.id}">›</span>
+      </div>
+      <div class="nav-disc-list" id="slist-${disc.id}" style="display:${isOpen ? 'block' : 'none'}">
+        ${!q ? `<div class="nav-avaliacao" data-nav-av="${disc.id}" onclick="navigate('avaliacao','${disc.id}')">
+          <span>📋</span> Avaliação &amp; Cronograma
+        </div>` : ''}
+        ${aulas.map(a => {
+          const status = getAulaStatus(disc.id, a.num);
+          return `
+            <div class="nav-aula-item ${a.isOficina ? 'is-oficina' : ''} ${status === 'concluida' ? 'is-done' : ''}"
+                 data-nav-aula="${disc.id}-${a.num}"
+                 onclick="navigate('aula','${disc.id}',${a.num})">
+              <span class="aula-ico">${a.emoji}</span>
+              <span class="aula-txt">Aula ${pad(a.num)} · ${a.titulo}</span>
+              ${status === 'concluida' ? '<span class="aula-status-dot concluida"></span>'
+                : status === 'dada'    ? '<span class="aula-status-dot dada"></span>' : ''}
+            </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+}
+
 function renderSidebar() {
   const q = searchQuery.toLowerCase().trim();
-  document.getElementById('nav-discs').innerHTML = DISCIPLINAS.map(disc => {
-    const aulas = q
-      ? disc.aulas.filter(a => a.titulo.toLowerCase().includes(q) || `aula ${pad(a.num)}`.includes(q))
-      : disc.aulas;
-    if (q && aulas.length === 0) return '';
-    const isOpen = q ? true : sectionOpen[disc.id];
+  document.getElementById('nav-discs').innerHTML = SEMESTRES.map(sem => {
+    const isOpen = q ? true : semOpen[sem.id];
     return `
-      <div class="nav-disc">
-        <div class="nav-disc-header" onclick="toggleSection('${disc.id}')">
-          <span class="disc-dot" style="background:${disc.cor}"></span>
-          <span class="disc-header-label">${disc.label}</span>
-          <span class="disc-chevron${isOpen ? ' open' : ''}" id="chev-${disc.id}">›</span>
+      <div class="nav-semestre">
+        <div class="nav-semestre-header" onclick="toggleSemestre('${sem.id}')">
+          <span>${sem.label}</span>
+          <span class="disc-chevron${isOpen ? ' open' : ''}">›</span>
         </div>
-        <div class="nav-disc-list" id="slist-${disc.id}" style="display:${isOpen ? 'block' : 'none'}">
-          ${!q ? `<div class="nav-avaliacao" data-nav-av="${disc.id}" onclick="navigate('avaliacao','${disc.id}')">
-            <span>📋</span> Avaliação &amp; Cronograma
-          </div>` : ''}
-          ${aulas.map(a => {
-            const status = getAulaStatus(disc.id, a.num);
+        <div class="nav-semestre-body" style="display:${isOpen ? 'block' : 'none'}">
+          ${sem.bimestres.map(b => {
+            if (b.comingSoon) {
+              return `<div class="nav-bimestre-label locked">${b.label} <span class="soon-tag">em breve</span></div>`;
+            }
+            const discs = b.discIds.map(id => getDisc(id)).filter(Boolean);
+            const isActive = b.id === currentBimestreId;
             return `
-              <div class="nav-aula-item ${a.isOficina ? 'is-oficina' : ''} ${status === 'concluida' ? 'is-done' : ''}"
-                   data-nav-aula="${disc.id}-${a.num}"
-                   onclick="navigate('aula','${disc.id}',${a.num})">
-                <span class="aula-ico">${a.emoji}</span>
-                <span class="aula-txt">Aula ${pad(a.num)} · ${a.titulo}</span>
-                ${status === 'concluida' ? '<span class="aula-status-dot concluida"></span>'
-                  : status === 'dada'    ? '<span class="aula-status-dot dada"></span>' : ''}
-              </div>`;
+              <div class="nav-bimestre-label ${isActive ? 'is-active' : ''}" onclick="setBimestre('${b.id}')" title="Definir como bimestre ativo">
+                ${b.label}${isActive ? ' <span class="active-tag">ativo</span>' : ''}
+              </div>
+              ${discs.map(disc => discNavBlock(disc, q)).join('')}`;
           }).join('')}
         </div>
       </div>`;
@@ -321,6 +401,8 @@ function renderSidebar() {
 function renderMain() {
   const el = document.getElementById('page-content');
   if (currentPage.type === 'home') { el.innerHTML = renderHome(); return; }
+  if (currentPage.type === 'planejamento') { el.innerHTML = renderPlanejamento(); return; }
+  if (currentPage.type === 'notas') { el.innerHTML = renderNotas(); attachNotaEditorListener(); return; }
   const disc = getDisc(currentPage.discId);
   if (!disc) { el.innerHTML = '<p style="color:var(--text-muted);padding:40px">Página não encontrada.</p>'; return; }
   if (currentPage.type === 'avaliacao') el.innerHTML = renderAvaliacao(disc);
@@ -407,6 +489,8 @@ function renderHome() {
   const stats       = getBimestreStats();
   const todayItems  = getTodayClasses();
   const dayName     = { seg:'Segunda',ter:'Terça',qua:'Quarta',qui:'Quinta',sex:'Sexta' }[TODAY_COL] || null;
+  const activeCfg   = getBimestreConfig(currentBimestreId);
+  const activeDiscs = getActiveDisciplinas();
 
   const paceColor = stats.delta >= 0 ? '#34d399' : '#f87171';
   const paceIcon  = stats.delta >= 0 ? '✓' : '⚠️';
@@ -417,7 +501,17 @@ function renderHome() {
   return `
     <div style="${discStyle({cor:'#818cf8'})}">
       <p class="page-title">Olá, Professor Jorge 👋</p>
-      <p class="page-sub">2º Ano Integral · JGP · 1º Bimestre 2026 · 10 aulas/semana em 4 disciplinas</p>
+      <p class="page-sub">2º Ano Integral · JGP · ${activeCfg ? activeCfg.periodo : ''} · 10 aulas/semana em 4 disciplinas</p>
+
+      <div class="bimestre-switch">
+        ${SEMESTRES.flatMap(sem => sem.bimestres.map(b => `
+          <button class="bimestre-pill ${b.id === currentBimestreId ? 'is-active' : ''} ${b.comingSoon ? 'is-locked' : ''}"
+                  ${b.comingSoon ? 'disabled title="Em breve"' : `onclick="setBimestre('${b.id}')"`}>
+            ${b.label}${b.comingSoon ? ' 🔒' : ''}
+          </button>`)).join('')}
+        <a class="bimestre-pill quick-link" href="#planejamento">📅 Meu Planejamento</a>
+        <a class="bimestre-pill quick-link" href="#notas">🗒️ Notas</a>
+      </div>
 
       ${todayItems.length > 0 ? `
         <div class="today-card">
@@ -461,7 +555,7 @@ function renderHome() {
       </div>
 
       <div class="disc-grid">
-        ${DISCIPLINAS.map(disc => {
+        ${activeDiscs.map(disc => {
           const dp = getDiscProgress(disc);
           return `
             <div class="disc-card" style="--c:${disc.cor}" onclick="navigate('avaliacao','${disc.id}')">
@@ -488,7 +582,7 @@ function renderHome() {
       </div>
       <div class="card">
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:6px">
-          ${DISCIPLINAS.map(d => `
+          ${activeDiscs.map(d => `
             <div style="padding:12px 14px;background:var(--bg-card-2);border-radius:9px;border:1px solid var(--border-card)">
               <div style="font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">${d.label}</div>
               <div style="font-size:1.05rem;font-weight:800;color:${d.cor}">${d.carga.split(' · ')[0]}</div>
@@ -503,7 +597,7 @@ function renderHome() {
       </div>
       <div class="card" style="padding:0;overflow:hidden">
         <div class="schedule-legend">
-          ${DISCIPLINAS.map(d => `<span class="sched-leg-item"><span class="sched-leg-dot" style="background:${d.cor}"></span>${d.label}</span>`).join('')}
+          ${activeDiscs.map(d => `<span class="sched-leg-item"><span class="sched-leg-dot" style="background:${d.cor}"></span>${d.label}</span>`).join('')}
         </div>
         <div class="schedule-wrap">
           <table class="schedule-table">
@@ -702,6 +796,172 @@ function card(label, body, extra = '', defaultOpen = false) {
         <span class="sec-chevron"></span>${label}
       </div>
       <div class="card-body">${body}</div>
+    </div>`;
+}
+
+/* ===== MEU PLANEJAMENTO SEMANAL ===== */
+function renderPlanejamento() {
+  const cfg = getBimestreConfig(currentBimestreId);
+  const byDay = DAY_KEYS.map((dayKey, i) => {
+    const rows = SCHEDULE_ROWS.filter(r => !r.lunch && r[dayKey]);
+    const items = rows.map(r => {
+      const text = r[dayKey];
+      const [turma, discKey] = text.split(' - ').map(s => s.trim());
+      const disc = getDisc(schedKeyToDiscId(discKey));
+      const nextAula = disc ? disc.aulas.find(a => getAulaStatus(disc.id, a.num) !== 'concluida') : null;
+      const color = DISC_COLORS[discKey] || '#818cf8';
+      return { time: r.time, turma, discKey, disc, nextAula, color };
+    });
+    return { dayKey, dayName: DAY_NAMES[i], items, isToday: dayKey === TODAY_COL };
+  });
+
+  return `
+    <div style="${discStyle({cor:'#818cf8'})}">
+      <p class="page-title">📅 Meu Planejamento Semanal</p>
+      <p class="page-sub">Ligado ao seu horário — mostra a próxima aula pendente de cada disciplina do <strong>${cfg ? cfg.label : 'bimestre ativo'}</strong>. Marque as aulas como dadas e a semana avança sozinha.</p>
+
+      <div class="week-plan-grid">
+        ${byDay.map(d => `
+          <div class="week-plan-day ${d.isToday ? 'is-today' : ''}">
+            <div class="week-plan-day-header">
+              ${d.dayName}${d.isToday ? '<span class="today-badge">hoje</span>' : ''}
+            </div>
+            ${d.items.length === 0 ? '<p class="week-plan-empty">Sem aulas neste dia.</p>' : `
+              <div class="week-plan-items">
+                ${d.items.map(item => `
+                  <div class="week-plan-item" style="--tc:${item.color}"
+                       onclick="${item.disc && item.nextAula ? `navigate('aula','${item.disc.id}',${item.nextAula.num})` : ''}">
+                    <div class="week-plan-item-top">
+                      <span class="week-plan-time">${item.time.split(' – ')[0]}</span>
+                      <span class="week-plan-turma">${item.turma}</span>
+                      <span class="week-plan-disc" style="color:${item.color}">${item.discKey}</span>
+                    </div>
+                    ${item.nextAula
+                      ? `<div class="week-plan-next">${item.nextAula.emoji} Aula ${pad(item.nextAula.num)} · ${item.nextAula.titulo}</div>`
+                      : item.disc ? '<div class="week-plan-done">✓ Todas as aulas dadas</div>' : '<div class="week-plan-done">Sem conteúdo neste bimestre</div>'}
+                  </div>`).join('')}
+              </div>`}
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+/* ===== NOTAS (estilo Notion) ===== */
+function getNotas() {
+  try { return JSON.parse(localStorage.getItem('jgp_notas')) || []; }
+  catch (e) { return []; }
+}
+function saveNotas(list) { localStorage.setItem('jgp_notas', JSON.stringify(list)); }
+
+function getAllNotaTags() {
+  const tags = new Set();
+  getNotas().forEach(n => (n.tags || []).forEach(t => tags.add(t)));
+  return Array.from(tags).sort();
+}
+
+function createNota() {
+  const notas = getNotas();
+  const nota = { id: 'n' + Date.now(), titulo: 'Nova nota', tags: [], conteudo: '', atualizadoEm: Date.now() };
+  notas.unshift(nota);
+  saveNotas(notas);
+  currentNotaId = nota.id;
+  renderMain();
+}
+function deleteNota(id) {
+  if (!confirm('Excluir esta nota? Essa ação não pode ser desfeita.')) return;
+  saveNotas(getNotas().filter(n => n.id !== id));
+  if (currentNotaId === id) currentNotaId = null;
+  renderMain();
+}
+function updateNotaField(id, field, value) {
+  const notas = getNotas();
+  const nota = notas.find(n => n.id === id);
+  if (!nota) return;
+  nota[field] = value;
+  nota.atualizadoEm = Date.now();
+  saveNotas(notas);
+}
+function updateNotaTags(id, rawTags) {
+  const tags = rawTags.split(',').map(t => t.trim()).filter(Boolean);
+  updateNotaField(id, 'tags', tags);
+}
+function openNota(id) { currentNotaId = id; renderMain(); }
+function filterByTag(tag) { notaTagFilter = notaTagFilter === tag ? null : tag; renderMain(); }
+
+function mdLiteToHtml(text) {
+  const esc = (s) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const lines = esc(text || '').split('\n');
+  let html = '', inList = false;
+  lines.forEach(line => {
+    let l = line;
+    const isBullet = /^\s*-\s+/.test(l);
+    if (isBullet && !inList) { html += '<ul>'; inList = true; }
+    if (!isBullet && inList) { html += '</ul>'; inList = false; }
+    if (isBullet) l = l.replace(/^\s*-\s+/, '');
+    l = l.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
+    if (/^#\s+/.test(l)) html += `<h3>${l.replace(/^#\s+/, '')}</h3>`;
+    else if (isBullet) html += `<li>${l}</li>`;
+    else if (l.trim() === '') html += '<br>';
+    else html += `<p>${l}</p>`;
+  });
+  if (inList) html += '</ul>';
+  return html;
+}
+
+function attachNotaEditorListener() {
+  const ta = document.getElementById('nota-editor-textarea');
+  if (!ta) return;
+  ta.style.height = 'auto';
+  ta.style.height = ta.scrollHeight + 'px';
+}
+
+function renderNotas() {
+  const all = getNotas();
+  const tags = getAllNotaTags();
+  const filtered = notaTagFilter ? all.filter(n => (n.tags || []).includes(notaTagFilter)) : all;
+  if (!currentNotaId && filtered.length > 0) currentNotaId = filtered[0].id;
+  const nota = all.find(n => n.id === currentNotaId);
+
+  return `
+    <div style="${discStyle({cor:'#818cf8'})}">
+      <p class="page-title">🗒️ Notas</p>
+      <p class="page-sub">Seu espaço livre pra ideias, pendências e planejamento — organizado por tags, do seu jeito.</p>
+
+      <div class="notas-layout">
+        <div class="notas-list-pane">
+          <button class="btn-nova-nota" onclick="createNota()">+ Nova nota</button>
+          ${tags.length > 0 ? `
+            <div class="notas-tag-filter">
+              ${tags.map(t => `<span class="nota-tag-chip ${notaTagFilter === t ? 'is-active' : ''}" onclick="filterByTag('${t}')">${t}</span>`).join('')}
+            </div>` : ''}
+          <div class="notas-list">
+            ${filtered.length === 0 ? '<p class="week-plan-empty">Nenhuma nota ainda.</p>' : filtered.map(n => `
+              <div class="nota-list-item ${n.id === currentNotaId ? 'is-active' : ''}" onclick="openNota('${n.id}')">
+                <div class="nota-list-title" data-nota-title="${n.id}">${n.titulo || 'Sem título'}</div>
+                <div class="nota-list-meta">
+                  ${(n.tags || []).map(t => `<span class="nota-tag-chip-mini">${t}</span>`).join('')}
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+
+        <div class="notas-editor-pane">
+          ${!nota ? '<p class="week-plan-empty">Selecione ou crie uma nota.</p>' : `
+            <input class="nota-title-input" type="text" value="${(nota.titulo || '').replace(/"/g,'&quot;')}"
+                   placeholder="Título da nota"
+                   oninput="updateNotaField('${nota.id}','titulo',this.value); const t=document.querySelector('[data-nota-title=\\'${nota.id}\\']'); if(t) t.textContent = this.value || 'Sem título';">
+            <input class="nota-tags-input" type="text" value="${(nota.tags || []).join(', ')}"
+                   placeholder="tags separadas por vírgula" oninput="updateNotaTags('${nota.id}',this.value)">
+            <div class="nota-editor-grid">
+              <textarea id="nota-editor-textarea" class="nota-editor-textarea"
+                        placeholder="Escreva aqui... use **negrito**, - listas e # títulos"
+                        oninput="updateNotaField('${nota.id}','conteudo',this.value); document.getElementById('nota-preview').innerHTML = mdLiteToHtml(this.value);">${nota.conteudo || ''}</textarea>
+              <div class="nota-editor-preview" id="nota-preview">${mdLiteToHtml(nota.conteudo)}</div>
+            </div>
+            <button class="btn-excluir-nota" onclick="deleteNota('${nota.id}')">🗑️ Excluir nota</button>
+          `}
+        </div>
+      </div>
     </div>`;
 }
 
