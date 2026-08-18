@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>APC UC I Aula 01 - Fundamentos de Ingestao de Dados</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #1f6f52;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf4ef;
+    border-left: 4px solid #1f6f52;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term { color: #1f6f52; }
+  .concept-box ol { margin: 6px 0 6px 18px; padding: 0; }
+  .concept-box li { margin-bottom: 4px; }
+  .flowchart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 16px 0 4px 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .flowchart .box {
+    background: #ffffff;
+    border: 1.5px solid #1f6f52;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 11px;
+    text-align: center;
+    min-width: 88px;
+    color: #1f6f52;
+    font-weight: bold;
+  }
+  .flowchart .box span.sub {
+    display: block;
+    font-weight: normal;
+    color: #555;
+    font-size: 9.5px;
+    margin-top: 2px;
+  }
+  .flowchart .arrow { font-size: 16px; color: #1f6f52; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #1f6f52;
+    border-left: 4px solid #1f6f52;
+    padding: 4px 10px;
+    background: #f4f9f6;
+    margin: 26px 0 10px 0;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf4ef;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #1f6f52;
+  }
+  .num-col { width: 26px; text-align: center; }
+  .blank-col { width: 26%; }
+  .qbox { margin-bottom: 18px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  .example-cols { display: flex; gap: 16px; }
+  .example-cols .col { flex: 1; }
+  .example-cols h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #1f6f52;
+    margin: 0 0 6px 0;
+  }
+  footer {
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="top-bar">
+    <div class="school">
+      EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS
+    </div>
+    <div class="meta">
+      2º Ano A / B — Integral<br>
+      Prof. Jorge Frias<br>
+      ___ / 08 / 2026
+    </div>
+  </div>
+
+  <div class="title-row">
+    <span class="icon">🏭</span>
+    <h1>Da Matéria-Prima ao Dado Pronto: Fundamentos de Ingestão de Dados</h1>
+  </div>
+  <div class="subtitle">APC — Atividade Prática de Classe · UC I (Ingestão de Dados) · Aula 01</div>
+
+  <div class="id-fields">
+    <div class="field">Nome: <span class="line"></span></div>
+    <div class="field" style="flex:0 0 100px;">Turma: <span class="line"></span></div>
+  </div>
+
+  <p class="intro">
+    Por que a Netflix quase sempre recomenda o filme certo? Por que o Instagram parece "adivinhar" o
+    que você gosta? Isso não é mágica — é <strong>dado</strong>. Antes de qualquer recomendação, alguém
+    construiu um processo pra capturar informação bruta e transformar isso em algo útil. Esse processo é a
+    <strong>ingestão de dados</strong>, o primeiro passo de qualquer sistema que trabalha com dados.
+  </p>
+
+  <div class="concept-box">
+    <strong class="term">Ingestão de dados</strong> é o processo de coletar dados de uma ou mais fontes e
+    movê-los para um destino onde possam ser armazenados, tratados e usados. Ela aparece em empresas, saúde,
+    redes sociais e jogos — em qualquer lugar que precise transformar dado bruto em decisão.
+    <br><br>
+    Pense numa <strong class="term">fábrica de chocolate</strong>: ela não recebe chocolate pronto, recebe
+    cacau e açúcar (matéria-prima), processa nas máquinas e entrega a barra pronta. Ingestão de dados segue a
+    mesma lógica — e esse caminho todo, da matéria-prima até a entrega, é o <strong class="term">pipeline</strong>.
+
+    <div class="flowchart">
+      <div class="box">FONTE<span class="sub">sensor, clique, form</span></div>
+      <div class="arrow">→</div>
+      <div class="box">COLETA<span class="sub">dado entra bruto</span></div>
+      <div class="arrow">→</div>
+      <div class="box">PROCESSAMENTO<span class="sub">limpa, organiza</span></div>
+      <div class="arrow">→</div>
+      <div class="box">ARMAZENAMENTO<span class="sub">banco, data lake</span></div>
+      <div class="arrow">→</div>
+      <div class="box">ENTREGA<span class="sub">relatório, IA, decisão</span></div>
+    </div>
+  </div>
+
+  <div class="part-header">Parte 1 — Diagnóstico</div>
+  <div class="instructions">
+    Para cada situação abaixo, escreva na coluna "Etapa do pipeline" qual das 5 etapas (Fonte / Coleta /
+    Processamento / Armazenamento / Entrega) ela representa.
+  </div>
+  <table>
+    <tr><th class="num-col">#</th><th>Situação</th><th class="blank-col">Etapa do pipeline</th></tr>
+    <tr><td class="num-col">1</td><td>Um sensor de um carro registra a velocidade a cada segundo.</td><td></td></tr>
+    <tr><td class="num-col">2</td><td>Uma empresa organiza os cliques bagunçados do site numa tabela padronizada.</td><td></td></tr>
+    <tr><td class="num-col">3</td><td>Um app guarda o histórico de compras num banco de dados na nuvem.</td><td></td></tr>
+    <tr><td class="num-col">4</td><td>A Netflix mostra a lista de "recomendados pra você" na tela inicial.</td><td></td></tr>
+    <tr><td class="num-col">5</td><td>Um totem de photo booth captura sua foto e o nome que você digitou.</td><td></td></tr>
+    <tr><td class="num-col">6</td><td>Um hospital corrige e padroniza os dados de exames antes de gerar o laudo.</td><td></td></tr>
+    <tr><td class="num-col">7</td><td>Um jogo salva num servidor quantas vezes você morreu numa fase.</td><td></td></tr>
+    <tr><td class="num-col">8</td><td>O Instagram usa o tempo que você parou numa foto pra decidir o que mostrar no feed.</td><td></td></tr>
+  </table>
+
+  <div class="part-header">Parte 2 — Aplicação</div>
+  <div class="instructions">
+    Escolha UMA área (empresa, saúde, rede social ou jogos) e descreva, com um exemplo seu, o que
+    aconteceria em cada etapa do pipeline nessa área.
+  </div>
+  <table>
+    <tr><th style="width:22%;">Etapa</th><th>O que acontece no meu exemplo</th></tr>
+    <tr><td>Fonte</td><td></td></tr>
+    <tr><td>Coleta</td><td></td></tr>
+    <tr><td>Processamento</td><td></td></tr>
+    <tr><td>Armazenamento</td><td></td></tr>
+    <tr><td>Entrega</td><td></td></tr>
+  </table>
+
+  <div class="part-header">Parte 3 — Justificativa</div>
+  <div class="instructions">Responda com frases completas.</div>
+  <div class="qbox">
+    <div class="q"><strong>1.</strong> Por que a ingestão de dados está por trás de quase toda tecnologia que você usa? Dê um exemplo diferente dos citados acima.</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+  <div class="qbox">
+    <div class="q"><strong>2.</strong> Se a etapa de "coleta" de um pipeline for malfeita, que problema isso pode causar lá na "entrega"? Dê um exemplo concreto.</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header">Parte 4 — Seu próprio exemplo</div>
+  <div class="instructions">
+    Escolha uma área diferente da que você usou na Parte 2 (empresa, saúde, rede social ou jogos) e monte
+    seu próprio mini pipeline.
+  </div>
+  <div class="example-cols">
+    <div class="col">
+      <h4>a) Área escolhida e fonte de dado</h4>
+      <div class="ans-line"></div>
+      <div class="ans-line"></div>
+    </div>
+    <div class="col">
+      <h4>b) Como o dado é processado e entregue</h4>
+      <div class="ans-line"></div>
+      <div class="ans-line"></div>
+    </div>
+  </div>
+
+  <footer>UC I — Ingestão de Dados · 3º Bimestre 2026 · 2º Ano A/B · Prof. Jorge Frias</footer>
+</div>
+</body>
+</html>
