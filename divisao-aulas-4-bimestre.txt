@@ -1,0 +1,562 @@
+PLANEJAMENTO 4º BIMESTRE - 2026
+Fase: 02/10/2026 até 09/12/2026
+Escola: EE. Júlia Gonçalves Passarinho - Corumbá-MS
+Turmas: 2A e 2B - INTEGRAL
+
+TOTAL DE AULAS POR DISCIPLINA
+------------------------------
+UC III: 9 aulas   [pronto neste arquivo]
+UC II: 8 aulas   [pronto neste arquivo]
+UC I: 10 aulas   [pronto neste arquivo]
+Desenvolvimento Local: 8 aulas   [pronto neste arquivo]
+
+STATUS
+------------------------------
+[x] UC III - Qualidade e Testes de Sistemas (9 aulas) - conteúdo pronto para colar no SysGEP
+[x] UC II - Ecossistema de Big Data (8 aulas) - conteúdo pronto para colar no SysGEP
+[x] UC I - Ingestão de Dados (10 aulas) - conteúdo pronto para colar no SysGEP
+[x] Desenvolvimento Local - Projeto de Validação e Mostra (8 aulas) - conteúdo pronto para colar no SysGEP
+
+FORMATO DE TEXTO PADRÃO (colar direto no campo "Conteúdo" do SysGEP), válido para todas as disciplinas:
+Assunto / Abordagem / Explicação (teórica) ou Prática (prática) / Exercício / Dinâmica (quando houver) / Ferramentas
+Redação IMPESSOAL: descrever a aula de forma genérica ("Apresentação das dimensões de qualidade de dados",
+"Pergunta inicial sobre...", "Correção coletiva questão por questão"), NÃO em primeira pessoa ("Apresento...",
+"Começo perguntando...", "Peço que..."). Blocos separados por linha em branco, nunca texto corrido. Sem responder
+tópico por tópico as perguntas do slide do chefe (onde/como).
+Aulas práticas/oficinas: a própria atividade descrita já é o exercício (não citar plataforma como AVA).
+
+OBS DO 4º BIMESTRE (UC III): a apostila da disciplina foi concluída no 3º bimestre. As aulas teóricas deste
+bimestre trazem temas novos dentro do escopo de Qualidade e Testes de Sistemas (Qualidade de Dados; Usabilidade e
+Acessibilidade) e as aulas transversais trazem assuntos atuais ligados à matéria (vazamento de dados; verificação de
+informação e IA). Como não há mais "questões do livro", o exercício das aulas teóricas é uma lista preparada pelo
+professor.
+
+
+UC III - QUALIDADE E TESTES DE SISTEMAS (9 aulas)
+------------------------------
+Estrutura do bimestre:
+- Aulas 1-2 .... Qualidade de Dados (teórica em sala + prática de laboratório)
+- Aula 3 ....... Transversal: Vazamento de Dados e Segurança da Informação (prática de laboratório)
+- Aula 4 ....... Prova mensal + correção + recuperação (sala)
+- Aulas 5-6 .... Testes de Usabilidade e Acessibilidade (teórica em sala + prática de laboratório)
+- Aula 7 ....... Transversal: Fake News, Deepfake e Conteúdo Gerado por IA (prática de laboratório)
+- Aula 8 ....... Prova bimestral + correção + recuperação (sala)
+- Aula 9 ....... Culminância: fluxograma da disciplina e roda de conversa (sala)
+
+
+====================================================
+AULA 1 - TEÓRICA - QUALIDADE DE DADOS
+====================================================
+Assunto: O que é qualidade de dados e por que "dado ruim" derruba qualquer sistema. Aula expositiva dialogada em sala, com apoio do quadro branco. Continuação natural de Qualidade de Software: o olhar agora recai sobre a matéria-prima que alimenta os sistemas — o dado.
+
+Abordagem: Pergunta inicial à turma sobre já terem preenchido um cadastro com dado errado de propósito (telefone falso, data de nascimento qualquer), conduzindo à ideia de que todo sistema depende da qualidade do que entra — "entra lixo, sai lixo".
+
+Explicação: Apresentação das dimensões da qualidade de dados — completude (não faltar informação), consistência (não se contradizer), acurácia (bater com a realidade), atualidade (estar em dia), unicidade (sem duplicidade) e validade (respeitar o formato esperado). Cada dimensão ilustrada com exemplos do dia a dia (cadastro de aluno, planilha de vendas, base de um app), mostrando como um dado ruim se propaga: decisão errada, relatório furado, modelo de IA enviesado. Ligação com a ISO/IEC 25010 — "adequação funcional" e "confiabilidade" dependem de dado bom.
+
+Exercício: Lista com 10 registros de uma planilha fictícia de cadastro; para cada problema encontrado, identificação da dimensão da qualidade de dados violada e da forma de corrigir.
+
+Ferramentas: quadro branco; lista de exercício impressa (material próprio).
+
+
+====================================================
+AULA 2 - PRÁTICA - AUDITORIA DE QUALIDADE DE DADOS
+====================================================
+Assunto: Auditoria de uma base de dados e produção de um relatório de qualidade. Aula prática no laboratório de informática, aplicando o conteúdo da Aula 1.
+
+Abordagem: Apresentação da proposta da aula — a turma no papel de auditores de dados, recebendo uma planilha "suja" para diagnosticar tudo que está errado.
+
+Prática: Em duplas, no Google Sheets, uma planilha com cerca de 40 linhas cheia de problemas propositais (células vazias, datas em formatos diferentes, nomes duplicados, idades impossíveis, e-mails inválidos, cidades escritas de três jeitos). Com filtros, classificação e funções simples (CONT.SE, ÉNÚM, remoção de duplicados), cada problema é marcado, classificado pela dimensão da qualidade de dados e registrado em um relatório curto: quantos problemas de cada tipo, quais os mais graves e uma recomendação de melhoria para quem cuida da base.
+
+Ferramentas: Google Sheets; planilha-base (material próprio); modelo de relatório de qualidade de dados (Google Docs).
+
+
+====================================================
+AULA 3 - TRANSVERSAL / PRÁTICA - VAZAMENTO DE DADOS E SEGURANÇA DA INFORMAÇÃO
+====================================================
+Assunto: Vazamento de dados — o que é, por que acontece e a relação com qualidade de sistemas. Tema transversal dentro da disciplina, ligado à característica "Segurança" da ISO/IEC 25010 e à LGPD. Aula prática no laboratório de informática.
+
+Abordagem: Pergunta inicial sobre golpes recebidos por mensagem em que o golpista já sabia nome completo e uma compra recente da pessoa, conduzindo à ideia de que isso costuma começar num vazamento de dados de algum sistema mal protegido.
+
+Prática: Investigação de vazamentos reais, em duplas. (1) Consulta no site Have I Been Pwned para verificar se algum e-mail próprio já apareceu em vazamentos conhecidos; (2) pesquisa de dois casos brasileiros recentes de vazamento (empresa, o que vazou, resposta da empresa); (3) "raio-x" do caso escolhido — que falha de qualidade/segurança permitiu o vazamento (senha fraca, dado sem criptografia, sistema desatualizado) e o que a LGPD exige nessas situações. Fechamento com um guia de 5 boas práticas de proteção de dados pessoais.
+
+Exercício: o raio-x do caso e o guia de boas práticas produzidos pela dupla.
+
+Ferramentas: navegador; site Have I Been Pwned (haveibeenpwned.com); portais de notícia e de checagem; Google Docs ou Canva para o guia.
+
+
+====================================================
+AULA 4 - PROVA MENSAL + CORREÇÃO E RECUPERAÇÃO
+====================================================
+Assunto: Prova mensal sobre Qualidade de Dados (Aulas 1 e 2) e Vazamento de Dados / Segurança da Informação (Aula 3). Aplicação em sala, individual e sem consulta, com correção comentada e atividade de recuperação na sequência.
+
+Abordagem: Aplicação da prova escrita na primeira parte da aula.
+
+Explicação: Na segunda parte, correção coletiva questão por questão, retomada dos pontos de maior erro e atividade curta de recuperação (revisão dirigida) para os alunos abaixo da média, valendo como nova oportunidade de nota.
+
+Exercício: a própria prova e a folha de recuperação.
+
+Ferramentas: prova impressa (material próprio); gabarito comentado; folha de recuperação.
+
+
+====================================================
+AULA 5 - TEÓRICA - TESTES DE USABILIDADE E ACESSIBILIDADE
+====================================================
+Assunto: Como verificar se um sistema é fácil de usar e possível de usar por qualquer pessoa. Aula expositiva dialogada em sala, com apoio do quadro e do projetor, aprofundando a característica "Usabilidade" da ISO/IEC 25010 com conteúdo não detalhado na apostila.
+
+Abordagem: Comparação de dois prints de tela — uma limpa e uma poluída — com pergunta sobre qual delas uma pessoa idosa da família conseguiria usar, conduzindo à diferença entre "achar bonito" e "conseguir concluir a tarefa".
+
+Explicação: Definição de teste de usabilidade (observação de uma pessoa real tentando cumprir uma tarefa, sem ajuda, com registro de onde ela trava), das métricas simples (concluiu ou não, tempo gasto, número de erros) e da diferença para uma pesquisa de opinião. Em seguida, acessibilidade digital: o que é, para quem serve (baixa visão, daltonismo, deficiência motora, uso de leitor de tela), a Lei Brasileira de Inclusão e um checklist básico — contraste de cor, tamanho de fonte ajustável, texto alternativo em imagens, navegação pelo teclado, legenda em vídeo.
+
+Exercício: 6 situações de uso de um aplicativo; classificação de cada uma como problema de usabilidade ou de acessibilidade, com justificativa e sugestão de correção.
+
+Ferramentas: quadro branco; projetor para os exemplos de tela; lista de exercício (material próprio).
+
+
+====================================================
+AULA 6 - PRÁTICA - TESTE DE USABILIDADE E CHECKLIST DE ACESSIBILIDADE
+====================================================
+Assunto: Aplicação de um teste de usabilidade com um colega e auditoria de acessibilidade de um site real. Aula prática no laboratório de informática, aplicando a Aula 5.
+
+Abordagem: Apresentação dos papéis na dupla — um "usuário de teste" e um "pesquisador", com a regra de que o pesquisador apenas observa e anota, sem ajudar.
+
+Prática: Cada dupla escolhe um site ou app público (portal da escola, um e-commerce, um serviço público). Etapa 1 — usabilidade: 3 tarefas dadas pelo pesquisador ao colega (ex.: "encontrar o telefone de contato", "simular uma inscrição"), com cronometragem e registro de travamentos e erros. Etapa 2 — acessibilidade: aplicação do checklist da Aula 5 no mesmo site (contraste, fonte, texto alternativo, navegação por teclado, legenda) e uso de uma ferramenta automática de verificação. Fechamento com um laudo: nota de usabilidade, nota de acessibilidade e as 3 melhorias mais urgentes.
+
+Ferramentas: navegador; ferramenta de verificação de acessibilidade (WAVE — wave.webaim.org — ou Lighthouse do Google Chrome); cronômetro do celular; modelo de laudo (Google Docs).
+
+
+====================================================
+AULA 7 - TRANSVERSAL / PRÁTICA - FAKE NEWS, DEEPFAKE E CONTEÚDO GERADO POR IA
+====================================================
+Assunto: Como avaliar a confiabilidade de uma informação na era da IA generativa. Tema transversal dentro da disciplina, ligado à característica "Confiabilidade" e à qualidade da informação. Aula prática no laboratório de informática.
+
+Abordagem: Exibição de três conteúdos — uma foto, um áudio e uma notícia —, sendo um deles gerado ou manipulado por IA, com desafio à turma de identificar qual.
+
+Prática: Cada dupla recebe um kit com 5 conteúdos (imagens, manchetes, citações) misturando verdadeiros, falsos e gerados por IA. Para cada um, aplicação de um roteiro de verificação: autoria, data, existência da fonte original, aparição da imagem em outro contexto (busca reversa), sinais de geração por IA (mãos, textos borrados, sombras estranhas) e checagem em agências de fato. Classificação de cada conteúdo como confiável, duvidoso ou falso, com justificativa. Fechamento com a construção de um checklist próprio de verificação em 6 passos.
+
+Exercício: a classificação dos 5 conteúdos com justificativa e o checklist final da dupla.
+
+Ferramentas: navegador; busca reversa de imagens (Google Imagens / TinEye); sites de checagem (Aos Fatos, Projeto Comprova, Agência Lupa); kit de conteúdos (material próprio); Google Docs ou Canva para o checklist.
+
+
+====================================================
+AULA 8 - PROVA BIMESTRAL + CORREÇÃO E RECUPERAÇÃO
+====================================================
+Assunto: Prova bimestral sobre todo o bimestre — Qualidade de Dados, Vazamento de Dados, Usabilidade e Acessibilidade, e Verificação de Informação / IA. Aplicação em sala, individual e sem consulta, com correção comentada e recuperação na sequência.
+
+Abordagem: Aplicação da prova escrita na primeira parte da aula, cobrindo os quatro blocos do bimestre de forma integrada.
+
+Explicação: Correção coletiva logo em seguida, retomada dos erros mais comuns e atividade de recuperação para os alunos abaixo da média, fechando as notas do bimestre.
+
+Exercício: a própria prova e a folha de recuperação.
+
+Ferramentas: prova impressa (material próprio); gabarito comentado; folha de recuperação.
+
+
+====================================================
+AULA 9 - CULMINÂNCIA - FLUXOGRAMA DA DISCIPLINA E RODA DE CONVERSA
+====================================================
+Assunto: Fechamento da UC III. Aula de culminância em sala: construção coletiva de um fluxograma com tudo que foi estudado em Qualidade e Testes de Sistemas ao longo do ano, seguida de conversa sobre os aprendizados.
+
+Abordagem: Quadro em branco e pergunta disparadora — "como explicar a UC III para um calouro em um único desenho?".
+
+Prática: Construção conjunta, no quadro (ou em ferramenta de quadro colaborativo projetada), de um fluxograma ligando os grandes temas da disciplina: Engenharia de Requisitos -> Qualidade de Software e a ISO/IEC 25010 -> Testes de Software -> Qualidade de Dados -> Usabilidade e Acessibilidade -> Segurança e Vazamento de Dados -> Confiabilidade da Informação. Para cada nó, um aluno diferente escreve uma frase do que aprendeu. Em seguida, roda de conversa: o que mudou no olhar da turma sobre um app ou site depois da disciplina, o que foi mais útil e o que ficou faltando aprofundar.
+
+Dinâmica: cada aluno registra num post-it (ou no quadro colaborativo) uma "lição que leva da UC III", formando um painel de fechamento da turma.
+
+Ferramentas: quadro branco e post-its, ou ferramenta de quadro colaborativo projetada (Jamboard, Canva ou Miro); projetor.
+
+
+
+UC II - ECOSSISTEMA DE BIG DATA (8 aulas)
+------------------------------
+Estrutura do bimestre:
+- Aulas 1-2 .... Data Lake, Data Warehouse e Computação em Nuvem (teórica em sala + prática de laboratório)
+- Aula 3 ....... Prova mensal + correção + recuperação (sala)
+- Aulas 4-5 .... Visualização de Big Data e Dashboards (teórica em sala + prática de laboratório)
+- Aula 6 ....... Transversal: Rastreamento e Vigilância de Dados (prática de laboratório)
+- Aula 7 ....... Prova bimestral + correção + recuperação (sala)
+- Aula 8 ....... Culminância: fluxograma da disciplina e roda de conversa (sala)
+
+OBS: a apostila da UC II foi concluída no 3º bimestre. As aulas de conteúdo deste bimestre aprofundam etapas do
+ecossistema de Big Data que a apostila não detalhou (armazenamento em data lake/warehouse e nuvem; camada de
+visualização) e a aula transversal traz um assunto atual ligado à matéria (coleta e uso de dados de comportamento).
+Sem "questões do livro", o exercício das teóricas é uma lista preparada pelo professor.
+
+
+====================================================
+AULA 1 - TEÓRICA - DATA LAKE, DATA WAREHOUSE E COMPUTAÇÃO EM NUVEM
+====================================================
+Assunto: Onde os dados ficam guardados no Big Data e por que a nuvem mudou esse jogo. Aula expositiva dialogada em sala, com apoio do quadro branco. Aprofundamento da etapa de "armazenamento" da arquitetura de Big Data vista no bimestre anterior.
+
+Abordagem: Pergunta inicial sobre onde a turma acha que ficam guardadas as fotos que sobem para uma rede social ou os vídeos de uma plataforma de streaming, conduzindo à ideia de que não é "um HD gigante", e sim uma estrutura pensada para volume, variedade e custo.
+
+Explicação: Apresentação das três formas de guardar dado em larga escala — banco de dados relacional (dado organizado em tabelas, para o dia a dia do sistema), data warehouse (dado já tratado e organizado, voltado para análise e relatório) e data lake (dado bruto, em qualquer formato, guardado barato para uso futuro) —, com a ideia de "lakehouse" como junção das duas últimas. Em seguida, o papel da computação em nuvem: não precisar comprar servidor, pagar apenas pelo que usa, escalar para cima e para baixo conforme a demanda; citação dos grandes provedores (Google Cloud, AWS, Azure). Alerta sobre o "pântano de dados" (data swamp): data lake sem organização nem catálogo vira depósito inútil — de novo a questão da qualidade.
+
+Exercício: Lista de 8 situações (ex.: "guardar o histórico de cliques de um site para análise futura", "registrar a venda no caixa em tempo real", "montar o relatório mensal da diretoria"); para cada uma, indicação de onde o dado deveria ficar (banco relacional, data warehouse ou data lake) e por quê.
+
+Ferramentas: quadro branco; lista de exercício impressa (material próprio).
+
+
+====================================================
+AULA 2 - PRÁTICA - MONTANDO UM MINI DATA WAREHOUSE
+====================================================
+Assunto: Transformação de dados brutos de várias fontes em uma base organizada e pronta para análise. Aula prática no laboratório de informática, aplicando o conteúdo da Aula 1.
+
+Abordagem: Apresentação da proposta — cada dupla recebe um "data lake" de brincadeira (uma planilha com três abas de dados crus e bagunçados de fontes diferentes) e precisa construir a partir dele um "data warehouse" (uma aba única, limpa e organizada) capaz de responder perguntas.
+
+Prática: Em duplas, no Google Sheets. Etapa 1: leitura das três abas cruas (ex.: vendas, clientes, produtos) e identificação dos problemas (formatos diferentes, campos faltando, duplicidade). Etapa 2: construção de uma aba "warehouse" consolidada, com colunas padronizadas e as informações reunidas. Etapa 3: a partir da aba consolidada, resposta a 3 perguntas de negócio com apoio de fórmulas e de 2 gráficos (ex.: produto mais vendido, cidade com mais clientes, mês de maior faturamento).
+
+Ferramentas: Google Sheets; planilha-base com as três abas cruas (material próprio); modelo de registro das perguntas e respostas (Google Docs).
+
+
+====================================================
+AULA 3 - PROVA MENSAL + CORREÇÃO E RECUPERAÇÃO
+====================================================
+Assunto: Prova mensal sobre Data Lake, Data Warehouse e Computação em Nuvem (Aulas 1 e 2). Aplicação em sala, individual e sem consulta, com correção comentada e atividade de recuperação na sequência.
+
+Abordagem: Aplicação da prova escrita na primeira parte da aula.
+
+Explicação: Na segunda parte, correção coletiva questão por questão, retomada dos pontos de maior erro e atividade curta de recuperação (revisão dirigida) para os alunos abaixo da média, valendo como nova oportunidade de nota.
+
+Exercício: a própria prova e a folha de recuperação.
+
+Ferramentas: prova impressa (material próprio); gabarito comentado; folha de recuperação.
+
+
+====================================================
+AULA 4 - TEÓRICA - VISUALIZAÇÃO DE BIG DATA E DASHBOARDS
+====================================================
+Assunto: A camada final do ecossistema de Big Data — transformar dado processado em informação que qualquer pessoa entende. Aula expositiva dialogada em sala, com apoio do quadro e do projetor.
+
+Abordagem: Comparação de duas telas com o mesmo dado — uma tabela gigante de números e um painel com três gráficos — e pergunta sobre com qual delas um gestor tomaria uma decisão em 10 segundos.
+
+Explicação: Definição de dashboard (painel visual que reúne os indicadores mais importantes de um assunto em uma tela) e do seu papel no ecossistema de Big Data (o dado só vira valor quando é comunicado). Boas práticas: escolher o gráfico certo para cada tipo de dado (barra para comparar, linha para tendência no tempo, proporção para partes de um todo), título que responde a uma pergunta, menos é mais, cuidado com cores e escalas que enganam. Apresentação das ferramentas de mercado (Looker Studio, Power BI, Tableau) e de onde elas se conectam (planilha, data warehouse, banco na nuvem).
+
+Exercício: 6 pares "pergunta de negócio + tipo de gráfico"; indicação de quais pares combinam e correção dos que não combinam, com justificativa.
+
+Ferramentas: quadro branco; projetor para os exemplos de painel; lista de exercício (material próprio).
+
+
+====================================================
+AULA 5 - PRÁTICA - CONSTRUINDO UM DASHBOARD
+====================================================
+Assunto: Construção de um painel de indicadores a partir de um conjunto de dados real. Aula prática no laboratório de informática, aplicando a Aula 4.
+
+Abordagem: Apresentação da proposta — cada dupla vira "analista de dados" de uma organização fictícia e precisa entregar um painel que responda a três perguntas definidas no início.
+
+Prática: Em duplas, no Looker Studio (gratuito, com conta Google), conectado a uma planilha fornecida (dados públicos — ex.: matrículas por escola, frequência, ou dados abertos do município). Definição de 3 perguntas que o painel deve responder; criação de pelo menos 3 visualizações adequadas a essas perguntas; ajuste de títulos, cores e filtros; escrita de um parágrafo de "principais achados" abaixo do painel.
+
+Ferramentas: Looker Studio; planilha de dados públicos fornecida (material próprio); navegador; Google Docs para os achados.
+
+
+====================================================
+AULA 6 - TRANSVERSAL / PRÁTICA - RASTREAMENTO E VIGILÂNCIA DE DADOS
+====================================================
+Assunto: O Big Data apontado para o usuário — como sites e apps coletam, cruzam e usam dados de comportamento. Tema transversal dentro da disciplina, ligado às etapas de coleta e armazenamento do ecossistema de Big Data e à LGPD. Aula prática no laboratório de informática.
+
+Abordagem: Pergunta inicial sobre já terem comentado algo em voz alta e visto anúncio do produto logo depois, conduzindo à discussão sobre o que de fato é coletado e o que é coincidência.
+
+Prática: Investigação em duplas. (1) Inspeção dos rastreadores de 3 sites populares com uma extensão ou com as ferramentas do navegador (quantos rastreadores carregam, de quais empresas). (2) Consulta ao próprio "perfil de anúncios" na conta Google (categorias que a plataforma inferiu sobre a pessoa) e checagem de acertos e erros. (3) Leitura rápida de um trecho de política de privacidade de um app muito usado, identificando o que a empresa afirma coletar. Fechamento com um quadro comparativo "o que eu ganho x o que eu entrego" e uma lista de 5 ajustes de privacidade que dá para fazer hoje.
+
+Exercício: o quadro comparativo e a lista de ajustes de privacidade produzidos pela dupla.
+
+Ferramentas: navegador e suas ferramentas de desenvolvedor; extensão de inspeção/bloqueio de rastreadores; painel de privacidade / "Meus Anúncios" da conta Google; Google Docs ou Canva para o quadro final.
+
+
+====================================================
+AULA 7 - PROVA BIMESTRAL + CORREÇÃO E RECUPERAÇÃO
+====================================================
+Assunto: Prova bimestral sobre todo o bimestre — Data Lake / Data Warehouse / Nuvem, Visualização e Dashboards, e Rastreamento e Vigilância de Dados. Aplicação em sala, individual e sem consulta, com correção comentada e recuperação na sequência.
+
+Abordagem: Aplicação da prova escrita na primeira parte da aula, cobrindo os três blocos do bimestre de forma integrada.
+
+Explicação: Correção coletiva logo em seguida, retomada dos erros mais comuns e atividade de recuperação para os alunos abaixo da média, fechando as notas do bimestre.
+
+Exercício: a própria prova e a folha de recuperação.
+
+Ferramentas: prova impressa (material próprio); gabarito comentado; folha de recuperação.
+
+
+====================================================
+AULA 8 - CULMINÂNCIA - FLUXOGRAMA DA DISCIPLINA E RODA DE CONVERSA
+====================================================
+Assunto: Fechamento da UC II. Aula de culminância em sala: construção coletiva de um fluxograma com tudo que foi estudado em Ecossistema de Big Data ao longo do ano, seguida de conversa sobre os aprendizados.
+
+Abordagem: Quadro em branco e pergunta disparadora — "como explicar o ecossistema de Big Data para um calouro em um único desenho?".
+
+Prática: Construção conjunta, no quadro (ou em ferramenta de quadro colaborativo projetada), de um fluxograma ligando os grandes temas da disciplina: 3 Vs (volume, velocidade, variedade) -> Arquitetura (coleta -> armazenamento -> processamento) -> Apache Spark, Lote x Streaming -> Processamento Paralelo (particionamento, índices, clusters) -> Data Lake, Data Warehouse e Nuvem -> Visualização e Dashboards -> Rastreamento e Privacidade dos Dados. Para cada nó, um aluno diferente escreve uma frase do que aprendeu. Em seguida, roda de conversa: o que mudou no olhar da turma sobre os apps e serviços que usam todo dia, o que foi mais útil e o que ficou faltando aprofundar.
+
+Dinâmica: cada aluno registra num post-it (ou no quadro colaborativo) uma "lição que leva da UC II", formando um painel de fechamento da turma.
+
+Ferramentas: quadro branco e post-its, ou ferramenta de quadro colaborativo projetada (Jamboard, Canva ou Miro); projetor.
+
+
+
+UC I - INGESTÃO DE DADOS (10 aulas)
+------------------------------
+Estrutura do bimestre:
+- Aulas 1-2 .... Raspagem de Dados da Web / web scraping (teórica em sala + prática de laboratório)
+- Aula 3 ....... Transversal: Coleta em Massa — robots.txt, Termos de Uso e Limites da Raspagem (prática de laboratório)
+- Aula 4 ....... Prova mensal + correção + recuperação (sala)
+- Aulas 5-6 .... APIs como Fonte de Dados (teórica em sala + prática de laboratório)
+- Aula 7 ....... Transversal: Viés e "Lixo" na Coleta de Dados (prática de laboratório)
+- Aula 8 ....... Prova bimestral + correção + recuperação (sala)
+- Aula 9 ....... Culminância: fluxograma da disciplina e roda de conversa (sala)
+- Aula 10 ...... Roda de conversa aberta: mercado de trabalho em dados e planos para a graduação (sala)
+
+OBS: a apostila da UC I foi concluída no 3º bimestre. As aulas de conteúdo deste bimestre aprofundam formas de trazer
+dado de fontes externas que a apostila não detalhou (raspagem da web e APIs) e as aulas transversais tratam de
+assuntos ligados à etapa de coleta (limites da raspagem; viés e dados falsos na entrada). Sem "questões do livro", o
+exercício das teóricas é uma lista preparada pelo professor.
+
+
+====================================================
+AULA 1 - TEÓRICA - RASPAGEM DE DADOS DA WEB (WEB SCRAPING)
+====================================================
+Assunto: Como trazer para dentro de uma planilha dados que só existem numa página da internet. Aula expositiva dialogada em sala, com apoio do quadro e do projetor. Retomada da ideia de "fonte de dados" da ingestão, agora com a web como fonte.
+
+Abordagem: Pergunta inicial sobre como alguém montaria uma tabela com a cotação do dólar dos últimos 30 dias, ou a classificação de um campeonato, sem digitar tudo na mão — conduzindo à ideia de "raspar" o dado que já está publicado.
+
+Explicação: Definição de raspagem de dados (web scraping): extração automática de informações de páginas web e conversão em dados organizados. Diferença entre uma página feita para uma pessoa ler e um dado estruturado. Como uma página é organizada por dentro (tags HTML, tabelas, listas) e por que isso permite a extração. Panorama das formas de raspar: funções de planilha (IMPORTHTML, IMPORTXML), extensões sem código e programação (apenas citada). Limites: páginas que mudam de layout, conteúdo que só aparece com o site aberto, bloqueios anti-robô.
+
+Exercício: 6 situações; para cada uma, indicação se o dado poderia ser obtido por raspagem simples de planilha, exigiria ferramenta mais avançada ou não deveria ser raspado, com justificativa.
+
+Ferramentas: quadro branco; projetor para inspecionar a estrutura de páginas de exemplo; lista de exercício (material próprio).
+
+
+====================================================
+AULA 2 - PRÁTICA - RASPANDO UMA TABELA DA WEB
+====================================================
+Assunto: Extração de uma tabela real de uma página web para uma planilha e organização dos dados. Aula prática no laboratório de informática, aplicando a Aula 1.
+
+Abordagem: Apresentação da proposta — cada dupla escolhe um tema (esporte, câmbio, população, cinema) e precisa trazer uma tabela pública da web para o Google Sheets sem digitar linha por linha.
+
+Prática: Em duplas, no Google Sheets. Etapa 1: escolha de uma página com uma tabela pública (ex.: verbete da Wikipédia, portal de cotações, ranking). Etapa 2: uso da função IMPORTHTML (ou IMPORTXML) para trazer a tabela e identificação do índice correto da tabela na página. Etapa 3: limpeza do resultado (remoção de colunas inúteis, correção de tipos e cabeçalhos) e produção de 1 gráfico e 2 observações a partir do dado raspado. Registro da URL de origem e da data da coleta.
+
+Ferramentas: Google Sheets (funções IMPORTHTML / IMPORTXML); navegador; modelo de registro da coleta (Google Docs).
+
+
+====================================================
+AULA 3 - TRANSVERSAL / PRÁTICA - COLETA EM MASSA: ROBOTS.TXT, TERMOS DE USO E LIMITES DA RASPAGEM
+====================================================
+Assunto: Até onde é aceitável coletar dado que está publicado. Tema transversal dentro da disciplina, ligado à etapa de coleta da ingestão, aos termos de serviço e à LGPD. Aula prática no laboratório de informática.
+
+Abordagem: Pergunta inicial — "se o dado está público na internet, posso fazer o que eu quiser com ele?" —, conduzindo à diferença entre dado acessível, dado livre para qualquer uso e dado protegido.
+
+Prática: Investigação em duplas. (1) Leitura do arquivo robots.txt de 3 sites conhecidos (endereço do site + /robots.txt) e identificação do que cada site pede para não ser raspado. (2) Leitura de um trecho dos termos de uso de uma rede social sobre coleta automatizada. (3) Pesquisa rápida de um caso real de conflito sobre raspagem (ex.: raspagem de perfis para treinar reconhecimento facial) e do que estava em jogo. Fechamento com um "código de conduta da coleta" em 6 regras, escrito pela dupla.
+
+Exercício: as respostas da investigação e o código de conduta da coleta produzido pela dupla.
+
+Ferramentas: navegador; arquivos robots.txt e termos de uso públicos; portais de notícia; Google Docs ou Canva para o código de conduta.
+
+
+====================================================
+AULA 4 - PROVA MENSAL + CORREÇÃO E RECUPERAÇÃO
+====================================================
+Assunto: Prova mensal sobre Raspagem de Dados da Web (Aulas 1 e 2) e Coleta em Massa / Limites da Raspagem (Aula 3). Aplicação em sala, individual e sem consulta, com correção comentada e atividade de recuperação na sequência.
+
+Abordagem: Aplicação da prova escrita na primeira parte da aula.
+
+Explicação: Na segunda parte, correção coletiva questão por questão, retomada dos pontos de maior erro e atividade curta de recuperação (revisão dirigida) para os alunos abaixo da média, valendo como nova oportunidade de nota.
+
+Exercício: a própria prova e a folha de recuperação.
+
+Ferramentas: prova impressa (material próprio); gabarito comentado; folha de recuperação.
+
+
+====================================================
+AULA 5 - TEÓRICA - APIS COMO FONTE DE DADOS
+====================================================
+Assunto: Como sistemas pedem dados uns aos outros — a API como porta oficial de ingestão. Aula expositiva dialogada em sala, com apoio do quadro e do projetor.
+
+Abordagem: Comparação entre "copiar dado da tela de outro sistema" e "pedir o dado pela porta certa"; pergunta sobre como um app de previsão do tempo sabe a temperatura de qualquer cidade — conduzindo à ideia de API.
+
+Explicação: Definição de API (interface pela qual um sistema oferece seus dados e serviços a outros, de forma organizada). Como funciona uma requisição: endereço (endpoint), parâmetros e resposta (geralmente em JSON). Leitura de um JSON simples (pares campo-valor, listas). Conceitos de chave de acesso (API key), autenticação e limite de uso (rate limit). Vantagens da API sobre a raspagem: dado já estruturado, estável e autorizado. Exemplos de APIs públicas e gratuitas (IBGE, câmbio, feriados nacionais, clima).
+
+Exercício: um trecho de resposta JSON impresso; identificação dos campos pedidos, extração de valores específicos e apontamento de qual endpoint/parâmetro traria determinada informação.
+
+Ferramentas: quadro branco; projetor para abrir respostas de API no navegador; lista de exercício com um JSON de exemplo (material próprio).
+
+
+====================================================
+AULA 6 - PRÁTICA - CONSUMINDO UMA API PÚBLICA
+====================================================
+Assunto: Requisição a uma API pública e transformação da resposta em uma base de dados. Aula prática no laboratório de informática, aplicando a Aula 5.
+
+Abordagem: Apresentação da proposta — cada dupla escolhe uma API pública e precisa trazer os dados dela para uma planilha, sem raspar tela nenhuma.
+
+Prática: Em duplas. Etapa 1: escolha de uma API pública e gratuita (ex.: IBGE — municípios e população; AwesomeAPI — câmbio; BrasilAPI — feriados, CEP, DDD). Etapa 2: montagem do endereço da requisição com os parâmetros desejados e abertura no navegador para ver o JSON. Etapa 3: importação da resposta para o Google Sheets (função IMPORTDATA para CSV/JSON simples, ou colagem e organização manual do JSON) e montagem de uma tabela limpa com pelo menos 10 registros. Registro do endpoint usado e de 2 perguntas respondidas com o dado.
+
+Ferramentas: navegador; APIs públicas (IBGE, AwesomeAPI, BrasilAPI); Google Sheets (IMPORTDATA); modelo de registro da coleta (Google Docs).
+
+
+====================================================
+AULA 7 - TRANSVERSAL / PRÁTICA - VIÉS E "LIXO" NA COLETA DE DADOS
+====================================================
+Assunto: Como o erro entra já na porta de entrada — viés de amostragem e dados falsos na ingestão. Tema transversal dentro da disciplina, ligado à etapa de coleta e à confiabilidade do que alimenta relatórios e modelos de IA. Aula prática no laboratório de informática.
+
+Abordagem: Pergunta inicial sobre uma enquete de rede social ("quem respondeu isso?") e sobre o que aconteceria se metade das respostas de um formulário fosse de robô — conduzindo à ideia de que dado ruim na entrada estraga tudo depois.
+
+Prática: Atividade em duplas. (1) Análise de 3 coletas reais (uma enquete de site, uma pesquisa divulgada na imprensa, um formulário aberto) com apontamento do viés de amostragem de cada uma — quem ficou de fora, quem respondeu demais. (2) Reescrita de 2 perguntas enviesadas ou mal formuladas, deixando-as neutras. (3) Discussão de formas de "sujar" uma base de propósito (robôs preenchendo formulário, avaliações falsas, envio repetido) e de defesas simples (validação, limite por pessoa, revisão). Fechamento com um checklist de "coleta confiável" em 6 itens.
+
+Exercício: as análises de viés, as perguntas reescritas e o checklist de coleta confiável da dupla.
+
+Ferramentas: navegador; exemplos de coletas e formulários (material próprio); Google Forms para testar a reescrita das perguntas; Google Docs ou Canva para o checklist.
+
+
+====================================================
+AULA 8 - PROVA BIMESTRAL + CORREÇÃO E RECUPERAÇÃO
+====================================================
+Assunto: Prova bimestral sobre todo o bimestre — Raspagem de Dados da Web, APIs como Fonte de Dados e os temas transversais de limites da coleta e de viés/dados falsos na ingestão. Aplicação em sala, individual e sem consulta, com correção comentada e recuperação na sequência.
+
+Abordagem: Aplicação da prova escrita na primeira parte da aula, cobrindo os blocos do bimestre de forma integrada.
+
+Explicação: Correção coletiva logo em seguida, retomada dos erros mais comuns e atividade de recuperação para os alunos abaixo da média, fechando as notas do bimestre.
+
+Exercício: a própria prova e a folha de recuperação.
+
+Ferramentas: prova impressa (material próprio); gabarito comentado; folha de recuperação.
+
+
+====================================================
+AULA 9 - CULMINÂNCIA - FLUXOGRAMA DA DISCIPLINA E RODA DE CONVERSA
+====================================================
+Assunto: Fechamento da UC I. Aula de culminância em sala: construção coletiva de um fluxograma com tudo que foi estudado em Ingestão de Dados ao longo do ano, seguida de conversa sobre os aprendizados.
+
+Abordagem: Quadro em branco e pergunta disparadora — "como explicar a ingestão de dados para um calouro em um único desenho?".
+
+Prática: Construção conjunta, no quadro (ou em ferramenta de quadro colaborativo projetada), de um fluxograma ligando os grandes temas da disciplina: O que é ingestão e pipeline -> Fontes de dados (arquivos, banco, planilha, web, API, sensores) -> ETL x ELT -> Ingestão em Lote x Streaming -> Raspagem de Dados da Web -> APIs como Fonte -> Limites da Coleta (robots.txt, termos de uso) -> Viés e Dados Falsos na Entrada. Para cada nó, um aluno diferente escreve uma frase do que aprendeu. Em seguida, roda de conversa: de quantas formas diferentes um dado pode entrar num sistema, o que foi mais útil e o que ficou faltando aprofundar.
+
+Dinâmica: cada aluno registra num post-it (ou no quadro colaborativo) uma "lição que leva da UC I", formando um painel de fechamento da turma.
+
+Ferramentas: quadro branco e post-its, ou ferramenta de quadro colaborativo projetada (Jamboard, Canva ou Miro); projetor.
+
+
+====================================================
+AULA 10 - RODA DE CONVERSA ABERTA - MERCADO DE TRABALHO EM DADOS E PLANOS PARA A GRADUAÇÃO
+====================================================
+Assunto: Conversa aberta de encerramento do ano sobre o que vem depois do 2º ano — mercado de trabalho na área de dados e planos para a graduação. Aula em sala, em formato de roda, sem conteúdo novo de matéria.
+
+Abordagem: Roda de cadeiras e pergunta disparadora — "onde vocês imaginam usar o que aprenderam no técnico daqui a cinco anos?".
+
+Prática: Conversa leve em torno de três pontos, conforme a turma trouxer: o que um técnico de dados faz e em que empresas e órgãos isso aparece; caminhos de graduação ligados à área (Ciência de Dados, Sistemas de Informação, Estatística e afins) e formas de acesso (ENEM, SISU, ProUni, institutos federais); e o que dá para fazer já no 3º ano para chegar preparado. Fechamento com cada aluno dizendo em uma frase um próximo passo que pretende dar.
+
+Dinâmica: registro coletivo, no quadro ou em mural digital, de um "mapa de caminhos" da turma com os cursos e profissões citados.
+
+Ferramentas: quadro branco ou mural digital projetado (Jamboard, Canva ou Padlet); projetor.
+
+
+
+DESENVOLVIMENTO LOCAL - PROJETO DE VALIDAÇÃO E MOSTRA (8 aulas)
+------------------------------
+Continuação direta do projeto iniciado no 3º bimestre (proposta/protótipo de solução construído por cada dupla a partir de dados reais). As mesmas duplas seguem com o mesmo projeto; o 4º bimestre roda a segunda metade do ciclo — testar a proposta com usuários reais, corrigir com base no retorno e expor numa mostra de projetos. Sem divisão teórica/prática: cada etapa é uma aula prática de laboratório (a Aula 7 pode ocorrer em sala ou no pátio). Diálogo direto com a UC III do mesmo bimestre (testes de usabilidade e acessibilidade).
+
+Estrutura do bimestre:
+- Aula 1 ....... Retomada e diagnóstico do projeto
+- Aula 2 ....... Roteiro de validação
+- Aula 3 ....... Validação com usuários reais
+- Aula 4 ....... Leitura do feedback
+- Aula 5 ....... Iteração e melhorias
+- Aula 6 ....... Curadoria da mostra
+- Aula 7 ....... Mostra de Projetos
+- Aula 8 ....... Análise cruzada e fechamento
+
+
+====================================================
+AULA 1 - RETOMADA E DIAGNÓSTICO DO PROJETO
+====================================================
+Assunto: Reabertura do projeto do 3º bimestre e definição da versão que será testada. Aula prática no laboratório de informática.
+
+Abordagem: Retomada rápida do que cada dupla entregou na apresentação do bimestre anterior e pergunta sobre o que ficou pela metade ou nunca foi verificado com outras pessoas.
+
+Prática: Em duplas, revisão do material do projeto (dados coletados, proposta/protótipo). Registro de três itens — o que já está pronto, o que precisa de ajuste antes de mostrar a alguém e qual pergunta o teste com usuários precisa responder. Definição de dois ou três critérios de sucesso do projeto (o que significaria "ter dado certo").
+
+Ferramentas: material do projeto do 3º bimestre; Google Docs.
+
+
+====================================================
+AULA 2 - ROTEIRO DE VALIDAÇÃO
+====================================================
+Assunto: Montagem do roteiro para testar a proposta com pessoas de fora da dupla. Aula prática no laboratório de informática, apoiada no conteúdo de testes de usabilidade da UC III.
+
+Abordagem: Retomada da diferença entre "perguntar se a pessoa gostou" e "observar a pessoa tentando usar", conduzindo ao formato do teste.
+
+Prática: Cada dupla monta o material de validação — duas ou três tarefas que o usuário vai tentar cumprir com o protótipo/proposta, uma folha de observação (onde a pessoa travou, quanto tempo levou, o que comentou) e um formulário curto de feedback no Google Forms (clareza, utilidade, o que mudaria). Definição de quem serão os testadores (colegas de outra turma, professores, funcionários) e de quantos testes cada dupla fará (mínimo de quatro).
+
+Ferramentas: Google Forms; Google Docs; protótipo/proposta da dupla.
+
+
+====================================================
+AULA 3 - VALIDAÇÃO COM USUÁRIOS REAIS
+====================================================
+Assunto: Aplicação do teste com pessoas reais e registro do que acontece. Aula prática no laboratório de informática.
+
+Abordagem: Combinação dos papéis na dupla — quem conduz e quem observa e anota, sem ajudar o testador.
+
+Prática: Recepção dos testadores convidados (ou visita às turmas e salas combinadas). Para cada testador: apresentação das tarefas, observação silenciosa, preenchimento da folha de observação e envio do formulário de feedback. Fechamento da aula com a dupla reunindo todas as folhas e respostas num só lugar.
+
+Ferramentas: protótipo/proposta; folhas de observação impressas (material próprio); Google Forms; celular para cronometrar.
+
+
+====================================================
+AULA 4 - LEITURA DO FEEDBACK
+====================================================
+Assunto: Organização e priorização do que foi coletado no teste. Aula prática no laboratório de informática.
+
+Abordagem: Pergunta sobre o que mais se repetiu nos comentários dos testadores antes de abrir os dados.
+
+Prática: Exportação das respostas do Forms para o Google Sheets, junção com as anotações de observação e contagem dos problemas por tipo. Construção de uma matriz esforço x impacto — cada problema classificado como fácil ou difícil de resolver e como pouco ou muito importante. Escolha de três a cinco mudanças que a dupla vai realmente aplicar.
+
+Ferramentas: Google Sheets; anotações da Aula 3; modelo de matriz esforço x impacto (Google Docs ou Sheets).
+
+
+====================================================
+AULA 5 - ITERAÇÃO E MELHORIAS
+====================================================
+Assunto: Aplicação das mudanças escolhidas no projeto. Aula prática no laboratório de informática.
+
+Abordagem: Retomada da lista de mudanças priorizada na aula anterior como plano de trabalho da aula.
+
+Prática: Em duplas, execução das melhorias no protótipo/proposta (ajuste de telas, reorganização dos dados, correção de textos, revisão da solução). Registro de um "antes e depois" de cada mudança feita, para uso na mostra.
+
+Ferramentas: Canva, Google Slides ou Google Docs (conforme o formato do projeto da dupla); registro de antes e depois (Google Docs).
+
+
+====================================================
+AULA 6 - CURADORIA DA MOSTRA
+====================================================
+Assunto: Preparação do material de apresentação para a mostra de projetos. Aula prática no laboratório de informática.
+
+Abordagem: Apresentação do formato da mostra — estações espalhadas pela sala, visitantes circulando, cada dupla explicando o projeto várias vezes em poucos minutos.
+
+Prática: Cada dupla produz um pôster ou painel digital com o essencial do projeto (problema, dados coletados, proposta, o que o teste com usuários mudou) e prepara uma fala curta de dois a três minutos. Ensaio da fala dentro da própria dupla e revisão final do material.
+
+Ferramentas: Canva ou Google Slides para o pôster/painel; projetor ou impressão do material.
+
+
+====================================================
+AULA 7 - MOSTRA DE PROJETOS
+====================================================
+Assunto: Evento de apresentação dos projetos da turma para visitantes. Aula prática em sala ou no pátio.
+
+Abordagem: Organização das estações e explicação da dinâmica para a turma e para os visitantes.
+
+Prática: Duplas posicionadas em estações com seus pôsteres/painéis; visitantes (outras turmas, professores, equipe da escola) circulam e ouvem as apresentações curtas. Cada visitante preenche uma ficha rápida de avaliação por projeto (o que entendeu, o ponto mais forte, uma sugestão). Enquanto um da dupla apresenta, o outro recolhe as fichas, com troca no meio do tempo.
+
+Dinâmica: mural coletivo na entrada da mostra, onde cada visitante deixa um bilhete com o projeto que mais chamou a atenção e o porquê.
+
+Ferramentas: pôsteres/painéis das duplas; fichas de avaliação impressas (material próprio); mural e post-its.
+
+
+====================================================
+AULA 8 - ANÁLISE CRUZADA E FECHAMENTO
+====================================================
+Assunto: Avaliação dos projetos entre colegas e encerramento do ciclo e do ano. Aula prática em sala.
+
+Abordagem: Distribuição, para cada dupla, de dois projetos de colegas para analisar com calma, a partir do material e das fichas da mostra.
+
+Prática: Cada dupla preenche uma rubrica sobre os dois projetos recebidos (uso dos dados, clareza da proposta, o que o teste com usuários melhorou, apresentação) e escreve um parágrafo de devolutiva para cada. Em seguida, roda de conversa: o que mudou entre a proposta do 3º bimestre e a versão testada, o que o retorno dos usuários revelou e o que cada um levaria para um próximo projeto. Autoavaliação individual registrada no Google Forms.
+
+Dinâmica: cada aluno escreve em uma frase a maior lição do projeto de fim de ano, formando um painel de fechamento da turma.
+
+Ferramentas: rubrica de análise (Google Docs ou Forms); Google Forms para a autoavaliação; quadro e post-its.
