@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dev Local Aula 02 - Folha de Observação</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term { color: #2a5b8a; }
+  .flowchart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 16px 0 4px 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .flowchart .box {
+    background: #ffffff;
+    border: 1.5px solid #2a5b8a;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 11px;
+    text-align: center;
+    min-width: 92px;
+    color: #2a5b8a;
+    font-weight: bold;
+  }
+  .flowchart .box span.sub {
+    display: block;
+    font-weight: normal;
+    color: #555;
+    font-size: 9.5px;
+    margin-top: 2px;
+  }
+  .flowchart .arrow { font-size: 16px; color: #2a5b8a; }
+  .flowchart-note {
+    text-align: center;
+    font-size: 10.5px;
+    color: #555;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 4px;
+  }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 26px 0 10px 0;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .num-col { width: 26px; text-align: center; }
+  .blank-col { width: 24%; }
+  .qbox { margin-bottom: 18px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  .example-cols { display: flex; gap: 16px; }
+  .example-cols .col { flex: 1; }
+  .example-cols h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #2a5b8a;
+    margin: 0 0 6px 0;
+  }
+  footer {
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">📋</span><h1>Folha de Observação do Teste</h1></div>
+  <div class="subtitle">Instrumento de Validação · Projeto de Validação e Mostra · Desenvolvimento Local · Aula 02</div>
+  <div class="id-fields"><span class="field">Nome: <span class="line"></span></span><span class="field">Turma: <span class="line"></span></span></div>
+  <p class="intro"><b>Uma folha por testador.</b> Quem observa não ajuda, não explica e não corrige — só
+anota. Se o testador travar, a vontade de socorrer vai ser enorme: aguentem. O travamento <b>é</b> o
+resultado da pesquisa. Ajudar apaga o dado que vocês vieram buscar.</p>
+  <div class="part-header">Identificação do teste</div>
+  <table>
+    <tr><th>Campo</th><th class="blank-col">Resposta</th></tr>
+    <tr><td>Projeto / dupla</td><td></td></tr>
+    <tr><td>Quem conduziu</td><td></td></tr>
+    <tr><td>Quem observou</td><td></td></tr>
+    <tr><td>Testador (nº e perfil)</td><td>nº ____ · aluno / professor / funcionário / outro</td></tr>
+    <tr><td>Data e hora</td><td></td></tr>
+  </table>
+  <div class="part-header">Tarefas</div>
+  <div class="instructions">Anotem o que <b>aconteceu</b>, não o que a pessoa achou. "Concluiu?" é sim ou
+não, sem meio-termo: se precisou de ajuda, não concluiu.</div>
+  <table>
+    <tr><th class="num-col">#</th><th>Tarefa pedida</th><th class="blank-col">Concluiu? (S/N)</th><th>Tempo</th><th>Nº de erros</th></tr>
+    <tr><td class="num-col">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="num-col">2</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="num-col">3</td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <div class="part-header">Onde travou</div>
+  <div class="instructions">Cada travamento numa linha: em que ponto e o que a pessoa tentou fazer.</div>
+  <div class="qbox">
+    <div class="q"><b>Travamentos observados:</b></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+</div>
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">📋</span><h1>Folha de Observação — folha 2</h1></div>
+  <div class="subtitle">APC — Atividade Prática de Classe · Desenvolvimento Local · Aula 02</div>
+  <div class="part-header">O que a pessoa falou em voz alta</div>
+  <div class="instructions">Transcrevam as <b>palavras dela</b>, entre aspas. Não
+resumam e não melhorem a frase — a palavra exata é o que revela o mal-entendido.</div>
+  <div class="qbox">
+    <div class="q"><b>Falas:</b></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+  <div class="part-header">Fechamento do observador</div>
+  <div class="instructions">Preencher imediatamente após o teste, antes de chamar o próximo.</div>
+  <div class="qbox">
+    <div class="q"><b>a)</b> O critério de sucesso definido na Aula 01 foi atingido com este testador? Sim ou não, e por quê?</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="q"><b>b)</b> Uma coisa que surpreendeu a dupla neste teste:</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+</div>
+</body>
+</html>

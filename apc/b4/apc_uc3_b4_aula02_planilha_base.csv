@@ -1,0 +1,41 @@
+id,nome,email,data_nascimento,cidade,telefone,turma,nota_bimestre
+1,Ana Beatriz Lima,ana.lima@escola.com,15/03/2009,Corumbá,(67) 99812-3345,2A,8.5
+2,ana beatriz lima,ana.lima@escola.com,2009-03-15,corumba,67998123345,2A,8.5
+3,Carlos Eduardo Souza,carlos.souza@escola.com,30/02/2008,Corumbá,(67) 99745-1200,2A,7.0
+4,Mariana Alves,,22/07/2009,Ladário,(67) 99633-8877,2A,9.0
+5,João Pedro Nunes,joao.nunes@escola.com,11/11/2009,CORUMBÁ,9963,2B,6.5
+6,Beatriz Oliveira,beatriz.oliveira@escola.com,04/09/2009,Ladario,(67) 99511-4466,2B,7.5
+7,Rafael Monteiro,rafael.monteiro@escola.com,18/05/1907,Corumbá,(67) 99388-2233,2B,8.0
+8,Luiza Ferreira,luiza.ferreira@escola.com,,Corumbá/MS,(67) 99277-9001,2A,9.5
+9,Pedro Henrique Dias,pedro.dias@escola.com,27/01/2010,Ladário,(67) 99277-9001,2B,5.5
+10,Sofia Ramos,sofia.ramos@escola.com,09/12/2009,,(67) 99155-7788,2A,7.0
+11,Gabriel Castro,gabriel.castro@escola,03/06/2009,Corumbá,(67) 99044-1122,2B,6.0
+12,Larissa Pinto,larissa.pinto@escola.com,19/08/2009,Corumba,(67) 98933-5566,2A,8.5
+13,Thiago Barbosa,thiago.barbosa@escola.com,25/04/2009,Ladário,(67) 98822-7788,2B,110
+14,Camila Rocha,camila.rocha@escola.com,07/10/2009,Corumbá,(67) 98711-9900,2A,9.0
+15,CAMILA ROCHA,camila.rocha@escola.com,07/10/2009,Corumbá,(67) 98711-9900,2A,9.0
+16,Vinícius Melo,vinicius.melo@escola.com,14/02/2009,Corumbá,(67) 98600-2233,2B,7.5
+17,Isabela Cardoso,isabela.cardoso@escola.com,31/12/2009,Ladario,,2A,8.0
+18,Matheus Correia,matheus.correia@escola.com,08/07/2009,Corumbá,(67) 98488-6677,2B,-3
+19,Juliana Freitas,juliana freitas@escola.com,21/05/2009,Corumbá,(67) 98377-8899,2A,7.0
+20,Bruno Teixeira,bruno.teixeira@escola.com,02/09/2009,Ladário,(67) 98266-1100,2B,6.5
+21,Amanda Nogueira,amanda.nogueira@escola.com,17/11/2009,CORUMBA,(67) 98155-3322,2A,8.5
+22,Felipe Antunes,felipe.antunes@escola.com,29/01/2009,Corumbá,(67) 98044-5544,2C,7.5
+23,Natália Braga,natalia.braga@escola.com,05/04/2009,Corumbá,(67) 97933-7766,2A,9.0
+24,Lucas Vieira,,13/08/2009,Ladário,(67) 97822-9988,2B,
+25,Priscila Duarte,priscila.duarte@escola.com,24/06/2009,Corumbá,(67) 97711-2211,2A,8.0
+26,Eduardo Sampaio,eduardo.sampaio@escola.com,01/01/1900,Corumbá,(67) 97600-4433,2B,7.0
+27,Renata Lopes,renata.lopes@escola.com,16/10/2009,Ladario,(67) 97599-6655,2A,8.5
+28,Gustavo Pereira,gustavo.pereira@escola.com,28/03/2009,Corumbá,(67) 97488-8877,2B,6.0
+29,Bianca Moura,bianca.moura@escola.com,10/05/2009,Corumbá,(67) 97377-1099,2A,9.5
+30,Diego Farias,diego.farias@escola.com,23/09/2009,Ladário,123,2B,7.5
+31,Letícia Campos,leticia.campos@escola.com,06/12/2009,Corumbá,(67) 97155-3211,2A,8.0
+32,Rodrigo Bastos,rodrigo.bastos@escola.com,12/02/2035,Corumbá,(67) 97044-5432,2B,7.0
+33,Patrícia Neves,patricia.neves@escola.com,20/07/2009,Corumbá,(67) 96933-7654,2A,8.5
+34,André Siqueira,andre.siqueira@escola.com,04/11/2009,Ladario,(67) 96822-9876,2B,6.5
+35,Vanessa Coelho,vanessa.coelho@escola.com,,Corumbá,(67) 96711-1098,2A,9.0
+36,Márcio Aguiar,marcio.aguiar@escola.com,26/08/2009,Corumbá,(67) 96600-3210,2B,7.5
+37,Tatiane Borges,tatiane.borges@escola.com,09/03/2009,Ladário,(67) 96599-5432,2A,8.0
+38,Henrique Paiva,henrique.paiva@escola.com,15/03/2009,Corumba,(67) 96488-7654,2B,7.0
+39,Cristiane Matos,cristiane.matos@escola.com,31/06/2009,Corumbá,(67) 96377-9876,2A,8.5
+40,Ana Beatriz Lima,ana.lima@escola.com,15/03/2009,Corumbá,(67) 99812-3345,2A,8.5
