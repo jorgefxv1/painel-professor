@@ -11,13 +11,17 @@ Gera o material didático das aulas do 4º bimestre para o Jorge (professor téc
 
 ---
 
+> **Todos os caminhos deste documento são relativos à raiz do repositório `painel-professor`.**
+> No Mac do Jorge essa raiz é a pasta `repositorio-aulas/`; no clone que o agente da nuvem usa, ela é
+> o próprio diretório de trabalho. Use sempre o caminho relativo (`data.js`, `apc/b4/`), nunca prefixado.
+
 ## Fonte de verdade
 
 Sempre leia, nesta ordem, antes de gerar qualquer coisa:
 
-1. `repositorio-aulas/divisao-aulas-4-bimestre.txt` — o planejamento fechado das 35 aulas. **É a fonte canônica do conteúdo de cada aula.** Nunca invente tema; o tema já está definido ali.
-2. `repositorio-aulas/data.js` — as mesmas aulas em objeto JS (`uc1-b4`, `uc2-b4`, `uc3-b4`, `dev-local-b4`), com `num`, `semana`, `titulo`, `subtitulo` e `sections`. Use para saber título/subtítulo oficial e número da aula.
-3. `repositorio-aulas/apc/apc_uc3_aula1_worksheet.html` — **template canônico de estilo** dos worksheets. Ao gerar um worksheet novo, copie o bloco `<style>` desse arquivo sem alterar. Não reinvente CSS.
+1. `divisao-aulas-4-bimestre.txt` — o planejamento fechado das 35 aulas. **É a fonte canônica do conteúdo de cada aula.** Nunca invente tema; o tema já está definido ali.
+2. `data.js` — as mesmas aulas em objeto JS (`uc1-b4`, `uc2-b4`, `uc3-b4`, `dev-local-b4`), com `num`, `semana`, `titulo`, `subtitulo` e `sections`. Use para saber título/subtítulo oficial e número da aula.
+3. `apc/apc_uc3_aula1_worksheet.html` — **template canônico de estilo** dos worksheets. Ao gerar um worksheet novo, copie o bloco `<style>` desse arquivo sem alterar. Não reinvente CSS.
 
 Fase do bimestre: **02/10/2026 a 09/12/2026**.
 
@@ -25,7 +29,7 @@ Fase do bimestre: **02/10/2026 a 09/12/2026**.
 
 ## Onde salvar
 
-Tudo em `repositorio-aulas/apc/b4/`, seguindo o padrão de nomes já usado na pasta `apc/`:
+Tudo em `apc/b4/`, seguindo o padrão de nomes já usado na pasta `apc/`:
 
 | Tipo | Nome do arquivo |
 |---|---|
@@ -80,7 +84,7 @@ Não gere lista nem prova. Gere:
 
 ## Padrão dos arquivos HTML (folha A4)
 
-Copie o `<style>` de `repositorio-aulas/apc/apc_uc3_aula1_worksheet.html` e monte o corpo com a mesma estrutura:
+Copie o `<style>` de `apc/apc_uc3_aula1_worksheet.html` e monte o corpo com a mesma estrutura:
 
 - `.sheet` — a folha A4 (210mm × 297mm, padding 16mm)
 - `.top-bar` — à esquerda `EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS` e `2º Ano A / B — Integral`; à direita `Prof. Jorge Frias` e `___ / 10 / 2026` (mês conforme a aula)
@@ -120,10 +124,10 @@ Regras que não podem ser quebradas:
 
 1. Rode `date +%Y-%m-%d` para saber a data real. Não presuma.
 2. Calcule a semana do bimestre (semana 1 começa em 02/10/2026).
-3. Cruze com o `SCHEDULE_ROWS` em `repositorio-aulas/app.js` para saber quais disciplinas têm aula na semana.
+3. Cruze com o `SCHEDULE_ROWS` em `app.js` para saber quais disciplinas têm aula na semana.
 4. Para cada disciplina, identifique as aulas daquela `semana` no `data.js` (campo `semana`).
 5. Liste em `apc/b4/` o que já existe e gere **apenas o que falta**.
-6. Escreva/atualize `repositorio-aulas/apc/b4/STATUS.md` com uma tabela: aula, tipo, arquivos gerados, data de geração, e o que ainda falta.
+6. Escreva/atualize `apc/b4/STATUS.md` com uma tabela: aula, tipo, arquivos gerados, data de geração, e o que ainda falta.
 7. Termine com um resumo curto em português: o que foi gerado, onde está, e o que precisa de revisão humana.
 
 Se a semana calculada estiver fora de 02/10–09/12/2026, não gere nada — registre no `STATUS.md` que o bimestre não está em curso e encerre.
