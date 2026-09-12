@@ -1,0 +1,348 @@
+<title>Qualidade de Software</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@0,500;0,600;0,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #ece8ef;
+    --paper: #ffffff;
+    --ink: #241f28;
+    --muted: #6b6470;
+    --accent: #6d3b9c;
+    --accent-ink: #4a2570;
+    --accent-soft: #f0e9f5;
+    --rule: #ddd4e1;
+    --bad: #a8402f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131117;
+      --paper: #1d1922;
+      --ink: #ece7ef;
+      --muted: #a79fae;
+      --accent: #c9a3e6;
+      --accent-ink: #ddc4ef;
+      --accent-soft: #29212f;
+      --rule: #342c3a;
+      --bad: #e29a89;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #131117;
+    --paper: #1d1922;
+    --ink: #ece7ef;
+    --muted: #a79fae;
+    --accent: #c9a3e6;
+    --accent-ink: #ddc4ef;
+    --accent-soft: #29212f;
+    --rule: #342c3a;
+    --bad: #e29a89;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 9pt;
+    line-height: 1.42;
+  }
+  @media screen {
+    body { padding: 22px 12px; }
+    .sheet { box-shadow: 0 2px 14px rgba(0,0,0,.16); margin: 0 auto 20px; }
+  }
+
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    padding: 12mm 14mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* header */
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 6.6pt;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    line-height: 1.5;
+    margin: 0 0 6pt;
+  }
+  h1 {
+    font-family: "Spectral", Georgia, serif;
+    font-weight: 700;
+    font-size: 18pt;
+    line-height: 1.1;
+    letter-spacing: -.01em;
+    margin: 0 0 5pt;
+    text-wrap: balance;
+  }
+  .meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 7pt;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2pt 14pt;
+    padding-bottom: 8pt;
+    border-bottom: 1.5px solid var(--accent);
+    margin-bottom: 9pt;
+  }
+  .meta b { color: var(--ink); font-weight: 500; }
+
+  h2 {
+    font-family: "Spectral", Georgia, serif;
+    font-weight: 600;
+    font-size: 12.5pt;
+    margin: 11pt 0 5pt;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 6pt;
+  }
+  h2 .n {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 6.6pt;
+    color: var(--accent-ink);
+    letter-spacing: .05em;
+  }
+  h3 {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 7pt;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin: 10pt 0 4pt;
+  }
+  p { margin: 0 0 6pt; }
+  strong { font-weight: 600; }
+  .lead { font-size: 9.4pt; }
+  .sep-note {
+    font-size: 8pt;
+    color: var(--muted);
+    margin: 4pt 0 6pt;
+  }
+
+  /* chain flow */
+  .chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 4pt;
+    margin: 5pt 0 4pt;
+  }
+  .chain .link {
+    flex: 1 1 150px;
+    border: 1px solid var(--accent);
+    border-radius: 4pt;
+    padding: 5pt 7pt;
+    background: var(--accent-soft);
+  }
+  .chain .link b {
+    display: block;
+    font-size: 8.4pt;
+    font-weight: 600;
+    margin-bottom: 1pt;
+  }
+  .chain .link span {
+    font-size: 7.4pt;
+    line-height: 1.35;
+    color: var(--muted);
+  }
+  .chain .arrow {
+    align-self: center;
+    color: var(--accent);
+    font-size: 9pt;
+    flex: 0 0 auto;
+  }
+
+  /* tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 7.9pt;
+    margin: 4pt 0 6pt;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 3.4pt 5pt;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.35;
+  }
+  thead th {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 6.4pt;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    border-bottom: 1.5px solid var(--accent);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td b { font-weight: 600; }
+  td .subs { color: var(--muted); font-size: 7.1pt; display: block; margin-top: 1pt; }
+  td .bad { color: var(--bad); }
+  .t-num { width: 14pt; color: var(--accent-ink); font-family: "IBM Plex Mono", monospace; font-size: 7pt; }
+
+  .box {
+    border: 1px dashed var(--accent);
+    border-radius: 4pt;
+    padding: 5pt 8pt;
+    font-size: 7.8pt;
+    line-height: 1.4;
+    margin: 6pt 0;
+  }
+  .box b { color: var(--accent-ink); }
+
+  ol.ex { margin: 3pt 0 0; padding-left: 0; list-style: none; counter-reset: ex; }
+  ol.ex > li {
+    counter-increment: ex;
+    position: relative;
+    padding-left: 15pt;
+    margin-bottom: 5pt;
+    font-size: 8.2pt;
+    line-height: 1.4;
+  }
+  ol.ex > li::before {
+    content: counter(ex);
+    position: absolute;
+    left: 0; top: .5pt;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 7pt;
+    color: #fff;
+    background: var(--accent);
+    width: 11pt; height: 11pt;
+    border-radius: 2.5pt;
+    display: grid;
+    place-items: center;
+  }
+  ol.ex .items { color: var(--ink); }
+  ol.ex .items b { color: var(--accent-ink); font-family: "IBM Plex Mono", monospace; font-weight: 500; }
+
+  .grow { flex: 1; }
+  footer {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 6.6pt;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 6pt;
+    margin-top: 8pt;
+    line-height: 1.5;
+  }
+
+  @media print {
+    :root { --bg:#fff; --paper:#fff; --ink:#1c1c1c; --accent-soft:#f2ecf6; }
+    @page { size: A4; margin: 10mm; }
+    html, body { padding: 0; margin: 0; font-size: 8.2pt; }
+    .sheet {
+      width: auto; min-height: 0; height: auto;
+      box-shadow: none; margin: 0; padding: 0;
+      display: block;
+    }
+    .sheet + .sheet { break-before: page; page-break-before: always; }
+    h1 { font-size: 16pt; }
+    h2 { font-size: 11pt; margin: 6pt 0 3pt; }
+    h3 { margin: 6pt 0 3pt; }
+    p { margin: 0 0 4pt; }
+    .lead { font-size: 8.6pt; }
+    .meta { margin-bottom: 6pt; padding-bottom: 5pt; }
+    table { margin: 3pt 0 4pt; }
+    th, td { padding: 2.5pt 4pt; }
+    .chain { margin: 3pt 0 3pt; }
+    .chain .link { padding: 3.5pt 6pt; }
+    .box { margin: 4pt 0; padding: 4pt 7pt; }
+    .sep-note { margin: 3pt 0 4pt; }
+    ol.ex > li { margin-bottom: 4pt; }
+    .grow { display: none; }
+    footer { display: none; }
+  }
+</style>
+
+<!-- ===== PÁGINA 1 ===== -->
+<div class="sheet">
+  <p class="eyebrow">EE Júlia Gonçalves Passarinho · Itinerário Formativo — Ciência de Dados<br>UC III · Qualidade e Testes de Sistemas · Capítulo 2 · Aula 03</p>
+  <h1>Qualidade de Software e a ISO/IEC 25010</h1>
+  <div class="meta"><span><b>Turma:</b> 2º Ano A/B — Integral</span><span><b>Prof.:</b> Jorge Frias</span><span><b>Data:</b> ___ / 09 / 2026</span></div>
+
+  <p class="lead">No Capítulo 1 você viu como descobrir e documentar o que um sistema precisa fazer (Engenharia de Requisitos). Agora a pergunta muda: <strong>depois de construído, como saber se ele ficou bom?</strong> Aparência é só uma fatia pequena disso — qualidade de software é transformar o "achismo" em algo que dá pra <strong>descrever, medir e cobrar</strong>.</p>
+
+  <p><strong>Qualidade de software</strong> é o grau em que um sistema atende aos requisitos combinados e às expectativas de uso, em condições reais. Ela é construída (ou destruída) em cada etapa do projeto — no requisito mal levantado, no código mal escrito, no teste que faltou: <strong>não se testa no fim, se constrói durante</strong>.</p>
+
+  <h3>Três olhares sobre a mesma qualidade</h3>
+  <table>
+    <thead><tr><th style="width:26%">Olhar</th><th>O que observa</th><th style="width:27%">Quem enxerga</th></tr></thead>
+    <tbody>
+      <tr><td><b>Interna</b></td><td>Estrutura e código: organização, legibilidade, partes bem separadas, sem repetição desnecessária.</td><td>Equipe de desenvolvimento</td></tr>
+      <tr><td><b>Externa</b></td><td>Comportamento do software rodando, visto de fora: quantos defeitos aparecem, quão rápido responde, se cai ou não.</td><td>Quem testa o produto pronto</td></tr>
+      <tr><td><b>Em uso</b></td><td>Uma pessoa real cumprindo um objetivo num contexto de verdade (ex.: lançar as notas de uma turma em 5 min no PC do laboratório).</td><td>O usuário final, observado</td></tr>
+    </tbody>
+  </table>
+  <p class="sep-note">Estão em cadeia: código ruim (interna fraca) → mais defeitos e lentidão (externa fraca) → atrapalha o usuário (em uso fraca).</p>
+
+  <h3>Vocabulário: engano → defeito → falha</h3>
+  <div class="chain">
+    <div class="link"><b>Engano (erro)</b><span>a ação humana equivocada: entender mal o requisito, esquecer um caso, trocar um sinal. Acontece na pessoa.</span></div>
+    <div class="arrow">▶</div>
+    <div class="link"><b>Defeito (o "bug")</b><span>a imperfeição que ficou registrada no código por causa do engano. Pode ficar meses "dormindo".</span></div>
+    <div class="arrow">▶</div>
+    <div class="link"><b>Falha</b><span>o comportamento errado que aparece quando aquele trecho roda: a tela trava, a conta dá errado, o app fecha.</span></div>
+  </div>
+  <p class="sep-note">Nem todo defeito vira falha (pode estar num trecho que nunca roda) — mas toda falha veio de um defeito, que veio de um engano.</p>
+
+  <h3>Por que importa: o custo de arrumar depois</h3>
+  <p><strong>Quanto mais tarde o defeito é descoberto, mais caro corrigir</strong> — e a diferença é de escala:</p>
+  <div class="chain">
+    <div class="link"><b>Requisito</b><span>custo baixo — reescrever uma frase</span></div>
+    <div class="arrow">▶</div>
+    <div class="link"><b>Projeto</b><span>custo médio — redesenhar uma parte</span></div>
+    <div class="arrow">▶</div>
+    <div class="link"><b>Código</b><span>custo maior — reprogramar e retestar</span></div>
+    <div class="arrow">▶</div>
+    <div class="link"><b>Produção</b><span>custo alto — usuário afetado, correção de emergência, perda de confiança</span></div>
+  </div>
+  <p class="sep-note">Por isso a qualidade é trabalhada em <strong>todas</strong> as etapas — requisito claro, projeto pensado, revisão de código, testes — e não só no fim. O que se aprende com o sistema em uso volta como melhoria do próximo ciclo.</p>
+
+  <div class="grow"></div>
+  <footer>UC III — Qualidade e Testes de Sistemas · Capítulo 2 · 3º Bimestre 2026 · 2º Ano A/B · Prof. Jorge Frias · pág. 1 de 2</footer>
+</div>
+
+<!-- ===== PÁGINA 2 ===== -->
+<div class="sheet">
+  <h2><span class="n">Parte 2</span> A norma ISO/IEC 25010</h2>
+  <p><strong>ISO</strong> é a Organização Internacional de Normalização (Genebra, Suíça); cria <strong>normas técnicas</strong> que padronizam como fazer ou medir algo — o tamanho da folha A4 é uma norma ISO. A <strong>ISO/IEC 25010</strong>, da família ISO/IEC 25000 (SQuaRE), define um <strong>modelo de qualidade</strong>: um checklist comum de características pra qualquer equipe avaliar qualquer software sem depender de opinião pessoal. Cada característica tem subcaracterísticas mais específicas.</p>
+
+  <h3>As 8 características de qualidade</h3>
+  <table>
+    <thead><tr><th class="t-num">#</th><th style="width:23%">Característica</th><th>Pergunta-guia + subcaracterísticas</th><th style="width:31%">Exemplo de quando falha</th></tr></thead>
+    <tbody>
+      <tr><td class="t-num">01</td><td><b>Adequação funcional</b></td><td>Faz o que promete, de forma correta e completa?<span class="subs">completude, correção e pertinência funcional</span></td><td class="bad">"diz que fez a transferência, mas o dinheiro não sai da conta"</td></tr>
+      <tr><td class="t-num">02</td><td><b>Eficiência de desempenho</b></td><td>Responde rápido e sem gastar recurso à toa?<span class="subs">tempo de resposta, uso de memória/processador/bateria, capacidade</span></td><td class="bad">"jogo simples que esquenta o celular e trava a cada 2 minutos"</td></tr>
+      <tr><td class="t-num">03</td><td><b>Compatibilidade</b></td><td>Convive e troca dados com outros sistemas?<span class="subs">coexistência, interoperabilidade</span></td><td class="bad">"só exporta num formato que nenhum outro programa abre"</td></tr>
+      <tr><td class="t-num">04</td><td><b>Usabilidade</b></td><td>É fácil de aprender e usar sem sofrimento?<span class="subs">fácil de operar, proteção contra erro do usuário, interface agradável, acessibilidade</span></td><td class="bad">"site com 15 campos, siglas por todo lado e o botão enviar escondido no rodapé"</td></tr>
+      <tr><td class="t-num">05</td><td><b>Confiabilidade</b></td><td>Dá pra confiar que funciona quando você precisa?<span class="subs">maturidade, disponibilidade, tolerância a falhas, recuperabilidade</span></td><td class="bad">"se travar, perde tudo que você não salvou nos últimos 40 minutos"</td></tr>
+      <tr><td class="t-num">06</td><td><b>Segurança</b></td><td>Protege os dados e respeita as permissões?<span class="subs">confidencialidade, integridade, não-repúdio, responsabilização, autenticidade</span></td><td class="bad">"guarda as senhas em texto puro e vaza tudo num ataque simples"</td></tr>
+      <tr><td class="t-num">07</td><td><b>Manutenibilidade</b></td><td>É fácil de corrigir e evoluir depois de pronto?<span class="subs">modularidade, reusabilidade, analisabilidade, modificabilidade, testabilidade</span></td><td class="bad">"qualquer mudança pequena quebra três telas que ninguém imaginava"</td></tr>
+      <tr><td class="t-num">08</td><td><b>Portabilidade</b></td><td>É fácil de levar pra outro ambiente (aparelho, sistema, servidor)?<span class="subs">adaptabilidade, capacidade de instalação, capacidade de substituição</span></td><td class="bad">"só roda numa versão antiga do Windows e trava em qualquer outra"</td></tr>
+    </tbody>
+  </table>
+
+  <p class="sep-note"><strong>Analogia da casa:</strong> adequação funcional = os cômodos existem e funcionam (a torneira abre); confiabilidade = o telhado não cai e o disjuntor religa; segurança = portas com fechadura; usabilidade = o interruptor onde a mão procura; eficiência = não desperdiça água nem luz; compatibilidade = encaixa na rede da rua; manutenibilidade = trocar um cano sem quebrar a parede; portabilidade = construir o mesmo projeto em outro terreno.</p>
+
+  <div class="box"><b>Revisão de 2023:</b> o modelo passou de 8 para <b>9 características</b> — somou <b>Segurança física</b> (<em>safety</em>: risco de dano a pessoas, negócio, propriedade ou ambiente, em software que controla carro, equipamento hospitalar, máquina). Para esta disciplina e para a prova, vale o modelo das <b>8 características</b>.</div>
+
+  <h2><span class="n">Fim</span> Exercícios</h2>
+  <p class="sep-note">Responda no documento indicado, com suas próprias palavras. O que vale ponto é a justificativa.</p>
+  <ol class="ex">
+    <li>Diferencie <strong>qualidade interna</strong>, <strong>externa</strong> e <strong>em uso</strong>, com um exemplo de cada usando um app ou site que você conhece.</li>
+    <li>Classifique como <strong>engano</strong>, <strong>defeito</strong> ou <strong>falha</strong> e justifique: <span class="items"><b>a)</b> o programador digitou "maior que" no lugar de "maior ou igual"; <b>b)</b> o código calcula o desconto errado quando a compra é exatamente R$ 100,00; <b>c)</b> a cliente comprou R$ 100,00, não teve desconto e reclamou no balcão.</span></li>
+    <li>Associe cada reclamação do app de notas a uma das 8 características: <span class="items"><b>a)</b> "fecha e perde o que digitei quando a internet oscila"; <b>b)</b> "demora um minuto pra abrir a lista da turma"; <b>c)</b> "não dá pra aumentar a fonte, minha avó não lê"; <b>d)</b> "vi as notas de outra turma só trocando o número no endereço"; <b>e)</b> "trava no PC do laboratório, só funciona no meu celular".</span></li>
+    <li>Escolha um app que você usa bastante. Dê nota de 1 a 5 para <strong>4 características</strong> à sua escolha, com uma frase justificando cada uma, e diga qual você melhoraria primeiro e por quê.</li>
+  </ol>
+
+  <div class="grow"></div>
+  <footer>UC III — Qualidade e Testes de Sistemas · Capítulo 2 · 3º Bimestre 2026 · 2º Ano A/B · Prof. Jorge Frias · pág. 2 de 2</footer>
+</div>

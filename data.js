@@ -1089,6 +1089,574 @@ const DISCIPLINAS = [
       },
     ]
   },
+
+  {
+    id: 'uc1-b4',
+    label: 'UC I',
+    nome: 'Ingestão de Dados',
+    carga: '4 aulas/semana · 10 aulas',
+    emoji: '📥',
+    cor: '#a78bfa',
+    descricao: 'Fechamento da ingestão com as fontes externas que a apostila não detalhou: raspagem de dados da web, APIs públicas e os limites éticos e técnicos da coleta.',
+    referencia: 'Sem apostila — conteúdo próprio (apostila "Ingestão de Dados" concluída no 3º bimestre)',
+    bimestre: '4º Bimestre · 2026',
+    avaliacao: {
+      subtitulo: 'Prova mensal (Aulas 1 a 3) + Prova bimestral (todo o bimestre)',
+      provas: [
+        {
+          id: 'pm', label: 'PM', titulo: 'Prova Mensal',
+          descricao: 'Raspagem de Dados da Web (Aulas 1 e 2) e Coleta em Massa / Limites da Raspagem (Aula 3). Individual, sem consulta, com correção comentada e recuperação na sequência.'
+        },
+        {
+          id: 'pb', label: 'PB', titulo: 'Prova Bimestral',
+          descricao: 'Todo o bimestre de forma integrada: raspagem da web, APIs como fonte de dados e os transversais de limites da coleta e de viés/dados falsos na ingestão. Individual, sem consulta.'
+        },
+        {
+          id: 'rec', label: 'REC', titulo: 'Recuperação Paralela',
+          descricao: 'Aplicada na mesma aula da prova, após a correção coletiva — cobre exatamente o conteúdo avaliado.'
+        },
+      ],
+      criterios: [
+        'Distinção entre dado feito para pessoa ler e dado estruturado',
+        'Uso de IMPORTHTML / IMPORTXML para trazer uma tabela da web',
+        'Leitura de uma resposta JSON e identificação de campos e valores',
+        'Reconhecimento de quando usar API em vez de raspagem',
+        'Avaliação crítica dos limites da coleta (robots.txt, termos de uso, LGPD)',
+        'Identificação de viés de amostragem e de dados falsos na entrada',
+        'Participação nas práticas em laboratório',
+      ],
+    },
+    aulas: [
+      {
+        num: 1, emoji: '🕸️', semana: 1,
+        titulo: 'Raspagem de Dados da Web',
+        subtitulo: 'Trazendo para a planilha o dado que só existe numa página',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Como trazer para dentro de uma planilha dados que só existem numa página da internet. Aula expositiva dialogada em sala, com apoio do quadro e do projetor. Retomada da ideia de "fonte de dados" da ingestão, agora com a web como fonte.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Pergunta inicial sobre como alguém montaria uma tabela com a cotação do dólar dos últimos 30 dias, ou a classificação de um campeonato, sem digitar tudo na mão — conduzindo à ideia de "raspar" o dado que já está publicado.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Definição de raspagem de dados (web scraping): extração automática de informações de páginas web e conversão em dados organizados. Diferença entre uma página feita para uma pessoa ler e um dado estruturado. Como uma página é organizada por dentro (tags HTML, tabelas, listas) e por que isso permite a extração. Panorama das formas de raspar: funções de planilha (IMPORTHTML, IMPORTXML), extensões sem código e programação (apenas citada). Limites: páginas que mudam de layout, conteúdo que só aparece com o site aberto, bloqueios anti-robô.' },
+          { type: 'exercicio', label: 'Exercício', content: '6 situações; para cada uma, indicação se o dado poderia ser obtido por raspagem simples de planilha, exigiria ferramenta mais avançada ou não deveria ser raspado, com justificativa.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Quadro branco', 'Projetor para inspecionar a estrutura de páginas de exemplo', 'Lista de exercício (material próprio)'] },
+        ]
+      },
+      {
+        num: 2, emoji: '📊', semana: 1,
+        titulo: 'Raspando uma Tabela da Web',
+        subtitulo: 'IMPORTHTML na prática, do site à planilha limpa',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Extração de uma tabela real de uma página web para uma planilha e organização dos dados. Aula prática no laboratório de informática, aplicando a Aula 1.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Apresentação da proposta — cada dupla escolhe um tema (esporte, câmbio, população, cinema) e precisa trazer uma tabela pública da web para o Google Sheets sem digitar linha por linha.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, no Google Sheets.\n\nEtapa 1: escolha de uma página com uma tabela pública (ex.: verbete da Wikipédia, portal de cotações, ranking).\n\nEtapa 2: uso da função IMPORTHTML (ou IMPORTXML) para trazer a tabela e identificação do índice correto da tabela na página.\n\nEtapa 3: limpeza do resultado (remoção de colunas inúteis, correção de tipos e cabeçalhos) e produção de 1 gráfico e 2 observações a partir do dado raspado.\n\nRegistro da URL de origem e da data da coleta.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Sheets (IMPORTHTML / IMPORTXML)', 'Navegador', 'Modelo de registro da coleta (Google Docs)'] },
+        ]
+      },
+      {
+        num: 3, emoji: '🚦', semana: 2,
+        titulo: 'Coleta em Massa: robots.txt, Termos de Uso e Limites da Raspagem',
+        subtitulo: 'Transversal — até onde é aceitável coletar dado publicado',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Até onde é aceitável coletar dado que está publicado. Tema transversal dentro da disciplina, ligado à etapa de coleta da ingestão, aos termos de serviço e à LGPD. Aula prática no laboratório de informática.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Pergunta inicial — "se o dado está público na internet, posso fazer o que eu quiser com ele?" —, conduzindo à diferença entre dado acessível, dado livre para qualquer uso e dado protegido.' },
+          { type: 'pratica', label: 'Prática', content: 'Investigação em duplas.\n\n(1) Leitura do arquivo robots.txt de 3 sites conhecidos (endereço do site + /robots.txt) e identificação do que cada site pede para não ser raspado.\n\n(2) Leitura de um trecho dos termos de uso de uma rede social sobre coleta automatizada.\n\n(3) Pesquisa rápida de um caso real de conflito sobre raspagem (ex.: raspagem de perfis para treinar reconhecimento facial) e do que estava em jogo.\n\nFechamento com um "código de conduta da coleta" em 6 regras, escrito pela dupla.' },
+          { type: 'exercicio', label: 'Exercício', content: 'As respostas da investigação e o código de conduta da coleta produzido pela dupla.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Navegador', 'Arquivos robots.txt e termos de uso públicos', 'Portais de notícia', 'Google Docs ou Canva para o código de conduta'] },
+        ]
+      },
+      {
+        num: 4, emoji: '📝', semana: 2,
+        titulo: 'Prova Mensal + Correção e Recuperação',
+        subtitulo: 'Raspagem da web e limites da coleta',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova mensal sobre Raspagem de Dados da Web (Aulas 1 e 2) e Coleta em Massa / Limites da Raspagem (Aula 3). Aplicação em sala, individual e sem consulta, com correção comentada e atividade de recuperação na sequência.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Aplicação da prova escrita na primeira parte da aula.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Na segunda parte, correção coletiva questão por questão, retomada dos pontos de maior erro e atividade curta de recuperação (revisão dirigida) para os alunos abaixo da média, valendo como nova oportunidade de nota.' },
+          { type: 'exercicio', label: 'Exercício', content: 'A própria prova e a folha de recuperação.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa (material próprio)', 'Gabarito comentado', 'Folha de recuperação'] },
+        ]
+      },
+      {
+        num: 5, emoji: '🔌', semana: 3,
+        titulo: 'APIs como Fonte de Dados',
+        subtitulo: 'A porta oficial de ingestão entre sistemas',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Como sistemas pedem dados uns aos outros — a API como porta oficial de ingestão. Aula expositiva dialogada em sala, com apoio do quadro e do projetor.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Comparação entre "copiar dado da tela de outro sistema" e "pedir o dado pela porta certa"; pergunta sobre como um app de previsão do tempo sabe a temperatura de qualquer cidade — conduzindo à ideia de API.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Definição de API (interface pela qual um sistema oferece seus dados e serviços a outros, de forma organizada). Como funciona uma requisição: endereço (endpoint), parâmetros e resposta (geralmente em JSON). Leitura de um JSON simples (pares campo-valor, listas). Conceitos de chave de acesso (API key), autenticação e limite de uso (rate limit). Vantagens da API sobre a raspagem: dado já estruturado, estável e autorizado. Exemplos de APIs públicas e gratuitas (IBGE, câmbio, feriados nacionais, clima).' },
+          { type: 'exercicio', label: 'Exercício', content: 'Um trecho de resposta JSON impresso; identificação dos campos pedidos, extração de valores específicos e apontamento de qual endpoint/parâmetro traria determinada informação.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Quadro branco', 'Projetor para abrir respostas de API no navegador', 'Lista de exercício com um JSON de exemplo (material próprio)'] },
+        ]
+      },
+      {
+        num: 6, emoji: '🛰️', semana: 3,
+        titulo: 'Consumindo uma API Pública',
+        subtitulo: 'Do endpoint ao JSON, do JSON à base organizada',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Requisição a uma API pública e transformação da resposta em uma base de dados. Aula prática no laboratório de informática, aplicando a Aula 5.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Apresentação da proposta — cada dupla escolhe uma API pública e precisa trazer os dados dela para uma planilha, sem raspar tela nenhuma.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas.\n\nEtapa 1: escolha de uma API pública e gratuita (ex.: IBGE — municípios e população; AwesomeAPI — câmbio; BrasilAPI — feriados, CEP, DDD).\n\nEtapa 2: montagem do endereço da requisição com os parâmetros desejados e abertura no navegador para ver o JSON.\n\nEtapa 3: importação da resposta para o Google Sheets (função IMPORTDATA para CSV/JSON simples, ou colagem e organização manual do JSON) e montagem de uma tabela limpa com pelo menos 10 registros.\n\nRegistro do endpoint usado e de 2 perguntas respondidas com o dado.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Navegador', 'APIs públicas (IBGE, AwesomeAPI, BrasilAPI)', 'Google Sheets (IMPORTDATA)', 'Modelo de registro da coleta (Google Docs)'] },
+        ]
+      },
+      {
+        num: 7, emoji: '⚖️', semana: 4,
+        titulo: 'Viés e "Lixo" na Coleta de Dados',
+        subtitulo: 'Transversal — quando o erro entra já na porta de entrada',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Como o erro entra já na porta de entrada — viés de amostragem e dados falsos na ingestão. Tema transversal dentro da disciplina, ligado à etapa de coleta e à confiabilidade do que alimenta relatórios e modelos de IA. Aula prática no laboratório de informática.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Pergunta inicial sobre uma enquete de rede social ("quem respondeu isso?") e sobre o que aconteceria se metade das respostas de um formulário fosse de robô — conduzindo à ideia de que dado ruim na entrada estraga tudo depois.' },
+          { type: 'pratica', label: 'Prática', content: 'Atividade em duplas.\n\n(1) Análise de 3 coletas reais (uma enquete de site, uma pesquisa divulgada na imprensa, um formulário aberto) com apontamento do viés de amostragem de cada uma — quem ficou de fora, quem respondeu demais.\n\n(2) Reescrita de 2 perguntas enviesadas ou mal formuladas, deixando-as neutras.\n\n(3) Discussão de formas de "sujar" uma base de propósito (robôs preenchendo formulário, avaliações falsas, envio repetido) e de defesas simples (validação, limite por pessoa, revisão).\n\nFechamento com um checklist de "coleta confiável" em 6 itens.' },
+          { type: 'exercicio', label: 'Exercício', content: 'As análises de viés, as perguntas reescritas e o checklist de coleta confiável da dupla.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Navegador', 'Exemplos de coletas e formulários (material próprio)', 'Google Forms para testar a reescrita das perguntas', 'Google Docs ou Canva para o checklist'] },
+        ]
+      },
+      {
+        num: 8, emoji: '📝', semana: 4,
+        titulo: 'Prova Bimestral + Correção e Recuperação',
+        subtitulo: 'Todo o bimestre de forma integrada',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova bimestral sobre todo o bimestre — Raspagem de Dados da Web, APIs como Fonte de Dados e os temas transversais de limites da coleta e de viés/dados falsos na ingestão. Aplicação em sala, individual e sem consulta, com correção comentada e recuperação na sequência.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Aplicação da prova escrita na primeira parte da aula, cobrindo os blocos do bimestre de forma integrada.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Correção coletiva logo em seguida, retomada dos erros mais comuns e atividade de recuperação para os alunos abaixo da média, fechando as notas do bimestre.' },
+          { type: 'exercicio', label: 'Exercício', content: 'A própria prova e a folha de recuperação.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa (material próprio)', 'Gabarito comentado', 'Folha de recuperação'] },
+        ]
+      },
+      {
+        num: 9, emoji: '🗺️', semana: 5,
+        titulo: 'Culminância: Fluxograma da Disciplina',
+        subtitulo: 'A UC I inteira explicada num único desenho',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Fechamento da UC I. Aula de culminância em sala: construção coletiva de um fluxograma com tudo que foi estudado em Ingestão de Dados ao longo do ano, seguida de conversa sobre os aprendizados.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Quadro em branco e pergunta disparadora — "como explicar a ingestão de dados para um calouro em um único desenho?".' },
+          { type: 'pratica', label: 'Prática', content: 'Construção conjunta, no quadro (ou em ferramenta de quadro colaborativo projetada), de um fluxograma ligando os grandes temas da disciplina:\n\nO que é ingestão e pipeline → Fontes de dados (arquivos, banco, planilha, web, API, sensores) → ETL x ELT → Ingestão em Lote x Streaming → Raspagem de Dados da Web → APIs como Fonte → Limites da Coleta (robots.txt, termos de uso) → Viés e Dados Falsos na Entrada.\n\nPara cada nó, um aluno diferente escreve uma frase do que aprendeu.\n\nEm seguida, roda de conversa: de quantas formas diferentes um dado pode entrar num sistema, o que foi mais útil e o que ficou faltando aprofundar.' },
+          { type: 'dinamica', label: 'Dinâmica', content: 'Cada aluno registra num post-it (ou no quadro colaborativo) uma "lição que leva da UC I", formando um painel de fechamento da turma.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Quadro branco e post-its', 'Ou quadro colaborativo projetado (Jamboard, Canva ou Miro)', 'Projetor'] },
+        ]
+      },
+      {
+        num: 10, emoji: '🎓', semana: 5,
+        titulo: 'Roda de Conversa: Mercado de Trabalho em Dados',
+        subtitulo: 'Encerramento do ano — o que vem depois do 2º ano',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Conversa aberta de encerramento do ano sobre o que vem depois do 2º ano — mercado de trabalho na área de dados e planos para a graduação. Aula em sala, em formato de roda, sem conteúdo novo de matéria.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Roda de cadeiras e pergunta disparadora — "onde vocês imaginam usar o que aprenderam no técnico daqui a cinco anos?".' },
+          { type: 'pratica', label: 'Prática', content: 'Conversa leve em torno de três pontos, conforme a turma trouxer:\n\n• O que um técnico de dados faz e em que empresas e órgãos isso aparece;\n\n• Caminhos de graduação ligados à área (Ciência de Dados, Sistemas de Informação, Estatística e afins) e formas de acesso (ENEM, SISU, ProUni, institutos federais);\n\n• O que dá para fazer já no 3º ano para chegar preparado.\n\nFechamento com cada aluno dizendo em uma frase um próximo passo que pretende dar.' },
+          { type: 'dinamica', label: 'Dinâmica', content: 'Registro coletivo, no quadro ou em mural digital, de um "mapa de caminhos" da turma com os cursos e profissões citados.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Quadro branco ou mural digital projetado (Jamboard, Canva ou Padlet)', 'Projetor'] },
+        ]
+      },
+    ]
+  },
+
+  {
+    id: 'uc2-b4',
+    label: 'UC II',
+    nome: 'Ecossistema de Big Data',
+    carga: '2 aulas/semana · 8 aulas',
+    emoji: '🌐',
+    cor: '#34d399',
+    descricao: 'Fechamento do ecossistema com as camadas que a apostila não detalhou: onde o dado fica guardado (data lake, data warehouse e nuvem) e como ele vira informação visível em dashboards.',
+    referencia: 'Sem apostila — conteúdo próprio (apostila "Ecossistema de Big Data" concluída no 3º bimestre)',
+    bimestre: '4º Bimestre · 2026',
+    avaliacao: {
+      subtitulo: 'Prova mensal (Aulas 1 e 2) + Prova bimestral (todo o bimestre)',
+      provas: [
+        {
+          id: 'pm', label: 'PM', titulo: 'Prova Mensal',
+          descricao: 'Data Lake, Data Warehouse e Computação em Nuvem (Aulas 1 e 2). Individual, sem consulta, com correção comentada e recuperação na sequência.'
+        },
+        {
+          id: 'pb', label: 'PB', titulo: 'Prova Bimestral',
+          descricao: 'Todo o bimestre de forma integrada: Data Lake / Data Warehouse / Nuvem, Visualização e Dashboards, e Rastreamento e Vigilância de Dados. Individual, sem consulta.'
+        },
+        {
+          id: 'rec', label: 'REC', titulo: 'Recuperação Paralela',
+          descricao: 'Aplicada na mesma aula da prova, após a correção coletiva — cobre exatamente o conteúdo avaliado.'
+        },
+      ],
+      criterios: [
+        'Distinção entre banco relacional, data warehouse e data lake',
+        'Compreensão do papel da computação em nuvem no Big Data',
+        'Reconhecimento do risco do "pântano de dados" (data swamp)',
+        'Escolha do gráfico adequado para cada tipo de pergunta',
+        'Construção de um dashboard com título, filtro e achados escritos',
+        'Leitura crítica sobre rastreamento, privacidade e LGPD',
+        'Participação nas práticas em laboratório',
+      ],
+    },
+    aulas: [
+      {
+        num: 1, emoji: '☁️', semana: 1,
+        titulo: 'Data Lake, Data Warehouse e Computação em Nuvem',
+        subtitulo: 'Onde os dados ficam guardados no Big Data',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Onde os dados ficam guardados no Big Data e por que a nuvem mudou esse jogo. Aula expositiva dialogada em sala, com apoio do quadro branco. Aprofundamento da etapa de "armazenamento" da arquitetura de Big Data vista no bimestre anterior.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Pergunta inicial sobre onde a turma acha que ficam guardadas as fotos que sobem para uma rede social ou os vídeos de uma plataforma de streaming, conduzindo à ideia de que não é "um HD gigante", e sim uma estrutura pensada para volume, variedade e custo.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Apresentação das três formas de guardar dado em larga escala — banco de dados relacional (dado organizado em tabelas, para o dia a dia do sistema), data warehouse (dado já tratado e organizado, voltado para análise e relatório) e data lake (dado bruto, em qualquer formato, guardado barato para uso futuro) —, com a ideia de "lakehouse" como junção das duas últimas.\n\nEm seguida, o papel da computação em nuvem: não precisar comprar servidor, pagar apenas pelo que usa, escalar para cima e para baixo conforme a demanda; citação dos grandes provedores (Google Cloud, AWS, Azure).\n\nAlerta sobre o "pântano de dados" (data swamp): data lake sem organização nem catálogo vira depósito inútil — de novo a questão da qualidade.' },
+          { type: 'exercicio', label: 'Exercício', content: 'Lista de 8 situações (ex.: "guardar o histórico de cliques de um site para análise futura", "registrar a venda no caixa em tempo real", "montar o relatório mensal da diretoria"); para cada uma, indicação de onde o dado deveria ficar (banco relacional, data warehouse ou data lake) e por quê.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Quadro branco', 'Lista de exercício impressa (material próprio)'] },
+        ]
+      },
+      {
+        num: 2, emoji: '🏬', semana: 1,
+        titulo: 'Montando um Mini Data Warehouse',
+        subtitulo: 'Do data lake bagunçado à base pronta para análise',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Transformação de dados brutos de várias fontes em uma base organizada e pronta para análise. Aula prática no laboratório de informática, aplicando o conteúdo da Aula 1.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Apresentação da proposta — cada dupla recebe um "data lake" de brincadeira (uma planilha com três abas de dados crus e bagunçados de fontes diferentes) e precisa construir a partir dele um "data warehouse" (uma aba única, limpa e organizada) capaz de responder perguntas.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, no Google Sheets.\n\nEtapa 1: leitura das três abas cruas (ex.: vendas, clientes, produtos) e identificação dos problemas (formatos diferentes, campos faltando, duplicidade).\n\nEtapa 2: construção de uma aba "warehouse" consolidada, com colunas padronizadas e as informações reunidas.\n\nEtapa 3: a partir da aba consolidada, resposta a 3 perguntas de negócio com apoio de fórmulas e de 2 gráficos (ex.: produto mais vendido, cidade com mais clientes, mês de maior faturamento).' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Sheets', 'Planilha-base com as três abas cruas (material próprio)', 'Modelo de registro das perguntas e respostas (Google Docs)'] },
+        ]
+      },
+      {
+        num: 3, emoji: '📝', semana: 2,
+        titulo: 'Prova Mensal + Correção e Recuperação',
+        subtitulo: 'Armazenamento e nuvem',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova mensal sobre Data Lake, Data Warehouse e Computação em Nuvem (Aulas 1 e 2). Aplicação em sala, individual e sem consulta, com correção comentada e atividade de recuperação na sequência.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Aplicação da prova escrita na primeira parte da aula.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Na segunda parte, correção coletiva questão por questão, retomada dos pontos de maior erro e atividade curta de recuperação (revisão dirigida) para os alunos abaixo da média, valendo como nova oportunidade de nota.' },
+          { type: 'exercicio', label: 'Exercício', content: 'A própria prova e a folha de recuperação.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa (material próprio)', 'Gabarito comentado', 'Folha de recuperação'] },
+        ]
+      },
+      {
+        num: 4, emoji: '📈', semana: 2,
+        titulo: 'Visualização de Big Data e Dashboards',
+        subtitulo: 'A camada final: dado processado virando informação',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'A camada final do ecossistema de Big Data — transformar dado processado em informação que qualquer pessoa entende. Aula expositiva dialogada em sala, com apoio do quadro e do projetor.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Comparação de duas telas com o mesmo dado — uma tabela gigante de números e um painel com três gráficos — e pergunta sobre com qual delas um gestor tomaria uma decisão em 10 segundos.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Definição de dashboard (painel visual que reúne os indicadores mais importantes de um assunto em uma tela) e do seu papel no ecossistema de Big Data (o dado só vira valor quando é comunicado).\n\nBoas práticas: escolher o gráfico certo para cada tipo de dado (barra para comparar, linha para tendência no tempo, proporção para partes de um todo), título que responde a uma pergunta, menos é mais, cuidado com cores e escalas que enganam.\n\nApresentação das ferramentas de mercado (Looker Studio, Power BI, Tableau) e de onde elas se conectam (planilha, data warehouse, banco na nuvem).' },
+          { type: 'exercicio', label: 'Exercício', content: '6 pares "pergunta de negócio + tipo de gráfico"; indicação de quais pares combinam e correção dos que não combinam, com justificativa.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Quadro branco', 'Projetor para os exemplos de painel', 'Lista de exercício (material próprio)'] },
+        ]
+      },
+      {
+        num: 5, emoji: '🎛️', semana: 3,
+        titulo: 'Construindo um Dashboard',
+        subtitulo: 'Painel de indicadores no Looker Studio',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Construção de um painel de indicadores a partir de um conjunto de dados real. Aula prática no laboratório de informática, aplicando a Aula 4.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Apresentação da proposta — cada dupla vira "analista de dados" de uma organização fictícia e precisa entregar um painel que responda a três perguntas definidas no início.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, no Looker Studio (gratuito, com conta Google), conectado a uma planilha fornecida (dados públicos — ex.: matrículas por escola, frequência, ou dados abertos do município).\n\nDefinição de 3 perguntas que o painel deve responder; criação de pelo menos 3 visualizações adequadas a essas perguntas; ajuste de títulos, cores e filtros; escrita de um parágrafo de "principais achados" abaixo do painel.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Looker Studio', 'Planilha de dados públicos fornecida (material próprio)', 'Navegador', 'Google Docs para os achados'] },
+        ]
+      },
+      {
+        num: 6, emoji: '👁️', semana: 3,
+        titulo: 'Rastreamento e Vigilância de Dados',
+        subtitulo: 'Transversal — o Big Data apontado para o usuário',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'O Big Data apontado para o usuário — como sites e apps coletam, cruzam e usam dados de comportamento. Tema transversal dentro da disciplina, ligado às etapas de coleta e armazenamento do ecossistema de Big Data e à LGPD. Aula prática no laboratório de informática.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Pergunta inicial sobre já terem comentado algo em voz alta e visto anúncio do produto logo depois, conduzindo à discussão sobre o que de fato é coletado e o que é coincidência.' },
+          { type: 'pratica', label: 'Prática', content: 'Investigação em duplas.\n\n(1) Inspeção dos rastreadores de 3 sites populares com uma extensão ou com as ferramentas do navegador (quantos rastreadores carregam, de quais empresas).\n\n(2) Consulta ao próprio "perfil de anúncios" na conta Google (categorias que a plataforma inferiu sobre a pessoa) e checagem de acertos e erros.\n\n(3) Leitura rápida de um trecho de política de privacidade de um app muito usado, identificando o que a empresa afirma coletar.\n\nFechamento com um quadro comparativo "o que eu ganho x o que eu entrego" e uma lista de 5 ajustes de privacidade que dá para fazer hoje.' },
+          { type: 'exercicio', label: 'Exercício', content: 'O quadro comparativo e a lista de ajustes de privacidade produzidos pela dupla.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Navegador e suas ferramentas de desenvolvedor', 'Extensão de inspeção/bloqueio de rastreadores', 'Painel de privacidade / "Meus Anúncios" da conta Google', 'Google Docs ou Canva para o quadro final'] },
+        ]
+      },
+      {
+        num: 7, emoji: '📝', semana: 4,
+        titulo: 'Prova Bimestral + Correção e Recuperação',
+        subtitulo: 'Todo o bimestre de forma integrada',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova bimestral sobre todo o bimestre — Data Lake / Data Warehouse / Nuvem, Visualização e Dashboards, e Rastreamento e Vigilância de Dados. Aplicação em sala, individual e sem consulta, com correção comentada e recuperação na sequência.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Aplicação da prova escrita na primeira parte da aula, cobrindo os três blocos do bimestre de forma integrada.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Correção coletiva logo em seguida, retomada dos erros mais comuns e atividade de recuperação para os alunos abaixo da média, fechando as notas do bimestre.' },
+          { type: 'exercicio', label: 'Exercício', content: 'A própria prova e a folha de recuperação.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa (material próprio)', 'Gabarito comentado', 'Folha de recuperação'] },
+        ]
+      },
+      {
+        num: 8, emoji: '🗺️', semana: 4,
+        titulo: 'Culminância: Fluxograma da Disciplina',
+        subtitulo: 'O ecossistema de Big Data inteiro num único desenho',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Fechamento da UC II. Aula de culminância em sala: construção coletiva de um fluxograma com tudo que foi estudado em Ecossistema de Big Data ao longo do ano, seguida de conversa sobre os aprendizados.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Quadro em branco e pergunta disparadora — "como explicar o ecossistema de Big Data para um calouro em um único desenho?".' },
+          { type: 'pratica', label: 'Prática', content: 'Construção conjunta, no quadro (ou em ferramenta de quadro colaborativo projetada), de um fluxograma ligando os grandes temas da disciplina:\n\n3 Vs (volume, velocidade, variedade) → Arquitetura (coleta → armazenamento → processamento) → Apache Spark, Lote x Streaming → Processamento Paralelo (particionamento, índices, clusters) → Data Lake, Data Warehouse e Nuvem → Visualização e Dashboards → Rastreamento e Privacidade dos Dados.\n\nPara cada nó, um aluno diferente escreve uma frase do que aprendeu.\n\nEm seguida, roda de conversa: o que mudou no olhar da turma sobre os apps e serviços que usam todo dia, o que foi mais útil e o que ficou faltando aprofundar.' },
+          { type: 'dinamica', label: 'Dinâmica', content: 'Cada aluno registra num post-it (ou no quadro colaborativo) uma "lição que leva da UC II", formando um painel de fechamento da turma.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Quadro branco e post-its', 'Ou quadro colaborativo projetado (Jamboard, Canva ou Miro)', 'Projetor'] },
+        ]
+      },
+    ]
+  },
+
+  {
+    id: 'uc3-b4',
+    label: 'UC III',
+    nome: 'Qualidade e Testes de Sistemas',
+    carga: '2 aulas/semana · 9 aulas',
+    emoji: '🧪',
+    cor: '#fbbf24',
+    descricao: 'O olhar da qualidade recai sobre a matéria-prima e sobre quem usa: qualidade de dados, segurança e vazamento, usabilidade e acessibilidade, e confiabilidade da informação na era da IA.',
+    referencia: 'Sem apostila — conteúdo próprio (apostila "Qualidade e Testes de Sistemas" concluída no 3º bimestre)',
+    bimestre: '4º Bimestre · 2026',
+    avaliacao: {
+      subtitulo: 'Prova mensal (Aulas 1 a 3) + Prova bimestral (todo o bimestre)',
+      provas: [
+        {
+          id: 'pm', label: 'PM', titulo: 'Prova Mensal',
+          descricao: 'Qualidade de Dados (Aulas 1 e 2) e Vazamento de Dados / Segurança da Informação (Aula 3). Individual, sem consulta, com correção comentada e recuperação na sequência.'
+        },
+        {
+          id: 'pb', label: 'PB', titulo: 'Prova Bimestral',
+          descricao: 'Todo o bimestre de forma integrada: Qualidade de Dados, Vazamento de Dados, Usabilidade e Acessibilidade, e Verificação de Informação / IA. Individual, sem consulta.'
+        },
+        {
+          id: 'rec', label: 'REC', titulo: 'Recuperação Paralela',
+          descricao: 'Aplicada na mesma aula da prova, após a correção coletiva — cobre exatamente o conteúdo avaliado.'
+        },
+      ],
+      criterios: [
+        'Identificação das dimensões da qualidade de dados violadas em uma base',
+        'Relação entre falha de segurança e vazamento de dados, com a LGPD',
+        'Distinção entre problema de usabilidade e problema de acessibilidade',
+        'Aplicação de um teste de usabilidade observando o usuário, sem ajudar',
+        'Uso de um checklist de acessibilidade em um site real',
+        'Verificação da confiabilidade de um conteúdo (autoria, fonte, busca reversa)',
+        'Participação nas práticas em laboratório',
+      ],
+    },
+    aulas: [
+      {
+        num: 1, emoji: '✅', semana: 1,
+        titulo: 'Qualidade de Dados',
+        subtitulo: 'Entra lixo, sai lixo — as dimensões do dado bom',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'O que é qualidade de dados e por que "dado ruim" derruba qualquer sistema. Aula expositiva dialogada em sala, com apoio do quadro branco. Continuação natural de Qualidade de Software: o olhar agora recai sobre a matéria-prima que alimenta os sistemas — o dado.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Pergunta inicial à turma sobre já terem preenchido um cadastro com dado errado de propósito (telefone falso, data de nascimento qualquer), conduzindo à ideia de que todo sistema depende da qualidade do que entra — "entra lixo, sai lixo".' },
+          { type: 'explicacao', label: 'Explicação', content: 'Apresentação das dimensões da qualidade de dados — completude (não faltar informação), consistência (não se contradizer), acurácia (bater com a realidade), atualidade (estar em dia), unicidade (sem duplicidade) e validade (respeitar o formato esperado).\n\nCada dimensão ilustrada com exemplos do dia a dia (cadastro de aluno, planilha de vendas, base de um app), mostrando como um dado ruim se propaga: decisão errada, relatório furado, modelo de IA enviesado.\n\nLigação com a ISO/IEC 25010 — "adequação funcional" e "confiabilidade" dependem de dado bom.' },
+          { type: 'exercicio', label: 'Exercício', content: 'Lista com 10 registros de uma planilha fictícia de cadastro; para cada problema encontrado, identificação da dimensão da qualidade de dados violada e da forma de corrigir.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Quadro branco', 'Lista de exercício impressa (material próprio)'] },
+        ]
+      },
+      {
+        num: 2, emoji: '🔍', semana: 1,
+        titulo: 'Auditoria de Qualidade de Dados',
+        subtitulo: 'A turma como auditores de uma planilha suja',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Auditoria de uma base de dados e produção de um relatório de qualidade. Aula prática no laboratório de informática, aplicando o conteúdo da Aula 1.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Apresentação da proposta da aula — a turma no papel de auditores de dados, recebendo uma planilha "suja" para diagnosticar tudo que está errado.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, no Google Sheets, uma planilha com cerca de 40 linhas cheia de problemas propositais (células vazias, datas em formatos diferentes, nomes duplicados, idades impossíveis, e-mails inválidos, cidades escritas de três jeitos).\n\nCom filtros, classificação e funções simples (CONT.SE, ÉNÚM, remoção de duplicados), cada problema é marcado, classificado pela dimensão da qualidade de dados e registrado em um relatório curto: quantos problemas de cada tipo, quais os mais graves e uma recomendação de melhoria para quem cuida da base.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Sheets', 'Planilha-base (material próprio)', 'Modelo de relatório de qualidade de dados (Google Docs)'] },
+        ]
+      },
+      {
+        num: 3, emoji: '🔓', semana: 2,
+        titulo: 'Vazamento de Dados e Segurança da Informação',
+        subtitulo: 'Transversal — onde o golpe começa',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Vazamento de dados — o que é, por que acontece e a relação com qualidade de sistemas. Tema transversal dentro da disciplina, ligado à característica "Segurança" da ISO/IEC 25010 e à LGPD. Aula prática no laboratório de informática.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Pergunta inicial sobre golpes recebidos por mensagem em que o golpista já sabia nome completo e uma compra recente da pessoa, conduzindo à ideia de que isso costuma começar num vazamento de dados de algum sistema mal protegido.' },
+          { type: 'pratica', label: 'Prática', content: 'Investigação de vazamentos reais, em duplas.\n\n(1) Consulta no site Have I Been Pwned para verificar se algum e-mail próprio já apareceu em vazamentos conhecidos.\n\n(2) Pesquisa de dois casos brasileiros recentes de vazamento (empresa, o que vazou, resposta da empresa).\n\n(3) "Raio-x" do caso escolhido — que falha de qualidade/segurança permitiu o vazamento (senha fraca, dado sem criptografia, sistema desatualizado) e o que a LGPD exige nessas situações.\n\nFechamento com um guia de 5 boas práticas de proteção de dados pessoais.' },
+          { type: 'exercicio', label: 'Exercício', content: 'O raio-x do caso e o guia de boas práticas produzidos pela dupla.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Navegador', 'Have I Been Pwned (haveibeenpwned.com)', 'Portais de notícia e de checagem', 'Google Docs ou Canva para o guia'] },
+        ]
+      },
+      {
+        num: 4, emoji: '📝', semana: 2,
+        titulo: 'Prova Mensal + Correção e Recuperação',
+        subtitulo: 'Qualidade de dados e segurança',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova mensal sobre Qualidade de Dados (Aulas 1 e 2) e Vazamento de Dados / Segurança da Informação (Aula 3). Aplicação em sala, individual e sem consulta, com correção comentada e atividade de recuperação na sequência.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Aplicação da prova escrita na primeira parte da aula.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Na segunda parte, correção coletiva questão por questão, retomada dos pontos de maior erro e atividade curta de recuperação (revisão dirigida) para os alunos abaixo da média, valendo como nova oportunidade de nota.' },
+          { type: 'exercicio', label: 'Exercício', content: 'A própria prova e a folha de recuperação.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa (material próprio)', 'Gabarito comentado', 'Folha de recuperação'] },
+        ]
+      },
+      {
+        num: 5, emoji: '♿', semana: 3,
+        titulo: 'Testes de Usabilidade e Acessibilidade',
+        subtitulo: 'Fácil de usar e possível de usar por qualquer pessoa',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Como verificar se um sistema é fácil de usar e possível de usar por qualquer pessoa. Aula expositiva dialogada em sala, com apoio do quadro e do projetor, aprofundando a característica "Usabilidade" da ISO/IEC 25010 com conteúdo não detalhado na apostila.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Comparação de dois prints de tela — uma limpa e uma poluída — com pergunta sobre qual delas uma pessoa idosa da família conseguiria usar, conduzindo à diferença entre "achar bonito" e "conseguir concluir a tarefa".' },
+          { type: 'explicacao', label: 'Explicação', content: 'Definição de teste de usabilidade (observação de uma pessoa real tentando cumprir uma tarefa, sem ajuda, com registro de onde ela trava), das métricas simples (concluiu ou não, tempo gasto, número de erros) e da diferença para uma pesquisa de opinião.\n\nEm seguida, acessibilidade digital: o que é, para quem serve (baixa visão, daltonismo, deficiência motora, uso de leitor de tela), a Lei Brasileira de Inclusão e um checklist básico — contraste de cor, tamanho de fonte ajustável, texto alternativo em imagens, navegação pelo teclado, legenda em vídeo.' },
+          { type: 'exercicio', label: 'Exercício', content: '6 situações de uso de um aplicativo; classificação de cada uma como problema de usabilidade ou de acessibilidade, com justificativa e sugestão de correção.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Quadro branco', 'Projetor para os exemplos de tela', 'Lista de exercício (material próprio)'] },
+        ]
+      },
+      {
+        num: 6, emoji: '🖱️', semana: 3,
+        titulo: 'Teste de Usabilidade e Checklist de Acessibilidade',
+        subtitulo: 'Um observa, o outro tenta — e ninguém ajuda',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Aplicação de um teste de usabilidade com um colega e auditoria de acessibilidade de um site real. Aula prática no laboratório de informática, aplicando a Aula 5.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Apresentação dos papéis na dupla — um "usuário de teste" e um "pesquisador", com a regra de que o pesquisador apenas observa e anota, sem ajudar.' },
+          { type: 'pratica', label: 'Prática', content: 'Cada dupla escolhe um site ou app público (portal da escola, um e-commerce, um serviço público).\n\nEtapa 1 — usabilidade: 3 tarefas dadas pelo pesquisador ao colega (ex.: "encontrar o telefone de contato", "simular uma inscrição"), com cronometragem e registro de travamentos e erros.\n\nEtapa 2 — acessibilidade: aplicação do checklist da Aula 5 no mesmo site (contraste, fonte, texto alternativo, navegação por teclado, legenda) e uso de uma ferramenta automática de verificação.\n\nFechamento com um laudo: nota de usabilidade, nota de acessibilidade e as 3 melhorias mais urgentes.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Navegador', 'WAVE (wave.webaim.org) ou Lighthouse do Google Chrome', 'Cronômetro do celular', 'Modelo de laudo (Google Docs)'] },
+        ]
+      },
+      {
+        num: 7, emoji: '🤖', semana: 4,
+        titulo: 'Fake News, Deepfake e Conteúdo Gerado por IA',
+        subtitulo: 'Transversal — confiabilidade da informação na era da IA',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Como avaliar a confiabilidade de uma informação na era da IA generativa. Tema transversal dentro da disciplina, ligado à característica "Confiabilidade" e à qualidade da informação. Aula prática no laboratório de informática.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Exibição de três conteúdos — uma foto, um áudio e uma notícia —, sendo um deles gerado ou manipulado por IA, com desafio à turma de identificar qual.' },
+          { type: 'pratica', label: 'Prática', content: 'Cada dupla recebe um kit com 5 conteúdos (imagens, manchetes, citações) misturando verdadeiros, falsos e gerados por IA.\n\nPara cada um, aplicação de um roteiro de verificação: autoria, data, existência da fonte original, aparição da imagem em outro contexto (busca reversa), sinais de geração por IA (mãos, textos borrados, sombras estranhas) e checagem em agências de fato.\n\nClassificação de cada conteúdo como confiável, duvidoso ou falso, com justificativa.\n\nFechamento com a construção de um checklist próprio de verificação em 6 passos.' },
+          { type: 'exercicio', label: 'Exercício', content: 'A classificação dos 5 conteúdos com justificativa e o checklist final da dupla.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Navegador', 'Busca reversa de imagens (Google Imagens / TinEye)', 'Sites de checagem (Aos Fatos, Projeto Comprova, Agência Lupa)', 'Kit de conteúdos (material próprio)', 'Google Docs ou Canva para o checklist'] },
+        ]
+      },
+      {
+        num: 8, emoji: '📝', semana: 4,
+        titulo: 'Prova Bimestral + Correção e Recuperação',
+        subtitulo: 'Todo o bimestre de forma integrada',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Prova bimestral sobre todo o bimestre — Qualidade de Dados, Vazamento de Dados, Usabilidade e Acessibilidade, e Verificação de Informação / IA. Aplicação em sala, individual e sem consulta, com correção comentada e recuperação na sequência.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Aplicação da prova escrita na primeira parte da aula, cobrindo os quatro blocos do bimestre de forma integrada.' },
+          { type: 'explicacao', label: 'Explicação', content: 'Correção coletiva logo em seguida, retomada dos erros mais comuns e atividade de recuperação para os alunos abaixo da média, fechando as notas do bimestre.' },
+          { type: 'exercicio', label: 'Exercício', content: 'A própria prova e a folha de recuperação.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Prova impressa (material próprio)', 'Gabarito comentado', 'Folha de recuperação'] },
+        ]
+      },
+      {
+        num: 9, emoji: '🗺️', semana: 5,
+        titulo: 'Culminância: Fluxograma da Disciplina',
+        subtitulo: 'A UC III inteira explicada num único desenho',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Fechamento da UC III. Aula de culminância em sala: construção coletiva de um fluxograma com tudo que foi estudado em Qualidade e Testes de Sistemas ao longo do ano, seguida de conversa sobre os aprendizados.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Quadro em branco e pergunta disparadora — "como explicar a UC III para um calouro em um único desenho?".' },
+          { type: 'pratica', label: 'Prática', content: 'Construção conjunta, no quadro (ou em ferramenta de quadro colaborativo projetada), de um fluxograma ligando os grandes temas da disciplina:\n\nEngenharia de Requisitos → Qualidade de Software e a ISO/IEC 25010 → Testes de Software → Qualidade de Dados → Usabilidade e Acessibilidade → Segurança e Vazamento de Dados → Confiabilidade da Informação.\n\nPara cada nó, um aluno diferente escreve uma frase do que aprendeu.\n\nEm seguida, roda de conversa: o que mudou no olhar da turma sobre um app ou site depois da disciplina, o que foi mais útil e o que ficou faltando aprofundar.' },
+          { type: 'dinamica', label: 'Dinâmica', content: 'Cada aluno registra num post-it (ou no quadro colaborativo) uma "lição que leva da UC III", formando um painel de fechamento da turma.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Quadro branco e post-its', 'Ou quadro colaborativo projetado (Jamboard, Canva ou Miro)', 'Projetor'] },
+        ]
+      },
+    ]
+  },
+
+  {
+    id: 'dev-local-b4',
+    label: 'DEV LOCAL',
+    nome: 'Desenvolvimento Local',
+    carga: '2 aulas/semana · 8 aulas',
+    emoji: '🚧',
+    cor: '#38bdf8',
+    descricao: 'Segunda metade do ciclo do projeto iniciado no 3º bimestre: as mesmas duplas testam a proposta com usuários reais, corrigem com base no retorno e expõem numa mostra de projetos. Diálogo direto com os testes de usabilidade da UC III.',
+    referencia: 'Projeto único de continuação — sem apostila; material produzido pelas próprias duplas',
+    bimestre: '4º Bimestre · 2026',
+    avaliacao: {
+      subtitulo: 'Avaliação por etapas entregues ao longo do ciclo, sem prova escrita',
+      provas: [
+        {
+          id: 'av1', label: 'AV1', titulo: 'Relatório de Validação',
+          descricao: 'Roteiro de validação, folhas de observação dos testes com usuários reais e a matriz esforço x impacto com as mudanças priorizadas (Aulas 2 a 4).'
+        },
+        {
+          id: 'av2', label: 'AV2', titulo: 'Mostra de Projetos',
+          descricao: 'Pôster/painel, fala de 2 a 3 minutos na mostra e a rubrica de análise cruzada preenchida sobre os projetos dos colegas (Aulas 6 a 8).'
+        },
+        {
+          id: 'rec', label: 'REC', titulo: 'Recuperação Paralela',
+          descricao: 'Reentrega da etapa não cumprida, combinada individualmente com a dupla.'
+        },
+      ],
+      criterios: [
+        'Definição de critérios de sucesso do próprio projeto',
+        'Roteiro de validação com tarefas observáveis, não perguntas de opinião',
+        'Condução do teste sem ajudar o testador',
+        'Priorização do feedback com a matriz esforço x impacto',
+        'Melhorias efetivamente aplicadas, com registro de antes e depois',
+        'Clareza do pôster e da fala curta na mostra',
+        'Qualidade da devolutiva escrita para os colegas',
+      ],
+    },
+    aulas: [
+      {
+        num: 1, emoji: '🔄', semana: 1,
+        titulo: 'Retomada e Diagnóstico do Projeto',
+        subtitulo: 'O que ficou pela metade e nunca foi mostrado a ninguém',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Reabertura do projeto do 3º bimestre e definição da versão que será testada. Aula prática no laboratório de informática.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Retomada rápida do que cada dupla entregou na apresentação do bimestre anterior e pergunta sobre o que ficou pela metade ou nunca foi verificado com outras pessoas.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, revisão do material do projeto (dados coletados, proposta/protótipo).\n\nRegistro de três itens — o que já está pronto, o que precisa de ajuste antes de mostrar a alguém e qual pergunta o teste com usuários precisa responder.\n\nDefinição de dois ou três critérios de sucesso do projeto (o que significaria "ter dado certo").' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Material do projeto do 3º bimestre', 'Google Docs'] },
+        ]
+      },
+      {
+        num: 2, emoji: '📋', semana: 1,
+        titulo: 'Roteiro de Validação',
+        subtitulo: 'Observar a pessoa usando, não perguntar se ela gostou',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Montagem do roteiro para testar a proposta com pessoas de fora da dupla. Aula prática no laboratório de informática, apoiada no conteúdo de testes de usabilidade da UC III.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Retomada da diferença entre "perguntar se a pessoa gostou" e "observar a pessoa tentando usar", conduzindo ao formato do teste.' },
+          { type: 'pratica', label: 'Prática', content: 'Cada dupla monta o material de validação — duas ou três tarefas que o usuário vai tentar cumprir com o protótipo/proposta, uma folha de observação (onde a pessoa travou, quanto tempo levou, o que comentou) e um formulário curto de feedback no Google Forms (clareza, utilidade, o que mudaria).\n\nDefinição de quem serão os testadores (colegas de outra turma, professores, funcionários) e de quantos testes cada dupla fará (mínimo de quatro).' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Forms', 'Google Docs', 'Protótipo/proposta da dupla'] },
+        ]
+      },
+      {
+        num: 3, emoji: '👥', semana: 2,
+        titulo: 'Validação com Usuários Reais',
+        subtitulo: 'Quem conduz, quem observa — e ninguém ajuda',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Aplicação do teste com pessoas reais e registro do que acontece. Aula prática no laboratório de informática.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Combinação dos papéis na dupla — quem conduz e quem observa e anota, sem ajudar o testador.' },
+          { type: 'pratica', label: 'Prática', content: 'Recepção dos testadores convidados (ou visita às turmas e salas combinadas).\n\nPara cada testador: apresentação das tarefas, observação silenciosa, preenchimento da folha de observação e envio do formulário de feedback.\n\nFechamento da aula com a dupla reunindo todas as folhas e respostas num só lugar.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Protótipo/proposta', 'Folhas de observação impressas (material próprio)', 'Google Forms', 'Celular para cronometrar'] },
+        ]
+      },
+      {
+        num: 4, emoji: '🧮', semana: 2,
+        titulo: 'Leitura do Feedback',
+        subtitulo: 'Matriz esforço x impacto — o que vale mesmo mudar',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Organização e priorização do que foi coletado no teste. Aula prática no laboratório de informática.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Pergunta sobre o que mais se repetiu nos comentários dos testadores antes de abrir os dados.' },
+          { type: 'pratica', label: 'Prática', content: 'Exportação das respostas do Forms para o Google Sheets, junção com as anotações de observação e contagem dos problemas por tipo.\n\nConstrução de uma matriz esforço x impacto — cada problema classificado como fácil ou difícil de resolver e como pouco ou muito importante.\n\nEscolha de três a cinco mudanças que a dupla vai realmente aplicar.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Google Sheets', 'Anotações da Aula 3', 'Modelo de matriz esforço x impacto (Google Docs ou Sheets)'] },
+        ]
+      },
+      {
+        num: 5, emoji: '🛠️', semana: 3,
+        titulo: 'Iteração e Melhorias',
+        subtitulo: 'Aplicando as mudanças escolhidas',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Aplicação das mudanças escolhidas no projeto. Aula prática no laboratório de informática.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Retomada da lista de mudanças priorizada na aula anterior como plano de trabalho da aula.' },
+          { type: 'pratica', label: 'Prática', content: 'Em duplas, execução das melhorias no protótipo/proposta (ajuste de telas, reorganização dos dados, correção de textos, revisão da solução).\n\nRegistro de um "antes e depois" de cada mudança feita, para uso na mostra.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Canva, Google Slides ou Google Docs (conforme o formato do projeto da dupla)', 'Registro de antes e depois (Google Docs)'] },
+        ]
+      },
+      {
+        num: 6, emoji: '🖼️', semana: 3,
+        titulo: 'Curadoria da Mostra',
+        subtitulo: 'Pôster, painel e uma fala de dois minutos',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Preparação do material de apresentação para a mostra de projetos. Aula prática no laboratório de informática.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Apresentação do formato da mostra — estações espalhadas pela sala, visitantes circulando, cada dupla explicando o projeto várias vezes em poucos minutos.' },
+          { type: 'pratica', label: 'Prática', content: 'Cada dupla produz um pôster ou painel digital com o essencial do projeto (problema, dados coletados, proposta, o que o teste com usuários mudou) e prepara uma fala curta de dois a três minutos.\n\nEnsaio da fala dentro da própria dupla e revisão final do material.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Canva ou Google Slides para o pôster/painel', 'Projetor ou impressão do material'] },
+        ]
+      },
+      {
+        num: 7, emoji: '🎪', semana: 4,
+        titulo: 'Mostra de Projetos',
+        subtitulo: 'Estações, visitantes e fichas de avaliação',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Evento de apresentação dos projetos da turma para visitantes. Aula prática em sala ou no pátio.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Organização das estações e explicação da dinâmica para a turma e para os visitantes.' },
+          { type: 'pratica', label: 'Prática', content: 'Duplas posicionadas em estações com seus pôsteres/painéis; visitantes (outras turmas, professores, equipe da escola) circulam e ouvem as apresentações curtas.\n\nCada visitante preenche uma ficha rápida de avaliação por projeto (o que entendeu, o ponto mais forte, uma sugestão).\n\nEnquanto um da dupla apresenta, o outro recolhe as fichas, com troca no meio do tempo.' },
+          { type: 'dinamica', label: 'Dinâmica', content: 'Mural coletivo na entrada da mostra, onde cada visitante deixa um bilhete com o projeto que mais chamou a atenção e o porquê.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Pôsteres/painéis das duplas', 'Fichas de avaliação impressas (material próprio)', 'Mural e post-its'] },
+        ]
+      },
+      {
+        num: 8, emoji: '🤝', semana: 4,
+        titulo: 'Análise Cruzada e Fechamento',
+        subtitulo: 'Devolutiva entre duplas e encerramento do ano',
+        sections: [
+          { type: 'assunto', label: 'Assunto', content: 'Avaliação dos projetos entre colegas e encerramento do ciclo e do ano. Aula prática em sala.' },
+          { type: 'abordagem', label: 'Abordagem', content: 'Distribuição, para cada dupla, de dois projetos de colegas para analisar com calma, a partir do material e das fichas da mostra.' },
+          { type: 'pratica', label: 'Prática', content: 'Cada dupla preenche uma rubrica sobre os dois projetos recebidos (uso dos dados, clareza da proposta, o que o teste com usuários melhorou, apresentação) e escreve um parágrafo de devolutiva para cada.\n\nEm seguida, roda de conversa: o que mudou entre a proposta do 3º bimestre e a versão testada, o que o retorno dos usuários revelou e o que cada um levaria para um próximo projeto.\n\nAutoavaliação individual registrada no Google Forms.' },
+          { type: 'dinamica', label: 'Dinâmica', content: 'Cada aluno escreve em uma frase a maior lição do projeto de fim de ano, formando um painel de fechamento da turma.' },
+          { type: 'ferramentas', label: 'Ferramentas', items: ['Rubrica de análise (Google Docs ou Forms)', 'Google Forms para a autoavaliação', 'Quadro e post-its'] },
+        ]
+      },
+    ]
+  },
 ];
 
 const SEMESTRES = [
@@ -1102,7 +1670,7 @@ const SEMESTRES = [
     id: 'sem2', label: '2º Semestre',
     bimestres: [
       { id: 'b3', label: '3º Bimestre', periodo: '3º Bimestre · 2026', discIds: ['dev-local-b3', 'uc1-b3', 'uc2-b3', 'uc3-b3'] },
-      { id: 'b4', label: '4º Bimestre', periodo: '4º Bimestre · 2026', discIds: [], comingSoon: true },
+      { id: 'b4', label: '4º Bimestre', periodo: '4º Bimestre · 2026', discIds: ['dev-local-b4', 'uc1-b4', 'uc2-b4', 'uc3-b4'] },
     ]
   },
 ];

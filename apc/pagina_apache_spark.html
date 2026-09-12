@@ -1,0 +1,312 @@
+<title>Spark, Lote e Streaming</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@0,500;0,600;0,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #ece8ef;
+    --paper: #ffffff;
+    --ink: #241f28;
+    --muted: #6b6470;
+    --accent: #6d3b9c;
+    --accent-ink: #4a2570;
+    --accent-soft: #f0e9f5;
+    --rule: #ddd4e1;
+    --good: #2f6b3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131117;
+      --paper: #1d1922;
+      --ink: #ece7ef;
+      --muted: #a79fae;
+      --accent: #c9a3e6;
+      --accent-ink: #ddc4ef;
+      --accent-soft: #29212f;
+      --rule: #342c3a;
+      --good: #82c08c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #131117;
+    --paper: #1d1922;
+    --ink: #ece7ef;
+    --muted: #a79fae;
+    --accent: #c9a3e6;
+    --accent-ink: #ddc4ef;
+    --accent-soft: #29212f;
+    --rule: #342c3a;
+    --good: #82c08c;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 9pt;
+    line-height: 1.42;
+  }
+  @media screen {
+    body { padding: 22px 12px; }
+    .sheet { box-shadow: 0 2px 14px rgba(0,0,0,.16); margin: 0 auto 20px; }
+  }
+
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    padding: 11mm 14mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 6.6pt; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent-ink); line-height: 1.5; margin: 0 0 6pt;
+  }
+  h1 {
+    font-family: "Spectral", Georgia, serif; font-weight: 700;
+    font-size: 18pt; line-height: 1.1; letter-spacing: -.01em;
+    margin: 0 0 5pt; text-wrap: balance;
+  }
+  .meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 7pt;
+    color: var(--muted); display: flex; flex-wrap: wrap; gap: 2pt 14pt;
+    padding-bottom: 8pt; border-bottom: 1.5px solid var(--accent); margin-bottom: 9pt;
+  }
+  .meta b { color: var(--ink); font-weight: 500; }
+
+  h2 {
+    font-family: "Spectral", Georgia, serif; font-weight: 600; font-size: 12.5pt;
+    margin: 9pt 0 4pt; display: flex; align-items: baseline; gap: 6pt;
+  }
+  h2 .n {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 6.6pt;
+    color: var(--accent-ink); letter-spacing: .05em;
+  }
+  h3 {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 7pt; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); margin: 10pt 0 4pt;
+  }
+  p { margin: 0 0 6pt; }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+  .lead { font-size: 9.4pt; }
+  .sep-note { font-size: 8pt; color: var(--muted); margin: 4pt 0 6pt; }
+
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 7pt; margin: 5pt 0 6pt; }
+  .duo .pane {
+    border: 1px solid var(--rule); border-radius: 4pt; padding: 6pt 8pt;
+    font-size: 7.9pt; line-height: 1.4; background: var(--paper);
+  }
+  .duo .pane h4 {
+    font-family: "Spectral", Georgia, serif; font-size: 10pt; font-weight: 600;
+    margin: 0 0 3pt;
+  }
+  .duo .pane ul { margin: 3pt 0; padding-left: 11pt; }
+  .duo .pane li { margin-bottom: 2pt; }
+  .duo .pane .foot { color: var(--muted); font-size: 7.3pt; margin: 3pt 0 0; }
+
+  .chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 4pt; margin: 5pt 0 4pt; }
+  .chain .link {
+    flex: 1 1 120px; border: 1px solid var(--accent); border-radius: 4pt;
+    padding: 5pt 7pt; background: var(--accent-soft);
+  }
+  .chain .link b { display: block; font-size: 8.2pt; font-weight: 600; margin-bottom: 1pt; }
+  .chain .link span { font-size: 7.2pt; line-height: 1.32; color: var(--muted); }
+  .chain .arrow { align-self: center; color: var(--accent); font-size: 9pt; flex: 0 0 auto; }
+
+  .decision { margin: 5pt 0 6pt; padding-left: 0; list-style: none; counter-reset: d; }
+  .decision li {
+    counter-increment: d; position: relative; padding-left: 16pt;
+    margin-bottom: 3.5pt; font-size: 8.2pt; line-height: 1.4;
+  }
+  .decision li::before {
+    content: counter(d); position: absolute; left: 0; top: .3pt;
+    font-family: "IBM Plex Mono", monospace; font-size: 6.6pt; color: #fff;
+    background: var(--accent); width: 11pt; height: 11pt; border-radius: 2.5pt;
+    display: grid; place-items: center;
+  }
+  .decision b { color: var(--accent-ink); }
+  .decision .go { color: var(--good); font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.9pt; margin: 4pt 0 6pt; }
+  th, td {
+    text-align: left; vertical-align: top; padding: 3.4pt 5pt;
+    border-bottom: 1px solid var(--rule); line-height: 1.35;
+  }
+  thead th {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 6.4pt;
+    letter-spacing: .05em; text-transform: uppercase; color: var(--accent-ink);
+    border-bottom: 1.5px solid var(--accent);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td b { font-weight: 600; }
+
+  ol.ex { margin: 3pt 0 0; padding-left: 0; list-style: none; counter-reset: ex; }
+  ol.ex > li {
+    counter-increment: ex; position: relative; padding-left: 15pt;
+    margin-bottom: 5pt; font-size: 8.2pt; line-height: 1.4;
+  }
+  ol.ex > li::before {
+    content: counter(ex); position: absolute; left: 0; top: .5pt;
+    font-family: "IBM Plex Mono", monospace; font-size: 7pt; color: #fff;
+    background: var(--accent); width: 11pt; height: 11pt; border-radius: 2.5pt;
+    display: grid; place-items: center;
+  }
+  ol.ex .items b { color: var(--accent-ink); font-family: "IBM Plex Mono", monospace; font-weight: 500; }
+
+  .grow { flex: 1; }
+  footer {
+    font-family: "IBM Plex Mono", monospace; font-size: 6.6pt; color: var(--muted);
+    border-top: 1px solid var(--rule); padding-top: 6pt; margin-top: 8pt; line-height: 1.5;
+  }
+
+  @media print {
+    :root { --bg:#fff; --paper:#fff; --ink:#1c1c1c; --accent-soft:#f2ecf6; }
+    @page { size: A4; margin: 10mm; }
+    html, body { padding: 0; margin: 0; font-size: 8.2pt; }
+    .sheet {
+      width: auto; min-height: 0; height: auto;
+      box-shadow: none; margin: 0; padding: 0;
+      display: block;
+    }
+    .sheet + .sheet { break-before: page; page-break-before: always; }
+    h1 { font-size: 16pt; }
+    h2 { font-size: 11pt; margin: 6pt 0 3pt; }
+    h3 { margin: 6pt 0 3pt; }
+    p { margin: 0 0 4pt; }
+    .lead { font-size: 8.6pt; }
+    .meta { margin-bottom: 6pt; padding-bottom: 5pt; }
+    .duo { gap: 6pt; margin: 4pt 0 4pt; }
+    .duo .pane { padding: 5pt 7pt; }
+    table { margin: 3pt 0 4pt; }
+    th, td { padding: 2.5pt 4pt; }
+    .chain { margin: 3pt 0 3pt; }
+    .chain .link { padding: 3.5pt 6pt; }
+    .decision li { margin-bottom: 3pt; }
+    .sep-note { margin: 3pt 0 4pt; }
+    ol.ex > li { margin-bottom: 4pt; }
+    .grow { display: none; }
+    footer { display: none; }
+  }
+</style>
+
+<!-- ===== PÁGINA 1 ===== -->
+<div class="sheet">
+  <p class="eyebrow">EE Júlia Gonçalves Passarinho · Itinerário Formativo — Ciência de Dados<br>UC II · Ecossistema de Big Data II · Bloco 2 · Aula 04</p>
+  <h1>Apache Spark, Processamento em Lote e em Tempo Real</h1>
+  <div class="meta"><span><b>Turma:</b> 2º Ano A/B — Integral</span><span><b>Prof.:</b> Jorge Frias</span><span><b>Data:</b> ___ / 09 / 2026</span></div>
+
+  <p class="lead">No Bloco 1 você viu a arquitetura do Big Data (coleta, armazenamento, processamento) e os 3 Vs. Agora, a etapa de <strong>processamento</strong>: depois de coletado e guardado, como o dado vira informação útil? Duas analogias: <strong>juntar a roupa da semana e lavar tudo de uma vez</strong> (lote) × <strong>a fritadeira elétrica, que vai fritando conforme você coloca</strong> (tempo real).</p>
+
+  <h2><span class="n">Parte 1</span> Lote e tempo real</h2>
+  <div class="duo">
+    <div class="pane">
+      <h4>Processamento em lote (batch)</h4>
+      Os dados são acumulados durante um período e processados todos juntos, em blocos, num horário programado — muitas vezes de madrugada.
+      <ul>
+        <li><strong>Latência alta</strong> (minutos a horas) — e tudo bem, a resposta não precisa ser imediata.</li>
+        <li><strong>Vazão alta</strong>, previsível e mais barato.</li>
+      </ul>
+      <p class="foot"><strong>Ex.:</strong> folha de pagamento mensal, relatório de vendas do mês, faturas de cartão.<br><strong>Ferramentas:</strong> Hadoop MapReduce, Spark, Apache Hive.</p>
+    </div>
+    <div class="pane">
+      <h4>Processamento em tempo real (streaming)</h4>
+      Cada dado é processado assim que chega — registro a registro, ou em micro-lotes de poucos segundos. Fluxo contínuo, o sistema sempre ligado.
+      <ul>
+        <li><strong>Latência baixa</strong> (segundos ou menos).</li>
+        <li>Mais <strong>complexo e caro</strong>: infraestrutura pronta pra picos.</li>
+      </ul>
+      <p class="foot"><strong>Ex.:</strong> fraude no cartão na hora da compra, trânsito no GPS, recomendação de vídeo ao vivo, alerta de sensor.<br><strong>Ferramentas:</strong> Kafka, Flink, Storm, Spark Structured Streaming.</p>
+    </div>
+  </div>
+
+  <h3>Tabela comparativa</h3>
+  <table>
+    <thead><tr><th style="width:24%">Aspecto</th><th>Lote (batch)</th><th>Tempo real (streaming)</th></tr></thead>
+    <tbody>
+      <tr><td>Quando é processado</td><td>tudo de uma vez, agendado</td><td>na hora em que cada dado chega</td></tr>
+      <tr><td>Latência da resposta</td><td>alta (minutos a horas)</td><td>baixa (segundos ou menos)</td></tr>
+      <tr><td>Volume por execução</td><td>muito grande de uma vez</td><td>pequeno e constante</td></tr>
+      <tr><td>Custo e complexidade</td><td>menor</td><td>maior</td></tr>
+      <tr><td>Exemplo</td><td>folha de pagamento mensal</td><td>fraude no cartão na hora da compra</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Como decidir entre lote e tempo real</h3>
+  <ol class="decision">
+    <li>A decisão precisa ser tomada <strong>no instante em que o dado acontece</strong> (ex.: bloquear uma compra suspeita agora)? <span class="go">→ tempo real (streaming)</span></li>
+    <li>Dá pra <strong>esperar juntar um volume grande</strong> e rodar de tempos em tempos (uma vez por hora, por dia, por mês)? <span class="go">→ lote (batch)</span></li>
+    <li>Precisa dos dois? <b>Arquitetura híbrida</b>: tempo real pro que é urgente (alerta na hora) + lote pro que é volumoso e pode esperar (relatório completo). É o que a maioria das empresas grandes faz.</li>
+  </ol>
+
+  <div class="grow"></div>
+  <footer>UC II — Ecossistema de Big Data II · Bloco 2 · 3º Bimestre 2026 · 2º Ano A/B · Prof. Jorge Frias · pág. 1 de 2</footer>
+</div>
+
+<!-- ===== PÁGINA 2 ===== -->
+<div class="sheet">
+  <h2><span class="n">Parte 2</span> A Apache Software Foundation e o Spark</h2>
+  <p>A <strong>Apache Software Foundation</strong> (ASF, criada em 1999, EUA) é uma organização sem fins lucrativos que mantém centenas de projetos <strong>open source</strong> (código aberto), com governança por mérito e a permissiva Licença Apache 2.0. "Apache" no nome (Spark, Kafka, Hadoop, Flink) = projeto mantido pela comunidade, que não pertence a uma empresa só e não some se ela mudar de ideia.</p>
+
+  <p>O <strong>Apache Spark</strong> é um <strong>motor de processamento distribuído</strong> para dados em larga escala: divide o trabalho entre vários computadores (um <em>cluster</em>) que trabalham em paralelo, como se fossem um só. Nasceu em Berkeley (2009) e foi doado à Apache em 2013.</p>
+
+  <h3>Por que o Spark surgiu</h3>
+  <div class="chain">
+    <div class="link"><b>Hadoop MapReduce</b><span>o padrão anterior: a cada etapa grava o resultado parcial no disco e lê de novo na seguinte. Disco é lento.</span></div>
+    <div class="arrow">▶</div>
+    <div class="link"><b>Problema</b><span>tarefas que repetem o mesmo cálculo (treinar IA, várias consultas nos mesmos dados) ficam demoradas demais.</span></div>
+    <div class="arrow">▶</div>
+    <div class="link"><b>Sacada do Spark</b><span>manter os dados na memória (RAM) entre as etapas: dezenas de vezes mais rápido nessas tarefas.</span></div>
+  </div>
+  <p class="sep-note"><strong>Módulos:</strong> Spark Core (motor e memória), Spark SQL / DataFrames, Structured Streaming (tempo real), MLlib (machine learning), GraphX (grafos). <strong>Linguagens:</strong> Python (PySpark, a mais usada em Ciência de Dados), Scala, Java, R, SQL.</p>
+
+  <h3>Prós e contras do Spark</h3>
+  <div class="duo">
+    <div class="pane">
+      <h4>Prós</h4>
+      <ul>
+        <li><strong>Rápido</strong> — processamento em memória.</li>
+        <li><strong>Unificado</strong> — lote, tempo real, SQL e ML no mesmo motor, com a mesma forma de programar.</li>
+        <li><strong>Várias linguagens</strong> e comunidade grande; roda nas principais nuvens.</li>
+      </ul>
+    </div>
+    <div class="pane">
+      <h4>Contras</h4>
+      <ul>
+        <li><strong>Consome muita RAM</strong> — memória é cara.</li>
+        <li><strong>Exagero pra dados pequenos</strong> — se cabem num PC só, ele só adiciona complexidade.</li>
+        <li><strong>Curva de aprendizado</strong>; e o streaming é em micro-lotes (o Flink tem latência menor).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Concorrentes</h3>
+  <table>
+    <thead><tr><th style="width:22%">Ferramenta</th><th style="width:22%">Forte em</th><th>Resumo</th></tr></thead>
+    <tbody>
+      <tr><td><b>Hadoop MapReduce</b></td><td>lote</td><td>Padrão antigo. Maduro e barato, mas lento (usa disco) e trabalhoso de programar.</td></tr>
+      <tr><td><b>Apache Flink</b></td><td>tempo real</td><td>Streaming de verdade, evento a evento, latência mínima. Também faz lote.</td></tr>
+      <tr><td><b>Apache Storm</b></td><td>tempo real</td><td>Pioneiro de streaming, baixa latência; hoje pouco usado.</td></tr>
+      <tr><td><b>Dask</b></td><td>Python, escala menor</td><td>Paraleliza pandas e numpy. Mais simples que o Spark, bom pra dados médios; não escala tão longe.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>O mesmo código faz os dois · pipeline</h3>
+  <p class="sep-note">O <strong>Structured Streaming</strong> trata o fluxo contínuo como <strong>uma tabela que nunca para de crescer</strong> — o mesmo código serve pro relatório mensal (lote) e pro painel ao vivo (streaming). Pipeline típico: <strong>Fonte</strong> (arquivos, banco, HDFS, S3, Kafka) ▶ <strong>Leitura</strong> (distribui as partições no cluster) ▶ <strong>Transformações</strong> (filtrar, juntar, agregar) ▶ <strong>Ação</strong> (gravar, contar, mostrar — dispara o processamento) ▶ <strong>Destino</strong> (arquivo, tabela, painel, alerta). O Spark só executa ao chegar numa <strong>ação</strong>; antes disso é só um plano que ele otimiza — <em>avaliação preguiçosa</em> (lazy evaluation).</p>
+
+  <h2><span class="n">Fim</span> Exercícios</h2>
+  <p class="sep-note">Responda no documento indicado, com suas próprias palavras. Nas classificações, o que vale ponto é a justificativa.</p>
+  <ol class="ex">
+    <li>Diferencie <strong>processamento em lote</strong> e <strong>tempo real</strong>, com um exemplo <strong>novo</strong> de cada.</li>
+    <li>Classifique como <strong>lote</strong> ou <strong>tempo real</strong> e justifique: <span class="items"><b>a)</b> relatório de vendas do mês; <b>b)</b> fraude no cartão na hora da compra; <b>c)</b> rota no GPS enquanto o motorista dirige; <b>d)</b> juros mensais de todas as contas do banco; <b>e)</b> recomendação de vídeo enquanto o usuário assiste; <b>f)</b> fechamento da folha de pagamento.</span></li>
+    <li>Por que o Apache Spark costuma ser mais rápido que o Hadoop MapReduce? O que ele faz de diferente? (dica: disco × memória)</li>
+    <li>Escolha a ferramenta (<strong>Spark, Flink, MapReduce ou Dask</strong>) e justifique: <span class="items"><b>a)</b> startup pequena, equipe só de Python, ~10 GB por análise; <b>b)</b> banco que precisa reagir a fraude em milissegundos; <b>c)</b> um processamento gigante por dia, de madrugada, com pouco orçamento; <b>d)</b> time que quer um motor só pra lote, streaming e machine learning.</span></li>
+  </ol>
+
+  <div class="grow"></div>
+  <footer>UC II — Ecossistema de Big Data II · Bloco 2 · 3º Bimestre 2026 · 2º Ano A/B · Prof. Jorge Frias · pág. 2 de 2</footer>
+</div>

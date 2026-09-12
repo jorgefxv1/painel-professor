@@ -747,6 +747,7 @@ function renderSection(s) {
     case 'contexto':   return card('🎯 Contexto da Oficina', s.content, 'card-oficina', true);
     case 'reflexao':   return card(`💭 ${s.label || 'Reflexão'}`, s.content, 'card-reflexao');
     case 'abertura':   return card('🎬 Abertura', s.content, 'card-abertura');
+    case 'abordagem':  return card('🗣️ Abordagem', s.content, 'card-abertura');
     case 'dinamica':   return card('🎮 Dinâmica', s.content, 'card-dinamica');
     case 'atividade':
       return `
