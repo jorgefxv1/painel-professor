@@ -3,8 +3,9 @@
 Gerado e mantido pela skill `preparar-material`.
 Fase do bimestre: **02/10/2026 a 09/12/2026** · Turmas 2A e 2B · EE. Júlia Gonçalves Passarinho
 
-> Planejamento canônico: `repositorio-aulas/divisao-aulas-4-bimestre.txt`
-> Aulas no painel: `uc1-b4`, `uc2-b4`, `uc3-b4`, `dev-local-b4` em `repositorio-aulas/data.js`
+> Caminhos relativos à raiz do repositório (no Mac do Jorge, a pasta `repositorio-aulas/`).
+> Planejamento canônico: `divisao-aulas-4-bimestre.txt`
+> Aulas no painel: `uc1-b4`, `uc2-b4`, `uc3-b4`, `dev-local-b4` em `data.js`
 
 ---
 
