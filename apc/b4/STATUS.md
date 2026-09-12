@@ -3,6 +3,12 @@
 Gerado e mantido pela skill `preparar-material`.
 Fase do bimestre: **02/10/2026 a 09/12/2026** · Turmas 2A e 2B · EE. Júlia Gonçalves Passarinho
 
+## Execuções da rotina semanal
+
+| Data da execução | Resultado |
+|---|---|
+| 12/09/2026 | Bimestre **ainda não começou** (começa 02/10/2026). Rotina não gerou material nesta execução. A Semana 1, listada abaixo como completa, foi gerada em sessão manual no mesmo dia — não por esta rotina. Próxima execução útil da rotina: a partir de 02/10/2026, quando a semana 2 (09/10–15/10) começar a valer como "próxima semana". |
+
 > Planejamento canônico: `repositorio-aulas/divisao-aulas-4-bimestre.txt`
 > Aulas no painel: `uc1-b4`, `uc2-b4`, `uc3-b4`, `dev-local-b4` em `repositorio-aulas/data.js`
 
