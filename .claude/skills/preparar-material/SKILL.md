@@ -130,6 +130,21 @@ Se a semana calculada estiver fora de 02/10–09/12/2026, não gere nada — reg
 
 ---
 
+## O painel é público — material do professor não pode ir ao ar
+
+O repositório é publicado em `painel-professor.jorge-fxvx.workers.dev` pelo Cloudflare Workers. O
+`.assetsignore` na raiz bloqueia da publicação tudo que é material do professor:
+`*_gabarito.md`, `*_prova.html`, `*_recuperacao.html`, `*_roteiro.md`, `STATUS.md`, `ROTINA.md` e os
+`divisao-aulas-*.txt`.
+
+**Ao criar um tipo de arquivo novo que contenha resposta, gabarito, critério de avaliação ou prova,
+acrescente o padrão ao `.assetsignore` na mesma execução.** Um gabarito publicado chega ao aluno pelo
+endereço do painel. Os roteiros de laboratório entram nessa regra porque carregam o gabarito da atividade
+dentro deles.
+
+Material que **pode** ser publicado: lista de exercício do aluno, worksheet, fichas em branco e as
+planilhas-base das práticas (o aluno precisa delas).
+
 ## Limites
 
 - **Nunca altere** `divisao-aulas-4-bimestre.txt` nem `data.js`. Esta skill só produz material novo em `apc/b4/`.
