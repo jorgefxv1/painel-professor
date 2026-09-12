@@ -1,0 +1,22 @@
+# Infra e controle de versão
+.DS_Store
+.git
+.gitignore
+.wrangler
+wrangler.jsonc
+.assetsignore
+.claude
+
+# MATERIAL DO PROFESSOR — não publicar.
+# O painel é acessível na web; gabarito e prova no ar chegam ao aluno.
+*_gabarito.md
+*_prova.html
+*_recuperacao.html
+*_roteiro.md
+apc/b4/STATUS.md
+apc/b4/ROTINA.md
+
+# Planejamento interno
+divisao-aulas-3-bimestre.txt
+divisao-aulas-4-bimestre.txt
+adaptacao-joao-guilherme-3bimestre.md
