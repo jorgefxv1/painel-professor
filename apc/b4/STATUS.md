@@ -8,6 +8,17 @@ Fase do bimestre: **02/10/2026 a 09/12/2026** · Turmas 2A e 2B · EE. Júlia Go
 
 ---
 
+## Execução de 13/09/2026 — bimestre ainda não começou
+
+A rotina semanal rodou em 13/09/2026. O 4º bimestre só começa em **02/10/2026** (faltam ~19 dias),
+então, conforme a regra do `SKILL.md` ("fora de 02/10–09/12/2026, não gere nada"), nenhum material
+novo foi gerado nesta execução. A Semana 1 já estava pronta desde 12/09/2026 (ver seção abaixo).
+Nada a revisar por causa desta execução — é só um registro de que a rotina rodou e verificou a data
+corretamente. As próximas execuções continuarão nesse modo de espera até a semana letiva de
+02/10–08/10 se aproximar, quando a Semana 2 passa a ser gerada.
+
+---
+
 ## Semana 1 — 02/10 a 08/10 · ✅ COMPLETA (gerada em 12/09/2026)
 
 | Disciplina | Aula | Tipo | Arquivos |
