@@ -1,0 +1,345 @@
+<title>ETL x ELT em Três Frases</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@0,500;0,600;0,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #ece8ef;
+    --paper: #ffffff;
+    --ink: #241f28;
+    --muted: #6b6470;
+    --accent: #6d3b9c;
+    --accent-ink: #4a2570;
+    --accent-soft: #f0e9f5;
+    --rule: #ddd4e1;
+    --good: #2f6b3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131117;
+      --paper: #1d1922;
+      --ink: #ece7ef;
+      --muted: #a79fae;
+      --accent: #c9a3e6;
+      --accent-ink: #ddc4ef;
+      --accent-soft: #29212f;
+      --rule: #342c3a;
+      --good: #82c08c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #131117;
+    --paper: #1d1922;
+    --ink: #ece7ef;
+    --muted: #a79fae;
+    --accent: #c9a3e6;
+    --accent-ink: #ddc4ef;
+    --accent-soft: #29212f;
+    --rule: #342c3a;
+    --good: #82c08c;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.5;
+  }
+  @media screen {
+    body { padding: 22px 12px; }
+    .sheet { box-shadow: 0 2px 14px rgba(0,0,0,.16); margin: 0 auto 20px; }
+  }
+
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    padding: 11mm 14mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 6.6pt; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent-ink); line-height: 1.5; margin: 0 0 6pt;
+  }
+  h1 {
+    font-family: "Spectral", Georgia, serif; font-weight: 700;
+    font-size: 18pt; line-height: 1.1; letter-spacing: -.01em;
+    margin: 0 0 5pt; text-wrap: balance;
+  }
+  .meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 7pt;
+    color: var(--muted); display: flex; flex-wrap: wrap; gap: 2pt 14pt;
+    padding-bottom: 8pt; border-bottom: 1.5px solid var(--accent); margin-bottom: 9pt;
+  }
+  .meta b { color: var(--ink); font-weight: 500; }
+
+  h2 {
+    font-family: "Spectral", Georgia, serif; font-weight: 600; font-size: 12.5pt;
+    margin: 9pt 0 4pt; display: flex; align-items: baseline; gap: 6pt;
+  }
+  h2 .n {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 6.6pt;
+    color: var(--accent-ink); letter-spacing: .05em;
+  }
+  h3 {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 7pt; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); margin: 10pt 0 4pt;
+  }
+  p { margin: 0 0 6pt; }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+  .lead { font-size: 9.4pt; }
+  .sep-note { font-size: 8pt; color: var(--muted); margin: 4pt 0 6pt; }
+
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 7pt; margin: 5pt 0 6pt; }
+  .duo .pane {
+    border: 1px solid var(--rule); border-radius: 4pt; padding: 6pt 8pt;
+    font-size: 7.9pt; line-height: 1.4; background: var(--paper);
+  }
+  .duo .pane h4 {
+    font-family: "Spectral", Georgia, serif; font-size: 10pt; font-weight: 600;
+    margin: 0 0 3pt;
+  }
+  .duo .pane ul { margin: 3pt 0; padding-left: 11pt; }
+  .duo .pane li { margin-bottom: 2pt; }
+  .duo .pane .foot { color: var(--muted); font-size: 7.3pt; margin: 3pt 0 0; }
+
+  .chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 4pt; margin: 5pt 0 4pt; }
+  .chain .link {
+    flex: 1 1 120px; border: 1px solid var(--accent); border-radius: 4pt;
+    padding: 5pt 7pt; background: var(--accent-soft);
+  }
+  .chain .link b { display: block; font-size: 8.2pt; font-weight: 600; margin-bottom: 1pt; }
+  .chain .link span { font-size: 7.2pt; line-height: 1.32; color: var(--muted); }
+  .chain .arrow { align-self: center; color: var(--accent); font-size: 9pt; flex: 0 0 auto; }
+
+  .decision { margin: 5pt 0 6pt; padding-left: 0; list-style: none; counter-reset: d; }
+  .decision li {
+    counter-increment: d; position: relative; padding-left: 16pt;
+    margin-bottom: 3.5pt; font-size: 8.2pt; line-height: 1.4;
+  }
+  .decision li::before {
+    content: counter(d); position: absolute; left: 0; top: .3pt;
+    font-family: "IBM Plex Mono", monospace; font-size: 6.6pt; color: #fff;
+    background: var(--accent); width: 11pt; height: 11pt; border-radius: 2.5pt;
+    display: grid; place-items: center;
+  }
+  .decision b { color: var(--accent-ink); }
+  .decision .go { color: var(--good); font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.9pt; margin: 4pt 0 6pt; }
+  th, td {
+    text-align: left; vertical-align: top; padding: 3.4pt 5pt;
+    border-bottom: 1px solid var(--rule); line-height: 1.35;
+  }
+  thead th {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 6.4pt;
+    letter-spacing: .05em; text-transform: uppercase; color: var(--accent-ink);
+    border-bottom: 1.5px solid var(--accent);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td b { font-weight: 600; }
+
+  ol.ex { margin: 3pt 0 0; padding-left: 0; list-style: none; counter-reset: ex; }
+  ol.ex > li {
+    counter-increment: ex; position: relative; padding-left: 15pt;
+    margin-bottom: 5pt; font-size: 8.2pt; line-height: 1.4;
+  }
+  ol.ex > li::before {
+    content: counter(ex); position: absolute; left: 0; top: .5pt;
+    font-family: "IBM Plex Mono", monospace; font-size: 7pt; color: #fff;
+    background: var(--accent); width: 11pt; height: 11pt; border-radius: 2.5pt;
+    display: grid; place-items: center;
+  }
+  ol.ex .items b { color: var(--accent-ink); font-family: "IBM Plex Mono", monospace; font-weight: 500; }
+
+  .grow { flex: 1; }
+  footer {
+    font-family: "IBM Plex Mono", monospace; font-size: 6.6pt; color: var(--muted);
+    border-top: 1px solid var(--rule); padding-top: 6pt; margin-top: 8pt; line-height: 1.5;
+  }
+
+  @media print {
+    :root { --bg:#fff; --paper:#fff; --ink:#1c1c1c; --accent-soft:#f2ecf6; }
+    @page { size: A4; margin: 10mm; }
+    html, body { padding: 0; margin: 0; font-size: 8.2pt; }
+    .sheet {
+      width: auto; min-height: 0; height: auto;
+      box-shadow: none; margin: 0; padding: 0;
+      display: block;
+    }
+    .sheet + .sheet { break-before: page; page-break-before: always; }
+    h1 { font-size: 16pt; }
+    h2 { font-size: 11pt; margin: 6pt 0 3pt; }
+    h3 { margin: 6pt 0 3pt; }
+    p { margin: 0 0 4pt; }
+    .lead { font-size: 8.6pt; }
+    .meta { margin-bottom: 6pt; padding-bottom: 5pt; }
+    .duo { gap: 6pt; margin: 4pt 0 4pt; }
+    .duo .pane { padding: 5pt 7pt; }
+    table { margin: 3pt 0 4pt; }
+    th, td { padding: 2.5pt 4pt; }
+    .chain { margin: 3pt 0 3pt; }
+    .chain .link { padding: 3.5pt 6pt; }
+    .decision li { margin-bottom: 3pt; }
+    .sep-note { margin: 3pt 0 4pt; }
+    ol.ex > li { margin-bottom: 4pt; }
+    .grow { display: none; }
+    footer { display: none; }
+  }
+
+  /* versão simplificada: tipos maiores, menos blocos */
+  h1 { font-size: 22pt; }
+  h2 { font-size: 15pt; margin: 14pt 0 6pt; }
+  p { margin: 0 0 8pt; }
+  .big {
+    font-family: "Spectral", Georgia, serif; font-size: 13.5pt; line-height: 1.35;
+    border-left: 3px solid var(--accent); padding: 4pt 0 4pt 10pt; margin: 6pt 0 10pt;
+  }
+  .big b { color: var(--accent-ink); font-weight: 600; }
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8pt; margin: 6pt 0 10pt; }
+  .trio .card { border: 1px solid var(--accent); border-radius: 5pt; background: var(--accent-soft); padding: 8pt 10pt; }
+  .trio .letter {
+    font-family: "Spectral", Georgia, serif; font-size: 26pt; font-weight: 700; line-height: 1;
+    color: var(--accent); display: block; margin-bottom: 2pt;
+  }
+  .trio .name { font-weight: 600; font-size: 10.5pt; display: block; margin-bottom: 4pt; }
+  .trio .card p { font-size: 9.2pt; line-height: 1.4; margin: 0 0 4pt; }
+  .trio .card p:last-child { margin: 0; color: var(--muted); }
+
+  .flow { display: flex; align-items: center; gap: 6pt; flex-wrap: wrap; margin: 4pt 0 3pt; }
+  .flow .box {
+    border: 1.5px solid var(--ink); border-radius: 3pt; padding: 5pt 9pt; font-size: 9.6pt;
+    background: var(--paper); text-align: center; min-width: 96pt;
+  }
+  .flow .box.t { border-color: var(--accent); background: var(--accent-soft); border-style: dashed; }
+  .flow .box small { display: block; font-family: "IBM Plex Mono", monospace; font-size: 6.6pt; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+  .flow .arrow { color: var(--accent); font-size: 13pt; }
+  .flow-label { font-family: "IBM Plex Mono", monospace; font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); margin: 8pt 0 2pt; }
+  .flow-note { font-size: 9pt; color: var(--muted); margin: 0 0 6pt; }
+
+  .duo .pane { font-size: 9.4pt; padding: 8pt 10pt; }
+  .duo .pane h4 { font-size: 12pt; }
+  .duo .pane .foot { font-size: 8.6pt; }
+
+  .script { list-style: none; padding: 0; margin: 4pt 0 8pt; }
+  .script li { display: grid; grid-template-columns: 62pt 1fr; gap: 8pt; padding: 5pt 0; border-bottom: 1px solid var(--rule); font-size: 9.6pt; line-height: 1.45; }
+  .script li:last-child { border-bottom: none; }
+  .script .do { font-family: "IBM Plex Mono", monospace; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); padding-top: 2pt; }
+
+  ol.ex > li { font-size: 9.6pt; }
+  table { font-size: 9.2pt; }
+
+  @media (max-width: 640px) {
+    body { padding: 12px 16px; }
+    .sheet { width: 100%; min-height: auto; padding: 8mm 5mm; }
+    .duo, .trio { grid-template-columns: 1fr; }
+    .flow .arrow { display: none; }
+    .flow .box { flex: 1 1 100%; }
+  }
+</style>
+
+<!-- ===== PÁGINA 1 ===== -->
+<div class="sheet">
+  <p class="eyebrow">EE Júlia Gonçalves Passarinho · Itinerário Formativo — Ciência de Dados<br>UC I · Ingestão de Dados · Aula 04 · Revisão pré-prova · versão simplificada</p>
+  <h1>ETL x ELT: a cozinha explica tudo</h1>
+  <div class="meta"><span><b>Turma:</b> 2º Ano A/B — Integral</span><span><b>Prof.:</b> Jorge Frias</span><span><b>Data:</b> ___ / 09 / 2026</span></div>
+
+  <p class="big">Dado chega <b>bagunçado</b>, como ingrediente cru. Uma hora alguém precisa arrumar. <b>ETL</b> arruma <b>antes</b> de guardar. <b>ELT</b> guarda primeiro e arruma <b>depois</b>. Só isso muda.</p>
+
+  <h2>As três letras</h2>
+  <div class="trio">
+    <div class="card">
+      <span class="letter">E</span>
+      <span class="name">Extract · extrair</span>
+      <p>Pegar os ingredientes na geladeira.</p>
+      <p>Dados: buscar na fonte — planilha, banco, app, sensor.</p>
+    </div>
+    <div class="card">
+      <span class="letter">T</span>
+      <span class="name">Transform · transformar</span>
+      <p>Lavar, cortar, temperar, jogar fora o que estragou.</p>
+      <p>Dados: corrigir erro, padronizar data, tirar duplicado.</p>
+    </div>
+    <div class="card">
+      <span class="letter">L</span>
+      <span class="name">Load · carregar</span>
+      <p>Servir o prato na mesa.</p>
+      <p>Dados: guardar no destino final, pronto para usar.</p>
+    </div>
+  </div>
+
+  <h2>Os dois caminhos — desenho para o quadro</h2>
+  <p class="flow-label">ETL — restaurante</p>
+  <div class="flow">
+    <div class="box">Geladeira<small>fonte (E)</small></div><span class="arrow">→</span>
+    <div class="box t">Cozinha<small>arruma (T)</small></div><span class="arrow">→</span>
+    <div class="box">Mesa<small>destino (L)</small></div>
+  </div>
+  <p class="flow-note">O chef prepara. O prato chega pronto. Quem senta só come.</p>
+
+  <p class="flow-label">ELT — self-service</p>
+  <div class="flow">
+    <div class="box">Geladeira<small>fonte (E)</small></div><span class="arrow">→</span>
+    <div class="box">Mesa<small>destino (L)</small></div><span class="arrow">→</span>
+    <div class="box t">Cada um monta o prato<small>arruma depois (T)</small></div>
+  </div>
+  <p class="flow-note">Tudo vai cru pra mesa. Cada pessoa prepara do seu jeito, na hora que for comer.</p>
+
+  <h2>Quando usar cada um</h2>
+  <table>
+    <thead><tr><th style="width:50%">ETL — restaurante</th><th>ELT — self-service</th></tr></thead>
+    <tbody>
+      <tr><td>Precisa chegar <b>certo</b>, sem erro.</td><td>Precisa chegar <b>rápido</b>, em grande quantidade.</td></tr>
+      <tr><td>Poucas receitas, sempre iguais.</td><td>Muita gente, cada uma quer uma coisa diferente.</td></tr>
+      <tr><td><b>Ex.:</b> boletim da escola, folha de pagamento.</td><td><b>Ex.:</b> cliques de um site, dados de rede social.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grow"></div>
+  <footer>UC I — Ingestão de Dados · 3º Bimestre 2026 · 2º Ano A/B · Prof. Jorge Frias · pág. 1 de 2</footer>
+</div>
+
+<!-- ===== PÁGINA 2 ===== -->
+<div class="sheet">
+  <h2>Lote x tempo real — o ritmo em que o dado entra</h2>
+  <p class="big">ETL/ELT é a <b>ordem</b>. Lote/tempo real é o <b>ritmo</b>. Pergunta diferente.</p>
+  <div class="duo">
+    <div class="pane">
+      <h4>Lote — lavar roupa</h4>
+      Você junta a roupa da semana e lava tudo de uma vez. Os dados acumulam e são processados juntos, num horário marcado.
+      <p class="foot"><strong>Ex.:</strong> banco fecha as contas do dia à meia-noite. Backup do celular de madrugada.</p>
+    </div>
+    <div class="pane">
+      <h4>Tempo real — beber água</h4>
+      Você bebe na hora em que sente sede. Cada dado é tratado assim que chega, sem esperar juntar.
+      <p class="foot"><strong>Ex.:</strong> cartão bloqueado na hora da compra suspeita. Trânsito no GPS.</p>
+    </div>
+  </div>
+  <p class="flow-note">Pergunta para decidir: <strong>alguém está esperando a resposta agora?</strong> Sim → tempo real. Não → lote (mais barato).</p>
+
+  <h2>Roteiro para o quadro</h2>
+  <ul class="script">
+    <li><span class="do">Desenhe</span><span>Geladeira → Cozinha → Mesa. Escreva E, T, L embaixo de cada um. Pergunte: "o que acontece em cada lugar?"</span></li>
+    <li><span class="do">Fale</span><span>"Isso é ETL. O chef arruma antes de servir. O prato chega pronto e confiável."</span></li>
+    <li><span class="do">Desenhe</span><span>Ao lado: Geladeira → Mesa → pratinho de cada um. Troque a ordem das letras: E, L, T.</span></li>
+    <li><span class="do">Fale</span><span>"Isso é ELT. Self-service. Tudo vai cru pra mesa, cada um arruma quando for comer. Mais rápido pra encher a mesa, mas guarda até o que ninguém vai usar."</span></li>
+    <li><span class="do">Pergunte</span><span>"Boletim da escola: pode chegar com nota errada?" (não → ETL). "Instagram guardando todo clique: dá pra arrumar cada um antes?" (não → ELT).</span></li>
+    <li><span class="do">Feche</span><span>"Lote é lavar roupa junto. Tempo real é beber água na hora. Isso é o ritmo — não confundir com a ordem."</span></li>
+  </ul>
+
+  <h2>Três perguntas rápidas</h2>
+  <ol class="ex">
+    <li>Qual é a <strong>única</strong> diferença entre ETL e ELT? Explique com a cozinha.</li>
+    <li>Trocar a data "14/09/2026" por "2026-09-14" é E, T ou L? Por quê?</li>
+    <li>Diga se é <strong>lote</strong> ou <strong>tempo real</strong>: <span class="items"><b>a)</b> relatório de vendas do mês; <b>b)</b> alerta de batimento cardíaco; <b>c)</b> folha de pagamento; <b>d)</b> recomendação de vídeo enquanto você assiste.</span></li>
+  </ol>
+
+  <div class="grow"></div>
+  <footer>UC I — Ingestão de Dados · 3º Bimestre 2026 · 2º Ano A/B · Prof. Jorge Frias · pág. 2 de 2</footer>
+</div>

@@ -26,6 +26,30 @@ As planilhas-base precisam ser subidas ao Drive e copiadas por dupla.
 
 ---
 
+## Atividade avaliativa (substitui prova) — ✅ GERADA em 17/09/2026 (v3, tema ETL x ELT)
+
+UC I (Ingestão de Dados) passará por **atividade avaliativa em vez de prova**. Conteúdo: **ETL x ELT**
+(tema do 3º bimestre, não da apostila própria do 4º), em formato simples — sigla, ordenação, múltipla
+escolha, V/F, correspondência e lacunas. 10 itens de 1,0 ponto cada; item 10 = fluxograma (escrito ou
+desenhado) comparando as 3 etapas do ETL e do ELT.
+
+| Arquivo | Descrição |
+|---|---|
+| `apc_uc1_b4_atividade_avaliativa.html` | Folha do aluno, 4 páginas A4, 10 questões |
+| `apc_uc1_b4_atividade_avaliativa_gabarito.md` | Gabarito com critérios de correção |
+
+Não segue o nome `aulaNN` porque é uma avaliação isolada (retomada de ETL x ELT), não material de uma
+aula específica do `divisao-aulas-4-bimestre.txt`.
+
+**Histórico:** v1 tinha 10 atividades sobre raspagem/API (conteúdo do 4º bim.) com questões dissertativas
+longas — trocado a pedido do Jorge por v2 (mesmo tema, questões objetivas) e depois v3 (tema mudado para
+ETL x ELT, que é o que ele realmente queria avaliar).
+
+**Revisar antes de imprimir:** data no cabeçalho está em branco (`___ / ___ / 2026`) para preencher à mão
+conforme a data real de aplicação.
+
+---
+
 ## Semanas 2 a 5 — ⏳ PENDENTE
 
 | Semana | UC I | UC II | UC III | Dev Local |

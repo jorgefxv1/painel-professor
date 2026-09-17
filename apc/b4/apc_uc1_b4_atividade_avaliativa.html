@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Atividade Avaliativa — UC I: ETL x ELT</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 24px auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; margin: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term, .term { color: #2a5b8a; }
+  .flowchart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0 4px 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .flowchart .box {
+    background: #ffffff;
+    border: 1.5px solid #2a5b8a;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 11px;
+    text-align: center;
+    min-width: 60px;
+    color: #2a5b8a;
+    font-weight: bold;
+  }
+  .flowchart .arrow { font-size: 16px; color: #2a5b8a; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 22px 0 8px 0;
+  }
+  .activity-num {
+    display: inline-block;
+    background: #2a5b8a;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    margin-right: 8px;
+  }
+  .points {
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #777;
+    font-weight: normal;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .num-col { width: 26px; text-align: center; }
+  .blank-col { width: 18%; text-align: center; }
+  .qbox { margin-bottom: 10px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  .mc-options {
+    font-size: 12.5px;
+    line-height: 1.9;
+    margin: 4px 0 4px 4px;
+  }
+  .mc-options .opt { display: block; }
+  .mc-options .letter {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1.3px solid #2a5b8a;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5px;
+    font-weight: bold;
+    color: #2a5b8a;
+    margin-right: 6px;
+  }
+  .vf-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  .vf-box {
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    border: 1px solid #888;
+    text-align: center;
+  }
+  .match-cols {
+    display: flex;
+    gap: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+  .match-cols .col { flex: 1; }
+  .match-cols .item {
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    background: #fafafa;
+  }
+  .match-cols h4 {
+    font-size: 11.5px;
+    color: #2a5b8a;
+    margin: 0 0 8px 0;
+  }
+  .order-list {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+  .order-list .oline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px dashed #ccc;
+  }
+  .order-box {
+    width: 26px;
+    height: 22px;
+    border: 1px solid #888;
+    text-align: center;
+    flex: 0 0 26px;
+  }
+  .draw-box {
+    border: 1.5px dashed #2a5b8a;
+    border-radius: 6px;
+    min-height: 95mm;
+    margin: 8px 0 12px 0;
+    background: linear-gradient(#eee 1px, transparent 1px);
+    background-size: 100% 9mm;
+  }
+  .node-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .node-bank .chip {
+    border: 1.5px solid #2a5b8a;
+    color: #2a5b8a;
+    border-radius: 14px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: bold;
+  }
+  footer {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / ___ / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">🔄</span><h1>Atividade Avaliativa — UC I: ETL x ELT</h1></div>
+  <div class="subtitle">Avaliação em substituição à prova · UC I (Ingestão de Dados) · 10 questões — vale 10,0</div>
+  <div class="id-fields">
+    <span class="field">Nome: <span class="line"></span></span>
+    <span class="field" style="flex:0 0 100px;">Turma: <span class="line"></span></span>
+  </div>
+  <p class="intro">
+    Esta atividade substitui a prova escrita e cobre o que vimos sobre <b>ETL</b> e <b>ELT</b> — as duas
+    formas de mover um dado da fonte até o lugar onde ele vai ser usado. São 10 questões, valendo 1,0 ponto
+    cada. A última pede um fluxograma — deixe um tempo reservado pra ela.
+  </p>
+
+  <div class="concept-box">
+    <b>ETL</b> = Extract, Transform, Load (Extrair → <b>Transformar</b> → Carregar). O dado é limpo e
+    organizado <b>antes</b> de chegar ao destino final.<br><br>
+    <b>ELT</b> = Extract, Load, Transform (Extrair → Carregar → <b>Transformar</b>). O dado bruto vai
+    direto pro destino, e a transformação acontece <b>depois</b>, lá dentro.
+  </div>
+
+  <div class="part-header"><span class="activity-num">1</span>O que significa cada letra? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Complete o significado de cada sigla.</div>
+  <table>
+    <tr><th class="num-col">#</th><th>Sigla</th><th>E = ______________</th><th>T = ______________</th><th>L = ______________</th></tr>
+    <tr><td class="num-col">1</td><td>ETL</td><td></td><td></td><td></td></tr>
+    <tr><td class="num-col">2</td><td>ELT</td><td></td><td></td><td></td></tr>
+  </table>
+
+  <div class="part-header"><span class="activity-num">2</span>Coloque em ordem — ETL <span class="points">1,0 pt</span></div>
+  <div class="instructions">Numere de 1 a 3 a ordem certa das etapas do ETL.</div>
+  <div class="order-list">
+    <div class="oline"><span class="order-box"></span> Transformar (limpar e organizar o dado)</div>
+    <div class="oline"><span class="order-box"></span> Extrair o dado da fonte</div>
+    <div class="oline"><span class="order-box"></span> Carregar o dado no destino final</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">3</span>Coloque em ordem — ELT <span class="points">1,0 pt</span></div>
+  <div class="instructions">Numere de 1 a 3 a ordem certa das etapas do ELT.</div>
+  <div class="order-list">
+    <div class="oline"><span class="order-box"></span> Carregar o dado bruto no destino</div>
+    <div class="oline"><span class="order-box"></span> Transformar o dado já dentro do destino</div>
+    <div class="oline"><span class="order-box"></span> Extrair o dado da fonte</div>
+  </div>
+
+  <footer>UC I — Ingestão de Dados · ETL x ELT · 2º Ano A/B · Prof. Jorge Frias · folha 1</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">4</span>A diferença principal <span class="points">1,0 pt</span></div>
+  <div class="instructions">Marque a alternativa correta.</div>
+  <div class="instructions">A principal diferença entre ETL e ELT é:</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> No ETL não existe extração; no ELT sim.</span>
+    <span class="opt"><span class="letter">B</span> A ordem em que a transformação acontece: antes (ETL) ou depois (ELT) de carregar o dado.</span>
+    <span class="opt"><span class="letter">C</span> ETL só funciona com planilhas; ELT só funciona com API.</span>
+    <span class="opt"><span class="letter">D</span> Não existe diferença, são a mesma coisa com nomes diferentes.</span>
+  </div>
+
+  <div class="part-header"><span class="activity-num">5</span>Verdadeiro ou Falso <span class="points">1,0 pt</span></div>
+  <div class="vf-row"><span class="vf-box"></span> No ETL, o dado chega ao destino já limpo e organizado.</div>
+  <div class="vf-row"><span class="vf-box"></span> No ELT, o dado bruto (sem tratamento) é carregado primeiro.</div>
+  <div class="vf-row"><span class="vf-box"></span> A letra "L" significa "Limpar" nas duas siglas.</div>
+  <div class="vf-row"><span class="vf-box"></span> ELT costuma ser usado quando o destino tem bastante poder de processamento (ex.: nuvem).</div>
+
+  <div class="part-header"><span class="activity-num">6</span>Qual caminho escolher? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Para cada situação, escreva ETL ou ELT.</div>
+  <table>
+    <tr><th>Situação</th><th class="blank-col">ETL ou ELT</th></tr>
+    <tr><td>Uma empresa pequena precisa carregar um relatório já limpo e pronto direto num sistema simples, sem poder de processamento extra.</td><td></td></tr>
+    <tr><td>Uma empresa guarda um volume enorme de dado bruto num data lake na nuvem, e só depois decide como organizá-lo conforme a necessidade.</td><td></td></tr>
+  </table>
+
+  <footer>UC I — Ingestão de Dados · ETL x ELT · 2º Ano A/B · Prof. Jorge Frias · folha 2</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">7</span>Ligue a etapa ao que ela faz <span class="points">1,0 pt</span></div>
+  <div class="match-cols">
+    <div class="col">
+      <h4>Etapa</h4>
+      <div class="item">1. Extract</div>
+      <div class="item">2. Transform</div>
+      <div class="item">3. Load</div>
+    </div>
+    <div class="col">
+      <h4>O que faz</h4>
+      <div class="item">A. Limpa, organiza e corrige o dado</div>
+      <div class="item">B. Coloca o dado no destino final</div>
+      <div class="item">C. Retira o dado da fonte de origem</div>
+    </div>
+  </div>
+  <div class="instructions">Resposta: 1 = ___  2 = ___  3 = ___</div>
+
+  <div class="part-header"><span class="activity-num">8</span>Verdadeiro ou Falso <span class="points">1,0 pt</span></div>
+  <div class="vf-row"><span class="vf-box"></span> No ETL, se o dado tiver um erro, ele é corrigido antes de qualquer pessoa acessar o destino.</div>
+  <div class="vf-row"><span class="vf-box"></span> No ELT, o dado bruto fica disponível no destino antes de ser transformado.</div>
+
+  <div class="part-header"><span class="activity-num">9</span>Complete a frase <span class="points">1,0 pt</span></div>
+  <div class="instructions">Preencha as lacunas com ETL ou ELT.</div>
+  <div class="qbox">
+    <div class="q">a) Quando a transformação acontece <b>antes</b> de carregar o dado, o processo se chama _______.</div>
+    <div class="q">b) Quando o dado bruto é carregado primeiro e organizado <b>depois</b>, o processo se chama _______.</div>
+  </div>
+
+  <footer>UC I — Ingestão de Dados · ETL x ELT · 2º Ano A/B · Prof. Jorge Frias · folha 3</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">10</span>Fluxograma: ETL x ELT <span class="points">1,0 pt</span></div>
+  <div class="instructions">
+    Escreva ou desenhe dois fluxogramas simples — um do ETL e um do ELT — mostrando a ordem das 3 etapas
+    de cada um, ligadas por setas. Use o banco de palavras abaixo como apoio.
+  </div>
+  <div class="node-bank">
+    <span class="chip">Extrair</span>
+    <span class="chip">Transformar</span>
+    <span class="chip">Carregar</span>
+    <span class="chip">Fonte de dados</span>
+    <span class="chip">Dado bruto</span>
+    <span class="chip">Dado limpo</span>
+    <span class="chip">Destino final</span>
+  </div>
+
+  <div class="flowchart">
+    <div class="box">ETL</div>
+  </div>
+  <div class="draw-box"></div>
+
+  <div class="flowchart">
+    <div class="box">ELT</div>
+  </div>
+  <div class="draw-box"></div>
+
+  <footer>UC I — Ingestão de Dados · ETL x ELT · 2º Ano A/B · Prof. Jorge Frias · folha 4</footer>
+</div>
+
+</body>
+</html>

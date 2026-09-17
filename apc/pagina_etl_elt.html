@@ -1,0 +1,329 @@
+<title>ETL x ELT na Cozinha</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@0,500;0,600;0,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #ece8ef;
+    --paper: #ffffff;
+    --ink: #241f28;
+    --muted: #6b6470;
+    --accent: #6d3b9c;
+    --accent-ink: #4a2570;
+    --accent-soft: #f0e9f5;
+    --rule: #ddd4e1;
+    --good: #2f6b3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131117;
+      --paper: #1d1922;
+      --ink: #ece7ef;
+      --muted: #a79fae;
+      --accent: #c9a3e6;
+      --accent-ink: #ddc4ef;
+      --accent-soft: #29212f;
+      --rule: #342c3a;
+      --good: #82c08c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #131117;
+    --paper: #1d1922;
+    --ink: #ece7ef;
+    --muted: #a79fae;
+    --accent: #c9a3e6;
+    --accent-ink: #ddc4ef;
+    --accent-soft: #29212f;
+    --rule: #342c3a;
+    --good: #82c08c;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 9pt;
+    line-height: 1.42;
+  }
+  @media screen {
+    body { padding: 22px 12px; }
+    .sheet { box-shadow: 0 2px 14px rgba(0,0,0,.16); margin: 0 auto 20px; }
+  }
+
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    padding: 11mm 14mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 6.6pt; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent-ink); line-height: 1.5; margin: 0 0 6pt;
+  }
+  h1 {
+    font-family: "Spectral", Georgia, serif; font-weight: 700;
+    font-size: 18pt; line-height: 1.1; letter-spacing: -.01em;
+    margin: 0 0 5pt; text-wrap: balance;
+  }
+  .meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 7pt;
+    color: var(--muted); display: flex; flex-wrap: wrap; gap: 2pt 14pt;
+    padding-bottom: 8pt; border-bottom: 1.5px solid var(--accent); margin-bottom: 9pt;
+  }
+  .meta b { color: var(--ink); font-weight: 500; }
+
+  h2 {
+    font-family: "Spectral", Georgia, serif; font-weight: 600; font-size: 12.5pt;
+    margin: 9pt 0 4pt; display: flex; align-items: baseline; gap: 6pt;
+  }
+  h2 .n {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 6.6pt;
+    color: var(--accent-ink); letter-spacing: .05em;
+  }
+  h3 {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 7pt; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); margin: 10pt 0 4pt;
+  }
+  p { margin: 0 0 6pt; }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+  .lead { font-size: 9.4pt; }
+  .sep-note { font-size: 8pt; color: var(--muted); margin: 4pt 0 6pt; }
+
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 7pt; margin: 5pt 0 6pt; }
+  .duo .pane {
+    border: 1px solid var(--rule); border-radius: 4pt; padding: 6pt 8pt;
+    font-size: 7.9pt; line-height: 1.4; background: var(--paper);
+  }
+  .duo .pane h4 {
+    font-family: "Spectral", Georgia, serif; font-size: 10pt; font-weight: 600;
+    margin: 0 0 3pt;
+  }
+  .duo .pane ul { margin: 3pt 0; padding-left: 11pt; }
+  .duo .pane li { margin-bottom: 2pt; }
+  .duo .pane .foot { color: var(--muted); font-size: 7.3pt; margin: 3pt 0 0; }
+
+  .chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 4pt; margin: 5pt 0 4pt; }
+  .chain .link {
+    flex: 1 1 120px; border: 1px solid var(--accent); border-radius: 4pt;
+    padding: 5pt 7pt; background: var(--accent-soft);
+  }
+  .chain .link b { display: block; font-size: 8.2pt; font-weight: 600; margin-bottom: 1pt; }
+  .chain .link span { font-size: 7.2pt; line-height: 1.32; color: var(--muted); }
+  .chain .arrow { align-self: center; color: var(--accent); font-size: 9pt; flex: 0 0 auto; }
+
+  .decision { margin: 5pt 0 6pt; padding-left: 0; list-style: none; counter-reset: d; }
+  .decision li {
+    counter-increment: d; position: relative; padding-left: 16pt;
+    margin-bottom: 3.5pt; font-size: 8.2pt; line-height: 1.4;
+  }
+  .decision li::before {
+    content: counter(d); position: absolute; left: 0; top: .3pt;
+    font-family: "IBM Plex Mono", monospace; font-size: 6.6pt; color: #fff;
+    background: var(--accent); width: 11pt; height: 11pt; border-radius: 2.5pt;
+    display: grid; place-items: center;
+  }
+  .decision b { color: var(--accent-ink); }
+  .decision .go { color: var(--good); font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.9pt; margin: 4pt 0 6pt; }
+  th, td {
+    text-align: left; vertical-align: top; padding: 3.4pt 5pt;
+    border-bottom: 1px solid var(--rule); line-height: 1.35;
+  }
+  thead th {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 6.4pt;
+    letter-spacing: .05em; text-transform: uppercase; color: var(--accent-ink);
+    border-bottom: 1.5px solid var(--accent);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td b { font-weight: 600; }
+
+  ol.ex { margin: 3pt 0 0; padding-left: 0; list-style: none; counter-reset: ex; }
+  ol.ex > li {
+    counter-increment: ex; position: relative; padding-left: 15pt;
+    margin-bottom: 5pt; font-size: 8.2pt; line-height: 1.4;
+  }
+  ol.ex > li::before {
+    content: counter(ex); position: absolute; left: 0; top: .5pt;
+    font-family: "IBM Plex Mono", monospace; font-size: 7pt; color: #fff;
+    background: var(--accent); width: 11pt; height: 11pt; border-radius: 2.5pt;
+    display: grid; place-items: center;
+  }
+  ol.ex .items b { color: var(--accent-ink); font-family: "IBM Plex Mono", monospace; font-weight: 500; }
+
+  .grow { flex: 1; }
+  footer {
+    font-family: "IBM Plex Mono", monospace; font-size: 6.6pt; color: var(--muted);
+    border-top: 1px solid var(--rule); padding-top: 6pt; margin-top: 8pt; line-height: 1.5;
+  }
+
+  @media print {
+    :root { --bg:#fff; --paper:#fff; --ink:#1c1c1c; --accent-soft:#f2ecf6; }
+    @page { size: A4; margin: 10mm; }
+    html, body { padding: 0; margin: 0; font-size: 8.2pt; }
+    .sheet {
+      width: auto; min-height: 0; height: auto;
+      box-shadow: none; margin: 0; padding: 0;
+      display: block;
+    }
+    .sheet + .sheet { break-before: page; page-break-before: always; }
+    h1 { font-size: 16pt; }
+    h2 { font-size: 11pt; margin: 6pt 0 3pt; }
+    h3 { margin: 6pt 0 3pt; }
+    p { margin: 0 0 4pt; }
+    .lead { font-size: 8.6pt; }
+    .meta { margin-bottom: 6pt; padding-bottom: 5pt; }
+    .duo { gap: 6pt; margin: 4pt 0 4pt; }
+    .duo .pane { padding: 5pt 7pt; }
+    table { margin: 3pt 0 4pt; }
+    th, td { padding: 2.5pt 4pt; }
+    .chain { margin: 3pt 0 3pt; }
+    .chain .link { padding: 3.5pt 6pt; }
+    .decision li { margin-bottom: 3pt; }
+    .sep-note { margin: 3pt 0 4pt; }
+    ol.ex > li { margin-bottom: 4pt; }
+    .grow { display: none; }
+    footer { display: none; }
+  }
+
+  .matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 5pt; margin: 5pt 0 6pt; }
+  .matrix .cell {
+    border: 1px solid var(--rule); border-radius: 4pt; padding: 5pt 7pt; font-size: 7.6pt; line-height: 1.38;
+  }
+  .matrix .cell b { display: block; font-size: 8pt; color: var(--accent-ink); margin-bottom: 1pt; }
+  .warn { border-left: 2.5px solid var(--accent); padding: 3pt 0 3pt 8pt; margin: 4pt 0 6pt; font-size: 8pt; }
+  .warn b { color: var(--accent-ink); }
+  @media (max-width: 640px) {
+    body { padding: 12px 16px; }
+    .sheet { width: 100%; min-height: auto; padding: 8mm 5mm; }
+    .duo, .matrix { grid-template-columns: 1fr; }
+    .chain .arrow { display: none; }
+  }
+</style>
+
+<!-- ===== PÁGINA 1 ===== -->
+<div class="sheet">
+  <p class="eyebrow">EE Júlia Gonçalves Passarinho · Itinerário Formativo — Ciência de Dados<br>UC I · Ingestão de Dados · Bloco 2 · Aula 04 · Revisão pré-prova</p>
+  <h1>ETL x ELT: cozinhar antes de servir ou self-service?</h1>
+  <div class="meta"><span><b>Turma:</b> 2º Ano A/B — Integral</span><span><b>Prof.:</b> Jorge Frias</span><span><b>Data:</b> ___ / 09 / 2026</span></div>
+
+  <p class="lead">No Bloco 1 você viu a <strong>fábrica de chocolate</strong>: matéria-prima (dados brutos) entra, é processada e sai embalada (dados prontos para análise). Isso é <strong>ingestão de dados</strong> — coletar, transportar e armazenar. Agora a pergunta do Bloco 2 é sobre <strong>ordem</strong>: o dado chega bagunçado. A gente <strong>arruma antes de guardar</strong> ou <strong>guarda primeiro e arruma depois</strong>? A resposta tem nome: ETL ou ELT.</p>
+
+  <h2><span class="n">Parte 1</span> As três letras — a cozinha de um restaurante</h2>
+  <div class="chain">
+    <div class="link"><b>E · Extract (Extrair)</b><span><strong>Cozinha:</strong> pegar os ingredientes na geladeira e no mercado.<br><strong>Dados:</strong> buscar dados nas fontes — banco de dados, arquivos (CSV, planilha), APIs, sensores, redes sociais.</span></div>
+    <div class="arrow">▶</div>
+    <div class="link"><b>T · Transform (Transformar)</b><span><strong>Cozinha:</strong> lavar, cortar, temperar, tirar o que estragou.<br><strong>Dados:</strong> remover o que não serve, converter formatos (dd/mm/aaaa → aaaa-mm-dd), corrigir erros, tirar duplicados.</span></div>
+    <div class="arrow">▶</div>
+    <div class="link"><b>L · Load (Carregar)</b><span><strong>Cozinha:</strong> servir o prato na mesa.<br><strong>Dados:</strong> salvar no destino final — banco de dados ou <em>data warehouse</em> — pronto para análise.</span></div>
+  </div>
+  <p class="sep-note"><strong>Regra de ouro:</strong> o <strong>T</strong> costuma ser a etapa mais trabalhosa — é onde o dado sujo vira dado confiável. Na Aula 05 (planilha bagunçada) vocês sentiram isso na pele.</p>
+
+  <h2><span class="n">Parte 2</span> ETL x ELT — a mesma cozinha, ordem diferente</h2>
+  <div class="duo">
+    <div class="pane">
+      <h4>ETL — restaurante à la carte</h4>
+      Extrai → <strong>transforma</strong> → carrega. O chef prepara tudo na cozinha e só o prato pronto chega à mesa. Quem senta pra comer (analisar) recebe o dado já limpo.
+      <ul>
+        <li>Dados chegam ao destino <strong>prontos e confiáveis</strong>.</li>
+        <li>Carga mais <strong>lenta</strong>: nada entra sem passar pela cozinha.</li>
+        <li>Se mudar a receita, precisa <strong>refazer</strong> o processamento desde a fonte.</li>
+      </ul>
+      <p class="foot"><strong>Ex.:</strong> relatório financeiro que precisa sair 100% correto; sistema de notas da escola.<br><strong>Ferramentas:</strong> Talend, Pentaho, Airflow (orquestrando).</p>
+    </div>
+    <div class="pane">
+      <h4>ELT — self-service / rodízio</h4>
+      Extrai → <strong>carrega</strong> → transforma. Os ingredientes vão todos pra mesa (o <em>data lake</em>). Cada pessoa monta o próprio prato na hora em que for comer.
+      <ul>
+        <li>Carga <strong>rápida</strong>: guarda tudo primeiro, sem filtrar.</li>
+        <li>Guarda até o que talvez <strong>nunca seja usado</strong> — mais armazenamento.</li>
+        <li>Flexível: cada análise transforma <strong>do seu jeito</strong>, quando precisar.</li>
+      </ul>
+      <p class="foot"><strong>Ex.:</strong> e-commerce que registra bilhões de cliques e só analisa uma fatia depois.<br><strong>Ferramentas:</strong> Google BigQuery, AWS Glue, Snowflake.</p>
+    </div>
+  </div>
+
+  <h3>Tabela comparativa</h3>
+  <table>
+    <thead><tr><th style="width:24%">Aspecto</th><th>ETL (à la carte)</th><th>ELT (self-service)</th></tr></thead>
+    <tbody>
+      <tr><td>Ordem das etapas</td><td>Extract → Transform → Load</td><td>Extract → Load → Transform</td></tr>
+      <tr><td>Onde transforma</td><td>antes de entrar no destino (na "cozinha")</td><td>dentro do destino, depois de guardado</td></tr>
+      <tr><td>Velocidade de carga</td><td>mais lenta</td><td>mais rápida</td></tr>
+      <tr><td>Estado do dado guardado</td><td>limpo, padronizado</td><td>bruto, do jeito que veio</td></tr>
+      <tr><td>Combina com</td><td>dados menores, regras fixas, relatório confiável</td><td>volume gigante, nuvem, análises que mudam sempre</td></tr>
+      <tr><td>Exemplo</td><td>fechamento contábil do mês</td><td>cliques de um site com milhões de acessos</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Como decidir entre ETL e ELT</h3>
+  <ol class="decision">
+    <li>O dado precisa chegar ao destino <strong>já certo, sem chance de erro</strong> (relatório oficial, nota, folha de pagamento)? <span class="go">→ ETL</span></li>
+    <li>O volume é <strong>gigante</strong>, nem tudo será usado, e as perguntas <strong>ainda vão mudar</strong>? <span class="go">→ ELT</span></li>
+    <li>Na dúvida, pense na <b>cozinha</b>: poucos pratos com receita fixa = à la carte (ETL); multidão com gostos diferentes = self-service (ELT).</li>
+  </ol>
+
+  <div class="grow"></div>
+  <footer>UC I — Ingestão de Dados · Bloco 2 · 3º Bimestre 2026 · 2º Ano A/B · Prof. Jorge Frias · pág. 1 de 2</footer>
+</div>
+
+<!-- ===== PÁGINA 2 ===== -->
+<div class="sheet">
+  <h2><span class="n">Parte 3</span> Lote x tempo real — ordem é uma coisa, ritmo é outra</h2>
+  <p>ETL/ELT responde <strong>em que ordem</strong> o dado é tratado. Lote/streaming responde <strong>em que ritmo</strong> ele entra. São perguntas diferentes — e se combinam.</p>
+  <div class="duo">
+    <div class="pane">
+      <h4>Lote (batch) — lavar roupa</h4>
+      Você junta a roupa da semana e lava tudo de uma vez. Os dados se acumulam e são processados juntos, num horário programado (muitas vezes de madrugada).
+      <ul>
+        <li><strong>Latência alta</strong> (minutos a horas) — e tudo bem, ninguém está esperando na hora.</li>
+        <li>Mais <strong>barato</strong> e previsível; ideal para volumes grandes.</li>
+      </ul>
+      <p class="foot"><strong>Ex.:</strong> banco processando as transações do dia à meia-noite; backup do celular à noite; relatório semanal de vendas.</p>
+    </div>
+    <div class="pane">
+      <h4>Tempo real (streaming) — beber água</h4>
+      Você bebe conforme sente sede, sem esperar juntar garrafas. Cada dado é processado assim que chega — fluxo contínuo, sistema sempre ligado.
+      <ul>
+        <li><strong>Latência baixa</strong> (segundos ou menos).</li>
+        <li>Mais <strong>complexo e caro</strong>: a infraestrutura fica pronta pra picos.</li>
+      </ul>
+      <p class="foot"><strong>Ex.:</strong> bloquear fraude no cartão na hora da compra; trânsito no GPS; alerta de sensor num paciente.<br><strong>Ferramenta:</strong> Apache Kafka.</p>
+    </div>
+  </div>
+
+  <h3>As duas escolhas se combinam</h3>
+  <div class="matrix">
+    <div class="cell"><b>ETL em lote</b>O clássico. De madrugada, o sistema extrai as vendas do dia, limpa tudo e carrega no data warehouse. De manhã, o relatório está pronto.</div>
+    <div class="cell"><b>ELT em lote</b>Uma vez por dia, joga os arquivos brutos de todas as lojas no data lake da nuvem. Cada time transforma quando precisar.</div>
+    <div class="cell"><b>ETL em streaming</b>Cada transação do cartão é extraída, checada (transformada) e gravada em milissegundos — o que detecta fraude na hora.</div>
+    <div class="cell"><b>ELT em streaming</b>O Kafka despeja os cliques do site no data lake conforme acontecem; a análise vem depois, em cima do dado bruto.</div>
+  </div>
+  <p class="sep-note"><strong>Agendamento de tarefas</strong> é o "despertador" do lote: automatiza a execução em horários fixos, sem alguém apertar um botão (Apache Airflow faz isso orquestrando pipelines).</p>
+
+  <h3>Pegadinhas de prova</h3>
+  <div class="warn"><b>"No ELT não tem transformação."</b> Errado — as três etapas existem nos dois; o que muda é a <strong>ordem</strong> (T antes ou depois do L).</div>
+  <div class="warn"><b>"Extract é só puxar do banco de dados."</b> Fontes também são arquivos, APIs, sensores e redes sociais.</div>
+  <div class="warn"><b>"Converter a data é Load."</b> Mudar formato, corrigir e remover duplicados é sempre <strong>Transform</strong>. Load é só guardar no destino.</div>
+  <div class="warn"><b>"Streaming é sempre melhor porque é mais rápido."</b> Usar tempo real onde bastaria lote é caro e desnecessário; o certo é o que a situação pede.</div>
+
+  <h2><span class="n">Fim</span> Exercícios de revisão</h2>
+  <p class="sep-note">Responda com suas próprias palavras. Nas classificações, o que vale ponto é a justificativa.</p>
+  <ol class="ex">
+    <li>Explique ETL e ELT usando a analogia do restaurante (à la carte × self-service). Qual é a <strong>única</strong> diferença entre eles?</li>
+    <li>Diga a qual etapa cada ação pertence — <strong>Extract, Transform ou Load</strong>: <span class="items"><b>a)</b> puxar os pedidos do app de entrega; <b>b)</b> trocar "R$ 1.200,00" por 1200.00; <b>c)</b> gravar a tabela final no data warehouse; <b>d)</b> apagar clientes cadastrados duas vezes; <b>e)</b> ler a temperatura de um sensor; <b>f)</b> padronizar "SP", "sp" e "São Paulo".</span></li>
+    <li>Classifique como <strong>ETL ou ELT</strong> e justifique: <span class="items"><b>a)</b> boletim escolar, que não pode ter nota errada; <b>b)</b> rede social guardando todos os cliques pra analisar "algum dia"; <b>c)</b> farmácia que quer o relatório de estoque já limpo toda manhã; <b>d)</b> startup na nuvem que ainda não sabe quais perguntas vai fazer aos dados.</span></li>
+    <li>Classifique como <strong>lote ou tempo real</strong> e justifique: <span class="items"><b>a)</b> fechamento da folha de pagamento; <b>b)</b> alerta de batimento cardíaco anormal; <b>c)</b> relatório mensal de vendas; <b>d)</b> recomendação de vídeo enquanto o usuário assiste.</span></li>
+    <li>Um banco usa <strong>lote</strong> para o relatório do dia e <strong>streaming</strong> para bloquear fraude. Por que não usa só um dos dois? Diga qual seria o problema em cada caso.</li>
+  </ol>
+
+  <div class="grow"></div>
+  <footer>UC I — Ingestão de Dados · Bloco 2 · 3º Bimestre 2026 · 2º Ano A/B · Prof. Jorge Frias · pág. 2 de 2</footer>
+</div>
