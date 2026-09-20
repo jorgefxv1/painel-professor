@@ -8,6 +8,16 @@ Fase do bimestre: **02/10/2026 a 09/12/2026** · Turmas 2A e 2B · EE. Júlia Go
 
 ---
 
+## Execução da rotina em 20/09/2026 — bimestre ainda não começou
+
+A rotina semanal disparou em **20/09/2026**, data anterior ao início do 4º bimestre (02/10/2026).
+Conforme o fluxo da skill, nenhuma semana foi calculada e **nenhum material foi gerado** nesta
+execução. O material da Semana 1 abaixo já existia de uma preparação antecipada anterior (12/09/2026)
+e foi mantido sem alteração. A próxima execução da rotina, já dentro do período do bimestre, deve
+retomar a partir da Semana 2 (09/10–15/10), que segue pendente.
+
+---
+
 ## Semana 1 — 02/10 a 08/10 · ✅ COMPLETA (gerada em 12/09/2026)
 
 | Disciplina | Aula | Tipo | Arquivos |
