@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>UC III Aula 03 - Guia de Boas Praticas</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term { color: #2a5b8a; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 26px 0 10px 0;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .rule-list {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .rule-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ccc;
+  }
+  .rule-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #2a5b8a;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    font-size: 12px;
+  }
+  .rule-line { flex: 1; border-bottom: 1px solid #999; height: 20px; margin-top: 4px; }
+  .qbox { margin-bottom: 18px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  footer {
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">🔓</span><h1>Guia de Boas Práticas de Proteção de Dados</h1></div>
+  <div class="subtitle">APC — Atividade Prática de Classe · UC III (Qualidade e Testes de Sistemas) · Aula 03 (Transversal)</div>
+  <div class="id-fields"><span class="field">Nome: <span class="line"></span></span><span class="field">Turma: <span class="line"></span></span></div>
+  <p class="intro">Sua dupla investigou se algum e-mail já apareceu num vazamento, pesquisou dois casos
+reais e fez o raio-x de um deles. Agora é hora de transformar isso em um guia prático — as 5 coisas que
+qualquer pessoa pode fazer para se proteger melhor.</p>
+  <div class="concept-box"><b>Vazamento não é sobre "ser hackeado por ser importante".</b> A maioria dos
+vazamentos reais começa com uma falha simples — senha fraca, dado sem criptografia, sistema
+desatualizado — em algum sistema que a pessoa nem sabia que guardava seus dados.</div>
+
+  <div class="part-header">Parte 1 — As 5 boas práticas</div>
+  <div class="instructions">Escreva 5 recomendações práticas de proteção de dados pessoais, baseadas no
+que a dupla descobriu na investigação.</div>
+  <div class="rule-list">
+    <div class="rule-row"><span class="rule-num">1</span><span class="rule-line"></span></div>
+    <div class="rule-row"><span class="rule-num">2</span><span class="rule-line"></span></div>
+    <div class="rule-row"><span class="rule-num">3</span><span class="rule-line"></span></div>
+    <div class="rule-row"><span class="rule-num">4</span><span class="rule-line"></span></div>
+    <div class="rule-row"><span class="rule-num">5</span><span class="rule-line"></span></div>
+  </div>
+
+  <div class="part-header">Parte 2 — Ligada ao caso investigado</div>
+  <div class="instructions">Escolha uma das 5 práticas acima e explique como ela, se tivesse sido
+aplicada, poderia ter evitado ou reduzido o dano do caso de vazamento que a dupla investigou na Etapa 3.</div>
+  <div class="qbox">
+    <div class="q"><b>Prática nº ___ aplicada ao caso:</b></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header">Parte 3 — Casos investigados pela dupla</div>
+  <table>
+    <tr><th>Empresa / órgão</th><th>O que vazou</th><th>Resposta dada</th></tr>
+    <tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr>
+  </table>
+
+  <footer>UC III — Qualidade e Testes de Sistemas · Vazamento de Dados e Segurança da Informação · 2º Ano A/B · Prof. Jorge Frias</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>UC II Aula 04 - Visualizacao de Big Data e Dashboards</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term { color: #2a5b8a; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 26px 0 10px 0;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .num-col { width: 26px; text-align: center; }
+  .blank-col { width: 24%; }
+  .qbox { margin-bottom: 18px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  footer {
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">📈</span><h1>Visualização de Big Data e Dashboards</h1></div>
+  <div class="subtitle">APC — Atividade Prática de Classe · UC II (Ecossistema de Big Data) · Aula 04</div>
+  <div class="id-fields"><span class="field">Nome: <span class="line"></span></span><span class="field">Turma: <span class="line"></span></span></div>
+  <p class="intro">De nada serve um data warehouse cheio de dado tratado se ninguém entende o que ele
+diz. Um <b>dashboard</b> é a última etapa do ecossistema de Big Data: o momento em que o dado processado
+vira informação que uma pessoa lê em segundos. E a escolha errada de gráfico pode esconder a resposta
+até de um dado bem organizado.</p>
+  <div class="concept-box"><b>Gráfico certo para cada pergunta:</b><br>
+<span class="term">Barra</span> — comparar valores entre categorias diferentes (ex.: vendas por loja).<br>
+<span class="term">Linha</span> — mostrar tendência de algo ao longo do tempo (ex.: visitas por mês).<br>
+<span class="term">Proporção (pizza/rosca)</span> — mostrar como as partes compõem um todo (ex.: % de clientes por faixa etária).</div>
+  <div class="part-header">Parte 1 — Combina ou não combina?</div>
+  <div class="instructions">Para cada par "pergunta de negócio + tipo de gráfico" abaixo, escreva
+<b>SIM</b> se o gráfico é adequado para responder à pergunta, ou <b>NÃO</b> se não é. Quando for NÃO,
+escreva ao lado qual gráfico seria o correto, com justificativa.</div>
+  <table>
+    <tr><th class="num-col">#</th><th>Pergunta de negócio</th><th>Gráfico proposto</th><th class="blank-col">Combina? (SIM/NÃO)</th></tr>
+    <tr><td class="num-col">1</td><td>Qual é a evolução das vendas mês a mês no último ano?</td><td>Gráfico de linha</td><td></td></tr>
+    <tr><td class="num-col">2</td><td>Qual loja vendeu mais no último trimestre, entre as 5 lojas da rede?</td><td>Gráfico de pizza</td><td></td></tr>
+    <tr><td class="num-col">3</td><td>Qual a proporção de clientes por faixa etária na base?</td><td>Gráfico de pizza</td><td></td></tr>
+    <tr><td class="num-col">4</td><td>Como variou a temperatura média da cidade ao longo do dia?</td><td>Gráfico de barras</td><td></td></tr>
+    <tr><td class="num-col">5</td><td>Quais são os 5 produtos mais vendidos no mês?</td><td>Gráfico de barras</td><td></td></tr>
+    <tr><td class="num-col">6</td><td>Qual a tendência de crescimento de usuários do app nos últimos 12 meses?</td><td>Gráfico de pizza</td><td></td></tr>
+  </table>
+</div>
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">📈</span><h1>Visualização de Big Data — folha 2</h1></div>
+  <div class="subtitle">APC — Atividade Prática de Classe · UC II (Ecossistema de Big Data) · Aula 04</div>
+  <div class="part-header">Parte 2 — Correção dos pares errados</div>
+  <div class="instructions">Para cada par que você marcou como NÃO na Parte 1, escreva o número do par e
+reescreva a combinação corrigida.</div>
+  <div class="qbox">
+    <div class="q"><b>Par nº ___ corrigido:</b></div>
+    <div class="ans-line"></div>
+    <div class="q"><b>Par nº ___ corrigido:</b></div>
+    <div class="ans-line"></div>
+    <div class="q"><b>Par nº ___ corrigido:</b></div>
+    <div class="ans-line"></div>
+  </div>
+  <div class="part-header">Parte 3 — Boas práticas de dashboard</div>
+  <div class="instructions">Responda em 2 ou 3 linhas cada.</div>
+  <div class="qbox">
+    <div class="q"><b>a)</b> Por que um título de gráfico que "responde a uma pergunta" é melhor do que um título genérico (ex.: "Vendas")?</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="q"><b>b)</b> Dê um exemplo de como uma escala ou cor mal escolhida pode fazer um gráfico enganar quem o lê, mesmo com o dado correto.</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+</div>
+</body>
+</html>

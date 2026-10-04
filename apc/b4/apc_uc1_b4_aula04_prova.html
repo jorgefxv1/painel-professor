@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>UC I Aula 04 - Prova Mensal</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term { color: #2a5b8a; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 22px 0 8px 0;
+  }
+  .activity-num {
+    display: inline-block;
+    background: #2a5b8a;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    margin-right: 8px;
+  }
+  .points {
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #777;
+    font-weight: normal;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .num-col { width: 26px; text-align: center; }
+  .blank-col { width: 18%; text-align: center; }
+  .qbox { margin-bottom: 10px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  .mc-options {
+    font-size: 12.5px;
+    line-height: 1.9;
+    margin: 4px 0 4px 4px;
+  }
+  .mc-options .opt { display: block; }
+  .mc-options .letter {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1.3px solid #2a5b8a;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5px;
+    font-weight: bold;
+    color: #2a5b8a;
+    margin-right: 6px;
+  }
+  .vf-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  .vf-box {
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    border: 1px solid #888;
+    text-align: center;
+  }
+  .match-cols {
+    display: flex;
+    gap: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+  .match-cols .col { flex: 1; }
+  .match-cols .item {
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    background: #fafafa;
+  }
+  .match-cols h4 {
+    font-size: 11.5px;
+    color: #2a5b8a;
+    margin: 0 0 8px 0;
+  }
+  .order-list {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+  .order-list .oline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px dashed #ccc;
+  }
+  .order-box {
+    width: 26px;
+    height: 22px;
+    border: 1px solid #888;
+    text-align: center;
+    flex: 0 0 26px;
+  }
+  footer {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">📝</span><h1>Prova Mensal — UC I</h1></div>
+  <div class="subtitle">Raspagem de Dados da Web e Limites da Coleta · UC I (Ingestão de Dados) · 10 questões — vale 10,0</div>
+  <div class="id-fields">
+    <span class="field">Nome: <span class="line"></span></span>
+    <span class="field" style="flex:0 0 100px;">Turma: <span class="line"></span></span>
+  </div>
+  <p class="intro">
+    Prova individual, sem consulta. Cobre a Raspagem de Dados da Web (Aulas 1 e 2) e os limites da coleta
+    — robots.txt, termos de uso e casos reais (Aula 3). São 10 questões, 1,0 ponto cada.
+  </p>
+
+  <div class="part-header"><span class="activity-num">1</span>O que é raspagem de dados? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Marque a alternativa correta.</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> É o processo de digitar manualmente, numa planilha, os dados que aparecem numa página web.</span>
+    <span class="opt"><span class="letter">B</span> É a extração automática de informações de páginas web, convertendo-as em dados organizados.</span>
+    <span class="opt"><span class="letter">C</span> É o nome dado a qualquer erro de formatação que aparece ao copiar uma tabela da internet.</span>
+    <span class="opt"><span class="letter">D</span> É uma função exclusiva de linguagens de programação, que não existe em planilhas.</span>
+  </div>
+
+  <div class="part-header"><span class="activity-num">2</span>Verdadeiro ou Falso <span class="points">1,0 pt</span></div>
+  <div class="vf-row"><span class="vf-box"></span> O arquivo robots.txt impede, de forma técnica, que um robô acesse as pastas listadas como "Disallow".</div>
+  <div class="vf-row"><span class="vf-box"></span> Um site pode liberar uma pasta para o robô do Google e, ao mesmo tempo, pedir que outros robôs não a acessem.</div>
+  <div class="vf-row"><span class="vf-box"></span> Termos de uso de redes sociais nunca tratam do assunto de coleta automatizada.</div>
+  <div class="vf-row"><span class="vf-box"></span> Dado público na internet pode, ainda assim, ter uso restrito por lei ou por termo de serviço.</div>
+
+  <div class="part-header"><span class="activity-num">3</span>Dá para raspar? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Para cada situação, escreva <b>RS</b> (raspagem simples), <b>FA</b> (ferramenta avançada) ou <b>NR</b> (não deveria ser raspado), com uma justificativa curta.</div>
+  <table>
+    <tr><th class="num-col">#</th><th>Situação</th><th class="blank-col">Nível</th><th>Por quê</th></tr>
+    <tr><td class="num-col">1</td><td>A tabela de medalhas de uma Olimpíada, publicada num verbete da Wikipédia.</td><td></td><td></td></tr>
+    <tr><td class="num-col">2</td><td>Os dados de localização em tempo real de usuários de um app de corrida, extraídos sem autorização da empresa.</td><td></td><td></td></tr>
+  </table>
+
+  <footer>UC I — Ingestão de Dados · Prova Mensal · 2º Ano A/B · Prof. Jorge Frias · folha 1</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">4</span>Por que o robots.txt não é um cadeado? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Marque a alternativa correta.</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> Porque ele só existe em sites brasileiros, e sites de outros países não o utilizam.</span>
+    <span class="opt"><span class="letter">B</span> Porque ele é apenas um pedido de boa conduta; não há nada no arquivo que bloqueie tecnicamente o acesso de um robô que decida ignorá-lo.</span>
+    <span class="opt"><span class="letter">C</span> Porque ele é lido somente por humanos, nunca por programas.</span>
+    <span class="opt"><span class="letter">D</span> Porque ele impede o acesso de pessoas, mas nunca de robôs.</span>
+  </div>
+
+  <div class="part-header"><span class="activity-num">5</span>Complete as lacunas <span class="points">1,0 pt</span></div>
+  <div class="qbox">
+    <div class="q">a) A função de planilha usada para trazer uma <b>tabela</b> inteira de uma página web é a `=_______("URL"; "table"; índice)`.</div>
+    <div class="q">b) O arquivo que um site publica para pedir que certas pastas não sejam raspadas se chama `_______.txt`.</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">6</span>Ligue o termo à definição <span class="points">1,0 pt</span></div>
+  <div class="match-cols">
+    <div class="col">
+      <h4>Termo</h4>
+      <div class="item">1. Raspagem de dados</div>
+      <div class="item">2. robots.txt</div>
+      <div class="item">3. Termos de uso</div>
+      <div class="item">4. LGPD</div>
+    </div>
+    <div class="col">
+      <h4>Definição</h4>
+      <div class="item">A. Lei brasileira que regula a coleta e o uso de dados pessoais.</div>
+      <div class="item">B. Arquivo público que indica quais partes de um site não devem ser visitadas por robôs.</div>
+      <div class="item">C. Extração automática de dados de páginas web, convertidos em formato organizado.</div>
+      <div class="item">D. Contrato publicado por uma plataforma com as regras de uso do serviço, incluindo coleta automatizada.</div>
+    </div>
+  </div>
+  <div class="instructions">Resposta: 1 = ___  2 = ___  3 = ___  4 = ___</div>
+
+  <footer>UC I — Ingestão de Dados · Prova Mensal · 2º Ano A/B · Prof. Jorge Frias · folha 2</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">7</span>Coloque em ordem <span class="points">1,0 pt</span></div>
+  <div class="instructions">Numere de 1 a 4 a ordem certa de um trabalho de raspagem bem feito.</div>
+  <div class="order-list">
+    <div class="oline"><span class="order-box"></span> Limpar o resultado (congelar valores, corrigir cabeçalho e tipos)</div>
+    <div class="oline"><span class="order-box"></span> Escolher uma página com tabela pública e verificar se é raspagem simples</div>
+    <div class="oline"><span class="order-box"></span> Registrar a URL de origem e a data da coleta</div>
+    <div class="oline"><span class="order-box"></span> Usar IMPORTHTML ou IMPORTXML e testar o índice da tabela</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">8</span>Por que a raspagem é frágil? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Responda em 2 ou 3 linhas.</div>
+  <div class="qbox">
+    <div class="q">Uma planilha que raspava uma tabela todo dia parou de funcionar depois que o site mudou de layout. Explique por que isso aconteceu e por que uma API (Aula 5) tende a sofrer menos com esse problema.</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC I — Ingestão de Dados · Prova Mensal · 2º Ano A/B · Prof. Jorge Frias · folha 3</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">9</span>Estudo de caso <span class="points">1,0 pt</span></div>
+  <div class="instructions">Leia a situação e responda.</div>
+  <div class="qbox">
+    <div class="q">Um grupo de alunos quer raspar as fotos de perfil e os nomes completos de todos os alunos da escola, publicados num mural digital interno, para testar um programa de reconhecimento facial por conta própria. É uma coleta aceitável? Justifique citando pelo menos um conceito visto na aula (robots.txt, termos de uso ou LGPD).</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">10</span>Suas próprias regras <span class="points">1,0 pt</span></div>
+  <div class="instructions">Escreva 2 regras de conduta para uma coleta de dados responsável, sem repetir exemplos já usados nas questões anteriores.</div>
+  <div class="qbox">
+    <div class="q">a)</div>
+    <div class="ans-line"></div>
+    <div class="q">b)</div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC I — Ingestão de Dados · Prova Mensal · 2º Ano A/B · Prof. Jorge Frias · folha 4</footer>
+</div>
+
+</body>
+</html>
