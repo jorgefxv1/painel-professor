@@ -1670,7 +1670,7 @@ const SEMESTRES = [
     id: 'sem2', label: '2º Semestre',
     bimestres: [
       { id: 'b3', label: '3º Bimestre', periodo: '3º Bimestre · 2026', discIds: ['dev-local-b3', 'uc1-b3', 'uc2-b3', 'uc3-b3'] },
-      { id: 'b4', label: '4º Bimestre', periodo: '4º Bimestre · 2026', discIds: ['dev-local-b4', 'uc1-b4', 'uc2-b4', 'uc3-b4'] },
+      { id: 'b4', label: '4º Bimestre', periodo: '4º Bimestre · 2026', inicio: '2026-10-02', discIds: ['dev-local-b4', 'uc1-b4', 'uc2-b4', 'uc3-b4'] },
     ]
   },
 ];

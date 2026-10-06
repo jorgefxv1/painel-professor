@@ -1,4 +1,4 @@
-const CACHE = 'jgp-painel-v1';
+const CACHE = 'jgp-painel-v2';
 const ASSETS = ['./', './index.html', './style.css', './app.js', './data.js', './manifest.json', './icon.svg'];
 
 self.addEventListener('install', e => {

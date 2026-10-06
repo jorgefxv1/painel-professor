@@ -4,7 +4,19 @@ let currentPage = { type: 'home', discId: null, aulaNum: null };
 let focusMode = false;
 let projectionMode = false;
 let searchQuery = '';
-let currentBimestreId = localStorage.getItem('jgp_bimestre') || 'b3';
+// Bimestre corrente pela data: o último com `inicio` já alcançado (SEMESTRES em data.js)
+function bimestrePorData() {
+  const hoje = new Date().toISOString().slice(0, 10);
+  let atual = 'b3';
+  SEMESTRES.forEach(s => s.bimestres.forEach(b => {
+    if (b.inicio && b.inicio <= hoje && !b.comingSoon) atual = b.id;
+  }));
+  return atual;
+}
+// A escolha manual só vale enquanto o bimestre corrente for o mesmo de quando foi feita
+let currentBimestreId = localStorage.getItem('jgp_bimestre_auto') === bimestrePorData()
+  ? (localStorage.getItem('jgp_bimestre') || bimestrePorData())
+  : bimestrePorData();
 let currentNotaId = null;
 let notaTagFilter = null;
 
@@ -63,6 +75,7 @@ function setBimestre(id) {
   if (!getBimestreConfig(id) || getBimestreConfig(id).comingSoon) return;
   currentBimestreId = id;
   localStorage.setItem('jgp_bimestre', id);
+  localStorage.setItem('jgp_bimestre_auto', bimestrePorData());
   const cfg = getBimestreConfig(id);
   const el = document.getElementById('brand-bimestre');
   if (el) el.textContent = cfg.periodo;
