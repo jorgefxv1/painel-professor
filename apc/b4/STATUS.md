@@ -50,22 +50,52 @@ conforme a data real de aplicação.
 
 ---
 
-## Semanas 2 a 5 — ⏳ PENDENTE
+## Semana 2 — 09/10 a 15/10 · ✅ COMPLETA (gerada em 04/10/2026)
+
+| Disciplina | Aula | Tipo | Arquivos |
+|---|---|---|---|
+| UC I | 03 | Transversal — robots.txt, termos de uso, limites da raspagem | `apc_uc1_b4_aula03_roteiro.md` · `apc_uc1_b4_aula03_modelo_codigo_conduta.html` |
+| UC I | 04 | Prova mensal + correção e recuperação | `apc_uc1_b4_aula04_prova.html` · `apc_uc1_b4_aula04_prova_gabarito.md` · `apc_uc1_b4_aula04_recuperacao.html` |
+| UC II | 03 | Prova mensal + correção e recuperação | `apc_uc2_b4_aula03_prova.html` · `apc_uc2_b4_aula03_prova_gabarito.md` · `apc_uc2_b4_aula03_recuperacao.html` |
+| UC II | 04 | Teórica — Visualização de Big Data e Dashboards | `apc_uc2_b4_aula04_lista.html` · `apc_uc2_b4_aula04_lista_gabarito.md` |
+| UC III | 03 | Transversal — Vazamento de Dados e Segurança | `apc_uc3_b4_aula03_roteiro.md` · `apc_uc3_b4_aula03_modelo_guia_boaspraticas.html` |
+| UC III | 04 | Prova mensal + correção e recuperação | `apc_uc3_b4_aula04_prova.html` · `apc_uc3_b4_aula04_prova_gabarito.md` · `apc_uc3_b4_aula04_recuperacao.html` |
+| Dev Local | 03 | Validação com usuários reais | **sem arquivo novo** — reaplica a folha de observação da Aula 02 (ver nota abaixo) |
+| Dev Local | 04 | Leitura do feedback | `apc_devlocal_b4_aula04_matriz_esforco_impacto.html` |
+
+**Decisão sinalizada para revisão do Jorge — Dev Local Aula 03:** o instrumento desta aula (observar
+testadores reais) é a própria `apc_devlocal_b4_aula02_folha_observacao.html`, já gerada na Aula 02
+(é feita para ser fotocopiada uma vez por testador). Não foi gerado nenhum arquivo novo para a Aula 03.
+Se o Jorge preferir um formulário de feedback (Google Forms) com texto pronto para colar, avisar que
+ele precisa ser encomendado separadamente — a skill não cobre texto de Forms.
+
+**Revisar antes de imprimir:**
+- Os três roteiros de laboratório transversais (UC I e UC III Aula 03) citam sites e buscas (robots.txt
+  de Google/Wikipédia/X, Have I Been Pwned, casos de vazamento brasileiro) que **não foram testados ao
+  vivo** nesta execução — a sessão que gerou o material não teve acesso à internet. Testar os
+  endereços e confirmar os casos de vazamento citados antes da aula.
+- Datas no cabeçalho de todos os arquivos estão como `___ / 10 / 2026`, para preencher à mão.
+- Gabaritos das 3 provas mensais (UC I, UC II, UC III): 10 questões × 1,0 pt = 10,0, confirmado por
+  script nesta execução.
+
+---
+
+## Semanas 3 a 5 — ⏳ PENDENTE
 
 | Semana | UC I | UC II | UC III | Dev Local |
 |---|---|---|---|---|
-| 2 (09/10–15/10) | Aula 03 transversal + Aula 04 prova mensal | Aula 03 prova mensal + Aula 04 teórica | Aula 03 transversal + Aula 04 prova mensal | Aula 03 validação + Aula 04 feedback |
 | 3 (16/10–22/10) | Aula 05 teórica APIs + Aula 06 prática | Aula 05 prática dashboard + Aula 06 transversal | Aula 05 teórica + Aula 06 prática | Aula 05 iteração + Aula 06 curadoria |
 | 4 (23/10–29/10) | Aula 07 transversal + Aula 08 prova bimestral | Aula 07 prova bimestral + Aula 08 culminância | Aula 07 transversal + Aula 08 prova bimestral | Aula 07 mostra + Aula 08 fechamento |
 | 5 (30/10–05/11) | Aula 09 culminância + Aula 10 roda de conversa | — | Aula 09 culminância | — |
 
-**Provas a gerar (12 arquivos):** cada prova precisa de prova + gabarito comentado + folha de recuperação.
+**Provas mensais — ✅ concluídas na Semana 2.** Restam as 3 provas bimestrais (9 arquivos: prova +
+gabarito + recuperação cada), a gerar junto com a semana da aula correspondente.
 
 | Disciplina | Prova mensal | Prova bimestral |
 |---|---|---|
-| UC I | Aula 04 (raspagem + limites da coleta) | Aula 08 (tudo, integrado) |
-| UC II | Aula 03 (Data Lake / DW / Nuvem) | Aula 07 (tudo, integrado) |
-| UC III | Aula 04 (qualidade de dados + vazamento) | Aula 08 (tudo, integrado) |
+| UC I | ✅ Aula 04 (raspagem + limites da coleta) | ⏳ Aula 08 (tudo, integrado) — semana 4 |
+| UC II | ✅ Aula 03 (Data Lake / DW / Nuvem) | ⏳ Aula 07 (tudo, integrado) — semana 4 |
+| UC III | ✅ Aula 04 (qualidade de dados + vazamento) | ⏳ Aula 08 (tudo, integrado) — semana 4 |
 
 Dev Local não tem prova escrita — avalia por etapa (AV1 relatório de validação, AV2 mostra).
 
