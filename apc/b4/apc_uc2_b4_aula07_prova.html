@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Prova Bimestral — UC II: Ecossistema de Big Data</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 24px auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; margin: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term, .term { color: #2a5b8a; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 22px 0 8px 0;
+  }
+  .activity-num {
+    display: inline-block;
+    background: #2a5b8a;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    margin-right: 8px;
+  }
+  .points {
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #777;
+    font-weight: normal;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .num-col { width: 26px; text-align: center; }
+  .blank-col { width: 18%; text-align: center; }
+  .qbox { margin-bottom: 10px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  .mc-options {
+    font-size: 12.5px;
+    line-height: 1.9;
+    margin: 4px 0 4px 4px;
+  }
+  .mc-options .opt { display: block; }
+  .mc-options .letter {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1.3px solid #2a5b8a;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5px;
+    font-weight: bold;
+    color: #2a5b8a;
+    margin-right: 6px;
+  }
+  .vf-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  .vf-box {
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    border: 1px solid #888;
+    text-align: center;
+  }
+  .match-cols {
+    display: flex;
+    gap: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+  .match-cols .col { flex: 1; }
+  .match-cols .item {
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    background: #fafafa;
+  }
+  .match-cols h4 {
+    font-size: 11.5px;
+    color: #2a5b8a;
+    margin: 0 0 8px 0;
+  }
+  footer {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">📝</span><h1>Prova Bimestral — UC II: Ecossistema de Big Data</h1></div>
+  <div class="subtitle">UC II (Ecossistema de Big Data) · Avaliação individual, sem consulta · 10 questões — vale 10,0</div>
+  <div class="id-fields">
+    <span class="field">Nome: <span class="line"></span></span>
+    <span class="field" style="flex:0 0 100px;">Turma: <span class="line"></span></span>
+  </div>
+  <p class="intro">
+    Esta prova cobre os três blocos do bimestre: <b>onde o dado fica guardado</b> (banco relacional, data
+    warehouse, data lake e nuvem), <b>como o dado processado se transforma em informação</b> (dashboards) e
+    <b>como o dado de comportamento é rastreado e usado</b>. São 10 questões, valendo 1,0 ponto cada.
+  </p>
+
+  <div class="part-header"><span class="activity-num">1</span>Ligue cada forma de guardar dado à sua definição <span class="points">1,0 pt</span></div>
+  <div class="match-cols">
+    <div class="col">
+      <h4>Forma de armazenamento</h4>
+      <div class="item">1. Banco de dados relacional</div>
+      <div class="item">2. Data Warehouse</div>
+      <div class="item">3. Data Lake</div>
+    </div>
+    <div class="col">
+      <h4>Definição</h4>
+      <div class="item">A. Dado bruto, em qualquer formato, guardado barato para uso futuro</div>
+      <div class="item">B. Dado organizado em tabelas, para o dia a dia do sistema</div>
+      <div class="item">C. Dado já tratado e organizado, voltado para análise e relatório</div>
+    </div>
+  </div>
+  <div class="instructions">Resposta: 1 = ___  2 = ___  3 = ___</div>
+
+  <div class="part-header"><span class="activity-num">2</span>Verdadeiro ou Falso — Nuvem e Data Lake <span class="points">1,0 pt</span></div>
+  <div class="vf-row"><span class="vf-box"></span> Na computação em nuvem, a empresa paga apenas pelo que usa e pode aumentar ou diminuir a capacidade conforme a demanda.</div>
+  <div class="vf-row"><span class="vf-box"></span> Um "pântano de dados" (data swamp) é um data lake bem organizado e fácil de usar.</div>
+  <div class="vf-row"><span class="vf-box"></span> "Lakehouse" é a junção das vantagens do data warehouse com as do data lake.</div>
+  <div class="vf-row"><span class="vf-box"></span> Google Cloud, AWS e Azure são exemplos de bancos de dados relacionais.</div>
+
+  <div class="part-header"><span class="activity-num">3</span>Onde guardar esse dado? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Uma empresa quer guardar o histórico de cliques do seu site, sem ainda saber que perguntas vai responder com ele no futuro. Marque a alternativa correta.</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> Banco de dados relacional, porque precisa de tabelas organizadas desde já.</span>
+    <span class="opt"><span class="letter">B</span> Data Warehouse, porque o dado já vai entrar tratado.</span>
+    <span class="opt"><span class="letter">C</span> Data Lake, porque aceita dado bruto, em qualquer formato, guardado para decidir depois o que fazer com ele.</span>
+    <span class="opt"><span class="letter">D</span> Pen drive, porque é mais barato que qualquer nuvem.</span>
+  </div>
+
+  <div class="part-header"><span class="activity-num">4</span>Complete as frases <span class="points">1,0 pt</span></div>
+  <div class="qbox">
+    <div class="q">a) Um data lake sem organização nem catálogo, que virou um depósito inútil de dados, é chamado de _______________.</div>
+    <div class="q">b) Na computação em nuvem, a capacidade de aumentar ou diminuir os recursos usados conforme a demanda é chamada de _______________.</div>
+  </div>
+
+  <footer>UC II — Ecossistema de Big Data · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 1</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">5</span>Qual gráfico usar? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Um dashboard precisa mostrar como as vendas de uma loja variaram mês a mês nos últimos 12 meses. Marque o tipo de gráfico mais adequado.</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> Gráfico de barras, para comparar categorias diferentes.</span>
+    <span class="opt"><span class="letter">B</span> Gráfico de linha, para mostrar uma tendência ao longo do tempo.</span>
+    <span class="opt"><span class="letter">C</span> Gráfico de proporção (pizza), para mostrar partes de um todo.</span>
+    <span class="opt"><span class="letter">D</span> Não importa, qualquer gráfico comunica a mesma coisa.</span>
+  </div>
+
+  <div class="part-header"><span class="activity-num">6</span>Pergunta de negócio e tipo de gráfico <span class="points">1,0 pt</span></div>
+  <div class="match-cols">
+    <div class="col">
+      <h4>Pergunta de negócio</h4>
+      <div class="item">1. Qual produto vendeu mais em cada categoria?</div>
+      <div class="item">2. Como o número de visitantes do site mudou mês a mês?</div>
+      <div class="item">3. Que fração das vendas vem de cada forma de pagamento?</div>
+    </div>
+    <div class="col">
+      <h4>Tipo de gráfico</h4>
+      <div class="item">A. Linha</div>
+      <div class="item">B. Proporção (pizza ou rosca)</div>
+      <div class="item">C. Barra</div>
+    </div>
+  </div>
+  <div class="instructions">Resposta: 1 = ___  2 = ___  3 = ___</div>
+
+  <div class="part-header"><span class="activity-num">7</span>Verdadeiro ou Falso — Boas práticas de dashboard <span class="points">1,0 pt</span></div>
+  <div class="vf-row"><span class="vf-box"></span> Um bom título de painel responde a uma pergunta, em vez de só nomear o gráfico.</div>
+  <div class="vf-row"><span class="vf-box"></span> "Menos é mais" significa mostrar só os indicadores mais importantes, em vez de lotar a tela de gráficos.</div>
+  <div class="vf-row"><span class="vf-box"></span> Cortar o eixo de um gráfico de barras pode fazer uma diferença pequena parecer enorme.</div>
+  <div class="vf-row"><span class="vf-box"></span> O Looker Studio é uma ferramenta de dashboard que exige pagamento e cartão de crédito para ser usada.</div>
+
+  <div class="part-header"><span class="activity-num">8</span>Escalas que enganam <span class="points">1,0 pt</span></div>
+  <div class="instructions">Explique, com um exemplo, por que cortar o eixo Y (não começar do zero) de um gráfico de barras pode enganar quem está vendo o painel.</div>
+  <div class="qbox">
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC II — Ecossistema de Big Data · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 2</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">9</span>Rastreamento e LGPD <span class="points">1,0 pt</span></div>
+  <div class="vf-row"><span class="vf-box"></span> Sites e apps podem usar rastreadores para cruzar o comportamento do usuário em várias páginas diferentes.</div>
+  <div class="vf-row"><span class="vf-box"></span> A LGPD garante à pessoa o direito de saber quais dados uma empresa coletou sobre ela e de pedir a exclusão desses dados.</div>
+  <div class="vf-row"><span class="vf-box"></span> O "perfil de anúncios" de uma conta é montado só com informações que a pessoa preencheu diretamente num formulário, nunca com comportamento.</div>
+
+  <div class="part-header"><span class="activity-num">10</span>O que eu ganho x o que eu entrego <span class="points">1,0 pt</span></div>
+  <div class="instructions">Escolha um site ou aplicativo gratuito que você usa (rede social, streaming, mapa, etc.). Escreva uma coisa que você <b>ganha</b> ao usá-lo e uma coisa que você <b>entrega</b> em troca (um dado seu que ele coleta).</div>
+  <div class="qbox">
+    <div class="q">App/site escolhido:</div>
+    <div class="ans-line"></div>
+    <div class="q">O que eu ganho:</div>
+    <div class="ans-line"></div>
+    <div class="q">O que eu entrego (dado coletado):</div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC II — Ecossistema de Big Data · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 3</footer>
+</div>
+
+</body>
+</html>

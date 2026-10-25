@@ -50,22 +50,65 @@ conforme a data real de aplicação.
 
 ---
 
-## Semanas 2 a 5 — ⏳ PENDENTE
+## Semana 4 — 23/10 a 29/10 · ✅ COMPLETA (gerada em 25/10/2026)
+
+| Disciplina | Aula | Tipo | Arquivos |
+|---|---|---|---|
+| UC I | 07 | Transversal — Viés e "Lixo" na Coleta de Dados | `apc_uc1_b4_aula07_material_coletas.html` · `apc_uc1_b4_aula07_checklist_modelo.html` · `apc_uc1_b4_aula07_roteiro.md` |
+| UC I | 08 | Prova bimestral + correção e recuperação | `apc_uc1_b4_aula08_prova.html` · `apc_uc1_b4_aula08_prova_gabarito.md` · `apc_uc1_b4_aula08_recuperacao.html` |
+| UC II | 07 | Prova bimestral + correção e recuperação | `apc_uc2_b4_aula07_prova.html` · `apc_uc2_b4_aula07_prova_gabarito.md` · `apc_uc2_b4_aula07_recuperacao.html` |
+| UC II | 08 | Culminância — fluxograma da disciplina e roda de conversa | `apc_uc2_b4_aula08_roteiro.md` |
+| UC III | 07 | Transversal — Fake News, Deepfake e Conteúdo Gerado por IA | `apc_uc3_b4_aula07_kit_conteudos.html` · `apc_uc3_b4_aula07_checklist_modelo.html` · `apc_uc3_b4_aula07_roteiro.md` |
+| UC III | 08 | Prova bimestral + correção e recuperação | `apc_uc3_b4_aula08_prova.html` · `apc_uc3_b4_aula08_prova_gabarito.md` · `apc_uc3_b4_aula08_recuperacao.html` |
+| Dev Local | 07 | Mostra de Projetos | `apc_devlocal_b4_aula07_ficha_avaliacao_visitante.html` |
+| Dev Local | 08 | Análise cruzada e fechamento | `apc_devlocal_b4_aula08_rubrica_analise_cruzada.html` |
+
+**Pontuação conferida por script:** as 3 provas bimestrais (UC I aula 08, UC II aula 07, UC III aula 08)
+têm exatamente 10 questões × 1,0 pt = 10,0 pt cada — somado com `python3 -I` a partir do HTML, não só
+afirmado no gabarito.
+
+**Revisar antes de imprimir (semana 4):**
+- Datas no cabeçalho em branco (`___ / 10 / 2026`) para preencher à mão.
+- **UC III aula 07 (kit de fake news):** o Conteúdo 2 foi classificado no gabarito do roteiro como
+  **DUVIDOSO**, não FALSO — é proposital (ensina a diferença entre "não consigo confirmar" e "sei que é
+  mentira"), mas o Jorge precisa confirmar que concorda com esse critério antes de aplicar. O kit é
+  100% fictício; nenhuma busca reversa real vai retornar resultado — isso está documentado no roteiro,
+  mas vale avisar a turma antes para não gerar confusão.
+- **UC I aula 07:** é atividade processual, sem nota numérica obrigatória no planejamento original; o
+  roteiro sugere 4 critérios somando 10,0 como proposta própria, não uma exigência do planejamento.
+- **UC I aula 08 / UC II aula 07:** algumas questões são discursivas e de resposta aberta (viés de
+  amostragem com exemplos fictícios; "o que eu ganho x o que eu entrego") — vale confirmar se o critério
+  de correção no gabarito está no rigor que o Jorge quer aplicar em sala.
+- **Dev Local aula 07:** ficha de visitante em 3 blocos recortáveis por folha A4 — Jorge precisa calcular
+  quantas estações (duplas) e quantos visitantes são esperados para definir quantas folhas imprimir e
+  cortar antes da mostra.
+- **Dev Local aula 08:** rubrica assume 2 projetos por dupla avaliadora, conforme o planejamento; se o
+  número variar na prática, fotocopiar a folha 2 (segundo projeto) para quem receber mais de 2.
+
+---
+
+⚠️ **Atenção — backlog:** hoje (25/10/2026) já estamos dentro da semana 4. As **semanas 2 e 3 já
+passaram no calendário e ainda não foram geradas** (ver tabela abaixo). Esta execução da rotina cobriu
+especificamente a semana 4 — a semana em curso/começando a partir da data de disparo — por ser essa a
+instrução explícita desta rodada. Recomenda-se rodar a skill novamente o quanto antes para gerar o
+material atrasado das semanas 2 e 3.
+
+## Semanas 2, 3 e 5 — ⏳ PENDENTE
 
 | Semana | UC I | UC II | UC III | Dev Local |
 |---|---|---|---|---|
-| 2 (09/10–15/10) | Aula 03 transversal + Aula 04 prova mensal | Aula 03 prova mensal + Aula 04 teórica | Aula 03 transversal + Aula 04 prova mensal | Aula 03 validação + Aula 04 feedback |
-| 3 (16/10–22/10) | Aula 05 teórica APIs + Aula 06 prática | Aula 05 prática dashboard + Aula 06 transversal | Aula 05 teórica + Aula 06 prática | Aula 05 iteração + Aula 06 curadoria |
-| 4 (23/10–29/10) | Aula 07 transversal + Aula 08 prova bimestral | Aula 07 prova bimestral + Aula 08 culminância | Aula 07 transversal + Aula 08 prova bimestral | Aula 07 mostra + Aula 08 fechamento |
+| 2 (09/10–15/10) — atrasada | Aula 03 transversal + Aula 04 prova mensal | Aula 03 prova mensal + Aula 04 teórica | Aula 03 transversal + Aula 04 prova mensal | Aula 03 validação + Aula 04 feedback |
+| 3 (16/10–22/10) — atrasada | Aula 05 teórica APIs + Aula 06 prática | Aula 05 prática dashboard + Aula 06 transversal | Aula 05 teórica + Aula 06 prática | Aula 05 iteração + Aula 06 curadoria |
 | 5 (30/10–05/11) | Aula 09 culminância + Aula 10 roda de conversa | — | Aula 09 culminância | — |
 
-**Provas a gerar (12 arquivos):** cada prova precisa de prova + gabarito comentado + folha de recuperação.
+**Provas mensais a gerar (6 arquivos):** cada prova precisa de prova + gabarito comentado + folha de
+recuperação. As 3 provas bimestrais (semana 4) já foram geradas acima.
 
-| Disciplina | Prova mensal | Prova bimestral |
-|---|---|---|
-| UC I | Aula 04 (raspagem + limites da coleta) | Aula 08 (tudo, integrado) |
-| UC II | Aula 03 (Data Lake / DW / Nuvem) | Aula 07 (tudo, integrado) |
-| UC III | Aula 04 (qualidade de dados + vazamento) | Aula 08 (tudo, integrado) |
+| Disciplina | Prova mensal |
+|---|---|
+| UC I | Aula 04 (raspagem + limites da coleta) |
+| UC II | Aula 03 (Data Lake / DW / Nuvem) |
+| UC III | Aula 04 (qualidade de dados + vazamento) |
 
 Dev Local não tem prova escrita — avalia por etapa (AV1 relatório de validação, AV2 mostra).
 
@@ -75,7 +118,7 @@ Dev Local não tem prova escrita — avalia por etapa (AV1 relatório de valida�
 
 `apc_<uc>_b4_aula<NN>_<tipo>.<ext>` — onde `<uc>` é `uc1`, `uc2`, `uc3` ou `devlocal`.
 Tipos: `lista`, `lista_gabarito`, `worksheet`, `roteiro`, `prova`, `prova_gabarito`, `recuperacao`,
-`planilha_base`, `ficha_*`, `folha_*`, `modelo_*`.
+`planilha_base`, `ficha_*`, `folha_*`, `modelo_*`, `material_*`, `kit_*`, `rubrica_*`.
 
 ## Notas técnicas (para quem gerar material novo)
 

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>APC UC III Aula 07 - Kit de Verificação: Fake News, Deepfake e IA</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 24px auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; margin: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term { color: #2a5b8a; }
+  .flowchart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 16px 0 4px 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .flowchart .box {
+    background: #ffffff;
+    border: 1.5px solid #2a5b8a;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 11px;
+    text-align: center;
+    min-width: 92px;
+    color: #2a5b8a;
+    font-weight: bold;
+  }
+  .flowchart .box span.sub {
+    display: block;
+    font-weight: normal;
+    color: #555;
+    font-size: 9.5px;
+    margin-top: 2px;
+  }
+  .flowchart .arrow { font-size: 16px; color: #2a5b8a; }
+  .flowchart-note {
+    text-align: center;
+    font-size: 10.5px;
+    color: #555;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 4px;
+  }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 26px 0 10px 0;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .num-col { width: 26px; text-align: center; }
+  .blank-col { width: 24%; }
+  .qbox { margin-bottom: 18px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  .example-cols { display: flex; gap: 16px; }
+  .example-cols .col { flex: 1; }
+  .example-cols h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #2a5b8a;
+    margin: 0 0 6px 0;
+  }
+  .content-item {
+    border: 1.5px solid #bbb;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    background: #fafafa;
+  }
+  .content-item .label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #2a5b8a;
+    margin-bottom: 4px;
+  }
+  .content-item .body-text {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .mc-options {
+    font-size: 12.5px;
+    line-height: 1.9;
+    margin: 4px 0 4px 4px;
+  }
+  .mc-options .opt { display: block; }
+  .mc-options .letter {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1.3px solid #2a5b8a;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5px;
+    font-weight: bold;
+    color: #2a5b8a;
+    margin-right: 6px;
+  }
+  footer {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">🤖</span><h1>Kit de Verificação: Fake News, Deepfake e Conteúdo Gerado por IA</h1></div>
+  <div class="subtitle">APC — Atividade Prática de Classe · UC III (Qualidade e Testes de Sistemas) · Aula 07</div>
+  <div class="id-fields">
+    <span class="field">Nome: <span class="line"></span></span>
+    <span class="field" style="flex:0 0 100px;">Turma: <span class="line"></span></span>
+  </div>
+
+  <p class="intro">
+    <b>Atenção: todos os 5 conteúdos abaixo são fictícios</b>, criados só para este exercício — nenhum nome,
+    manchete ou citação corresponde a fato, pessoa ou empresa real. Sua tarefa, em dupla, é aplicar o
+    roteiro de verificação visto na Aula 07 a cada um e classificá-lo como <b>CONFIÁVEL</b>,
+    <b>DUVIDOSO</b> ou <b>FALSO</b>, justificando com os sinais que encontrou — não com "achismo".
+  </p>
+
+  <div class="concept-box">
+    <strong class="term">Roteiro de verificação</strong> — para cada conteúdo, cheque: quem é o autor
+    (existe, é identificável?); a data (é recente, faz sentido com o fato?); a fonte original existe e é
+    rastreável; a imagem aparece em outro contexto numa busca reversa; há sinais de geração por IA
+    (mãos com dedos errados, texturas borradas, sombras inconsistentes, textos de fundo ilegíveis); o fato
+    aparece confirmado ou desmentido em uma agência de checagem (Aos Fatos, Projeto Comprova, Agência Lupa).
+  </div>
+
+  <div class="part-header">Conteúdo 1 — Manchete</div>
+  <div class="content-item">
+    <div class="label">FORMATO: manchete de portal de notícia (fictício)</div>
+    <div class="body-text">
+      "Estudo da Universidade Federal de Corumbá-MS* aponta que 9 em cada 10 alunos do ensino técnico usam
+      IA generativa para fazer trabalho escolar" — publicado no site <i>PortalNoticiaRapida.com.br</i>*,
+      sem indicação de autor, sem link para o "estudo" citado, com data de publicação de "há 3 dias" (sem
+      data exata).<br><span style="font-size:10.5px;color:#777;">* nomes fictícios, criados para este exercício.</span>
+    </div>
+  </div>
+  <div class="qbox">
+    <div class="q"><b>Classificação:</b> ( ) Confiável &nbsp; ( ) Duvidoso &nbsp; ( ) Falso</div>
+    <div class="q"><b>Justificativa (sinais encontrados):</b></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header">Conteúdo 2 — Citação</div>
+  <div class="content-item">
+    <div class="label">FORMATO: card de citação compartilhado em rede social (fictício)</div>
+    <div class="body-text">
+      Card com fundo roxo e fonte branca, atribuindo a frase "Nos próximos 2 anos, 70% dos empregos de
+      digitação vão desaparecer" a um "especialista em tecnologia" chamado apenas de "Dr. Marco Vieira,
+      PhD"*, sem instituição, sem foto de perfil identificável, compartilhado por uma conta sem nome de
+      usuário visível na captura.<br><span style="font-size:10.5px;color:#777;">* nome fictício.</span>
+    </div>
+  </div>
+  <div class="qbox">
+    <div class="q"><b>Classificação:</b> ( ) Confiável &nbsp; ( ) Duvidoso &nbsp; ( ) Falso</div>
+    <div class="q"><b>Justificativa (sinais encontrados):</b></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC III — Qualidade e Testes de Sistemas · Fake News, Deepfake e IA · 2º Ano A/B · Prof. Jorge Frias · folha 1</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header">Conteúdo 3 — Descrição de imagem</div>
+  <div class="content-item">
+    <div class="label">FORMATO: imagem descrita para o exercício (sem arquivo de imagem real anexado)</div>
+    <div class="body-text">
+      Foto supostamente de uma "entrega de prêmio" numa feira de tecnologia, mostrando 4 pessoas em pé
+      sorrindo. Ao aproximar o zoom: uma das pessoas tem a mão apoiada no ombro de outra com <b>6 dedos
+      visíveis</b>; o texto de um crachá pendurado no pescoço aparece <b>borrado e ilegível</b>, mesmo com o
+      resto da foto nítido; a sombra de duas pessoas no chão aponta para direções diferentes, como se
+      houvesse duas fontes de luz incompatíveis.
+    </div>
+  </div>
+  <div class="qbox">
+    <div class="q"><b>Classificação:</b> ( ) Confiável &nbsp; ( ) Duvidoso &nbsp; ( ) Falso</div>
+    <div class="q"><b>Justificativa (sinais encontrados):</b></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header">Conteúdo 4 — Áudio descrito</div>
+  <div class="content-item">
+    <div class="label">FORMATO: áudio de 20 segundos, descrito para o exercício (sem arquivo de áudio real anexado)</div>
+    <div class="body-text">
+      Áudio de 20 segundos circulando num grupo de WhatsApp da escola, com voz dizendo ser de um "diretor
+      de uma grande rede de ensino" anunciando que "as aulas presenciais serão substituídas por aulas 100%
+      por IA a partir do próximo ano". A entonação da voz tem um ritmo meio mecânico nas pausas entre
+      frases e não cita o nome da rede de ensino em nenhum momento. Não há nenhuma notícia sobre o assunto
+      em nenhum portal de educação.
+    </div>
+  </div>
+  <div class="qbox">
+    <div class="q"><b>Classificação:</b> ( ) Confiável &nbsp; ( ) Duvidoso &nbsp; ( ) Falso</div>
+    <div class="q"><b>Justificativa (sinais encontrados):</b></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header">Conteúdo 5 — Notícia com fonte</div>
+  <div class="content-item">
+    <div class="label">FORMATO: print de notícia (fictício)</div>
+    <div class="body-text">
+      Notícia informando que "a prefeitura de uma cidade do interior lançou um programa de bolsas para
+      cursos técnicos de tecnologia", assinada por uma jornalista com nome completo, publicada num portal
+      de notícia regional conhecido, com data exata, citando a secretaria responsável e um link para o
+      edital oficial. Ao buscar o nome da jornalista, aparecem outras matérias dela no mesmo portal, ao
+      longo de vários meses.
+    </div>
+  </div>
+  <div class="qbox">
+    <div class="q"><b>Classificação:</b> ( ) Confiável &nbsp; ( ) Duvidoso &nbsp; ( ) Falso</div>
+    <div class="q"><b>Justificativa (sinais encontrados):</b></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header">Para fechar — rascunho do checklist</div>
+  <div class="instructions">
+    Antes de passar para o modelo final (<i>apc_uc3_b4_aula07_checklist_modelo.html</i>), rascunhe aqui os
+    6 passos que a dupla vai usar daqui pra frente pra checar qualquer conteúdo suspeito.
+  </div>
+  <div class="qbox">
+    <div class="q">1.</div><div class="ans-line"></div>
+    <div class="q">2.</div><div class="ans-line"></div>
+    <div class="q">3.</div><div class="ans-line"></div>
+    <div class="q">4.</div><div class="ans-line"></div>
+    <div class="q">5.</div><div class="ans-line"></div>
+    <div class="q">6.</div><div class="ans-line"></div>
+  </div>
+
+  <footer>UC III — Qualidade e Testes de Sistemas · Fake News, Deepfake e IA · 2º Ano A/B · Prof. Jorge Frias · folha 2</footer>
+</div>
+
+</body>
+</html>
