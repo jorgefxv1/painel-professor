@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Recuperação — UC II: Ecossistema de Big Data</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 24px auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; margin: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term, .term { color: #2a5b8a; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 22px 0 8px 0;
+  }
+  .activity-num {
+    display: inline-block;
+    background: #2a5b8a;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    margin-right: 8px;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .blank-col { width: 30%; text-align: center; }
+  .qbox { margin-bottom: 10px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  .mc-options {
+    font-size: 12.5px;
+    line-height: 1.9;
+    margin: 4px 0 4px 4px;
+  }
+  .mc-options .opt { display: block; }
+  .mc-options .letter {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1.3px solid #2a5b8a;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5px;
+    font-weight: bold;
+    color: #2a5b8a;
+    margin-right: 6px;
+  }
+  .vf-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  .vf-box {
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    border: 1px solid #888;
+    text-align: center;
+  }
+  .word-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .word-bank .chip {
+    border: 1.5px solid #2a5b8a;
+    color: #2a5b8a;
+    border-radius: 14px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: bold;
+  }
+  footer {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">📝</span><h1>Recuperação — UC II: Ecossistema de Big Data</h1></div>
+  <div class="subtitle">Revisão dirigida · UC II (Ecossistema de Big Data) · nova oportunidade de nota</div>
+  <div class="id-fields">
+    <span class="field">Nome: <span class="line"></span></span>
+    <span class="field" style="flex:0 0 100px;">Turma: <span class="line"></span></span>
+  </div>
+  <p class="intro">
+    Esta atividade revisa o mesmo conteúdo da prova, com mais pistas e exercícios mais guiados. Leia com
+    calma cada caixa de apoio antes de responder.
+  </p>
+
+  <div class="concept-box">
+    <b>Banco de dados relacional</b> = tabelas organizadas, para o dia a dia do sistema.<br>
+    <b>Data Warehouse</b> = dado já tratado, voltado para análise e relatório.<br>
+    <b>Data Lake</b> = dado bruto, de qualquer formato, guardado barato para decidir depois o que fazer com ele.<br>
+    <b>Pântano de dados (data swamp)</b> = um data lake sem organização, que virou um depósito inútil.
+  </div>
+
+  <div class="part-header"><span class="activity-num">1</span>Complete a tabela</div>
+  <div class="instructions">Use a caixa de apoio acima para escrever, em suas próprias palavras, uma situação em que cada forma de armazenamento seria usada.</div>
+  <table>
+    <tr><th style="width:30%;">Forma de armazenamento</th><th>Uma situação em que eu usaria</th></tr>
+    <tr><td>Banco de dados relacional</td><td></td></tr>
+    <tr><td>Data Warehouse</td><td></td></tr>
+    <tr><td>Data Lake</td><td></td></tr>
+  </table>
+
+  <div class="part-header"><span class="activity-num">2</span>Verdadeiro ou Falso (mais direto)</div>
+  <div class="vf-row"><span class="vf-box"></span> Na computação em nuvem, a empresa paga só pelo que usa.</div>
+  <div class="vf-row"><span class="vf-box"></span> "Pântano de dados" é um nome bom para um data lake organizado.</div>
+  <div class="vf-row"><span class="vf-box"></span> AWS, Google Cloud e Azure são provedores de computação em nuvem.</div>
+
+  <footer>UC II — Ecossistema de Big Data · Recuperação · 2º Ano A/B · Prof. Jorge Frias · folha 1</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="concept-box">
+    Gráfico de <b>barra</b> → comparar categorias diferentes.<br>
+    Gráfico de <b>linha</b> → mostrar como algo muda ao longo do tempo.<br>
+    Gráfico de <b>proporção</b> (pizza/rosca) → mostrar partes de um todo.
+  </div>
+
+  <div class="part-header"><span class="activity-num">3</span>Qual gráfico combina com cada situação?</div>
+  <div class="instructions">Escreva barra, linha ou proporção em cada linha, usando a caixa de apoio acima.</div>
+  <table>
+    <tr><th>Situação</th><th class="blank-col">Tipo de gráfico</th></tr>
+    <tr><td>Comparar as vendas de 5 lojas diferentes no mesmo mês</td><td></td></tr>
+    <tr><td>Mostrar como o número de alunos matriculados mudou nos últimos 5 anos</td><td></td></tr>
+    <tr><td>Mostrar que fração dos alunos da escola está em cada curso técnico</td><td></td></tr>
+  </table>
+
+  <div class="part-header"><span class="activity-num">4</span>Complete com a palavra certa</div>
+  <div class="word-bank">
+    <span class="chip">dashboard</span>
+    <span class="chip">eixo</span>
+    <span class="chip">título</span>
+  </div>
+  <div class="qbox">
+    <div class="q">a) Um ________________ é o painel que reúne os indicadores mais importantes de um assunto numa única tela.</div>
+    <div class="q">b) Um bom ________________ de gráfico responde a uma pergunta, em vez de só dizer o nome do gráfico.</div>
+    <div class="q">c) Cortar o ________________ de um gráfico de barras pode fazer uma diferença pequena parecer enorme.</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">5</span>Marque Certo (C) ou Errado (E)</div>
+  <div class="vf-row"><span class="vf-box"></span> Rastreadores em sites podem registrar o comportamento de uma pessoa em páginas diferentes.</div>
+  <div class="vf-row"><span class="vf-box"></span> A LGPD dá à pessoa o direito de saber o que uma empresa coletou sobre ela.</div>
+
+  <div class="part-header"><span class="activity-num">6</span>O que eu ganho x o que eu entrego</div>
+  <div class="instructions">Complete as frases pensando num app ou site que você usa todos os dias.</div>
+  <div class="qbox">
+    <div class="q">O app/site que eu uso é:</div>
+    <div class="ans-line"></div>
+    <div class="q">Uma coisa que eu ganho ao usar é:</div>
+    <div class="ans-line"></div>
+    <div class="q">Um dado meu que ele provavelmente coleta é:</div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC II — Ecossistema de Big Data · Recuperação · 2º Ano A/B · Prof. Jorge Frias · folha 2</footer>
+</div>
+
+</body>
+</html>
