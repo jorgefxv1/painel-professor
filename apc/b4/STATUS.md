@@ -50,16 +50,42 @@ conforme a data real de aplicação.
 
 ---
 
-## Semanas 2 a 5 — ⏳ PENDENTE
+## Semana 5 — 30/10 a 05/11 · ✅ COMPLETA (gerada em 01/11/2026)
+
+Última semana do bimestre com aulas nas 4 disciplinas combinadas — UC II e Dev Local já encerraram
+a sequência própria na Semana 4 (aula 08); nesta semana só UC I e UC III têm aula, segundo o campo
+`semana` de `data.js`.
+
+| Disciplina | Aula | Tipo | Arquivo |
+|---|---|---|---|
+| UC I | 09 | Culminância — Fluxograma da disciplina | `apc_uc1_b4_aula09_roteiro.md` |
+| UC I | 10 | Roda de conversa — Mercado de trabalho em dados | `apc_uc1_b4_aula10_roteiro.md` |
+| UC III | 09 | Culminância — Fluxograma da disciplina | `apc_uc3_b4_aula09_roteiro.md` |
+
+Essas três aulas são culminância/roda de conversa: não geram lista nem prova, só o roteiro de condução
+(perguntas disparadoras, nós do fluxograma nas duas culminâncias, tempo por etapa somando os 50 min da
+aula, e como fechar — post-its nas culminâncias, mapa de caminhos na roda de conversa).
+
+**Revisar antes de aplicar:** nenhum campo de data a preencher (são roteiros do professor, não folha do
+aluno). Confirmar se a sala terá projetor disponível para o quadro colaborativo (Jamboard/Canva/Miro) —
+os três roteiros também funcionam com quadro branco físico e post-its de papel, sem depender disso.
+
+---
+
+## ⚠️ Semanas 2 a 4 — PENDENTE E JÁ VENCIDAS (09/10 a 29/10)
+
+Essas semanas já passaram (hoje é 01/11/2026) e **nenhum arquivo foi gerado** para elas — a rotina
+semanal só passou a rodar a partir desta execução (ver `ROTINA.md`: ficou bloqueada até o GitHub ser
+conectado). Avisar o Jorge: as aulas abaixo já devem ter ocorrido sem o material desta skill. Se ele já
+preparou algo à mão, só falta arquivar; se não, é material pendente retroativo, incluindo 3 provas.
 
 | Semana | UC I | UC II | UC III | Dev Local |
 |---|---|---|---|---|
 | 2 (09/10–15/10) | Aula 03 transversal + Aula 04 prova mensal | Aula 03 prova mensal + Aula 04 teórica | Aula 03 transversal + Aula 04 prova mensal | Aula 03 validação + Aula 04 feedback |
 | 3 (16/10–22/10) | Aula 05 teórica APIs + Aula 06 prática | Aula 05 prática dashboard + Aula 06 transversal | Aula 05 teórica + Aula 06 prática | Aula 05 iteração + Aula 06 curadoria |
 | 4 (23/10–29/10) | Aula 07 transversal + Aula 08 prova bimestral | Aula 07 prova bimestral + Aula 08 culminância | Aula 07 transversal + Aula 08 prova bimestral | Aula 07 mostra + Aula 08 fechamento |
-| 5 (30/10–05/11) | Aula 09 culminância + Aula 10 roda de conversa | — | Aula 09 culminância | — |
 
-**Provas a gerar (12 arquivos):** cada prova precisa de prova + gabarito comentado + folha de recuperação.
+**Provas vencidas (12 arquivos):** cada prova precisa de prova + gabarito comentado + folha de recuperação.
 
 | Disciplina | Prova mensal | Prova bimestral |
 |---|---|---|
@@ -68,6 +94,9 @@ conforme a data real de aplicação.
 | UC III | Aula 04 (qualidade de dados + vazamento) | Aula 08 (tudo, integrado) |
 
 Dev Local não tem prova escrita — avalia por etapa (AV1 relatório de validação, AV2 mostra).
+
+O bimestre termina em 09/12/2026 e não há mais semanas depois da 5 no calendário de aulas das 4
+disciplinas — a rotina das próximas execuções deve focar em fechar esse backlog, não em semanas futuras.
 
 ---
 
