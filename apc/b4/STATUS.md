@@ -50,12 +50,37 @@ conforme a data real de aplicação.
 
 ---
 
-## Semanas 2 a 5 — ⏳ PENDENTE
+## Semana 3 — 16/10 a 22/10 · ✅ COMPLETA (gerada em 18/10/2026, pela rotina semanal)
+
+| Disciplina | Aula | Tipo | Arquivos |
+|---|---|---|---|
+| UC I | 05 | Teórica — APIs como Fonte de Dados | `apc_uc1_b4_aula05_lista.html` · `apc_uc1_b4_aula05_lista_gabarito.md` |
+| UC I | 06 | Prática — Consumindo uma API Pública | `apc_uc1_b4_aula06_roteiro.md` · `apc_uc1_b4_aula06_plano_b.csv` (fallback se a internet cair) |
+| UC II | 05 | Prática — Construindo um Dashboard (Looker Studio) | `apc_uc2_b4_aula05_roteiro.md` · `apc_uc2_b4_aula05_planilha_base.csv` (dataset fictício de matrículas/frequência) |
+| UC II | 06 | Transversal — Rastreamento e Vigilância de Dados | `apc_uc2_b4_aula06_roteiro.md` |
+| UC III | 05 | Teórica — Testes de Usabilidade e Acessibilidade | `apc_uc3_b4_aula05_lista.html` · `apc_uc3_b4_aula05_lista_gabarito.md` |
+| UC III | 06 | Prática — Teste de Usabilidade e Checklist de Acessibilidade | `apc_uc3_b4_aula06_roteiro.md` · `apc_uc3_b4_aula06_modelo_laudo.html` |
+| Dev Local | 05 | Iteração e Melhorias | `apc_devlocal_b4_aula05_registro_antes_depois.html` |
+| Dev Local | 06 | Curadoria da Mostra | `apc_devlocal_b4_aula06_ficha_curadoria.html` |
+
+**Revisar antes de imprimir/usar:**
+- Datas no cabeçalho de todos os HTMLs estão como `___ / 10 / 2026` (preencher à mão).
+- `apc_uc1_b4_aula06_plano_b.csv`: dados de câmbio **fictícios**, só para o caso de a API cair em aula — confirme que as 3 URLs reais (IBGE/AwesomeAPI/BrasilAPI) funcionam no laboratório antes de descartar o plano B.
+- `apc_uc2_b4_aula05_planilha_base.csv`: as 6 escolas são **fictícias** (não existem em Corumbá-MS) — o roteiro já avisa a turma disso antes de abrir o arquivo; confirme que essa ressalva é dita em voz alta na aula.
+- `apc_uc2_b4_aula06_roteiro.md`: a Etapa 2 pede que o aluno abra o próprio perfil de anúncios do Google — o roteiro já prevê opção de não expor a tela, mas vale o professor reforçar isso antes de começar.
+- `apc_uc3_b4_aula06_roteiro.md`: depende de WAVE (wave.webaim.org) ou Lighthouse (Chrome DevTools) funcionando no laboratório — testar antes.
+
+## Semanas 2, 4 e 5 — ⏳ PENDENTE
+
+> ⚠️ **Atenção:** a Semana 2 (09/10–15/10) já **passou** na data desta geração (18/10/2026) e continua
+> sem material gerado. As aulas 03 e 04 de todas as disciplinas (transversais + provas mensais) podem já
+> ter ocorrido sem material pronto. Isso não é um atraso desta execução — a rotina só passou a rodar de
+> fato nesta semana (ver `ROTINA.md`, que registrava o bloqueio de conexão do GitHub). Recomenda-se gerar
+> a Semana 2 com prioridade na próxima execução, ou que o Jorge peça a geração manualmente antes disso.
 
 | Semana | UC I | UC II | UC III | Dev Local |
 |---|---|---|---|---|
-| 2 (09/10–15/10) | Aula 03 transversal + Aula 04 prova mensal | Aula 03 prova mensal + Aula 04 teórica | Aula 03 transversal + Aula 04 prova mensal | Aula 03 validação + Aula 04 feedback |
-| 3 (16/10–22/10) | Aula 05 teórica APIs + Aula 06 prática | Aula 05 prática dashboard + Aula 06 transversal | Aula 05 teórica + Aula 06 prática | Aula 05 iteração + Aula 06 curadoria |
+| 2 (09/10–15/10) ⚠️ atrasada | Aula 03 transversal + Aula 04 prova mensal | Aula 03 prova mensal + Aula 04 teórica | Aula 03 transversal + Aula 04 prova mensal | Aula 03 validação + Aula 04 feedback |
 | 4 (23/10–29/10) | Aula 07 transversal + Aula 08 prova bimestral | Aula 07 prova bimestral + Aula 08 culminância | Aula 07 transversal + Aula 08 prova bimestral | Aula 07 mostra + Aula 08 fechamento |
 | 5 (30/10–05/11) | Aula 09 culminância + Aula 10 roda de conversa | — | Aula 09 culminância | — |
 
