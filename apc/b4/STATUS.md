@@ -50,24 +50,48 @@ conforme a data real de aplicação.
 
 ---
 
-## Semanas 2 a 5 — ⏳ PENDENTE
+## Semanas 2 a 5 — 🟡 GERADAS, aguardando merge (PRs #8, #9, #10, #11)
 
-| Semana | UC I | UC II | UC III | Dev Local |
+> **Importante para quem for rodar a rotina de novo:** antes de gerar qualquer coisa, rode
+> `gh pr list --state open` (ou confira em github.com/jorgefxv1/painel-professor/pulls) — **não
+> confie só no conteúdo de `apc/b4/` na `main`**. A rotina semanal rodou normalmente desde 04/10 e
+> abriu um PR por semana (#8 a #11), mas **nenhum foi revisado nem mergeado ainda**, então a `main`
+> ainda só tem a Semana 1. Quem olhar só a `main` vai achar que as Semanas 2-5 estão faltando e vai
+> gerar tudo de novo — foi exatamente o que aconteceu na execução de 08/11/2026 (duas vezes, para as
+> Semanas 2 e 3) antes de eu notar os PRs já abertos.
+
+| PR | Semana | Datas | Aulas | Status em 08/11/2026 |
 |---|---|---|---|---|
-| 2 (09/10–15/10) | Aula 03 transversal + Aula 04 prova mensal | Aula 03 prova mensal + Aula 04 teórica | Aula 03 transversal + Aula 04 prova mensal | Aula 03 validação + Aula 04 feedback |
-| 3 (16/10–22/10) | Aula 05 teórica APIs + Aula 06 prática | Aula 05 prática dashboard + Aula 06 transversal | Aula 05 teórica + Aula 06 prática | Aula 05 iteração + Aula 06 curadoria |
-| 4 (23/10–29/10) | Aula 07 transversal + Aula 08 prova bimestral | Aula 07 prova bimestral + Aula 08 culminância | Aula 07 transversal + Aula 08 prova bimestral | Aula 07 mostra + Aula 08 fechamento |
-| 5 (30/10–05/11) | Aula 09 culminância + Aula 10 roda de conversa | — | Aula 09 culminância | — |
+| [#8](https://github.com/jorgefxv1/painel-professor/pull/8) | 2 | 09/10–15/10 | UC I/II/III Aulas 03-04, Dev Local Aula 04 | Aberto desde 04/10. Revisei e corrigi overflow de impressão em 6 dos 7 arquivos HTML nesta execução. |
+| [#9](https://github.com/jorgefxv1/painel-professor/pull/9) | 3 | 16/10–22/10 | UC I/II/III Aulas 05-06, Dev Local Aulas 05-06 | Aberto desde 18/10. Revisei e corrigi overflow em 1 dos 5 arquivos HTML nesta execução. |
+| [#10](https://github.com/jorgefxv1/painel-professor/pull/10) | 4 | 23/10–29/10 | UC I/II/III Aulas 07-08, Dev Local Aulas 07-08 | Aberto desde 25/10. Revisei e corrigi overflow em 2 dos 19 arquivos HTML nesta execução. |
+| [#11](https://github.com/jorgefxv1/painel-professor/pull/11) | 5 | 30/10–05/11 | UC I Aulas 09-10, UC III Aula 09 (culminância/roda de conversa) | Aberto desde 01/11. Só tem `.md`, sem HTML — nada a corrigir, parece pronto. |
 
-**Provas a gerar (12 arquivos):** cada prova precisa de prova + gabarito comentado + folha de recuperação.
+**Ação necessária do Jorge:** revisar e mergear os 4 PRs, na ordem #8 → #9 → #10 → #11 (cada um foi
+gerado a partir da `main` sem as semanas anteriores, então mergear fora de ordem pode gerar conflito
+pequeno no `STATUS.md` — fácil de resolver, mas é mais simples na ordem certa).
+
+**Provas já cobertas nos PRs acima (não precisam ser geradas de novo):**
 
 | Disciplina | Prova mensal | Prova bimestral |
 |---|---|---|
-| UC I | Aula 04 (raspagem + limites da coleta) | Aula 08 (tudo, integrado) |
-| UC II | Aula 03 (Data Lake / DW / Nuvem) | Aula 07 (tudo, integrado) |
-| UC III | Aula 04 (qualidade de dados + vazamento) | Aula 08 (tudo, integrado) |
+| UC I | Aula 04 (raspagem + limites da coleta) — PR #8 | Aula 08 (tudo, integrado) — PR #10 |
+| UC II | Aula 03 (Data Lake / DW / Nuvem) — PR #8 | Aula 07 (tudo, integrado) — PR #10 |
+| UC III | Aula 04 (qualidade de dados + vazamento) — PR #8 | Aula 08 (tudo, integrado) — PR #10 |
 
 Dev Local não tem prova escrita — avalia por etapa (AV1 relatório de validação, AV2 mostra).
+
+---
+
+## ⚠️ Fim do conteúdo planejado em `data.js`
+
+Conferindo o campo `semana` de cada aula em `data.js`, nenhuma disciplina do 4º bimestre tem aula além
+da semana 5 (UC I termina na Aula 10/semana 5, UC II na Aula 08/semana 4, UC III na Aula 09/semana 5,
+Dev Local na Aula 08/semana 4) — cobrindo no máximo até **05/11/2026**. O bimestre vai até **09/12/2026**,
+deixando ~5 semanas de calendário sem nenhuma aula cadastrada. Depois que os PRs #8-#11 forem mergeados,
+não sobra nenhuma semana nova para a rotina gerar até que o Jorge decida: (1) confirmar que não há mais
+aulas previstas até o fim do bimestre (ex.: encerramento, recesso, mostra de projetos tomando o restante
+do tempo), ou (2) estender `divisao-aulas-4-bimestre.txt`/`data.js` com aulas novas para as semanas 6+.
 
 ---
 
