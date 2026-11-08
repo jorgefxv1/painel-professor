@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>UC II Aula 03 - Prova Mensal</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term { color: #2a5b8a; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 22px 0 8px 0;
+  }
+  .activity-num {
+    display: inline-block;
+    background: #2a5b8a;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    margin-right: 8px;
+  }
+  .points {
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #777;
+    font-weight: normal;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .num-col { width: 26px; text-align: center; }
+  .blank-col { width: 18%; text-align: center; }
+  .qbox { margin-bottom: 10px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  .mc-options {
+    font-size: 12.5px;
+    line-height: 1.9;
+    margin: 4px 0 4px 4px;
+  }
+  .mc-options .opt { display: block; }
+  .mc-options .letter {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1.3px solid #2a5b8a;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5px;
+    font-weight: bold;
+    color: #2a5b8a;
+    margin-right: 6px;
+  }
+  .vf-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  .vf-box {
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    border: 1px solid #888;
+    text-align: center;
+  }
+  .match-cols {
+    display: flex;
+    gap: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+  .match-cols .col { flex: 1; }
+  .match-cols .item {
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    background: #fafafa;
+  }
+  .match-cols h4 {
+    font-size: 11.5px;
+    color: #2a5b8a;
+    margin: 0 0 8px 0;
+  }
+  .order-list {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+  .order-list .oline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px dashed #ccc;
+  }
+  .order-box {
+    width: 26px;
+    height: 22px;
+    border: 1px solid #888;
+    text-align: center;
+    flex: 0 0 26px;
+  }
+  footer {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">📝</span><h1>Prova Mensal — UC II</h1></div>
+  <div class="subtitle">Data Lake, Data Warehouse e Computação em Nuvem · UC II (Ecossistema de Big Data) · 10 questões — vale 10,0</div>
+  <div class="id-fields">
+    <span class="field">Nome: <span class="line"></span></span>
+    <span class="field" style="flex:0 0 100px;">Turma: <span class="line"></span></span>
+  </div>
+  <p class="intro">
+    Prova individual, sem consulta. Cobre onde o dado fica guardado em larga escala e o papel da
+    computação em nuvem (Aulas 1 e 2). São 10 questões, 1,0 ponto cada.
+  </p>
+
+  <div class="part-header"><span class="activity-num">1</span>Banco, warehouse ou lake? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Marque a alternativa correta.</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> Um data lake guarda apenas dado já limpo e tratado, pronto para relatório.</span>
+    <span class="opt"><span class="letter">B</span> Um banco de dados relacional é voltado para o dia a dia do sistema, com o dado organizado em tabelas.</span>
+    <span class="opt"><span class="letter">C</span> Um data warehouse guarda dado bruto, em qualquer formato, sem organização prévia.</span>
+    <span class="opt"><span class="letter">D</span> As três formas de armazenamento guardam exatamente o mesmo tipo de dado, só com nomes diferentes.</span>
+  </div>
+
+  <div class="part-header"><span class="activity-num">2</span>Verdadeiro ou Falso <span class="points">1,0 pt</span></div>
+  <div class="vf-row"><span class="vf-box"></span> Um "lakehouse" é a junção das ideias de data warehouse e data lake.</div>
+  <div class="vf-row"><span class="vf-box"></span> Um data lake sem organização nem catálogo corre o risco de se tornar um "pântano de dados" (data swamp).</div>
+  <div class="vf-row"><span class="vf-box"></span> Na computação em nuvem, a empresa precisa comprar o servidor antes de poder usá-lo.</div>
+  <div class="vf-row"><span class="vf-box"></span> A nuvem permite escalar o uso de recursos para cima ou para baixo conforme a demanda.</div>
+
+  <div class="part-header"><span class="activity-num">3</span>Onde esse dado deveria ficar? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Para cada situação, escreva: banco relacional, data warehouse ou data lake.</div>
+  <table>
+    <tr><th>Situação</th><th class="blank-col">Onde guardar</th></tr>
+    <tr><td>O estoque atual de uma loja, consultado e atualizado a cada venda.</td><td></td></tr>
+    <tr><td>Vídeos brutos enviados por usuários de uma plataforma de streaming, sem uso definido ainda.</td><td></td></tr>
+  </table>
+
+  <footer>UC II — Ecossistema de Big Data · Prova Mensal · 2º Ano A/B · Prof. Jorge Frias · folha 1</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">4</span>O papel da nuvem <span class="points">1,0 pt</span></div>
+  <div class="instructions">Marque a alternativa correta.</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> A principal vantagem da computação em nuvem é não precisar comprar e manter servidor próprio, pagando apenas pelo que se usa.</span>
+    <span class="opt"><span class="letter">B</span> A nuvem só serve para guardar fotos pessoais, não para sistemas de empresas.</span>
+    <span class="opt"><span class="letter">C</span> Usar a nuvem obriga a empresa a manter a mesma capacidade de processamento o tempo todo.</span>
+    <span class="opt"><span class="letter">D</span> Google Cloud, AWS e Azure são exemplos de data warehouses, não de provedores de nuvem.</span>
+  </div>
+
+  <div class="part-header"><span class="activity-num">5</span>Complete as lacunas <span class="points">1,0 pt</span></div>
+  <div class="qbox">
+    <div class="q">a) Um data lake sem organização nem catálogo, que se torna um depósito inútil, é chamado de "_______ de dados" (data swamp).</div>
+    <div class="q">b) A junção das ideias de data warehouse e data lake é chamada de _______.</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">6</span>Ligue o termo à definição <span class="points">1,0 pt</span></div>
+  <div class="match-cols">
+    <div class="col">
+      <h4>Termo</h4>
+      <div class="item">1. Banco de dados relacional</div>
+      <div class="item">2. Data warehouse</div>
+      <div class="item">3. Data lake</div>
+      <div class="item">4. Computação em nuvem</div>
+    </div>
+    <div class="col">
+      <h4>Definição</h4>
+      <div class="item">A. Dado bruto, em qualquer formato, guardado barato para uso futuro.</div>
+      <div class="item">B. Infraestrutura sob demanda, paga conforme o uso, que escala para cima e para baixo.</div>
+      <div class="item">C. Dado organizado em tabelas, para o dia a dia de um sistema.</div>
+      <div class="item">D. Dado já tratado e organizado, voltado para análise e relatório.</div>
+    </div>
+  </div>
+  <div class="instructions">Resposta: 1 = ___  2 = ___  3 = ___  4 = ___</div>
+
+  <footer>UC II — Ecossistema de Big Data · Prova Mensal · 2º Ano A/B · Prof. Jorge Frias · folha 2</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">7</span>Coloque em ordem <span class="points">1,0 pt</span></div>
+  <div class="instructions">Numere de 1 a 3 a ordem pela qual um dado costuma circular, do mais bruto ao mais pronto para análise.</div>
+  <div class="order-list">
+    <div class="oline"><span class="order-box"></span> Dado consolidado e organizado num data warehouse, pronto para relatório</div>
+    <div class="oline"><span class="order-box"></span> Dado bruto recém-coletado, guardado sem tratamento num data lake</div>
+    <div class="oline"><span class="order-box"></span> Dado do dia a dia, sendo lido e gravado o tempo todo num banco relacional</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">8</span>Pense e explique <span class="points">1,0 pt</span></div>
+  <div class="instructions">Responda em 2 ou 3 linhas.</div>
+  <div class="qbox">
+    <div class="q">Por que uma empresa guardaria dado bruto num data lake em vez de já organizá-lo assim que ele chega? Dê uma vantagem e um risco dessa escolha.</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC II — Ecossistema de Big Data · Prova Mensal · 2º Ano A/B · Prof. Jorge Frias · folha 3</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">9</span>Estudo de caso <span class="points">1,0 pt</span></div>
+  <div class="qbox">
+    <div class="q">Uma escola decidiu guardar todos os registros de frequência, notas e também os vídeos das aulas gravadas, tudo misturado numa única pasta na nuvem, sem nenhuma organização ou catálogo. Um ano depois, ninguém mais consegue achar nada ali. Que conceito visto na aula explica esse problema, e o que poderia ter sido feito diferente?</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">10</span>Montando o mini data warehouse <span class="points">1,0 pt</span></div>
+  <div class="instructions">Com base na prática da Aula 2, responda.</div>
+  <div class="qbox">
+    <div class="q">Cite dois problemas típicos que aparecem quando se juntam abas cruas de fontes diferentes (ex.: vendas, clientes, produtos) numa única planilha organizada.</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC II — Ecossistema de Big Data · Prova Mensal · 2º Ano A/B · Prof. Jorge Frias · folha 4</footer>
+</div>
+
+</body>
+</html>
