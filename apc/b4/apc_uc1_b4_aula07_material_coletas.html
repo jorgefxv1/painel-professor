@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>UC I Aula 07 - Viés e Lixo na Coleta - Kit de Investigação</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 24px auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; margin: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 21px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term { color: #2a5b8a; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 22px 0 10px 0;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .coleta-box {
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    background: #fafafa;
+  }
+  .coleta-box .tag {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    color: #2a5b8a;
+    background: #eaf1f7;
+    border-radius: 10px;
+    padding: 2px 9px;
+    margin-bottom: 6px;
+  }
+  .coleta-box p { font-size: 12.5px; line-height: 1.5; margin: 0; }
+  .qbox { margin-bottom: 16px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  footer {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">⚖️</span><h1>Viés e "Lixo" na Coleta de Dados</h1></div>
+  <div class="subtitle">APC — Atividade Prática de Classe · UC I (Ingestão de Dados) · Aula 07 — Transversal · Kit de Investigação</div>
+  <div class="id-fields">
+    <span class="field">Nome: <span class="line"></span></span>
+    <span class="field" style="flex:0 0 100px;">Turma: <span class="line"></span></span>
+  </div>
+
+  <p class="intro">
+    Toda coleta de dados tem uma pergunta escondida atrás: <b>quem respondeu, e quem não respondeu?</b>
+    Uma base pode estar 100% completa, sem nenhum campo vazio, e ainda assim mentir sobre a realidade —
+    porque quem respondeu não representa quem precisava ser ouvido. Isso se chama <b>viés de amostragem</b>,
+    e ele entra já na porta de entrada do dado, antes de qualquer análise.
+  </p>
+
+  <div class="concept-box">
+    <strong class="term">Viés de amostragem</strong> é a distorção que aparece quando o grupo que respondeu
+    uma coleta não representa de verdade o grupo que a coleta queria estudar. Duas perguntas ajudam a
+    encontrá-lo em qualquer coleta: <b>quem ficou de fora</b> (não teve acesso, não quis ou não pôde
+    responder) e <b>quem respondeu demais</b> (está super-representado em relação ao seu peso real na
+    população). As três coletas abaixo são <b>fictícias</b>, criadas só para este exercício.
+  </div>
+
+  <div class="part-header">Parte 1 — Quem ficou de fora, quem respondeu demais?</div>
+  <div class="instructions">
+    Leia cada coleta e responda, nas linhas, quem provavelmente ficou de fora e quem provavelmente
+    respondeu mais do que deveria (em relação ao peso real desse grupo na população inteira).
+  </div>
+
+  <div class="coleta-box">
+    <span class="tag">COLETA 1 — ENQUETE DE SITE (FICTÍCIA)</span>
+    <p>O site de notícias "Corumbá Notícias" publica uma matéria sobre o trânsito da cidade e, no final do
+    texto, abre uma enquete: <i>"Você acha que o trânsito de Corumbá melhorou neste ano?"</i>. Em uma
+    semana, 340 pessoas votaram — todas elas leitoras daquela matéria específica.</p>
+  </div>
+  <div class="qbox">
+    <div class="q"><b>1.</b> Quem ficou de fora dessa enquete, e quem respondeu mais do que representa?</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="coleta-box">
+    <span class="tag">COLETA 2 — PESQUISA DE RUA (FICTÍCIA)</span>
+    <p>Uma empresa de pesquisa de mercado quer saber os hábitos de consumo da população de Corumbá. A
+    equipe entrevista pessoas na rua, em frente a um shopping, das 14h às 16h de uma terça-feira, até
+    completar 200 entrevistas.</p>
+  </div>
+  <div class="qbox">
+    <div class="q"><b>2.</b> Quem ficou de fora dessa pesquisa, e quem respondeu mais do que representa?</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC I — Ingestão de Dados · Viés e Lixo na Coleta · 2º Ano A/B · Prof. Jorge Frias · folha 1</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="coleta-box">
+    <span class="tag">COLETA 3 — FORMULÁRIO ABERTO (FICTÍCIA)</span>
+    <p>A direção de uma escola fictícia compartilha, nas redes sociais oficiais da escola, um formulário
+    aberto perguntando: <i>"O que você achou da merenda este ano?"</i>. Qualquer pessoa pode responder,
+    sem limite. Em um mês, chegam 52 respostas — a maioria de alunos que já reclamavam da merenda nos
+    corredores.</p>
+  </div>
+  <div class="qbox">
+    <div class="q"><b>3.</b> Quem ficou de fora desse formulário, e quem respondeu mais do que representa?</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header">Parte 2 — Reescrevendo perguntas enviesadas</div>
+  <div class="instructions">
+    As duas perguntas abaixo têm um problema de formulação (uma sugere a resposta, a outra mistura duas
+    perguntas em uma só). Reescreva cada uma de forma neutra, perguntando uma coisa por vez.
+  </div>
+
+  <div class="qbox">
+    <div class="q"><b>a)</b> Pergunta original: <i>"Você também acha que a escola deveria ter mais eventos,
+    já que todo mundo está cansado da rotina de aula?"</i></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+  <div class="qbox">
+    <div class="q"><b>b)</b> Pergunta original: <i>"Você acha o aplicativo do seu banco bonito e rápido?"</i></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header">Parte 3 — Sujando uma base de propósito</div>
+  <div class="instructions">
+    Em dupla, discutam e anotem: de que formas alguém poderia "sujar" uma base de dados de propósito
+    (robôs preenchendo formulário, avaliações falsas, a mesma pessoa respondendo várias vezes), e qual
+    defesa simples poderia impedir cada uma.
+  </div>
+  <div class="qbox">
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC I — Ingestão de Dados · Viés e Lixo na Coleta · 2º Ano A/B · Prof. Jorge Frias · folha 2</footer>
+</div>
+
+</body>
+</html>

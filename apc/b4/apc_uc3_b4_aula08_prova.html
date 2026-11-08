@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Prova Bimestral — UC III: Qualidade e Testes de Sistemas</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 24px auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; margin: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term, .term { color: #2a5b8a; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 22px 0 8px 0;
+  }
+  .activity-num {
+    display: inline-block;
+    background: #2a5b8a;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    margin-right: 8px;
+  }
+  .points {
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #777;
+    font-weight: normal;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .num-col { width: 26px; text-align: center; }
+  .blank-col { width: 18%; text-align: center; }
+  .qbox { margin-bottom: 10px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  .mc-options {
+    font-size: 12.5px;
+    line-height: 1.9;
+    margin: 4px 0 4px 4px;
+  }
+  .mc-options .opt { display: block; }
+  .mc-options .letter {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1.3px solid #2a5b8a;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5px;
+    font-weight: bold;
+    color: #2a5b8a;
+    margin-right: 6px;
+  }
+  .vf-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  .vf-box {
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    border: 1px solid #888;
+    text-align: center;
+  }
+  .match-cols {
+    display: flex;
+    gap: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+  .match-cols .col { flex: 1; }
+  .match-cols .item {
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    background: #fafafa;
+  }
+  .match-cols h4 {
+    font-size: 11.5px;
+    color: #2a5b8a;
+    margin: 0 0 8px 0;
+  }
+  footer {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">📝</span><h1>Prova Bimestral — UC III: Qualidade e Testes de Sistemas</h1></div>
+  <div class="subtitle">Avaliação individual, sem consulta · UC III (Qualidade e Testes de Sistemas) · 10 questões — vale 10,0</div>
+  <div class="id-fields">
+    <span class="field">Nome: <span class="line"></span></span>
+    <span class="field" style="flex:0 0 100px;">Turma: <span class="line"></span></span>
+  </div>
+  <p class="intro">
+    Esta prova cobre os quatro blocos do bimestre: <b>Qualidade de Dados</b>, <b>Vazamento de Dados e
+    Segurança da Informação</b>, <b>Usabilidade e Acessibilidade</b> e <b>Fake News, Deepfake e Conteúdo
+    Gerado por IA</b>. São 10 questões, 1,0 ponto cada. Leia cada questão com atenção antes de responder.
+  </p>
+
+  <div class="part-header"><span class="activity-num">1</span>As 6 dimensões da qualidade de dados <span class="points">1,0 pt</span></div>
+  <div class="instructions">Complete cada linha com o nome da dimensão da qualidade de dados descrita.</div>
+  <table>
+    <tr><th class="num-col">#</th><th>Descrição</th><th class="blank-col">Dimensão</th></tr>
+    <tr><td class="num-col">a</td><td>O dado não está faltando — todos os campos obrigatórios foram preenchidos.</td><td></td></tr>
+    <tr><td class="num-col">b</td><td>O mesmo dado não aparece contraditório em lugares diferentes do sistema.</td><td></td></tr>
+    <tr><td class="num-col">c</td><td>O dado bate com a realidade — por exemplo, a idade registrada é a idade real da pessoa.</td><td></td></tr>
+    <tr><td class="num-col">d</td><td>O dado respeita o formato esperado — por exemplo, um e-mail tem o formato nome@dominio.com.</td><td></td></tr>
+    <tr><td class="num-col">e</td><td>O mesmo registro não aparece duplicado na base.</td><td></td></tr>
+    <tr><td class="num-col">f</td><td>O dado está em dia, não desatualizado.</td><td></td></tr>
+  </table>
+
+  <div class="part-header"><span class="activity-num">2</span>"Entra lixo, sai lixo" <span class="points">1,0 pt</span></div>
+  <div class="instructions">Marque a alternativa que melhor explica essa expressão, vista na Aula 01.</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> Significa que todo sistema precisa de um bom antivírus para não ser invadido.</span>
+    <span class="opt"><span class="letter">B</span> Significa que, se o dado que entra no sistema for ruim, qualquer relatório, decisão ou modelo de IA construído a partir dele também vai saber ruim, mesmo que o sistema funcione perfeitamente.</span>
+    <span class="opt"><span class="letter">C</span> Significa que sistemas antigos sempre têm dados de pior qualidade que sistemas novos.</span>
+    <span class="opt"><span class="letter">D</span> Significa que o usuário é o único responsável por qualquer erro de dado.</span>
+  </div>
+
+  <footer>UC III — Qualidade e Testes de Sistemas · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 1</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">3</span>Verdadeiro ou Falso — Segurança da Informação <span class="points">1,0 pt</span></div>
+  <div class="vf-row"><span class="vf-box"></span> Um vazamento de dados só acontece quando um funcionário rouba informação de propósito; falha técnica nunca causa vazamento.</div>
+  <div class="vf-row"><span class="vf-box"></span> O site Have I Been Pwned permite checar se um e-mail já apareceu em algum vazamento de dados conhecido.</div>
+  <div class="vf-row"><span class="vf-box"></span> Senha fraca e sistema desatualizado são falhas comuns que facilitam um vazamento de dados.</div>
+  <div class="vf-row"><span class="vf-box"></span> A LGPD (Lei Geral de Proteção de Dados) não se aplica a empresas pequenas, só a grandes corporações.</div>
+
+  <div class="part-header"><span class="activity-num">4</span>Ligue a falha ao exemplo <span class="points">1,0 pt</span></div>
+  <div class="match-cols">
+    <div class="col">
+      <h4>Falha</h4>
+      <div class="item">1. Senha fraca</div>
+      <div class="item">2. Dado sem criptografia</div>
+      <div class="item">3. Sistema desatualizado</div>
+    </div>
+    <div class="col">
+      <h4>Exemplo</h4>
+      <div class="item">A. Um sistema continua usando uma versão antiga de software, com falhas de segurança já conhecidas e nunca corrigidas (sem "patch").</div>
+      <div class="item">B. Um banco de dados armazena a senha dos usuários como texto puro, legível por qualquer pessoa que acesse o servidor.</div>
+      <div class="item">C. Um funcionário usa "123456" como senha de acesso ao sistema da empresa.</div>
+    </div>
+  </div>
+  <div class="instructions">Resposta: 1 = ___  2 = ___  3 = ___</div>
+
+  <div class="part-header"><span class="activity-num">5</span>Pergunta discursiva <span class="points">1,0 pt</span></div>
+  <div class="instructions">
+    Explique, em até 3 frases, por que checar o próprio e-mail no Have I Been Pwned não impede um
+    vazamento, mas ainda é útil fazer essa checagem periodicamente.
+  </div>
+  <div class="qbox">
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC III — Qualidade e Testes de Sistemas · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 2</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">6</span>Teste de usabilidade x pesquisa de opinião <span class="points">1,0 pt</span></div>
+  <div class="instructions">Marque a alternativa correta.</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> Teste de usabilidade e pesquisa de opinião são a mesma coisa, só com nomes diferentes.</span>
+    <span class="opt"><span class="letter">B</span> Pesquisa de opinião observa a pessoa tentando concluir uma tarefa; teste de usabilidade pergunta o que ela acha do sistema.</span>
+    <span class="opt"><span class="letter">C</span> Teste de usabilidade observa a pessoa tentando concluir uma tarefa real, sem ajuda, registrando se concluiu, o tempo gasto e o número de erros; pesquisa de opinião pergunta o que a pessoa pensa ou sente sobre o sistema.</span>
+    <span class="opt"><span class="letter">D</span> Pesquisa de opinião só pode ser feita com mais de 100 pessoas; teste de usabilidade pode ser feito com 1 pessoa.</span>
+  </div>
+
+  <div class="part-header"><span class="activity-num">7</span>Verdadeiro ou Falso — Acessibilidade <span class="points">1,0 pt</span></div>
+  <div class="vf-row"><span class="vf-box"></span> Acessibilidade digital serve apenas para pessoas com deficiência visual.</div>
+  <div class="vf-row"><span class="vf-box"></span> Texto alternativo em imagens ajuda quem usa leitor de tela a entender o que a imagem mostra.</div>
+  <div class="vf-row"><span class="vf-box"></span> A Lei Brasileira de Inclusão trata, entre outros temas, da acessibilidade de sistemas e serviços digitais.</div>
+  <div class="vf-row"><span class="vf-box"></span> Um site que só pode ser navegado com o mouse, sem funcionar pelo teclado, não tem nenhum problema de acessibilidade.</div>
+
+  <div class="part-header"><span class="activity-num">8</span>Ligue o público à adaptação necessária <span class="points">1,0 pt</span></div>
+  <div class="match-cols">
+    <div class="col">
+      <h4>Público</h4>
+      <div class="item">1. Pessoa com baixa visão</div>
+      <div class="item">2. Pessoa que usa leitor de tela</div>
+      <div class="item">3. Pessoa com deficiência motora</div>
+      <div class="item">4. Pessoa com daltonismo</div>
+    </div>
+    <div class="col">
+      <h4>Adaptação</h4>
+      <div class="item">A. Navegação completa pelo teclado, sem depender do mouse</div>
+      <div class="item">B. Texto alternativo descrevendo imagens</div>
+      <div class="item">C. Informação não depender só da cor para ser entendida</div>
+      <div class="item">D. Alto contraste e fonte ajustável de tamanho</div>
+    </div>
+  </div>
+  <div class="instructions">Resposta: 1 = ___  2 = ___  3 = ___  4 = ___</div>
+
+  <footer>UC III — Qualidade e Testes de Sistemas · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 3</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">9</span>Sinais de conteúdo gerado por IA <span class="points">1,0 pt</span></div>
+  <div class="instructions">
+    Cite 2 sinais visuais que podem indicar que uma imagem foi gerada ou manipulada por IA (vistos na
+    Aula 07).
+  </div>
+  <div class="qbox">
+    <div class="q">a)</div>
+    <div class="ans-line"></div>
+    <div class="q">b)</div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">10</span>Aplicando o roteiro de verificação <span class="points">1,0 pt</span></div>
+  <div class="instructions">
+    Você recebe, num grupo de família, uma notícia sem nome de autor, sem data e sem link para nenhuma
+    fonte original, afirmando algo alarmante. Descreva, em até 3 passos, o que você faria para verificar
+    se essa notícia é confiável antes de repassar para outra pessoa.
+  </div>
+  <div class="qbox">
+    <div class="q">1.</div><div class="ans-line"></div>
+    <div class="q">2.</div><div class="ans-line"></div>
+    <div class="q">3.</div><div class="ans-line"></div>
+  </div>
+
+  <footer>UC III — Qualidade e Testes de Sistemas · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 4</footer>
+</div>
+
+</body>
+</html>

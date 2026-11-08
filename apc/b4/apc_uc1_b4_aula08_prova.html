@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Prova Bimestral - UC I: Ingestao de Dados</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1c1c1c;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  @media screen {
+    body { background: #e9e9e7; padding: 24px 0; }
+  }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 24px auto;
+    background: #ffffff;
+    padding: 16mm;
+  }
+  @media screen {
+    .sheet { box-shadow: 0 0 12px rgba(0,0,0,0.12); }
+  }
+  @media print {
+    .sheet { min-height: 0; margin: 0; }
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .top-bar .school { line-height: 1.5; }
+  .top-bar .meta { text-align: right; line-height: 1.5; }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 2px 0;
+  }
+  .title-row .icon { font-size: 26px; }
+  h1 {
+    font-size: 21px;
+    margin: 0;
+    color: #2a5b8a;
+  }
+  .subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0 18px 0;
+  }
+  .id-fields {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+  }
+  .id-fields .field { flex: 1; display: flex; align-items: baseline; gap: 6px; }
+  .id-fields .line { flex: 1; border-bottom: 1px solid #888; height: 14px; }
+  p.intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .concept-box {
+    background: #eaf1f7;
+    border-left: 4px solid #2a5b8a;
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .concept-box strong.term, .term { color: #2a5b8a; }
+  .part-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2a5b8a;
+    border-left: 4px solid #2a5b8a;
+    padding: 4px 10px;
+    background: #f2f6fa;
+    margin: 22px 0 8px 0;
+  }
+  .activity-num {
+    display: inline-block;
+    background: #2a5b8a;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    margin-right: 8px;
+  }
+  .points {
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #777;
+    font-weight: normal;
+  }
+  .instructions {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eaf1f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11.5px;
+    color: #2a5b8a;
+  }
+  .num-col { width: 26px; text-align: center; }
+  .blank-col { width: 18%; text-align: center; }
+  .qbox { margin-bottom: 10px; }
+  .qbox .q { font-size: 13px; margin-bottom: 6px; }
+  .qbox .ans-line { border-bottom: 1px solid #999; height: 20px; margin-bottom: 4px; }
+  .mc-options {
+    font-size: 12.5px;
+    line-height: 1.9;
+    margin: 4px 0 4px 4px;
+  }
+  .mc-options .opt { display: block; }
+  .mc-options .letter {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1.3px solid #2a5b8a;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5px;
+    font-weight: bold;
+    color: #2a5b8a;
+    margin-right: 6px;
+  }
+  .vf-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+  .vf-box {
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    border: 1px solid #888;
+    text-align: center;
+  }
+  .match-cols {
+    display: flex;
+    gap: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+  .match-cols .col { flex: 1; }
+  .match-cols .item {
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    background: #fafafa;
+  }
+  .match-cols h4 {
+    font-size: 11.5px;
+    color: #2a5b8a;
+    margin: 0 0 8px 0;
+  }
+  .order-list {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+  .order-list .oline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px dashed #ccc;
+  }
+  .order-box {
+    width: 26px;
+    height: 22px;
+    border: 1px solid #888;
+    text-align: center;
+    flex: 0 0 26px;
+  }
+  .json-box {
+    background: #1c2b36;
+    color: #d8e6f0;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    white-space: pre;
+  }
+  footer {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>___ / 10 / 2026</div>
+  </div>
+  <div class="title-row"><span class="icon">📝</span><h1>Prova Bimestral — UC I: Ingestão de Dados</h1></div>
+  <div class="subtitle">UC I (Ingestão de Dados) · 4º Bimestre · 10 questões — vale 10,0 · Individual, sem consulta</div>
+  <div class="id-fields">
+    <span class="field">Nome: <span class="line"></span></span>
+    <span class="field" style="flex:0 0 100px;">Turma: <span class="line"></span></span>
+  </div>
+  <p class="intro">
+    Esta prova cobre tudo que estudamos sobre como um dado entra em um sistema: raspagem de dados da web,
+    os limites da coleta, APIs como fonte de dados e o viés que pode estragar uma coleta antes mesmo da
+    análise. São 10 questões, valendo 1,0 ponto cada.
+  </p>
+
+  <div class="part-header"><span class="activity-num">1</span>Raspagem de dados <span class="points">1,0 pt</span></div>
+  <div class="instructions">Marque a alternativa que melhor define raspagem de dados (web scraping).</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> Digitar manualmente, em uma planilha, os dados que aparecem em uma página da web.</span>
+    <span class="opt"><span class="letter">B</span> Extrair automaticamente informações de páginas web e transformá-las em dados organizados.</span>
+    <span class="opt"><span class="letter">C</span> Apagar dados antigos de um sistema para liberar espaço.</span>
+    <span class="opt"><span class="letter">D</span> Pedir, por e-mail, que uma empresa envie seus dados.</span>
+  </div>
+
+  <div class="part-header"><span class="activity-num">2</span>Robots.txt e termos de uso <span class="points">1,0 pt</span></div>
+  <div class="instructions">Classifique cada afirmação como Verdadeira (V) ou Falsa (F). Cada item vale 0,25 pt.</div>
+  <div class="vf-row"><span class="vf-box"></span> O arquivo robots.txt de um site informa quais partes do site não devem ser raspadas por robôs automáticos.</div>
+  <div class="vf-row"><span class="vf-box"></span> Se um dado está publicado e visível na internet, a pessoa pode fazer qualquer uso dele, sem restrição.</div>
+  <div class="vf-row"><span class="vf-box"></span> Os termos de uso de uma rede social podem proibir a coleta automatizada de dados do site, mesmo que o conteúdo seja público.</div>
+  <div class="vf-row"><span class="vf-box"></span> A LGPD (Lei Geral de Proteção de Dados) só se aplica a empresas, nunca a dados coletados para fins de pesquisa.</div>
+
+  <div class="part-header"><span class="activity-num">3</span>APIs — ligue o termo à definição <span class="points">1,0 pt</span></div>
+  <div class="match-cols">
+    <div class="col">
+      <h4>Termo</h4>
+      <div class="item">1. Endpoint</div>
+      <div class="item">2. JSON</div>
+      <div class="item">3. API key</div>
+      <div class="item">4. Rate limit</div>
+    </div>
+    <div class="col">
+      <h4>Definição</h4>
+      <div class="item">A. Formato de resposta organizado em pares campo-valor e listas</div>
+      <div class="item">B. Limite de quantas requisições podem ser feitas em um período de tempo</div>
+      <div class="item">C. Endereço específico ao qual se faz a requisição para obter um dado</div>
+      <div class="item">D. Código que identifica e autentica quem está fazendo a requisição</div>
+    </div>
+  </div>
+  <div class="instructions">Resposta: 1 = ___  2 = ___  3 = ___  4 = ___</div>
+
+  <footer>UC I — Ingestão de Dados · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 1</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">4</span>Ordem de uma raspagem na planilha <span class="points">1,0 pt</span></div>
+  <div class="instructions">Numere de 1 a 4 a ordem correta para raspar uma tabela da web para o Google Sheets.</div>
+  <div class="order-list">
+    <div class="oline"><span class="order-box"></span> Limpar o resultado (remover colunas inúteis, corrigir cabeçalhos e tipos)</div>
+    <div class="oline"><span class="order-box"></span> Inspecionar a página e identificar em qual índice está a tabela desejada</div>
+    <div class="oline"><span class="order-box"></span> Usar a função IMPORTHTML (ou IMPORTXML) apontando para a URL e o índice da tabela</div>
+    <div class="oline"><span class="order-box"></span> Registrar a URL de origem e a data da coleta</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">5</span>Complete a frase <span class="points">1,0 pt</span></div>
+  <div class="instructions">Preencha as lacunas com as palavras corretas.</div>
+  <div class="qbox">
+    <div class="q">a) Quando o grupo que respondeu uma coleta não representa de verdade o grupo que deveria ser estudado, isso se chama viés de ______________.</div>
+    <div class="q">b) Uma coleta pode estar completamente sem campos vazios e ainda assim ser pouco confiável, porque o problema está em ______________ respondeu, não em quantos campos foram preenchidos.</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">6</span>Qual situação não deveria ser raspada? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Marque a alternativa com a situação em que a raspagem NÃO deveria ser feita sem autorização.</div>
+  <div class="mc-options">
+    <span class="opt"><span class="letter">A</span> Uma tabela de cotação do dólar publicada livremente em um portal financeiro.</span>
+    <span class="opt"><span class="letter">B</span> Uma lista de resultados de um campeonato esportivo divulgada em um site de notícias.</span>
+    <span class="opt"><span class="letter">C</span> Dados de perfis de usuários de uma rede social cujo robots.txt e termos de uso proíbem coleta automatizada.</span>
+    <span class="opt"><span class="letter">D</span> Uma tabela de população de municípios disponível em um verbete público da Wikipédia.</span>
+  </div>
+
+  <footer>UC I — Ingestão de Dados · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 2</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">7</span>API x raspagem <span class="points">1,0 pt</span></div>
+  <div class="instructions">Classifique cada afirmação como Verdadeira (V) ou Falsa (F). Cada item vale 0,25 pt.</div>
+  <div class="vf-row"><span class="vf-box"></span> Um dado vindo de uma API costuma chegar mais estruturado e estável do que um dado raspado de uma página pensada para leitura humana.</div>
+  <div class="vf-row"><span class="vf-box"></span> Uma API nunca exige autenticação, diferente da raspagem, que sempre exige.</div>
+  <div class="vf-row"><span class="vf-box"></span> O "rate limit" de uma API existe para impedir que um mesmo usuário sobrecarregue o sistema com excesso de requisições.</div>
+  <div class="vf-row"><span class="vf-box"></span> Se uma página muda de layout, uma raspagem feita com IMPORTHTML pode parar de funcionar; uma API bem documentada tende a ser mais estável a esse tipo de mudança.</div>
+
+  <div class="part-header"><span class="activity-num">8</span>Lendo um JSON de API <span class="points">1,0 pt</span></div>
+  <div class="instructions">Esta é uma resposta fictícia de uma API de previsão do tempo. Responda às perguntas abaixo com base nela.</div>
+  <div class="json-box">{
+  "cidade": "Corumbá",
+  "temperatura_celsius": 34,
+  "umidade_percentual": 48,
+  "previsao": "ensolarado"
+}</div>
+  <div class="qbox">
+    <div class="q"><b>a)</b> Qual é o valor do campo "temperatura_celsius" nesta resposta?</div>
+    <div class="ans-line"></div>
+    <div class="q"><b>b)</b> Se você quisesse a previsão de outra cidade, o que precisaria mudar na requisição feita a essa API?</div>
+    <div class="ans-line"></div>
+  </div>
+
+  <footer>UC I — Ingestão de Dados · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 3</footer>
+</div>
+
+<div class="sheet">
+  <div class="top-bar">
+    <div class="school">EE JÚLIA GONÇALVES PASSARINHO · ITINERÁRIO FORMATIVO — CIÊNCIA DE DADOS<br>2º Ano A / B — Integral</div>
+    <div class="meta">Prof. Jorge Frias<br>Nome: ______________________</div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">9</span>Encontrando o viés <span class="points">1,0 pt</span></div>
+  <div class="instructions">
+    Uma loja fictícia de roupas coloca, só na página de finalização de compra do site, uma pergunta:
+    <i>"Você ficou satisfeito com sua compra?"</i>. Em um mês, recebe 500 respostas, quase todas positivas.
+  </div>
+  <div class="qbox">
+    <div class="q">Aponte quem ficou de fora dessa coleta e explique por que o resultado tende a ser mais positivo do que a satisfação real de todos os clientes.</div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+    <div class="ans-line"></div>
+  </div>
+
+  <div class="part-header"><span class="activity-num">10</span>Qual API pública usar? <span class="points">1,0 pt</span></div>
+  <div class="instructions">Para cada situação, indique uma API pública adequada (IBGE, AwesomeAPI de câmbio, ou BrasilAPI).</div>
+  <table>
+    <tr><th>Situação</th><th class="blank-col">API</th></tr>
+    <tr><td>Obter a cotação atual do dólar para converter um preço em uma loja online.</td><td></td></tr>
+    <tr><td>Descobrir a população de todos os municípios de Mato Grosso do Sul.</td><td></td></tr>
+  </table>
+
+  <footer>UC I — Ingestão de Dados · Prova Bimestral · 2º Ano A/B · Prof. Jorge Frias · folha 4</footer>
+</div>
+
+</body>
+</html>
